@@ -1,0 +1,1267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="GestionDeInventario">
+  <ClassDiagramComponents>
+    <Class name="Cliente" package="domain" visibility="public" xPosition="37.0" yPosition="20.0">
+      <Fields>
+        <Field name="idCliente" type="int" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="telefono" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="idCliente"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="telefono"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="idCliente"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="telefono"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdCliente" returnType="int" visibility="public"/>
+        <Method name="getDireccion" returnType="String" visibility="public"/>
+        <Method name="getTelefono" returnType="String" visibility="public"/>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getEdad" returnType="int" visibility="public"/>
+        <Method name="setDireccion" returnType="void" visibility="public">
+          <Argument type="String" name="direccion"/>
+        </Method>
+        <Method name="setTelefono" returnType="void" visibility="public">
+          <Argument type="String" name="telefono"/>
+        </Method>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="int" name="edad"/>
+        </Method>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="String" name="edad"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JefeSucursal" package="domain" visibility="public" xPosition="954.0" yPosition="429.0">
+      <Fields>
+        <Field name="idJefe" type="int" visibility="private"/>
+        <Field name="idSucursal" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="idSucursal"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="int" name="idSucursal"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="idJefe"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="int" name="idSucursal"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdJefe" returnType="int" visibility="public"/>
+        <Method name="getIdSucursal" returnType="int" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getEdad" returnType="int" visibility="public"/>
+        <Method name="setIdSucursal" returnType="void" visibility="public">
+          <Argument type="int" name="idSucursal"/>
+        </Method>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="int" name="edad"/>
+        </Method>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="String" name="edad"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="domain" visibility="public" isAbstract="true" xPosition="1257.0" yPosition="49.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="protected"/>
+        <Field name="edad" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public" isAbstract="true"/>
+        <Method name="getEdad" returnType="int" visibility="public" isAbstract="true"/>
+        <Method name="setNombre" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setEdad" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="int" name="edad"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Producto" package="domain" visibility="public" xPosition="1610.0" yPosition="248.0">
+      <Fields>
+        <Field name="idProducto" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="barCode" type="String" visibility="private"/>
+        <Field name="stockTotal" type="long" visibility="private"/>
+        <Field name="precio" type="int" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="idProducto"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="marca"/>
+          <Argument type="String" name="barCode"/>
+          <Argument type="long" name="stockTotal"/>
+          <Argument type="int" name="precio"/>
+          <Argument type="String" name="descripcion"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="idProducto"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="marca"/>
+          <Argument type="String" name="barCode"/>
+          <Argument type="long" name="stockTotal"/>
+          <Argument type="int" name="precio"/>
+          <Argument type="String" name="descripcion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdProducto" returnType="int" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getMarca" returnType="String" visibility="public"/>
+        <Method name="getBarCode" returnType="String" visibility="public"/>
+        <Method name="getStockTotal" returnType="long" visibility="public"/>
+        <Method name="getPrecio" returnType="int" visibility="public"/>
+        <Method name="getDescripcion" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setMarca" returnType="void" visibility="public">
+          <Argument type="String" name="marca"/>
+        </Method>
+        <Method name="setBarCode" returnType="void" visibility="public">
+          <Argument type="String" name="barCode"/>
+        </Method>
+        <Method name="setStockTotal" returnType="void" visibility="public">
+          <Argument type="long" name="stockTotal"/>
+        </Method>
+        <Method name="setStockTotal" returnType="void" visibility="public">
+          <Argument type="String" name="stockTotal"/>
+        </Method>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="int" name="precio"/>
+        </Method>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="String" name="precio"/>
+        </Method>
+        <Method name="setDescripcion" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Region" package="domain" visibility="public" xPosition="2398.0" yPosition="4.0">
+      <Fields>
+        <Field name="idRegion" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="sucursales" type="List&lt;Sucursal&gt;" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="idRegion"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="idRegion"/>
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdRegion" returnType="int" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getSucursales" returnType="List&lt;Sucursal&gt;" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setSucursales" returnType="void" visibility="public">
+          <Argument type="List&lt;Sucursal&gt;" name="sucursales"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Sistema" package="domain" visibility="public" xPosition="3394.0" yPosition="49.0">
+      <Fields>
+        <Field name="regiones" type="List&lt;Region&gt;" visibility="private"/>
+        <Field name="clientes" type="List&lt;Cliente&gt;" visibility="private"/>
+        <Field name="productos" type="Map&lt;String, Producto&gt;" visibility="private"/>
+        <Field name="usuario" type="Usuario" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getRegiones" returnType="List&lt;Region&gt;" visibility="public"/>
+        <Method name="getClientes" returnType="List&lt;Cliente&gt;" visibility="public"/>
+        <Method name="getProductos" returnType="Map&lt;String, Producto&gt;" visibility="public"/>
+        <Method name="getUsuario" returnType="Usuario" visibility="public"/>
+        <Method name="setRegiones" returnType="void" visibility="public">
+          <Argument type="List&lt;Region&gt;" name="regiones"/>
+        </Method>
+        <Method name="setClientes" returnType="void" visibility="public">
+          <Argument type="List&lt;Cliente&gt;" name="clientes"/>
+        </Method>
+        <Method name="setProductos" returnType="void" visibility="public">
+          <Argument type="Map&lt;String, Producto&gt;" name="productos"/>
+        </Method>
+        <Method name="setUsuario" returnType="void" visibility="public">
+          <Argument type="Usuario" name="usuario"/>
+        </Method>
+        <Method name="verificarExistenciaUsuario" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Sucursal" package="domain" visibility="public" xPosition="3081.0" yPosition="694.0">
+      <Fields>
+        <Field name="idSucursal" type="int" visibility="private"/>
+        <Field name="idRegion" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="telefono" type="String" visibility="private"/>
+        <Field name="jefeSucursal" type="JefeSucursal" visibility="private"/>
+        <Field name="productos" type="Map&lt;String, Producto&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="idSucursal"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="idRegion"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="telefono"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="idSucursal"/>
+          <Argument type="int" name="idRegion"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="telefono"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdSucursal" returnType="int" visibility="public"/>
+        <Method name="getIdRegion" returnType="int" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getDireccion" returnType="String" visibility="public"/>
+        <Method name="getTelefono" returnType="String" visibility="public"/>
+        <Method name="getJefeSucursal" returnType="JefeSucursal" visibility="public"/>
+        <Method name="getProductos" returnType="Map&lt;String, Producto&gt;" visibility="public"/>
+        <Method name="setIdRegion" returnType="void" visibility="public">
+          <Argument type="int" name="idRegion"/>
+        </Method>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setDireccion" returnType="void" visibility="public">
+          <Argument type="String" name="direccion"/>
+        </Method>
+        <Method name="setTelefono" returnType="void" visibility="public">
+          <Argument type="String" name="telefono"/>
+        </Method>
+        <Method name="setJefeSucursal" returnType="void" visibility="public">
+          <Argument type="JefeSucursal" name="jefeSucursal"/>
+        </Method>
+        <Method name="setProductos" returnType="void" visibility="public">
+          <Argument type="Map&lt;String, Producto&gt;" name="productos"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="SucursalProducto" package="domain" visibility="public" xPosition="37.0" yPosition="651.0">
+      <Fields>
+        <Field name="idSP" type="int" visibility="private"/>
+        <Field name="idSucursal" type="int" visibility="private"/>
+        <Field name="idProducto" type="int" visibility="private"/>
+        <Field name="stock" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="idSP"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="idProducto"/>
+          <Argument type="int" name="idSucursal"/>
+          <Argument type="int" name="stock"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="idSP"/>
+          <Argument type="int" name="idProducto"/>
+          <Argument type="int" name="idSucursal"/>
+          <Argument type="int" name="stock"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdSP" returnType="int" visibility="public"/>
+        <Method name="getIdSucursal" returnType="int" visibility="public"/>
+        <Method name="getIdProducto" returnType="int" visibility="public"/>
+        <Method name="getStock" returnType="int" visibility="public"/>
+        <Method name="setIdSucursal" returnType="void" visibility="public">
+          <Argument type="int" name="idSucursal"/>
+        </Method>
+        <Method name="setIdProducto" returnType="void" visibility="public">
+          <Argument type="int" name="idProducto"/>
+        </Method>
+        <Method name="setStock" returnType="void" visibility="public">
+          <Argument type="int" name="stock"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Usuario" package="domain" visibility="public" xPosition="2478.0" yPosition="496.0">
+      <Fields>
+        <Field name="idUsuario" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="password"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="idUsuario"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="password"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdUsuario" returnType="int" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="NumeroFormatException" package="excepciones" visibility="public" xPosition="3578.0" yPosition="2438.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="mensaje"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="NumeroRangoException" package="excepciones" visibility="public" xPosition="3578.0" yPosition="2599.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="mensaje"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="TextoEmailException" package="excepciones" visibility="public" xPosition="3579.0" yPosition="2755.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="mensaje"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="TextoEnBlancoException" package="excepciones" visibility="public" xPosition="3579.0" yPosition="1950.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="mensaje"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="TextoHexadecimalException" package="excepciones" visibility="public" xPosition="3569.0" yPosition="2275.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="mensaje"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="TextoTamanoMaximoException" package="excepciones" visibility="public" xPosition="3562.0" yPosition="2110.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="Mensaje"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="FunCliente" package="FunGenerales" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="agregarCliente" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="edad"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="telefono"/>
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="modificarCliente" returnType="String" visibility="public" isStatic="true">
+          <Argument type="List&lt;Cliente&gt;" name="clientes"/>
+          <Argument type="int" name="pos"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="edad"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="telefono"/>
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="eliminarCliente" returnType="void" visibility="public" isStatic="true">
+          <Argument type="List&lt;Cliente&gt;" name="clientes"/>
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="listarClientes" returnType="List&lt;Cliente&gt;" visibility="public" isStatic="true"/>
+        <Method name="seleccionarCliente" returnType="List&lt;String&gt;" visibility="public" isStatic="true">
+          <Argument type="List&lt;Cliente&gt;" name="clientes"/>
+          <Argument type="int" name="pos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FunProducto" package="FunGenerales" visibility="public" xPosition="2957.0" yPosition="1382.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="verificarExistencia" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Map&lt;String, Producto&gt;" name="productos"/>
+          <Argument type="Producto" name="producto"/>
+          <Argument type="String" name="barCode"/>
+        </Method>
+        <Method name="agregarProducto" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Sucursal" name="sucursal"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="barCode"/>
+          <Argument type="String" name="precio"/>
+          <Argument type="String" name="stock"/>
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="modificarProducto" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Map&lt;String, Producto&gt;" name="productos"/>
+          <Argument type="String" name="barCodeProducto"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="barCode"/>
+          <Argument type="String" name="precio"/>
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="listarProductos" returnType="Map&lt;String, Producto&gt;" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="FunRegion" package="FunGenerales" visibility="public" xPosition="1497.0" yPosition="1050.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="verificarExistencia" returnType="String" visibility="public" isStatic="true">
+          <Argument type="List&lt;Region&gt;" name="regiones"/>
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="agregarRegion" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="modificarRegion" returnType="String" visibility="public" isStatic="true">
+          <Argument type="List&lt;Region&gt;" name="regiones"/>
+          <Argument type="int" name="pos"/>
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="eliminarRegion" returnType="void" visibility="public" isStatic="true">
+          <Argument type="List&lt;Region&gt;" name="regiones"/>
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="listarRegiones" returnType="List&lt;Region&gt;" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="FunSucursal" package="FunGenerales" visibility="public" xPosition="2179.0" yPosition="1074.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="agregarSucursal" returnType="String" visibility="public" isStatic="true">
+          <Argument type="int" name="idRegion"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="telefono"/>
+        </Method>
+        <Method name="modificarSucursal" returnType="String" visibility="public" isStatic="true">
+          <Argument type="List&lt;Sucursal&gt;" name="sucursales"/>
+          <Argument type="int" name="pos"/>
+          <Argument type="int" name="idRegion"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="String" name="telefono"/>
+        </Method>
+        <Method name="eliminarSucursal" returnType="void" visibility="public" isStatic="true">
+          <Argument type="List&lt;Sucursal&gt;" name="sucursales"/>
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="listarSucursales" returnType="List&lt;Sucursal&gt;" visibility="public" isStatic="true">
+          <Argument type="Region" name="region"/>
+        </Method>
+        <Method name="seleccionarSucursal" returnType="List&lt;String&gt;" visibility="public" isStatic="true">
+          <Argument type="List&lt;Sucursal&gt;" name="sucursales"/>
+          <Argument type="int" name="pos"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FunUsuario" package="FunGenerales" visibility="public" xPosition="3508.0" yPosition="435.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="agregarUsuario" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="verPassword"/>
+        </Method>
+        <Method name="iniciarSesion" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="seleccionarUsuario" returnType="Usuario" visibility="public" isStatic="true">
+          <Argument type="String" name="nombre"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FramePrincipal" package="gui" visibility="public" xPosition="5798.0" yPosition="58.0">
+      <Fields>
+        <Field name="sistema" type="Sistema" visibility="private"/>
+        <Field name="sonido" type="Clip" visibility="public"/>
+        <Field name="mute" type="boolean" visibility="public"/>
+        <Field name="modo" type="int" visibility="public"/>
+        <Field name="panelPrincipal" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Sistema" name="sistema"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="sonido" returnType="void" visibility="public" isFinal="true"/>
+        <Method name="menuSesion" returnType="void" visibility="private"/>
+        <Method name="iniciarPrograma" returnType="void" visibility="private"/>
+        <Method name="cargarPanel" returnType="void" visibility="public" isFinal="true">
+          <Argument type="JPanel" name="nuevoPanel"/>
+        </Method>
+        <Method name="getSistema" returnType="Sistema" visibility="public"/>
+        <Method name="getIconImage" returnType="Image" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="PanelMenuPrincipal" package="gui.MenuPrincipal" visibility="public" xPosition="6675.0" yPosition="502.0">
+      <Fields>
+        <Field name="fp" type="FramePrincipal" visibility="private"/>
+        <Field name="imagen" type="boolean" visibility="private"/>
+        <Field name="buttonClientes" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonOpcion" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonProductos" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonRegiones" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonReportes" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonSonido" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanelFondo" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanelImagen" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="labelBienvenida" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelImagen" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelTitulo" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="FramePrincipal" name="fp"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="iniciarDatos" returnType="void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="buttonRegionesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonClientesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonProductosActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonReportesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonSonidoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonOpcionActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="labelImagenMouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DialogMenuSesion" package="gui.MenuSesion" visibility="public" xPosition="5102.0" yPosition="522.0">
+      <Fields>
+        <Field name="fp" type="FramePrincipal" visibility="private"/>
+        <Field name="jPanelPrincipal" type="javax.swing.JPanel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+          <Argument type="FramePrincipal" name="fp"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="cargarPanel" returnType="void" visibility="public" isFinal="true">
+          <Argument type="JPanel" name="nuevoPanel"/>
+        </Method>
+        <Method name="getFramePrincipal" returnType="FramePrincipal" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+      </Methods>
+    </Class>
+    <Class name="PanelCrearUsuario" package="gui.MenuSesion" visibility="public" xPosition="4230.0" yPosition="1050.0">
+      <Fields>
+        <Field name="dms" type="DialogMenuSesion" visibility="private"/>
+        <Field name="buttonAceptar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonCancelar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanelFondo" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="labelError" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelPassword" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelTitulo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelUsuario" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelVerPassword" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="textPassword" type="javax.swing.JPasswordField" visibility="private"/>
+        <Field name="textUsuario" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="textVerPassword" type="javax.swing.JPasswordField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="DialogMenuSesion" name="dms"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="iniciarDatos" returnType="void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="buttonAceptarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonCancelarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PanelIniciarSesion" package="gui.MenuSesion" visibility="public" xPosition="4991.0" yPosition="1051.0">
+      <Fields>
+        <Field name="dms" type="DialogMenuSesion" visibility="private"/>
+        <Field name="buttonAceptar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonCancelar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanelFondo" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="labelError" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelPassword" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelTitulo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="labelUsuario" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="textPassword" type="javax.swing.JPasswordField" visibility="private"/>
+        <Field name="textUsuario" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="DialogMenuSesion" name="dms"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="iniciarDatos" returnType="void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="buttonAceptarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonCancelarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PanelMenuSesion" package="gui.MenuSesion" visibility="public" xPosition="5760.0" yPosition="1050.0">
+      <Fields>
+        <Field name="dms" type="DialogMenuSesion" visibility="private"/>
+        <Field name="buttonCrearUsuario" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonIniciarSesion" type="javax.swing.JButton" visibility="private"/>
+        <Field name="buttonSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanelFondo" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="labelTitulo" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="DialogMenuSesion" name="dms"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="buttonIniciarSesionActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonCrearUsuarioActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="buttonSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Conexion" package="jdbc" visibility="public" xPosition="1950.0" yPosition="1325.0">
+      <Fields>
+        <Field name="JDBC_URL" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="JDBC_USER" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="JDBC_PASS" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getConnection" returnType="Connection" visibility="public" isStatic="true"/>
+        <Method name="close" returnType="void" visibility="public" isStatic="true">
+          <Argument type="ResultSet" name="rs"/>
+        </Method>
+        <Method name="close" returnType="void" visibility="public" isStatic="true">
+          <Argument type="PreparedStatement" name="ps"/>
+        </Method>
+        <Method name="close" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Connection" name="conn"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JdbcCliente" package="jdbc" visibility="public" xPosition="1220.0" yPosition="1620.0">
+      <Fields>
+        <Field name="userConn" type="Connection" visibility="private"/>
+        <Field name="SQL_INSERT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_UPDATE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_DELETE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_ONE_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Connection" name="userConn"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="select" returnType="IGenerico" visibility="public">
+          <Argument type="int" name="idCliente"/>
+        </Method>
+        <Method name="select" returnType="List&lt;IGenerico&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JdbcJefeSucursal" package="jdbc" visibility="public" xPosition="1520.0" yPosition="1620.0">
+      <Fields>
+        <Field name="userConn" type="Connection" visibility="private"/>
+        <Field name="SQL_INSERT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_UPDATE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_DELETE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_ONE_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Connection" name="userConn"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="select" returnType="IGenerico" visibility="public">
+          <Argument type="int" name="idSucursal"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JdbcProducto" package="jdbc" visibility="public" xPosition="1965.0" yPosition="1670.0">
+      <Fields>
+        <Field name="userConn" type="Connection" visibility="private"/>
+        <Field name="SQL_INSERT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_UPDATE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_DELETE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_WHERE_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_ONE_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_ONE_SELECT_BARCODE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Connection" name="userConn"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="select" returnType="IGenerico" visibility="public">
+          <Argument type="int" name="idProducto"/>
+        </Method>
+        <Method name="select" returnType="IGenerico" visibility="public">
+          <Argument type="String" name="barcode"/>
+        </Method>
+        <Method name="select" returnType="Map&lt;String, IGenerico&gt;" visibility="public"/>
+        <Method name="select" returnType="Map&lt;String, IGenerico&gt;" visibility="public">
+          <Argument type="int" name="min"/>
+          <Argument type="int" name="max"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JdbcRegion" package="jdbc" visibility="public" xPosition="2660.0" yPosition="1690.0">
+      <Fields>
+        <Field name="userConn" type="Connection" visibility="private"/>
+        <Field name="SQL_INSERT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_UPDATE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_DELETE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_ONE_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Connection" name="userConn"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="select" returnType="IGenerico" visibility="public">
+          <Argument type="int" name="idRegion"/>
+        </Method>
+        <Method name="select" returnType="List&lt;IGenerico&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="JdbcSucursal" package="jdbc" visibility="public" xPosition="20.0" yPosition="2020.0">
+      <Fields>
+        <Field name="userConn" type="Connection" visibility="private"/>
+        <Field name="SQL_INSERT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_UPDATE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_DELETE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_ONE_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Connection" name="userConn"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="select" returnType="IGenerico" visibility="public">
+          <Argument type="int" name="idSucursal"/>
+        </Method>
+        <Method name="selectList" returnType="List&lt;IGenerico&gt;" visibility="public">
+          <Argument type="int" name="idRegion"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JdbcSucursalProducto" package="jdbc" visibility="public" xPosition="320.0" yPosition="2020.0">
+      <Fields>
+        <Field name="userConn" type="Connection" visibility="private"/>
+        <Field name="SQL_INSERT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_UPDATE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_DELETE" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_ONE_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_PRODUCTO_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_SUCURSAL_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Connection" name="userConn"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="select" returnType="IGenerico" visibility="public">
+          <Argument type="int" name="idProducto"/>
+          <Argument type="int" name="idSucursal"/>
+        </Method>
+        <Method name="selectP" returnType="List&lt;IGenerico&gt;" visibility="public">
+          <Argument type="int" name="idProducto"/>
+        </Method>
+        <Method name="selectS" returnType="List&lt;IGenerico&gt;" visibility="public">
+          <Argument type="int" name="idSucursal"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="JdbcUsuario" package="jdbc" visibility="public" xPosition="620.0" yPosition="2020.0">
+      <Fields>
+        <Field name="userConn" type="Connection" visibility="private"/>
+        <Field name="SQL_INSERT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="SQL_ONE_SELECT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Connection" name="userConn"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+        <Method name="select" returnType="Usuario" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="test2" package="tests" visibility="public" xPosition="6661.0" yPosition="58.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="IGenerico" package="domain" visibility="public" xPosition="576.0" yPosition="1038.0">
+      <Methods/>
+    </Interface>
+    <Interface name="IGenericoDelete" package="jdbc" visibility="public" xPosition="971.0" yPosition="1342.0">
+      <Methods>
+        <Method name="delete" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="IGenericoInsert" package="jdbc" visibility="public" xPosition="237.0" yPosition="1561.0">
+      <Methods>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="IGenericoSelect" package="jdbc" visibility="public" xPosition="462.0" yPosition="1365.0">
+      <Methods>
+        <Method name="select" returnType="IGenerico" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="IGenericoSelectList" package="jdbc" visibility="public" xPosition="1497.0" yPosition="1315.0">
+      <Methods>
+        <Method name="select" returnType="List&lt;IGenerico&gt;" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="IGenericoUpdate" package="jdbc" visibility="public" xPosition="967.0" yPosition="1495.0">
+      <Methods>
+        <Method name="update" returnType="void" visibility="public">
+          <Argument type="IGenerico" name="generico"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Enum name="Colores" package="enumeraciones" visibility="public" xPosition="4722.0" yPosition="1950.0">
+      <Literals>
+        <Literal name="FONDO"/>
+        <Literal name="TITULO"/>
+        <Literal name="TEXTO"/>
+        <Literal name="FONDO_TABLA"/>
+        <Literal name="TEXTO_ERROR"/>
+        <Literal name="FONDO_BOTON"/>
+        <Literal name="TEXTO_BOTON"/>
+        <Literal name="BORDE"/>
+        <Literal name="ICONO_MODO"/>
+        <Literal name="ICONO_SONIDO"/>
+        <Literal name="ICONO_MUTE"/>
+      </Literals>
+    </Enum>
+    <Enum name="Texto" package="enumeraciones" visibility="public" xPosition="4100.0" yPosition="1950.0">
+      <Literals>
+        <Literal name="BOTON_INICIO_SESION"/>
+        <Literal name="BOTON_NUEVO_USUARIO"/>
+        <Literal name="NUEVO_USUARIO"/>
+        <Literal name="USUARIO"/>
+        <Literal name="PASSWORD"/>
+        <Literal name="VER_PASSWORD"/>
+        <Literal name="CONFIGURAR_COLORES"/>
+        <Literal name="FONDO"/>
+        <Literal name="FONDO_BOTON"/>
+        <Literal name="FONDO_TABLA"/>
+        <Literal name="TITULOS"/>
+        <Literal name="TEXTOS"/>
+        <Literal name="TEXTO_ERROR"/>
+        <Literal name="TEXTO_BOTON"/>
+        <Literal name="BORDES"/>
+        <Literal name="ICONOS"/>
+        <Literal name="AGREGAR_COLOR"/>
+        <Literal name="HEXADECIMAL"/>
+        <Literal name="ELIMINAR_COLOR"/>
+        <Literal name="COLOR"/>
+        <Literal name="TITULO"/>
+        <Literal name="BIENVENIDO"/>
+        <Literal name="REGIONES"/>
+        <Literal name="AGR_REGION"/>
+        <Literal name="AGREGAR_REGION"/>
+        <Literal name="NOMBRE"/>
+        <Literal name="ELIM_REGION"/>
+        <Literal name="ELIMINAR_REGION"/>
+        <Literal name="REGION"/>
+        <Literal name="MOD_REGION"/>
+        <Literal name="MODIFICAR_REGION"/>
+        <Literal name="SUCURSALES"/>
+        <Literal name="AGR_SUCURSAL"/>
+        <Literal name="AGREGAR_SUCURSAL"/>
+        <Literal name="ELIM_SUCURSAL"/>
+        <Literal name="ELIMINAR_SUCURSAL"/>
+        <Literal name="SUCURSAL"/>
+        <Literal name="JEFE_SUCURSAL"/>
+        <Literal name="MOD_SUCURSAL"/>
+        <Literal name="MODIFICAR_SUCURSAL"/>
+        <Literal name="AGR_JEFE"/>
+        <Literal name="AGREGAR_JEFE"/>
+        <Literal name="MOD_JEFE"/>
+        <Literal name="MODIFICAR_JEFE"/>
+        <Literal name="ELIM_JEFE"/>
+        <Literal name="CLIENTES"/>
+        <Literal name="AGR_CLIENTE"/>
+        <Literal name="AGREGAR_CLIENTE"/>
+        <Literal name="EDAD"/>
+        <Literal name="DIRECCION"/>
+        <Literal name="TELEFONO"/>
+        <Literal name="ID_TELEFONO"/>
+        <Literal name="EMAIL"/>
+        <Literal name="ELIM_CLIENTE"/>
+        <Literal name="MOD_CLIENTE"/>
+        <Literal name="MODIFICAR_CLIENTE"/>
+        <Literal name="PRODUCTOS"/>
+        <Literal name="BUSCAR"/>
+        <Literal name="PRECIO"/>
+        <Literal name="MIN"/>
+        <Literal name="MAX"/>
+        <Literal name="BARCODE"/>
+        <Literal name="STOCK_TOTAL"/>
+        <Literal name="DESCRIPCION"/>
+        <Literal name="MOD_PRODUCTO"/>
+        <Literal name="MODIFICAR_PRODUCTO"/>
+        <Literal name="AGR_PRODUCTO"/>
+        <Literal name="AGREGAR_PRODUCTO"/>
+        <Literal name="NUEVO"/>
+        <Literal name="AGREGAR_NUEVO_PRODUCTO"/>
+        <Literal name="STOCK"/>
+        <Literal name="EXISTENTE"/>
+        <Literal name="AGREGAR_EXISTENTE"/>
+        <Literal name="PRODUCTO"/>
+        <Literal name="ELIM_PRODUCTO"/>
+        <Literal name="MOD_STOCK"/>
+        <Literal name="MODIFICAR_STOCK"/>
+        <Literal name="REPORTES"/>
+        <Literal name="SALIR"/>
+        <Literal name="ACEPTAR"/>
+        <Literal name="CANCELAR"/>
+        <Literal name="VOLVER"/>
+      </Literals>
+    </Enum>
+    <Enum name="TextoErrores" package="enumeraciones" visibility="public" xPosition="4382.0" yPosition="1950.0">
+      <Literals>
+        <Literal name="NOMBRE_VACIO"/>
+        <Literal name="MARCA_VACIO"/>
+        <Literal name="EDAD_VACIO"/>
+        <Literal name="EDAD_NO_NUMERO"/>
+        <Literal name="EDAD_NO_RANGO"/>
+        <Literal name="MAXIMO_CARACTERES"/>
+        <Literal name="REGION_DUPLICADO"/>
+        <Literal name="EMAIL_VACIO"/>
+        <Literal name="EMAIL_INVALIDO"/>
+        <Literal name="TELEFONO_VACIO"/>
+        <Literal name="TELEFONO_INVALIDO"/>
+        <Literal name="TELEFONO_RANGO"/>
+        <Literal name="DIRECCION_VACIO"/>
+        <Literal name="DESCRIPCION_RANGO"/>
+        <Literal name="BARCODE_VACIO"/>
+        <Literal name="BARCODE_RANGO"/>
+        <Literal name="BARCODE_DUPLICADO"/>
+        <Literal name="PRECIO_VACIO"/>
+        <Literal name="PRECIO_INVALIDO"/>
+        <Literal name="PRECIO_CERO"/>
+        <Literal name="PRECIO_RANGO"/>
+        <Literal name="STOCK_VACIO"/>
+        <Literal name="STOCK_CERO"/>
+        <Literal name="STOCK_INVALIDO"/>
+        <Literal name="STOCK_RANGO"/>
+        <Literal name="HEXADECIMAL_INVALIDO"/>
+        <Literal name="HEXADECIMAL_NO_GATO"/>
+        <Literal name="HEXADECIMAL_DUPLICADO"/>
+        <Literal name="HEXADECIMAL_VACIO"/>
+        <Literal name="USUARIO_PASSWORD_INCORRECTOS"/>
+        <Literal name="USUARIO_EXISTENTE"/>
+        <Literal name="PASSWORD_DIFERENTES"/>
+        <Literal name="USUARIO_VACIO"/>
+        <Literal name="PASSWORD_VACIO"/>
+        <Literal name="COLOR_FONDO_TITULO"/>
+        <Literal name="COLOR_FONDO_TEXTO"/>
+        <Literal name="COLOR_FONDO_TEXTO_ERROR"/>
+        <Literal name="COLOR_FONDO_FONDO_BOTON_BORDE"/>
+        <Literal name="COLOR_FONDO_FONDO_TABLA"/>
+        <Literal name="COLOR_FONDO_BOTON_TEXTO_BOTON"/>
+        <Literal name="COLOR_FONDO_TABLA_TEXTO"/>
+      </Literals>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="jdbc.JdbcSucursal" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="domain.Region" target="domain.IGenerico"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcSucursalProducto" target="jdbc.IGenericoUpdate"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcCliente" target="jdbc.IGenericoDelete"/>
+    <UseRelation source="jdbc.JdbcUsuario" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcRegion" target="jdbc.IGenericoSelectList"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcJefeSucursal" target="jdbc.IGenericoInsert"/>
+    <UseRelation source="FunGenerales.FunProducto" target="domain.Sucursal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sucursales" source="domain.Region" target="domain.Sucursal" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Sucursal&gt;"/>
+    <UseRelation source="FunGenerales.FunProducto" target="domain.Producto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="domain.JefeSucursal" target="domain.Persona"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcSucursal" target="jdbc.IGenericoUpdate"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcCliente" target="jdbc.IGenericoInsert"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcUsuario" target="jdbc.IGenericoInsert"/>
+    <UseRelation source="jdbc.IGenericoInsert" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcJefeSucursal" target="jdbc.IGenericoDelete"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcProducto" target="jdbc.IGenericoUpdate"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcSucursal" target="jdbc.IGenericoSelect"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="domain.SucursalProducto" target="domain.IGenerico"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcRegion" target="jdbc.IGenericoInsert"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcCliente" target="jdbc.IGenericoSelectList"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcProducto" target="jdbc.IGenericoSelect"/>
+    <HasRelation name="dms" source="gui.MenuSesion.PanelIniciarSesion" target="gui.MenuSesion.DialogMenuSesion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="sistema" source="gui.FramePrincipal" target="domain.Sistema" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jdbc.JdbcProducto" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcSucursal" target="jdbc.IGenericoInsert"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcCliente" target="jdbc.IGenericoSelect"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="domain.Cliente" target="domain.IGenerico"/>
+    <UseRelation source="jdbc.IGenericoUpdate" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="FunGenerales.FunUsuario" target="domain.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="productos" source="domain.Sucursal" target="domain.Producto" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Map&lt;String, Producto&gt;"/>
+    <UseRelation source="domain.Sistema" target="domain.Region" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="regiones" source="domain.Sistema" target="domain.Region" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Region&gt;"/>
+    <UseRelation source="FunGenerales.FunSucursal" target="domain.Sucursal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcJefeSucursal" target="jdbc.IGenericoUpdate"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcProducto" target="jdbc.IGenericoInsert"/>
+    <HasRelation name="productos" source="domain.Sistema" target="domain.Producto" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="Map&lt;String, Producto&gt;"/>
+    <UseRelation source="domain.Sucursal" target="domain.Producto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="domain.Sucursal" target="domain.Sucursal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jdbc.JdbcJefeSucursal" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcSucursal" target="jdbc.IGenericoDelete"/>
+    <UseRelation source="domain.Sistema" target="domain.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.FramePrincipal" target="domain.Sistema" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="gui.MenuSesion.DialogMenuSesion" target="gui.FramePrincipal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jdbc.JdbcCliente" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcCliente" target="jdbc.IGenericoUpdate"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="domain.Sucursal" target="domain.IGenerico"/>
+    <UseRelation source="jdbc.JdbcRegion" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="domain.Producto" target="domain.IGenerico"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcSucursalProducto" target="jdbc.IGenericoDelete"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcProducto" target="jdbc.IGenericoDelete"/>
+    <UseRelation source="domain.Region" target="domain.Sucursal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dms" source="gui.MenuSesion.PanelCrearUsuario" target="gui.MenuSesion.DialogMenuSesion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="domain.Cliente" target="domain.Persona"/>
+    <HasRelation name="fp" source="gui.MenuPrincipal.PanelMenuPrincipal" target="gui.FramePrincipal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="FunGenerales.FunCliente" target="domain.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="FunGenerales.FunRegion" target="domain.Region" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jefeSucursal" source="domain.Sucursal" target="domain.JefeSucursal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="domain.Sistema" target="domain.Producto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jdbc.JdbcSucursalProducto" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jdbc.IGenericoSelect" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="jdbc.JdbcUsuario" target="domain.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="clientes" source="domain.Sistema" target="domain.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Cliente&gt;"/>
+    <HasRelation name="dms" source="gui.MenuSesion.PanelMenuSesion" target="gui.MenuSesion.DialogMenuSesion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="domain.JefeSucursal" target="domain.IGenerico"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcJefeSucursal" target="jdbc.IGenericoSelect"/>
+    <UseRelation source="jdbc.IGenericoSelectList" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="usuario" source="domain.Sistema" target="domain.Usuario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="domain.Usuario" target="domain.IGenerico"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcRegion" target="jdbc.IGenericoDelete"/>
+    <UseRelation source="domain.Sistema" target="domain.Usuario" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcRegion" target="jdbc.IGenericoSelect"/>
+    <UseRelation source="jdbc.IGenericoDelete" target="domain.IGenerico" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcSucursalProducto" target="jdbc.IGenericoInsert"/>
+    <HasRelation name="fp" source="gui.MenuSesion.DialogMenuSesion" target="gui.FramePrincipal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="jdbc.JdbcRegion" target="jdbc.IGenericoUpdate"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
