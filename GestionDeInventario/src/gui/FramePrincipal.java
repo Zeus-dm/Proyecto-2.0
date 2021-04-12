@@ -2,8 +2,10 @@
 package gui;
 
 import FunGenerales.FunCliente;
+import FunGenerales.FunProducto;
 import FunGenerales.FunRegion;
 import domain.Sistema;
+import enumeraciones.Musica;
 import enumeraciones.Texto;
 import gui.MenuPrincipal.PanelMenuPrincipal;
 import gui.MenuSesion.DialogMenuSesion;
@@ -20,7 +22,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private Sistema sistema = null;
     public Clip sonido = null;
     public boolean mute = false;
-    public boolean imagenSeba = true;
+    public int imagen = 0;
     public int modo = 0;
     
     public FramePrincipal(Sistema sistema) throws SQLException, LineUnavailableException, IOException, UnsupportedAudioFileException {
@@ -38,7 +40,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
     
     public final void sonido() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
-        BufferedInputStream bis = new BufferedInputStream(getClass().getResourceAsStream("/gui/musica/chayanne_torero.wav"));
+        BufferedInputStream bis = new BufferedInputStream(getClass().getResourceAsStream( Musica.MUSICA_ACTUAL.getMusica() ));
         AudioInputStream ais = AudioSystem.getAudioInputStream(bis);
         sonido = AudioSystem.getClip();
         sonido.open(ais);
@@ -54,6 +56,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void iniciarPrograma() throws SQLException {
         sistema.setRegiones(FunRegion.listarRegiones());
         sistema.setClientes(FunCliente.listarClientes());
+        sistema.setProductos(FunProducto.listarProductos());
         
         PanelMenuPrincipal pmp = new PanelMenuPrincipal(this);
         cargarPanel(pmp);

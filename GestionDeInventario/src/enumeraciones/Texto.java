@@ -81,6 +81,8 @@ public enum Texto {
     MODIFICAR("Modificar"),
     ELIMINAR("Eliminar"),
     
+    CONFIRMACION_ELIMINAR("¿Estas Seguro?"),
+    
     REPORTES("Reportes"),
     SALIR("Salir"),
     ACEPTAR("Aceptar"),

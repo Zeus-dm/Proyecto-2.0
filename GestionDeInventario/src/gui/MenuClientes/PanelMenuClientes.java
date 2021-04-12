@@ -8,12 +8,7 @@ import enumeraciones.Colores;
 import enumeraciones.Texto;
 
 import java.awt.Color;
-import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class PanelMenuClientes extends javax.swing.JPanel {
     private FramePrincipal fp = null;
@@ -29,10 +24,11 @@ public class PanelMenuClientes extends javax.swing.JPanel {
     private void iniciarDatos(){
         cargarClientes(FunCliente.ListarNombresClientes(fp.getSistema()));
         
-        if(fp.imagenSeba){
-            labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/chefcito_100.png"))); // NOI18N
-        }else{
-            labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/seba_100.png"))); // NOI18N
+        switch (fp.imagen) {
+            case 0 ->
+                labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/chefcito_100.png"))); // NOI18N
+            case 1 ->
+                labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/seba_100.png"))); // NOI18N
         }
     }
     
@@ -61,7 +57,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
 
         jPanelFondo = new javax.swing.JPanel();
         labelTitulo = new javax.swing.JLabel();
-        jScrollPaneRegiones = new javax.swing.JScrollPane();
+        jScrollPaneClientes = new javax.swing.JScrollPane();
         tableClientes = new javax.swing.JTable();
         jPanelImagen = new javax.swing.JPanel();
         labelImagen = new javax.swing.JLabel();
@@ -82,9 +78,9 @@ public class PanelMenuClientes extends javax.swing.JPanel {
         labelTitulo.setText(Texto.CLIENTES.getTexto());
         labelTitulo.setPreferredSize(new java.awt.Dimension(400, 32));
 
-        jScrollPaneRegiones.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.modo))));
-        jScrollPaneRegiones.setPreferredSize(new java.awt.Dimension(214, 376));
-        jScrollPaneRegiones.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
+        jScrollPaneClientes.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.modo))));
+        jScrollPaneClientes.setPreferredSize(new java.awt.Dimension(214, 376));
+        jScrollPaneClientes.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
 
         tableClientes.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(fp.modo)));
         tableClientes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -109,7 +105,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
                 tableClientesMouseClicked(evt);
             }
         });
-        jScrollPaneRegiones.setViewportView(tableClientes);
+        jScrollPaneClientes.setViewportView(tableClientes);
 
         jPanelImagen.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
         jPanelImagen.setPreferredSize(new java.awt.Dimension(120, 120));
@@ -180,7 +176,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
                             .addComponent(buttonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneRegiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanelFondoLayout.createSequentialGroup()
                 .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,7 +189,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
                 .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneRegiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
@@ -216,7 +212,10 @@ public class PanelMenuClientes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
-        // TODO add your handling code here:
+        DialogMenuCliente dmc = new DialogMenuCliente(new javax.swing.JFrame(), true, fp, 1, -1);
+        dmc.setVisible(true);
+        
+        cargarClientes(FunCliente.ListarNombresClientes(fp.getSistema()));
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
@@ -225,7 +224,12 @@ public class PanelMenuClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void tableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableClientesMouseClicked
-        // TODO add your handling code here:
+        int pos = tableClientes.getSelectedRow();
+        
+        DialogMenuCliente dmc = new DialogMenuCliente(new javax.swing.JFrame(), true, fp, 2, pos);
+        dmc.setVisible(true);
+        
+        cargarClientes(FunCliente.ListarNombresClientes(fp.getSistema()));
     }//GEN-LAST:event_tableClientesMouseClicked
 
     private void labelImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelImagenMouseClicked
@@ -239,7 +243,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
     private javax.swing.JButton buttonVolver;
     private javax.swing.JPanel jPanelFondo;
     private javax.swing.JPanel jPanelImagen;
-    private javax.swing.JScrollPane jScrollPaneRegiones;
+    private javax.swing.JScrollPane jScrollPaneClientes;
     private javax.swing.JLabel labelImagen;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JTable tableClientes;

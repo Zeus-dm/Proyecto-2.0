@@ -12,6 +12,7 @@ public enum TextoErrores {
     EDAD_NO_RANGO("* Error: Edad fuera de rango"),
     
     MAXIMO_CARACTERES("* Error: Máximo 20 caracteres"),
+    MAXIMO_CARACTERES_40("* Error: Máximo 40 caracteres"),
     
     REGION_DUPLICADO("* Error: Region ya existe"),
     
@@ -34,6 +35,12 @@ public enum TextoErrores {
     PRECIO_INVALIDO("* Error: Precio debe ser un número"),
     PRECIO_CERO("* Error: Precio debe ser mayor a 0"),
     PRECIO_RANGO("* Error: Precio Máximo de 9 dígitos"),
+    
+    MIN_VACIO("* Error: Min vacío"),
+    MAX_VACIO("* Error: Max vacío"),
+    MIN_MAYOR_MAX("* Error: Min > Max"),
+    MIN_INVALIDO("* Error: Min Invalido"),
+    MAX_INVALIDO("* Error: Max Invalido"),
     
     STOCK_VACIO("* Error: Campo Stock Vacío"),
     STOCK_CERO("* Error: Stock debe ser mayor a 0"),

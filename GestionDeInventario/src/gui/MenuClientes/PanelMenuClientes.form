@@ -62,7 +62,7 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPaneRegiones" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPaneClientes" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
@@ -78,7 +78,7 @@
                   <Component id="labelTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPaneRegiones" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneClientes" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="jPanelImagen" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
             </Property>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPaneRegiones">
+        <Container class="javax.swing.JScrollPane" name="jScrollPaneClientes">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
@@ -124,7 +124,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jScrollPaneRegiones.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="jScrollPaneClientes.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>

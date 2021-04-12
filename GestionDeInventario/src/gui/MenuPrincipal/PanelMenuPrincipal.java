@@ -1,10 +1,11 @@
-
 package gui.MenuPrincipal;
 
 import gui.FramePrincipal;
 import enumeraciones.Colores;
+import enumeraciones.Musica;
 import enumeraciones.Texto;
 import gui.MenuClientes.PanelMenuClientes;
+import gui.MenuProductos.PanelMenuProductos;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -14,37 +15,39 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class PanelMenuPrincipal extends javax.swing.JPanel {
+
     private FramePrincipal fp = null;
-    
+
     public PanelMenuPrincipal(FramePrincipal fp) {
         this.fp = fp;
-        
+
         initComponents();
-        
+
         iniciarDatos();
     }
-    
-    private void iniciarDatos(){
-        if(fp.mute){
-            buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_MUTE.getColor(fp.modo) )));
+
+    private void iniciarDatos() {
+        if (fp.mute) {
+            buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MUTE.getColor(fp.modo))));
             buttonSonido.setToolTipText("Activar Sonido");
-        }else{
-            buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_SONIDO.getColor(fp.modo) )));
+        } else {
+            buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_SONIDO.getColor(fp.modo))));
             buttonSonido.setToolTipText("Desactivar Sonido");
         }
-        
-        if(fp.modo == 0){
+
+        if (fp.modo == 0) {
             buttonOpcion.setToolTipText("Cambiar a Modo Claro");
-        }else{
+        } else {
             buttonOpcion.setToolTipText("Cambiar a Modo Oscuro");
         }
-        
-        buttonOpcion.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_MODO.getColor(fp.modo) )));
-        
-        if(fp.imagenSeba){
-            labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/chefcito_150.png"))); // NOI18N
-        }else{
-            labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/seba_150.png"))); // NOI18N
+
+        buttonOpcion.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MODO.getColor(fp.modo))));
+
+        switch (fp.imagen) {
+            case 0 ->
+                labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/chefcito_150.png"))); // NOI18N
+            case 1 ->
+                labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/seba_150.png"))); // NOI18N
         }
     }
 
@@ -164,6 +167,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         jPanelImagen.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
 
         labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/chefcito_150.png"))); // NOI18N
+        labelImagen.setToolTipText("Cambiar Canción");
         labelImagen.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.modo))));
         labelImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelImagen.setPreferredSize(new java.awt.Dimension(150, 150));
@@ -286,7 +290,8 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonClientesActionPerformed
 
     private void buttonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProductosActionPerformed
-        // TODO add your handling code here:
+        PanelMenuProductos pmp = new PanelMenuProductos(fp);
+        fp.cargarPanel(pmp);
     }//GEN-LAST:event_buttonProductosActionPerformed
 
     private void buttonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReportesActionPerformed
@@ -298,42 +303,52 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonSalirActionPerformed
 
     private void buttonSonidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSonidoActionPerformed
-        if(fp.mute){
-            try {
-                fp.mute = false;
-                buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_SONIDO.getColor(fp.modo) )));
-                fp.sonido();
-                buttonSonido.setToolTipText("Desactivar Sonido");
-            } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
-                Logger.getLogger(PanelMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else{
+        if (fp.mute) {
+            fp.mute = false;
+            buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_SONIDO.getColor(fp.modo))));
+            fp.sonido.start();
+            fp.sonido.loop(-1);
+            buttonSonido.setToolTipText("Desactivar Sonido");
+        } else {
             fp.mute = true;
-            buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_MUTE.getColor(fp.modo) )));
-            fp.sonido.close();
+            buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MUTE.getColor(fp.modo))));
+            fp.sonido.stop();
             buttonSonido.setToolTipText("Activar Sonido");
         }
     }//GEN-LAST:event_buttonSonidoActionPerformed
 
     private void buttonOpcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOpcionActionPerformed
-        if(fp.modo == 0){
+        if (fp.modo == 0) {
             fp.modo = 1;
-        }else{
+        } else {
             fp.modo = 0;
         }
-        
-        buttonOpcion.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_MODO.getColor(fp.modo) )));
+
+        buttonOpcion.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MODO.getColor(fp.modo))));
         PanelMenuPrincipal pmp = new PanelMenuPrincipal(fp);
         fp.cargarPanel(pmp);
     }//GEN-LAST:event_buttonOpcionActionPerformed
 
     private void labelImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelImagenMouseClicked
-        if(fp.imagenSeba){
-            fp.imagenSeba = false;
+        if (fp.imagen == 0) {
+            fp.imagen = 1;
             labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/seba_150.png"))); // NOI18N
-        }else{
-            fp.imagenSeba = true;
+            Musica.MUSICA_ACTUAL.setMusica(Musica.CHAYANNE_TORERO.getMusica());
+        } else if (fp.imagen == 1) {
+            fp.imagen = 0;
             labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/chefcito_150.png"))); // NOI18N
+            Musica.MUSICA_ACTUAL.setMusica(Musica.CAMILLE_LE_FESTIN.getMusica());
+        }
+
+        try {
+            fp.sonido.close();
+            fp.sonido();
+        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
+            Logger.getLogger(PanelMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        if (fp.mute) {
+            fp.sonido.stop();
         }
     }//GEN-LAST:event_labelImagenMouseClicked
 
