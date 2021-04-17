@@ -62,11 +62,11 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         buttonRegiones = new javax.swing.JButton();
         buttonClientes = new javax.swing.JButton();
         buttonProductos = new javax.swing.JButton();
-        buttonReportes = new javax.swing.JButton();
         buttonSalir = new javax.swing.JButton();
         jPanelImagen = new javax.swing.JPanel();
         labelImagen = new javax.swing.JLabel();
         buttonSonido = new javax.swing.JButton();
+        buttonReporte = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(400, 450));
         setPreferredSize(new java.awt.Dimension(400, 450));
@@ -138,19 +138,6 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
             }
         });
 
-        buttonReportes.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(fp.modo)));
-        buttonReportes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        buttonReportes.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.modo)));
-        buttonReportes.setText(Texto.REPORTES.getTexto());
-        buttonReportes.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.modo))));
-        buttonReportes.setFocusable(false);
-        buttonReportes.setPreferredSize(new java.awt.Dimension(110, 30));
-        buttonReportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonReportesActionPerformed(evt);
-            }
-        });
-
         buttonSalir.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(fp.modo)));
         buttonSalir.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         buttonSalir.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.modo)));
@@ -189,7 +176,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         jPanelImagenLayout.setVerticalGroup(
             jPanelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelImagenLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(12, 12, 12)
                 .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -206,6 +193,14 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                 buttonSonidoActionPerformed(evt);
             }
         });
+
+        buttonReporte.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
+        buttonReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_ARCHIVO.getColor(fp.modo) )));
+        buttonReporte.setToolTipText("Generar Reporte");
+        buttonReporte.setBorder(null);
+        buttonReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonReporte.setFocusable(false);
+        buttonReporte.setPreferredSize(new java.awt.Dimension(32, 32));
 
         javax.swing.GroupLayout jPanelFondoLayout = new javax.swing.GroupLayout(jPanelFondo);
         jPanelFondo.setLayout(jPanelFondoLayout);
@@ -225,13 +220,14 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                                     .addComponent(buttonClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(buttonRegiones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(buttonProductos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(buttonSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(buttonReportes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(buttonSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(buttonReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buttonSonido, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttonOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,12 +239,13 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSonido, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonSonido, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(labelBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(57, 57, 57)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addComponent(buttonRegiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,11 +254,9 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(buttonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(buttonReportes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(buttonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         labelTitulo.getAccessibleContext().setAccessibleName("labelTitulo");
@@ -293,10 +288,6 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         PanelMenuProductos pmp = new PanelMenuProductos(fp);
         fp.cargarPanel(pmp);
     }//GEN-LAST:event_buttonProductosActionPerformed
-
-    private void buttonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReportesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonReportesActionPerformed
 
     private void buttonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalirActionPerformed
         System.exit(0);
@@ -358,7 +349,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton buttonOpcion;
     private javax.swing.JButton buttonProductos;
     private javax.swing.JButton buttonRegiones;
-    private javax.swing.JButton buttonReportes;
+    private javax.swing.JButton buttonReporte;
     private javax.swing.JButton buttonSalir;
     private javax.swing.JButton buttonSonido;
     private javax.swing.JPanel jPanelFondo;

@@ -51,30 +51,27 @@ public class Sistema {
         this.usuario = usuario;
     }
     
-    //METODOS   
+    //METODOS USUARIO   
     public boolean verificarExistenciaUsuario(){
         return usuario != null;
     }
     
+    //METODOS CLIENTES
     public void eliminarCliente(int pos){
         clientes.remove(pos);
     }
     
-    public String modificarCliente(int pos, String nombre, String edad, String direccion, String telefono, String email){
-        Cliente cliente = clientes.get(pos);
-        try {
-            cliente.setNombre(nombre);
-            cliente.setEdad(edad);
-            cliente.setDireccion(direccion);
-            cliente.setTelefono(telefono);
-            cliente.setEmail(email);
-        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException | TextoEmailException e){
-            return e.getMessage();
-        }
+    public void modificarCliente(int pos, Cliente cliente){
+        Cliente preCliente = clientes.get(pos);
         
-        return null;
+        preCliente.setNombre(cliente.getNombre());
+        preCliente.setEdad(cliente.getEdad());
+        preCliente.setDireccion(cliente.getDireccion());
+        preCliente.setTelefono(cliente.getTelefono());
+        preCliente.setEmail(cliente.getEmail());
     }
     
+    //METODOS PRODUCTOS
     public Map<String, Producto> filtrarProductosPrecio(int min, int max){
         Map<String,Producto> productosFiltrados = new HashMap<>();
         
@@ -145,31 +142,23 @@ public class Sistema {
         return cantidadProductos;
     }
     
-    public String modificarProducto(String preBarCode, String nombre, String marca, String barCode, String precio, String descripcion){
-        Producto producto = productos.get(preBarCode);
+    public boolean verificarExistenciaProducto(String barCode){
+        Producto producto = productos.get(barCode);
+        return producto != null;
+    }
+    
+    public void modificarProducto(String preBarCode, Producto producto){
+        Producto preProducto = productos.get(preBarCode);
         
-        if(!(preBarCode.equals(barCode))){
-            Producto verProducto = productos.get(barCode);
-            if(verProducto != null){
-                return TextoErrores.BARCODE_DUPLICADO.getTexto();
-            }
-        }
+        preProducto.setNombre(producto.getNombre());
+        preProducto.setMarca(producto.getMarca());
+        preProducto.setBarCode(producto.getBarCode());
+        preProducto.setPrecio(producto.getPrecio());
+        preProducto.setDescripcion(producto.getDescripcion());
         
-        try {
-            producto.setNombre(nombre);
-            producto.setMarca(marca);
-            producto.setBarCode(barCode);
-            producto.setPrecio(precio);
-            producto.setDescripcion(descripcion);
-        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException | TextoEmailException e){
-            return e.getMessage();
-        }
-        
-        if(!(preBarCode.equals(barCode))){
+        if(!(preBarCode.equals(producto.getBarCode()))){
             productos.remove(preBarCode);
-            productos.put(producto.getBarCode(), producto);
+            productos.put(preProducto.getBarCode(), producto);
         }
-        
-        return null;
     }
 }
