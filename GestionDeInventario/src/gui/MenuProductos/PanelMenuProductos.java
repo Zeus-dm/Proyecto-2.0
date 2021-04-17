@@ -8,11 +8,12 @@ import enumeraciones.Colores;
 import enumeraciones.Texto;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PanelMenuProductos extends javax.swing.JPanel {
     private FramePrincipal fp = null;
-    private List<String> productosFiltrados = null;
+    private final List<String> barCodesFiltrados = new ArrayList<>();
     
     public PanelMenuProductos(FramePrincipal fp) {
         this.fp = fp;
@@ -23,7 +24,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        cargarProductos(FunProducto.listarNombresTodosProductos(fp.getSistema()));
+        cargarProductos(FunProducto.listarNombresTodosProductos(fp.getSistema(), barCodesFiltrados));
         labelError.setText("");
         
         switch (fp.imagen) {
@@ -72,6 +73,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         tableProductos = new javax.swing.JTable();
         jPanelImagen = new javax.swing.JPanel();
         labelImagen = new javax.swing.JLabel();
+        buttonGraficar = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(400, 450));
         setPreferredSize(new java.awt.Dimension(400, 450));
@@ -174,6 +176,11 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         tableProductos.setGridColor(Color.decode(Colores.FONDO.getColor(fp.modo)));
         tableProductos.setRowHeight(35);
         tableProductos.getTableHeader().setReorderingAllowed(false);
+        tableProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableProductosMouseClicked(evt);
+            }
+        });
         jScrollPaneProductos.setViewportView(tableProductos);
 
         jPanelImagen.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
@@ -205,6 +212,19 @@ public class PanelMenuProductos extends javax.swing.JPanel {
                 .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        buttonGraficar.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
+        buttonGraficar.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_GRAFICO_BARRA.getColor(fp.modo))));
+        buttonGraficar.setToolTipText("Graficar Marcas");
+        buttonGraficar.setBorder(null);
+        buttonGraficar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonGraficar.setFocusable(false);
+        buttonGraficar.setPreferredSize(new java.awt.Dimension(32, 32));
+        buttonGraficar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGraficarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelFondoLayout = new javax.swing.GroupLayout(jPanelFondo);
         jPanelFondo.setLayout(jPanelFondoLayout);
         jPanelFondoLayout.setHorizontalGroup(
@@ -214,18 +234,20 @@ public class PanelMenuProductos extends javax.swing.JPanel {
                     .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanelFondoLayout.createSequentialGroup()
-                                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(labelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(buttonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanelFondoLayout.createSequentialGroup()
+                                    .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(textMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(labelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoLayout.createSequentialGroup()
@@ -273,6 +295,8 @@ public class PanelMenuProductos extends javax.swing.JPanel {
                                 .addComponent(textMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -308,14 +332,34 @@ public class PanelMenuProductos extends javax.swing.JPanel {
             labelError.setText("");
             int min = Integer.parseInt(textMin.getText());
             int max = Integer.parseInt(textMax.getText());
-            productosFiltrados = FunProducto.listarProductos(fp.getSistema(), min, max, textBuscar.getText()); //para que al seleccionar saber que filtraba en ese momento
-            cargarProductos(productosFiltrados);
+            cargarProductos( FunProducto.listarProductos(fp.getSistema(), min, max, textBuscar.getText(), barCodesFiltrados) ); //para que al seleccionar saber que filtraba en ese momento
         }
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
+    private void tableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductosMouseClicked
+        int pos = tableProductos.getSelectedRow();
+        
+        DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, barCodesFiltrados.get(pos));
+        dmp.setVisible(true);
+        
+        textBuscar.setText("");
+        textMin.setText("0");
+        textMax.setText("0");
+        labelError.setText("");
+        
+        int min = Integer.parseInt(textMin.getText());
+        int max = Integer.parseInt(textMax.getText());
+        cargarProductos( FunProducto.listarProductos(fp.getSistema(), min, max, textBuscar.getText(), barCodesFiltrados) );
+    }//GEN-LAST:event_tableProductosMouseClicked
+
+    private void buttonGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGraficarActionPerformed
+        DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, "");
+        dmp.setVisible(true);
+    }//GEN-LAST:event_buttonGraficarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonBuscar;
+    private javax.swing.JButton buttonGraficar;
     private javax.swing.JButton buttonVolver;
     private javax.swing.JPanel jPanelFondo;
     private javax.swing.JPanel jPanelImagen;

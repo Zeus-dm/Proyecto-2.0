@@ -57,6 +57,7 @@ public enum Texto {
     PRECIO("Precio"),
     MIN("Min"),
     MAX("Max"),
+    MARCA("Marca"),
     BARCODE("BarCode"),
     STOCK_TOTAL("Stock Total"),
     DESCRIPCION("Descripción"),

@@ -78,6 +78,15 @@ public class FunSucursal {
         
         return textos;
     }
+    
+    public static Sucursal seleccionarSucursal (int idSucursal) throws SQLException {
+        JdbcSucursal js = new JdbcSucursal() ;
+        
+        Sucursal newS = (Sucursal) js.select(idSucursal) ;
+        
+        return newS ;
+    }
+    
     //--------------------------------------------------------------------------------
     //Funciones para despues
 }

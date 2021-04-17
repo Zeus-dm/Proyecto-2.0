@@ -17,7 +17,10 @@ public enum Colores {
     ICONO_MODO("/gui/imagenes/iconos/luna_blanca_32.png","/gui/imagenes/iconos/sol_negro_32.png"),
     ICONO_SONIDO("/gui/imagenes/iconos/sonido_blanco_32.png","/gui/imagenes/iconos/sonido_negro_32.png"),
     ICONO_MUTE("/gui/imagenes/iconos/mute_blanco_32.png","/gui/imagenes/iconos/mute_negro_32.png"),
-    ICONO_LUPA("/gui/imagenes/iconos/lupa_blanca_32.png","/gui/imagenes/iconos/lupa_negra_32.png");
+    ICONO_LUPA("/gui/imagenes/iconos/lupa_blanca_32.png","/gui/imagenes/iconos/lupa_negra_32.png"),
+    ICONO_GRAFICO_TORTA("/gui/imagenes/iconos/grafico_torta_blanco_32.png","/gui/imagenes/iconos/grafico_torta_negro_32.png"),
+    ICONO_GRAFICO_BARRA("/gui/imagenes/iconos/grafico_blanco_32.png","/gui/imagenes/iconos/grafico_negro_32.png"),
+    ICONO_ATRAS("/gui/imagenes/iconos/atras_blanco_32.png","/gui/imagenes/iconos/atras_negro_32.png");
     
     private final String colorOscuro;
     private final String colorClaro;
