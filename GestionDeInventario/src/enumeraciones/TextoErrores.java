@@ -11,13 +11,21 @@ public enum TextoErrores {
     EDAD_NO_NUMERO("* Error: Edad debe ser un número"),
     EDAD_NO_RANGO("* Error: Edad fuera de rango"),
     
-    MAXIMO_CARACTERES("* Error: Máximo 20 caracteres"),
-    MAXIMO_CARACTERES_40("* Error: Máximo 40 caracteres"),
+    MAXIMO_CARACTERES_MARCA_20("* Error: Marca máximo 20 caracteres"),
+    MAXIMO_CARACTERES_DIRECCION_20("* Error: Dirección máximo 20 caracteres"),
+    MAXIMO_CARACTERES_USUARIO_20("* Error: Usuario máximo 20 caracteres"),
+    MAXIMO_CARACTERES_PASSWORD_20("* Error: Contraseña máximo 20 caracteres"),
+    MAXIMO_CARACTERES_NOMBRE_20("* Error: Nombre máximo 20 caracteres"),
+    
+    MAXIMO_CARACTERES_NOMBRE_30("* Error: Nombre máximo 30 caracteres"),
+    
+    MAXIMO_CARACTERES_NOMBRE_40("* Error: Nombre máximo 40 caracteres"),
+    MAXIMO_CARACTERES_EMAIL_40("* Error: E-mail máximo 40 caracteres"),
     
     REGION_DUPLICADO("* Error: Region ya existe"),
     
     EMAIL_VACIO("* Error: Campo E-mail Vacío"),
-    EMAIL_INVALIDO("* Error: Email inválido"),
+    EMAIL_INVALIDO("* Error: E-mail inválido"),
     
     TELEFONO_VACIO("* Error: Campo Teléfono vacío"),
     TELEFONO_INVALIDO("* Error: Teléfono debe ser un número"),
@@ -25,7 +33,7 @@ public enum TextoErrores {
     
     DIRECCION_VACIO("* Error: Campo Dirección vacío"),
     
-    DESCRIPCION_RANGO("* Error: Máximo de 300 caracteres"),
+    DESCRIPCION_RANGO("* Error: Desc. máximo de 300 caracteres"),
     
     BARCODE_VACIO("* Error: Campo Código de barras vacío"),
     BARCODE_RANGO("* Error: Código de barras debe tener 9 dígitos"),
@@ -41,6 +49,7 @@ public enum TextoErrores {
     MIN_MAYOR_MAX("* Error: Min > Max"),
     MIN_INVALIDO("* Error: Min Invalido"),
     MAX_INVALIDO("* Error: Max Invalido"),
+    MIN_MAX_ERROR("* Error: 9 Digitos"),
     
     STOCK_VACIO("* Error: Campo Stock Vacío"),
     STOCK_CERO("* Error: Stock debe ser mayor a 0"),

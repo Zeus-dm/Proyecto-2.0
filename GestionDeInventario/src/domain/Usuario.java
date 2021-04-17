@@ -39,7 +39,7 @@ public class Usuario implements IGenerico{
         if(nombre == null || nombre.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.USUARIO_VACIO.getTexto() );
         }else if(nombre.length() > 20){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES.getTexto() );
+            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_USUARIO_20.getTexto() );
         }
         this.nombre = nombre;
     }
@@ -48,7 +48,7 @@ public class Usuario implements IGenerico{
         if(password == null || password.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.PASSWORD_VACIO.getTexto() );
         }else if(password.length() > 20){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES.getTexto() );
+            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_PASSWORD_20.getTexto() );
         }
         this.password = password;
     }

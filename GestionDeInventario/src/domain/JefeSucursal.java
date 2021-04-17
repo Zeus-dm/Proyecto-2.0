@@ -52,8 +52,8 @@ public class JefeSucursal extends Persona implements IGenerico{
     public void setNombre(String nombre) {
         if(nombre == null || nombre.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO.getTexto() );
-        }else if(nombre.length() > 20){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES.getTexto() );
+        }else if(nombre.length() > 40){
+            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_NOMBRE_40.getTexto() );
         }
         this.nombre = nombre;
     }

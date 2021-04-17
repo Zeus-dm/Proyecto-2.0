@@ -55,12 +55,20 @@ public class FunCliente {
      * @throws SQLException 
      */
     public static String modificarCliente(Sistema sistema, int pos, String nombre, String edad, String direccion, String telefono, String email) throws SQLException {
-        String ok = sistema.modificarCliente(pos, nombre, edad, direccion, telefono, email);
-        if(ok != null){
-            return ok;
-        }
+        Cliente cliente = new Cliente();
         
-        Cliente cliente = sistema.getClientes().get(pos);
+        try {
+            cliente.setNombre(nombre);
+            cliente.setEdad(edad);
+            cliente.setDireccion(direccion);
+            cliente.setTelefono(telefono);
+            cliente.setEmail(email);
+        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException | TextoEmailException e){
+            return e.getMessage();
+        }
+        sistema.modificarCliente(pos, cliente);
+        
+        cliente = sistema.getClientes().get(pos);
                 
         JdbcCliente jc = new JdbcCliente();
         jc.update(cliente);

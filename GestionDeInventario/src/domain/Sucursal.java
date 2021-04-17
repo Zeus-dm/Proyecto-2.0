@@ -72,7 +72,7 @@ public class Sucursal implements IGenerico{
         if(nombre == null || nombre.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO.getTexto() );
         }else if(nombre.length() > 20){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES.getTexto() );
+            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_NOMBRE_20.getTexto() );
         }
         this.nombre = nombre;
     }
@@ -81,7 +81,7 @@ public class Sucursal implements IGenerico{
         if(direccion == null || direccion.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.DIRECCION_VACIO.getTexto() );
         }else if(direccion.length() > 20){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES.getTexto() );
+            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_DIRECCION_20.getTexto() );
         }
         this.direccion = direccion;
     }

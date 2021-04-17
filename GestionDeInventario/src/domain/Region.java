@@ -43,7 +43,7 @@ public class Region implements IGenerico{
         if(nombre == null || nombre.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO.getTexto() );
         }else if(nombre.length() > 20){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES.getTexto() );
+            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_NOMBRE_20.getTexto() );
         }
         this.nombre = nombre;
     }

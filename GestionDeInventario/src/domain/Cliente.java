@@ -62,7 +62,7 @@ public class Cliente extends Persona implements IGenerico{
         if(direccion == null || direccion.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.DIRECCION_VACIO.getTexto() );
         }else if(direccion.length() > 20){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES.getTexto() );
+            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_DIRECCION_20.getTexto() );
         }
         this.direccion = direccion;
     }
@@ -87,7 +87,7 @@ public class Cliente extends Persona implements IGenerico{
         if(email == null || email.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.EMAIL_VACIO.getTexto() );
         }else if(email.length() > 40){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_40.getTexto() );
+            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_EMAIL_40.getTexto() );
         }else{
             String cadena[] = email.split("@") ;
             if (cadena.length != 2){
@@ -106,7 +106,7 @@ public class Cliente extends Persona implements IGenerico{
         if(nombre == null || nombre.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO.getTexto() );
         }else if(nombre.length() > 40){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_40.getTexto() );
+            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_NOMBRE_40.getTexto() );
         }
         this.nombre = nombre;
     }

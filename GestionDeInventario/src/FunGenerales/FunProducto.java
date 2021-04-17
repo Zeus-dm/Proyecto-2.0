@@ -42,14 +42,40 @@ public class FunProducto {
         
         return null;
     }
-    
+    /**
+     * Esta funcion obtiene los nuevos parametro que debe contener un producto en particular
+     * @param sistema Modificar el producto exacto en su interior
+     * @param preBarCode Obtenemos la key anterior, si se cambio ese parametro
+     * @param nombre Obtenemos el nuevo nombre
+     * @param marca Obtenemos la nueva marca
+     * @param barCode Obtenemos el nuevo barCode, el cual seria la key
+     * @param precio Obtenemos el nuevo precio del producto
+     * @param descripcion Obtenemos la nueva descripcion del producto
+     * @return Retornamos un String de algun error o null en caso de que todo este correcto
+     * @throws SQLException 
+     */
     public static String modificarProducto(Sistema sistema, String preBarCode, String nombre, String marca, String barCode, String precio, String descripcion) throws SQLException {
-        String ok = sistema.modificarProducto(preBarCode, nombre, marca, barCode, precio, descripcion);
-        if(ok != null){
-            return ok;
+        
+        if(!(preBarCode.equals(barCode))){
+            if(sistema.verificarExistenciaProducto(barCode)){
+                return TextoErrores.BARCODE_DUPLICADO.getTexto();
+            }
         }
         
-        Producto producto = sistema.getProductos().get(barCode);
+        Producto producto = new Producto();
+        try {
+            producto.setNombre(nombre);
+            producto.setMarca(marca);
+            producto.setBarCode(barCode);
+            producto.setPrecio(precio);
+            producto.setDescripcion(descripcion);
+        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException | TextoEmailException e){
+            return e.getMessage();
+        }
+        
+        sistema.modificarProducto(preBarCode, producto);
+        
+        producto = sistema.getProductos().get(barCode);
         
         JdbcProducto jp = new JdbcProducto();
         jp.update(producto);
