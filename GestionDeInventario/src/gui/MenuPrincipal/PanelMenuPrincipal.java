@@ -19,7 +19,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class PanelMenuPrincipal extends javax.swing.JPanel {
     private FramePrincipal fp = null;
-
+    
     public PanelMenuPrincipal(FramePrincipal fp) {
         this.fp = fp;
 
@@ -34,6 +34,15 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
 
     private void iniciarDatos() {
         labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + FunUsuario.seleccionarNombreUsuario(fp.getSistema()));
+        
+        if(fp.musica){ //cargar musica solo 1 vez y al iniciar el programa
+            try {
+                fp.sonido();
+                fp.musica = false;
+            } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
+                Logger.getLogger(PanelMenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
         if (fp.mute) {
             buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MUTE.getColor(fp.modo))));

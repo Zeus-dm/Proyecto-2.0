@@ -95,7 +95,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         buttonVolver.setText(Texto.VOLVER.getTexto());
         buttonVolver.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.modo))));
         buttonVolver.setFocusable(false);
-        buttonVolver.setPreferredSize(new java.awt.Dimension(110, 32));
+        buttonVolver.setPreferredSize(new java.awt.Dimension(114, 32));
         buttonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonVolverActionPerformed(evt);
@@ -126,7 +126,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         labelPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelPrecio.setText(Texto.PRECIO.getTexto());
         labelPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(fp.modo))));
-        labelPrecio.setPreferredSize(new java.awt.Dimension(110, 22));
+        labelPrecio.setPreferredSize(new java.awt.Dimension(114, 22));
 
         labelMin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelMin.setForeground(Color.decode(Colores.TEXTO.getColor(fp.modo)));
@@ -152,7 +152,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
 
         labelError.setForeground(Color.decode(Colores.TEXTO_ERROR.getColor(fp.modo)));
         labelError.setText("* Error: Posible error");
-        labelError.setPreferredSize(new java.awt.Dimension(110, 16));
+        labelError.setPreferredSize(new java.awt.Dimension(114, 16));
 
         jScrollPaneProductos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.modo))));
         jScrollPaneProductos.setPreferredSize(new java.awt.Dimension(248, 338));
@@ -234,20 +234,19 @@ public class PanelMenuProductos extends javax.swing.JPanel {
                     .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buttonGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(buttonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanelFondoLayout.createSequentialGroup()
-                                    .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(textMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(textMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(labelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(buttonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelFondoLayout.createSequentialGroup()
+                                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(textMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(labelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoLayout.createSequentialGroup()
@@ -341,15 +340,17 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         
         DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, barCodesFiltrados.get(pos));
         dmp.setVisible(true);
-        
-        textBuscar.setText("");
-        textMin.setText("0");
-        textMax.setText("0");
-        labelError.setText("");
-        
-        int min = Integer.parseInt(textMin.getText());
-        int max = Integer.parseInt(textMax.getText());
-        cargarProductos( FunProducto.listarProductos(fp.getSistema(), min, max, textBuscar.getText(), barCodesFiltrados) );
+
+        String ok = FunProducto.verificarMinMax(textMin.getText(), textMax.getText());
+        if(ok != null){
+            labelError.setText(ok);
+            cargarProductos( FunProducto.listarNombresTodosProductos(fp.getSistema(), barCodesFiltrados) );
+        }else{
+            labelError.setText("");
+            int min = Integer.parseInt(textMin.getText());
+            int max = Integer.parseInt(textMax.getText());
+            cargarProductos( FunProducto.listarProductos(fp.getSistema(), min, max, textBuscar.getText(), barCodesFiltrados) ); //para que al seleccionar saber que filtraba en ese momento
+        }
     }//GEN-LAST:event_tableProductosMouseClicked
 
     private void buttonGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGraficarActionPerformed

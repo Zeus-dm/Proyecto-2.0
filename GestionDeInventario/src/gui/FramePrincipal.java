@@ -22,6 +22,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private Sistema sistema = null;
     public Clip sonido = null;
     public boolean mute = false;
+    public boolean musica = true;
     public int imagen = 0;
     public int modo = 0;
     
@@ -30,7 +31,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         
         initComponents();
         
-        sonido();
         iniciarPrograma();
     }
     

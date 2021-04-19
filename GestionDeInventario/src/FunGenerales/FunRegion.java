@@ -12,7 +12,6 @@ import java.util.List;
 import jdbc.JdbcRegion;
 
 public class FunRegion {
-
     /**
      * Esta funcion agregar una nueva region si esta no existe previamente
      * @param sistema obtenemos si la region ya existe, ademas de luego actualizar sus regiones

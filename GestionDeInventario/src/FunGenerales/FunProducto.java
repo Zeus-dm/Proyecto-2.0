@@ -159,12 +159,14 @@ public class FunProducto {
      */
     public static List<String> listarProductos(Sistema sistema, int min, int max, String textoBuscar, List<String> barCodesFiltrados){
         barCodesFiltrados.removeAll(barCodesFiltrados);
-        
-        if( (min == 0) && (max == 0) && !(textoBuscar.isEmpty()) ){
+
+        if( (min == 0) && (max == 0) && (textoBuscar.isEmpty()) ){
+            return listarNombresTodosProductos(sistema, barCodesFiltrados);
+        }else if( (min == 0) && (max == 0) && !(textoBuscar.isEmpty()) ){
             return listarProductos(sistema, textoBuscar, barCodesFiltrados);
-        }else if( (min > 0) && (max > 0) && (textoBuscar.isEmpty()) ){
+        }else if( (min >= 0) && (max >= 0) && (textoBuscar.isEmpty()) ){
             return listarProductos(sistema, min, max, barCodesFiltrados);
-        }else if( (min > 0) && (max > 0) && !(textoBuscar.isEmpty()) ){
+        }else if( (min >= 0) && (max >= 0) && !(textoBuscar.isEmpty()) ){
             Map<String,Producto> productos = sistema.filtrarProductosPrecioNombre(min, max, textoBuscar);
             List<String> nombreProductos = new ArrayList<>();
         
