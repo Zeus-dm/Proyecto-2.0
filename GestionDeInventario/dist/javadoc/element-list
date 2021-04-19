@@ -1,0 +1,12 @@
+domain
+enumeraciones
+excepciones
+FunGenerales
+gui
+gui.MenuClientes
+gui.MenuPrincipal
+gui.MenuProductos
+gui.MenuRegiones
+gui.MenuSesion
+jdbc
+tests
