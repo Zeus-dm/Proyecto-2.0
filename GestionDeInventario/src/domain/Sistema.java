@@ -1,8 +1,6 @@
 
 package domain;
 
-import enumeraciones.TextoErrores;
-import excepciones.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,6 +52,10 @@ public class Sistema {
     //METODOS USUARIO   
     public boolean verificarExistenciaUsuario(){
         return usuario != null;
+    }
+    
+    public void eliminarUsuario(){
+        usuario = null;
     }
     
     //METODOS CLIENTES
@@ -158,7 +160,27 @@ public class Sistema {
         
         if(!(preBarCode.equals(producto.getBarCode()))){
             productos.remove(preBarCode);
-            productos.put(preProducto.getBarCode(), producto);
+            productos.put(preProducto.getBarCode(), preProducto);
         }
+    }
+    
+    //METODOS REGIONES
+    public boolean verificarExistenciaRegion(String nombre){
+        for (Region region : regiones) {
+            if(nombre.equalsIgnoreCase(region.getNombre())){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void eliminarRegion(int pos){
+        regiones.remove(pos);
+    }
+    
+    public void modificarRegion(int pos, Region region){
+        Region preRegion = regiones.get(pos);
+        
+        preRegion.setNombre(region.getNombre());
     }
 }

@@ -183,11 +183,10 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            String ok = FunUsuario.agregarUsuario(textUsuario.getText(), new String(textPassword.getPassword()), new String(textVerPassword.getPassword()));
+            String ok = FunUsuario.agregarUsuario(dms.getFramePrincipal().getSistema(), textUsuario.getText(), new String(textPassword.getPassword()), new String(textVerPassword.getPassword()));
             if(ok != null){
                 labelError.setText(ok);
             }else{
-                dms.getFramePrincipal().getSistema().setUsuario(FunUsuario.seleccionarUsuario(textUsuario.getText()));
                 dms.setVisible(false);
             }
         } catch (SQLException ex) {

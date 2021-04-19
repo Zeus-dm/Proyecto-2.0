@@ -161,11 +161,10 @@ public class PanelIniciarSesion extends javax.swing.JPanel {
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            String ok = FunUsuario.iniciarSesion(textUsuario.getText(), new String(textPassword.getPassword()) );
+            String ok = FunUsuario.iniciarSesion(dms.getFramePrincipal().getSistema(), textUsuario.getText(), new String(textPassword.getPassword()) );
             if(ok != null){
                 labelError.setText(ok);
             }else{
-                dms.getFramePrincipal().getSistema().setUsuario(FunUsuario.seleccionarUsuario(textUsuario.getText()));
                 dms.setVisible(false);
             }
         } catch (SQLException ex) {

@@ -1,5 +1,5 @@
 
-package gui.MenuClientes;
+package gui.MenuRegiones;
 
 import enumeraciones.Colores;
 import enumeraciones.Texto;
@@ -9,14 +9,12 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class DialogMenuCliente extends javax.swing.JDialog {
+public class DialogMenuRegion extends javax.swing.JDialog {
     private FramePrincipal fp = null;
-    public int posicion = -1;
     
-    public DialogMenuCliente(java.awt.Frame parent, boolean modal, FramePrincipal fp, int id, int posicion) {
+    public DialogMenuRegion(java.awt.Frame parent, boolean modal, FramePrincipal fp, int id) {
         super(parent, modal);
         this.fp = fp;
-        this.posicion = posicion;
         
         initComponents();
         
@@ -26,12 +24,19 @@ public class DialogMenuCliente extends javax.swing.JDialog {
     private void iniciarFrame(int id){
         setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
         
-        if(id == 1){
-            PanelCrearCliente pcc = new PanelCrearCliente(this);
-            cargarPanel(pcc);
-        }else{
-            PanelSeleccionarCliente psc = new PanelSeleccionarCliente(this);
-            cargarPanel(psc);
+        switch (id) {
+            case 1 -> {
+                PanelCrearRegion pcr = new PanelCrearRegion(this);
+                cargarPanel(pcr);
+            }
+            case 2 -> {
+                PanelEliminarRegion per = new PanelEliminarRegion(this);
+                cargarPanel(per);
+            }
+            case 3 -> {
+                PanelModificarRegion pmr = new PanelModificarRegion(this);
+                cargarPanel(pmr);
+            }
         }
     }
     
@@ -56,7 +61,6 @@ public class DialogMenuCliente extends javax.swing.JDialog {
         setTitle(Texto.TITULO.getTexto());
         setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
         setMinimumSize(new java.awt.Dimension(100, 100));
-        setPreferredSize(new java.awt.Dimension(350, 220));
         setResizable(false);
 
         jPanelPrincipal.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));

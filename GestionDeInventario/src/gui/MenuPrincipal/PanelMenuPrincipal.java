@@ -1,11 +1,14 @@
 package gui.MenuPrincipal;
 
 import gui.FramePrincipal;
+import FunGenerales.FunUsuario;
 import enumeraciones.Colores;
 import enumeraciones.Musica;
 import enumeraciones.Texto;
 import gui.MenuClientes.PanelMenuClientes;
 import gui.MenuProductos.PanelMenuProductos;
+import gui.MenuRegiones.PanelMenuRegiones;
+import gui.MenuSesion.DialogMenuSesion;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -15,18 +18,23 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class PanelMenuPrincipal extends javax.swing.JPanel {
-
     private FramePrincipal fp = null;
 
     public PanelMenuPrincipal(FramePrincipal fp) {
         this.fp = fp;
 
         initComponents();
-
+        
+        if(!FunUsuario.existenciaUsuario(this.fp.getSistema())){
+            menuSesion();
+        }
+        
         iniciarDatos();
     }
 
     private void iniciarDatos() {
+        labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + FunUsuario.seleccionarNombreUsuario(fp.getSistema()));
+        
         if (fp.mute) {
             buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MUTE.getColor(fp.modo))));
             buttonSonido.setToolTipText("Activar Sonido");
@@ -50,23 +58,34 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                 labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/seba_150.png"))); // NOI18N
         }
     }
+    
+    private void menuSesion() {
+        DialogMenuSesion dms = new DialogMenuSesion(new javax.swing.JFrame(), true, fp);
+        dms.setLocationRelativeTo(this);
+        dms.setVisible(true);
+        
+        if( !(FunUsuario.existenciaUsuario(fp.getSistema())) ){
+            System.exit(0);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanelFondo = new javax.swing.JPanel();
+        buttonReporte = new javax.swing.JButton();
+        buttonSonido = new javax.swing.JButton();
         buttonOpcion = new javax.swing.JButton();
         labelTitulo = new javax.swing.JLabel();
         labelBienvenida = new javax.swing.JLabel();
         buttonRegiones = new javax.swing.JButton();
         buttonClientes = new javax.swing.JButton();
         buttonProductos = new javax.swing.JButton();
+        buttonCerrarSesion = new javax.swing.JButton();
         buttonSalir = new javax.swing.JButton();
         jPanelImagen = new javax.swing.JPanel();
         labelImagen = new javax.swing.JLabel();
-        buttonSonido = new javax.swing.JButton();
-        buttonReporte = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(400, 450));
         setPreferredSize(new java.awt.Dimension(400, 450));
@@ -74,6 +93,27 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
         jPanelFondo.setMaximumSize(new java.awt.Dimension(400, 450));
         jPanelFondo.setMinimumSize(new java.awt.Dimension(400, 450));
+
+        buttonReporte.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
+        buttonReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_ARCHIVO.getColor(fp.modo) )));
+        buttonReporte.setToolTipText("Generar Reporte");
+        buttonReporte.setBorder(null);
+        buttonReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonReporte.setFocusable(false);
+        buttonReporte.setPreferredSize(new java.awt.Dimension(32, 32));
+
+        buttonSonido.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
+        buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_SONIDO.getColor(fp.modo) )));
+        buttonSonido.setToolTipText("Activar/Desactivar Sonido");
+        buttonSonido.setBorder(null);
+        buttonSonido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonSonido.setFocusable(false);
+        buttonSonido.setPreferredSize(new java.awt.Dimension(32, 32));
+        buttonSonido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSonidoActionPerformed(evt);
+            }
+        });
 
         buttonOpcion.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
         buttonOpcion.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MODO.getColor(fp.modo))));
@@ -96,7 +136,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
 
         labelBienvenida.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         labelBienvenida.setForeground(Color.decode(Colores.TEXTO.getColor(fp.modo)));
-        labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + fp.getSistema().getUsuario().getNombre());
+        labelBienvenida.setText(Texto.BIENVENIDO.getTexto());
         labelBienvenida.setPreferredSize(new java.awt.Dimension(354, 40));
 
         buttonRegiones.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(fp.modo)));
@@ -138,6 +178,19 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
             }
         });
 
+        buttonCerrarSesion.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(fp.modo)));
+        buttonCerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonCerrarSesion.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.modo)));
+        buttonCerrarSesion.setText("Cerrar Sesión");
+        buttonCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.modo))));
+        buttonCerrarSesion.setFocusable(false);
+        buttonCerrarSesion.setPreferredSize(new java.awt.Dimension(110, 30));
+        buttonCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCerrarSesionActionPerformed(evt);
+            }
+        });
+
         buttonSalir.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(fp.modo)));
         buttonSalir.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         buttonSalir.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.modo)));
@@ -176,31 +229,10 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         jPanelImagenLayout.setVerticalGroup(
             jPanelImagenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelImagenLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(36, 36, 36)
                 .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        buttonSonido.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
-        buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_SONIDO.getColor(fp.modo) )));
-        buttonSonido.setToolTipText("Activar/Desactivar Sonido");
-        buttonSonido.setBorder(null);
-        buttonSonido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonSonido.setFocusable(false);
-        buttonSonido.setPreferredSize(new java.awt.Dimension(32, 32));
-        buttonSonido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSonidoActionPerformed(evt);
-            }
-        });
-
-        buttonReporte.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
-        buttonReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_ARCHIVO.getColor(fp.modo) )));
-        buttonReporte.setToolTipText("Generar Reporte");
-        buttonReporte.setBorder(null);
-        buttonReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonReporte.setFocusable(false);
-        buttonReporte.setPreferredSize(new java.awt.Dimension(32, 32));
 
         javax.swing.GroupLayout jPanelFondoLayout = new javax.swing.GroupLayout(jPanelFondo);
         jPanelFondo.setLayout(jPanelFondoLayout);
@@ -220,7 +252,8 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                                     .addComponent(buttonClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(buttonRegiones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(buttonProductos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(buttonSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(buttonSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buttonCerrarSesion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -245,7 +278,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                 .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(labelBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(25, 25, 25)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addComponent(buttonRegiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,9 +287,11 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(buttonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(buttonCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(buttonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         labelTitulo.getAccessibleContext().setAccessibleName("labelTitulo");
@@ -276,7 +311,8 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonRegionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegionesActionPerformed
-        // TODO add your handling code here:
+        PanelMenuRegiones pmr = new PanelMenuRegiones(fp);
+        fp.cargarPanel(pmr);
     }//GEN-LAST:event_buttonRegionesActionPerformed
 
     private void buttonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClientesActionPerformed
@@ -343,8 +379,14 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_labelImagenMouseClicked
 
+    private void buttonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCerrarSesionActionPerformed
+        FunUsuario.eliminarUsuario(fp.getSistema());
+        menuSesion();
+        labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + FunUsuario.seleccionarNombreUsuario(fp.getSistema()));
+    }//GEN-LAST:event_buttonCerrarSesionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCerrarSesion;
     private javax.swing.JButton buttonClientes;
     private javax.swing.JButton buttonOpcion;
     private javax.swing.JButton buttonProductos;

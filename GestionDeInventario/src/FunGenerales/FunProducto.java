@@ -42,6 +42,7 @@ public class FunProducto {
         
         return null;
     }
+    
     /**
      * Esta funcion obtiene los nuevos parametro que debe contener un producto en particular
      * @param sistema Modificar el producto exacto en su interior
@@ -76,7 +77,7 @@ public class FunProducto {
         sistema.modificarProducto(preBarCode, producto);
         
         producto = sistema.getProductos().get(barCode);
-        
+       
         JdbcProducto jp = new JdbcProducto();
         jp.update(producto);
         

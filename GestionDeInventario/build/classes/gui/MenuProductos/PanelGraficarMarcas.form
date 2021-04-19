@@ -41,8 +41,8 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jScrollPaneGrafico" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="labelTitulo" min="-2" pref="392" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelTitulo" min="-2" pref="380" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="buttonAtras" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>

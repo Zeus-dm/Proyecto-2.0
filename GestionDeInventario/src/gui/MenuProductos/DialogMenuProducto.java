@@ -20,11 +20,12 @@ public class DialogMenuProducto extends javax.swing.JDialog {
         
         initComponents();
         
-        setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
         iniciarFrame();
     }
     
     private void iniciarFrame(){
+        setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
+        
         if(!(barCode.isEmpty())){
             PanelSeleccionarProducto psp = new PanelSeleccionarProducto(this);
             cargarPanel(psp);

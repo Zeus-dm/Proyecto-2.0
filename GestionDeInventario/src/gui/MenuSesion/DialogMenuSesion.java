@@ -18,7 +18,12 @@ public class DialogMenuSesion extends javax.swing.JDialog {
         
         initComponents();
         
+        iniciarFrame();
+    }
+    
+    private void iniciarFrame(){
         setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
+        
         PanelMenuSesion pms = new PanelMenuSesion(this);
         cargarPanel(pms);
     }

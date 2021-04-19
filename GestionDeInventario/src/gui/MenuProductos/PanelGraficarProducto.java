@@ -114,7 +114,7 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
         
         textNombre.setFont(new java.awt.Font("Segoe UI", 3, tamano));
         while(true){
-            if(textNombre.getPreferredSize().width > 392){
+            if(textNombre.getPreferredSize().width > 380){
                 textNombre.setFont(new java.awt.Font("Segoe UI", 3, tamano));
             }else{
                 break;

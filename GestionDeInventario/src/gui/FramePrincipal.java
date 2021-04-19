@@ -4,11 +4,11 @@ package gui;
 import FunGenerales.FunCliente;
 import FunGenerales.FunProducto;
 import FunGenerales.FunRegion;
+import FunGenerales.FunSucursal;
 import domain.Sistema;
 import enumeraciones.Musica;
 import enumeraciones.Texto;
 import gui.MenuPrincipal.PanelMenuPrincipal;
-import gui.MenuSesion.DialogMenuSesion;
 
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -30,11 +30,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         
         initComponents();
         
-        menuSesion();
-        if( !(sistema.verificarExistenciaUsuario()) ){
-            System.exit(0);
-        }
-        
         sonido();
         iniciarPrograma();
     }
@@ -47,14 +42,12 @@ public class FramePrincipal extends javax.swing.JFrame {
         sonido.loop(-1);
     }
     
-    private void menuSesion() {
-        DialogMenuSesion dms = new DialogMenuSesion(new javax.swing.JFrame(), true, this);
-        dms.setLocationRelativeTo(this);
-        dms.setVisible(true);
-    }
-    
     private void iniciarPrograma() throws SQLException {
         sistema.setRegiones(FunRegion.listarRegiones());
+        for (int i = 0; i < sistema.getRegiones().size(); i++) {
+            sistema.getRegiones().get(i).setSucursales(FunSucursal.listarSucursales(sistema.getRegiones().get(i)));
+        }
+        
         sistema.setClientes(FunCliente.listarClientes());
         sistema.setProductos(FunProducto.listarProductos());
         

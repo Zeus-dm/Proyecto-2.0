@@ -32,8 +32,8 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         ajustarTitulo();
         
         textMarca.setText(datos.get(1));
-        textBarCode.setText(datos.get(2));
-        textPrecio.setText(datos.get(3));
+        textBarCode.setText("# " + datos.get(2));
+        textPrecio.setText("$ " + datos.get(3));
         textStockTotal.setText(datos.get(4));
         textDescripcion.setText(datos.get(5));
         
@@ -81,7 +81,7 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         
         textNombre.setFont(new java.awt.Font("Segoe UI", 3, tamano));
         while(true){
-            if(textNombre.getPreferredSize().width > 392){
+            if(textNombre.getPreferredSize().width > 380){
                 textNombre.setFont(new java.awt.Font("Segoe UI", 3, tamano));
             }else{
                 break;
@@ -271,15 +271,15 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
                                 .addComponent(textMarca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(labelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPaneDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPaneSucursalesStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addComponent(buttonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
-                        .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(buttonGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
