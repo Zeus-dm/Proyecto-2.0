@@ -3,6 +3,7 @@ package FunGenerales;
 
 import domain.IGenerico;
 import domain.Region;
+import domain.Sistema;
 import domain.Sucursal;
 import excepciones.*;
 import java.sql.SQLException;
@@ -85,6 +86,17 @@ public class FunSucursal {
         Sucursal newS = (Sucursal) js.select(idSucursal) ;
         
         return newS ;
+    }
+    
+    public static List<String> ListarNombresSucursales(Sistema sistema, int posRegion){
+        //Region region = sistema.getRegiones().get(posRegion);
+        List<String> nombreSucursales = new ArrayList<>();
+        
+        sistema.getRegiones().get(posRegion).getSucursales().forEach(sucursal -> {
+            nombreSucursales.add(sucursal.getNombre());
+        });
+        
+        return nombreSucursales;
     }
     
     //--------------------------------------------------------------------------------

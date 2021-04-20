@@ -116,4 +116,8 @@ public class FunRegion {
         
         return nombreRegiones;
     }
+
+    public static String obtenerNombreRegion(Sistema sistema, int pos){
+        return sistema.getRegiones().get(pos).getNombre();
+    }
 }

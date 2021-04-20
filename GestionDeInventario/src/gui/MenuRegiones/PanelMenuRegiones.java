@@ -6,6 +6,7 @@ import gui.MenuPrincipal.*;
 import gui.FramePrincipal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
+import gui.MenuSucursales.PanelMenuSucursales;
 
 import java.awt.Color;
 import java.util.List;
@@ -251,7 +252,10 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void tableRegionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRegionesMouseClicked
+        int pos = tableRegiones.getSelectedRow();
         
+        PanelMenuSucursales pms = new PanelMenuSucursales(fp, pos);
+        fp.cargarPanel(pms);
     }//GEN-LAST:event_tableRegionesMouseClicked
 
     private void labelImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelImagenMouseClicked
@@ -279,7 +283,6 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
         
         cargarRegiones(FunRegion.ListarNombresRegiones(fp.getSistema()));
     }//GEN-LAST:event_buttonModificarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAgregar;
