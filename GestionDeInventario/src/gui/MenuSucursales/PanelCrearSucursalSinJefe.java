@@ -1,7 +1,6 @@
 
 package gui.MenuSucursales;
 
-import FunGenerales.FunSucursal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 
@@ -233,16 +232,7 @@ public class PanelCrearSucursalSinJefe extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
-        try {
-            String ok = FunSucursal.agregarSucursal(dms.getFramePrincipal().getSistema(), dms.posRegion, textNombre.getText(), textDireccion.getText(), textTelefono.getText());
-            if(ok != null){
-                labelError.setText(ok);
-            }else{
-                dms.setVisible(false);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(PanelCrearSucursalSinJefe.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_buttonAceptarActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed

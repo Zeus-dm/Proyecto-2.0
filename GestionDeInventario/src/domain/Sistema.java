@@ -7,19 +7,16 @@ import java.util.List;
 import java.util.Map;
 
 public class Sistema {
-    private List<Region> regiones = null;
+    private final CollectionRegiones regiones;
     private List<Cliente> clientes = null;
     private Map<String,Producto> productos = null;
     private Usuario usuario = null;
 
     public Sistema() {
+        regiones = new CollectionRegiones();
     }
     
     //GETTERS
-    public List<Region> getRegiones() {
-        return regiones;
-    }
-
     public List<Cliente> getClientes() {
         return clientes;
     }
@@ -33,10 +30,6 @@ public class Sistema {
     }
     
     //SETTERS
-    public void setRegiones(List<Region> regiones) {
-        this.regiones = regiones;
-    }
-
     public void setClientes(List<Cliente> clientes) {
         this.clientes = clientes;
     }
@@ -166,21 +159,26 @@ public class Sistema {
     
     //METODOS REGIONES
     public boolean verificarExistenciaRegion(String nombre){
-        for (Region region : regiones) {
-            if(nombre.equalsIgnoreCase(region.getNombre())){
-                return true;
-            }
-        }
-        return false;
+        return regiones.verificarExistencia(nombre);
     }
     
-    public void eliminarRegion(int pos){
-        regiones.remove(pos);
+    public Region obtenerRegion(String nombre){
+        return regiones.obtenerRegion(nombre);
     }
     
-    public void modificarRegion(int pos, Region region){
-        Region preRegion = regiones.get(pos);
-        
-        preRegion.setNombre(region.getNombre());
+    public void agregarRegion(Region region){
+        regiones.agregarRegion(region);
+    }
+    
+    public void eliminarRegion(String nombre){
+        regiones.eliminarRegion(nombre);
+    }
+    
+    public void modificarRegion(String preNombre, Region nuevaRegion){
+        regiones.modificarRegion(preNombre, nuevaRegion);
+    }
+    
+    public List<String> nombresRegiones(){
+        return regiones.obtenerNombres();
     }
 }

@@ -4,7 +4,6 @@ package gui;
 import FunGenerales.FunCliente;
 import FunGenerales.FunProducto;
 import FunGenerales.FunRegion;
-import FunGenerales.FunSucursal;
 import domain.Sistema;
 import enumeraciones.Musica;
 import enumeraciones.Texto;
@@ -43,10 +42,13 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
     
     private void iniciarPrograma() throws SQLException {
-        sistema.setRegiones(FunRegion.listarRegiones());
-        for (int i = 0; i < sistema.getRegiones().size(); i++) {
+        FunRegion controladorRegion = new FunRegion(sistema);
+        controladorRegion.listarRegiones();
+        
+        
+        /*for (int i = 0; i < sistema.getRegiones().size(); i++) {
             sistema.getRegiones().get(i).setSucursales(FunSucursal.listarSucursales(sistema.getRegiones().get(i).getIdRegion()));
-        }
+        }*/
         
         sistema.setClientes(FunCliente.listarClientes());
         sistema.setProductos(FunProducto.listarProductos());

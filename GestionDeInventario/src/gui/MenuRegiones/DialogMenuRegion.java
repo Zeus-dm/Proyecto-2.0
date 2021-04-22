@@ -1,6 +1,7 @@
 
 package gui.MenuRegiones;
 
+import FunGenerales.FunRegion;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import gui.FramePrincipal;
@@ -11,10 +12,12 @@ import javax.swing.JPanel;
 
 public class DialogMenuRegion extends javax.swing.JDialog {
     private FramePrincipal fp = null;
+    FunRegion controladorRegion;
     
     public DialogMenuRegion(java.awt.Frame parent, boolean modal, FramePrincipal fp, int id) {
         super(parent, modal);
         this.fp = fp;
+        controladorRegion = new FunRegion(this.fp.getSistema());
         
         initComponents();
         

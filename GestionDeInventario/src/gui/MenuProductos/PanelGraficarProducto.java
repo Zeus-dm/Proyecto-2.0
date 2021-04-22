@@ -41,9 +41,9 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
         textNombre.setText(datos.get(0));
         ajustarTitulo();
         
-        cargarGrafico();
+        //cargarGrafico();
     }
-    
+    /*
     private DefaultPieDataset cargarSucursalesStock(){
         List<String> NombreSucursales = new ArrayList<>();
         List<Integer> StocksSucursales = new ArrayList<>();
@@ -107,7 +107,7 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
         jPanelGrafico.add(graficoPanel, BorderLayout.CENTER);
         
         jPanelGrafico.revalidate();
-    }
+    }*/
     
     private void ajustarTitulo(){
         int tamano = 20;

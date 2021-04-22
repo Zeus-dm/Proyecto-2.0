@@ -37,9 +37,9 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         textStockTotal.setText(datos.get(4));
         textDescripcion.setText(datos.get(5));
         
-        cargarSucursalesStock();
+        //cargarSucursalesStock();
     }
-    
+    /*
     private void cargarSucursalesStock(){
         List<String> NombreSucursales = new ArrayList<>();
         List<Integer> StocksSucursales = new ArrayList<>();
@@ -74,7 +74,7 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
             tableSucursalesStock.getColumnModel().getColumn(1).setResizable(false);
             tableSucursalesStock.getColumnModel().getColumn(1).setPreferredWidth(62);
         }
-    }
+    }*/
     
     private void ajustarTitulo(){
         int tamano = 20;

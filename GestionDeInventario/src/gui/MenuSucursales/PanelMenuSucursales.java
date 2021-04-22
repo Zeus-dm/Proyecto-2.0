@@ -3,7 +3,6 @@ package gui.MenuSucursales;
 
 import gui.MenuRegiones.*;
 import FunGenerales.FunRegion;
-import FunGenerales.FunSucursal;
 import gui.MenuPrincipal.*;
 import gui.FramePrincipal;
 import enumeraciones.Colores;
@@ -26,10 +25,10 @@ public class PanelMenuSucursales extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        labelTitulo.setText(FunRegion.obtenerNombreRegion(fp.getSistema(), posRegion)+"- Sucursales");
+        //labelTitulo.setText(FunRegion.obtenerNombreRegion(fp.getSistema(), posRegion)+"- Sucursales");
         ajustarTitulo();
         
-        cargarSucursales(FunSucursal.ListarNombresSucursales(fp.getSistema(), posRegion));
+        //cargarSucursales(FunSucursal.ListarNombresSucursales(fp.getSistema(), posRegion));
         
         switch (fp.imagen) {
             case 0 ->
@@ -265,7 +264,7 @@ public class PanelMenuSucursales extends javax.swing.JPanel {
         DialogMenuSucursal dms = new DialogMenuSucursal(new javax.swing.JFrame(), true, fp, 1, posRegion);
         dms.setVisible(true);
         
-        cargarSucursales(FunSucursal.ListarNombresSucursales(fp.getSistema(), posRegion));
+        //cargarSucursales(FunSucursal.ListarNombresSucursales(fp.getSistema(), posRegion));
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed

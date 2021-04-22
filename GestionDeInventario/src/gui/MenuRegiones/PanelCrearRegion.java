@@ -1,7 +1,6 @@
 
 package gui.MenuRegiones;
 
-import FunGenerales.FunRegion;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 
@@ -140,7 +139,7 @@ public class PanelCrearRegion extends javax.swing.JPanel {
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            String ok = FunRegion.agregarRegion(dmr.getFramePrincipal().getSistema(), textNombre.getText());
+            String ok = dmr.controladorRegion.agregarRegion(textNombre.getText());
             if(ok != null){
                 labelError.setText(ok);
             }else{

@@ -241,7 +241,8 @@ public class FunProducto {
      * @param stocksSucursales Lista que se actualizara con los stocks
      * @throws SQLException 
      */
-    public static void listarNombresSucursalesStocksProducto(Sistema sistema, String barCode, List<String> nombresSucursales, List<Integer> stocksSucursales) throws SQLException{
+    
+    /*public static void listarNombresSucursalesStocksProducto(Sistema sistema, String barCode, List<String> nombresSucursales, List<Integer> stocksSucursales) throws SQLException{
         Producto producto = sistema.getProductos().get(barCode);
         
         List<SucursalProducto> listaSP = listarSucursalProducto(producto.getIdProducto());
@@ -251,7 +252,7 @@ public class FunProducto {
             nombresSucursales.add(sucursal.getNombre());
             stocksSucursales.add(sp.getStock());
         }
-    }
+    }*/
     
     /**
      * Esta funcion obtiene la lista de todos los ids de las sucursales que tienen a ese producto con sus stocks

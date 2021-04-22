@@ -26,7 +26,7 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        ItemsComboRegiones(FunRegion.ListarNombresRegiones(dmr.getFramePrincipal().getSistema()));
+        ItemsComboRegiones(dmr.controladorRegion.nombresRegiones());
     }
     
     private void ItemsComboRegiones(List<String> regiones){
@@ -237,13 +237,9 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
 
 //Botones Confirmacion
     private void buttonAceptarConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarConfirmacionActionPerformed
-        if(FunRegion.ListarNombresRegiones(dmr.getFramePrincipal().getSistema()).isEmpty()){
-            DialogConfirmacion.setVisible(false);
-            dmr.setVisible(false);
-        }
-        
         try {
-            FunRegion.eliminarRegion(dmr.getFramePrincipal().getSistema(), comboBoxListaRegiones.getSelectedIndex());
+            String nombre = (String)comboBoxListaRegiones.getSelectedItem();
+            dmr.controladorRegion.eliminarRegion(nombre);
             DialogConfirmacion.setVisible(false);
             dmr.setVisible(false);
         } catch (SQLException ex) {

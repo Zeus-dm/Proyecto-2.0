@@ -38,7 +38,7 @@ public class PanelModificarRegion extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        ItemsComboRegiones(FunRegion.ListarNombresRegiones(dmr.getFramePrincipal().getSistema()));
+        ItemsComboRegiones(dmr.controladorRegion.nombresRegiones());
         
         textNombre.setText("");
         labelError.setText("");
@@ -184,8 +184,7 @@ public class PanelModificarRegion extends javax.swing.JPanel {
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            int pos = comboBoxListaRegiones.getSelectedIndex();
-            String ok = FunRegion.modificarRegion(dmr.getFramePrincipal().getSistema(), pos, textNombre.getText());
+            String ok = dmr.controladorRegion.modificarRegion((String)comboBoxListaRegiones.getSelectedItem(), textNombre.getText());
             if(ok != null){
                 labelError.setText(ok);
             }else{

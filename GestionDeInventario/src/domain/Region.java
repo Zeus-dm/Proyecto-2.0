@@ -39,6 +39,10 @@ public class Region implements IGenerico{
         return sucursales;
     }
 
+    public void setIdRegion(int idRegion) {
+        this.idRegion = idRegion;
+    }
+
     public void setNombre(String nombre) {
         if(nombre == null || nombre.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO.getTexto() );
