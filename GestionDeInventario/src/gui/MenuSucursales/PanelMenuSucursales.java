@@ -262,11 +262,15 @@ public class PanelMenuSucursales extends javax.swing.JPanel {
     }//GEN-LAST:event_labelImagenMouseClicked
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
+        DialogMenuSucursal dms = new DialogMenuSucursal(new javax.swing.JFrame(), true, fp, 1, posRegion);
+        dms.setVisible(true);
         
+        cargarSucursales(FunSucursal.ListarNombresSucursales(fp.getSistema(), posRegion));
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
-        
+        DialogMenuSucursal dms = new DialogMenuSucursal(new javax.swing.JFrame(), true, fp, 2, posRegion);
+        dms.setVisible(true);
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
