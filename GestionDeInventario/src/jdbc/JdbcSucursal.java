@@ -15,6 +15,7 @@ public class JdbcSucursal implements IGenericoInsert, IGenericoUpdate, IGenerico
     private static final String SQL_DELETE = "DELETE FROM gestion_inventario.sucursal WHERE id_sucursal = ?";
     private static final String SQL_SELECT = "SELECT * FROM gestion_inventario.sucursal WHERE id_region = ?";
     private static final String SQL_ONE_SELECT = "SELECT * FROM gestion_inventario.sucursal WHERE id_sucursal = ?";
+    private static final String SQL_MAX_ID = "SELECT MAX(id_sucursal) AS id_sucursal FROM gestion_inventario.sucursal";
 
     public JdbcSucursal() {
     }
@@ -157,5 +158,31 @@ public class JdbcSucursal implements IGenericoInsert, IGenericoUpdate, IGenerico
         }
         
         return listaSucursales;
+    }
+    
+    public Integer ultimoId() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        Integer maxId = null;
+        
+        try{
+            conn = this.userConn != null ? this.userConn : Conexion.getConnection();
+            ps = conn.prepareStatement(SQL_MAX_ID);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                maxId = rs.getInt("id_sucursal");
+            }
+        }finally{
+            Conexion.close(rs);
+            Conexion.close(ps);
+            if (this.userConn == null){
+                Conexion.close(conn);
+            }
+        }
+        
+        return maxId;
     }
 }

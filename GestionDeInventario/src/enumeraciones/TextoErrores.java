@@ -23,6 +23,7 @@ public enum TextoErrores {
     MAXIMO_CARACTERES_EMAIL_40("* Error: E-mail máximo 40 caracteres"),
     
     REGION_DUPLICADO("* Error: Region ya existe"),
+    SUCURSAL_DUPLICADO("* Error: Nombre de la sucursal ya existe"),
     
     EMAIL_VACIO("* Error: Campo E-mail Vacío"),
     EMAIL_INVALIDO("* Error: E-mail inválido"),

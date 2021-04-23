@@ -26,7 +26,7 @@ public class PanelModificarProducto extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        List<String> datos = FunProducto.seleccionarProducto(dmp.getFramePrincipal().getSistema(), dmp.barCode);
+        List<String> datos = dmp.controladorProducto.seleccionarProducto(dmp.barCode);
         
         textNombre.setText(datos.get(0));
         textMarca.setText(datos.get(1));
@@ -262,7 +262,7 @@ public class PanelModificarProducto extends javax.swing.JPanel {
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            String ok = FunProducto.modificarProducto(dmp.getFramePrincipal().getSistema(), dmp.barCode, textNombre.getText(), textMarca.getText(), textBarCode.getText(), textPrecio.getText(), textDescripcion.getText());
+            String ok = dmp.controladorProducto.modificarProducto(dmp.barCode, textNombre.getText(), textMarca.getText(), textBarCode.getText(), textPrecio.getText(), textDescripcion.getText());
             if(ok != null){
                 labelError.setText(ok);
             }else{

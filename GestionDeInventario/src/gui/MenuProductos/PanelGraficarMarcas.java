@@ -1,7 +1,6 @@
 
 package gui.MenuProductos;
 
-import FunGenerales.FunProducto;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import java.awt.BorderLayout;
@@ -9,7 +8,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jfree.chart.ChartFactory;
@@ -44,10 +42,9 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
     }
     
     private DefaultCategoryDataset marcasCantidad(){
-        List<String> marcas = new ArrayList<>();
-        List<Integer> cantidades = new ArrayList<>();
+        List<String> marcas = dmp.controladorProducto.listarMarcas();
+        List<Integer> cantidades = dmp.controladorProducto.cantidadProductosMarca();
         
-        FunProducto.listarMarcasCantidadesProducto(dmp.getFramePrincipal().getSistema(), marcas, cantidades);
         cantidadMarcas = (double)marcas.size();
         
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
@@ -96,7 +93,7 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
         //Barras
         BarRenderer barras = (BarRenderer) plot.getRenderer();
         
-        barras.setSeriesPaint(0, Color.decode(Colores.TEXTO_ERROR.getColor(dmp.getFramePrincipal().modo)));
+        barras.setSeriesPaint(0, Color.decode(Colores.GRAFICO_BARRAS.getColor(dmp.getFramePrincipal().modo)));
         barras.setBarPainter(new StandardBarPainter());
         barras.setDrawBarOutline(false);
         

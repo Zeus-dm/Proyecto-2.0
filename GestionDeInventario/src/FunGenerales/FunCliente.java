@@ -11,9 +11,14 @@ import java.util.ArrayList;
 import jdbc.JdbcCliente;
 
 public class FunCliente {
+    private final Sistema sistema;
+
+    public FunCliente(Sistema sistema) {
+        this.sistema = sistema;
+    }
+    
     /**
      * Esta funcion crea un cliente y  luego  lo inserta en la base de datos, para luego recargar la lista de clientes de sistema
-     * @param sistema Actualizamos su lista de clientes
      * @param nombre Nombre del cliente
      * @param edad Edad del cliente
      * @param direccion Direccion del cliente
@@ -22,7 +27,7 @@ public class FunCliente {
      * @return Retornamos un String de algun error o null en caso de que todo este correcto
      * @throws SQLException 
      */
-    public static String agregarCliente(Sistema sistema, String nombre, String edad, String direccion, String telefono, String email) throws SQLException {
+    public String agregarCliente(String nombre, String edad, String direccion, String telefono, String email) throws SQLException {
         Cliente cliente = new Cliente();
         try {
             cliente.setNombre(nombre);
@@ -37,15 +42,17 @@ public class FunCliente {
         JdbcCliente jc = new JdbcCliente();
         jc.insert(cliente);
         
-        sistema.setClientes( listarClientes() );
+        int maxId = jc.ultimoId();
+        cliente.setIdCliente(maxId);
+        
+        sistema.agregarCliente(cliente);
         
         return null;
     }
     
     /**
      * Esta funcion modifica un cliente existente, obtiene los nuevos datos y lo actualiza en el sistema, y luego en la base de datos
-     * @param sistema Modificamos el cliente en la lista de clientes
-     * @param pos Posicion donde se encuentra el cliente en la lista de clientes
+     * @param idCliente ID del cliente
      * @param nombre Nuevo nombre del cliente
      * @param edad Nueva edad del cliente
      * @param direccion Nueva direccion del cliente
@@ -54,22 +61,21 @@ public class FunCliente {
      * @return Retornamos un String de algun error o null en caso de que todo este correcto
      * @throws SQLException 
      */
-    public static String modificarCliente(Sistema sistema, int pos, String nombre, String edad, String direccion, String telefono, String email) throws SQLException {
+    public String modificarCliente(int idCliente, String nombre, String edad, String direccion, String telefono, String email) throws SQLException {
         Cliente cliente = new Cliente();
-        
         try {
             cliente.setNombre(nombre);
             cliente.setEdad(edad);
             cliente.setDireccion(direccion);
             cliente.setTelefono(telefono);
             cliente.setEmail(email);
+            cliente.setIdCliente(idCliente);
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException | TextoEmailException e){
             return e.getMessage();
         }
-        sistema.modificarCliente(pos, cliente);
         
-        cliente = sistema.getClientes().get(pos);
-                
+        sistema.modificarCliente(idCliente, cliente);
+        
         JdbcCliente jc = new JdbcCliente();
         jc.update(cliente);
         
@@ -77,63 +83,59 @@ public class FunCliente {
     }
     
     /**
-     * Esta funcion elimina un cliente existente en la base de datos para luego eliminarlo de la lista del sistema
-     * @param sistema Eliminamos el cliente de la lista de clientes
-     * @param pos Posicion donde se encuentra el cliente en la lista de clientes
+     * Esta funcion elimina un cliente existente en la base de datos para luego eliminarlo de la lista del sistema 
+     * @param idCliente ID del cliente
      * @throws SQLException 
      */
-    public static void eliminarCliente(Sistema sistema, int pos) throws SQLException {
-        Cliente cliente = sistema.getClientes().get(pos);
+    public void eliminarCliente(int idCliente) throws SQLException {
+        Cliente cliente = sistema.obtenerCliente(idCliente);
 
         JdbcCliente jc = new JdbcCliente();
         jc.delete(cliente);
         
-        sistema.eliminarCliente(pos);
+        sistema.eliminarCliente(idCliente);
     }
     
     /**
-     * Esta funcion obtiene todos los clientes de la base de datos
-     * @return Retorna una lista de clientes
+     * Esta funcion obtiene todos los clientes de la base de datos y los carga al sistema
      * @throws SQLException 
      */
-    public static List<Cliente> listarClientes() throws SQLException {
-        List<Cliente> clientes = new ArrayList<>();
+    public void listarClientes() throws SQLException {
         JdbcCliente jc = new JdbcCliente();
         
         List<IGenerico> genericos = jc.select();
         
         genericos.forEach(generico -> {
-            clientes.add((Cliente)generico);
+            Cliente cliente = (Cliente)generico;
+            sistema.agregarCliente(cliente);
         });
-        
-        return clientes;
     }
     
     /**
-     * Esta funcion obtiene la lista de clientes del sistema, y la transforma en una lista de solo sus nombres
-     * @param sistema Obtenemos su lista de clientes
+     * Esta funcion obtiene la lista de los nombres de los clientes
      * @return Retorna una lista de String con los nombres de los clientes
      */
-    public static List<String> ListarNombresClientes(Sistema sistema){
-        List<String> nombreClientes = new ArrayList<>();
-        
-        sistema.getClientes().forEach(cliente -> {
-            nombreClientes.add(cliente.getNombre());
-        });
-        
-        return nombreClientes;
+    public List<String> nombresClientes(){
+        return sistema.nombresClientes();
+    }
+    
+    /**
+     * Esta funcion obtiene la lista de los ids de los clientes
+     * @return Retorna una lista de int con los ids de los clientes
+     */
+    public List<Integer> idsClientes(){
+        return sistema.idsClientes();
     }
     
     /**
      * Esta funcion obtiene el sistema y la posicion, y obtiene los datos del cliente en especifico
-     * @param sistema Obtenemos el cliente de la lista de clientes
-     * @param pos Posicion donde se encuentra el cliente en la lista del sistema
+     * @param idCliente ID del cliente
      * @return Retorna una lista de Strings con los datos del cliente en especifico
      */
-    public static List<String> seleccionarCliente(Sistema sistema, int pos) {
+    public List<String> seleccionarCliente(int idCliente){
         List<String> textos = new ArrayList<>();
         
-        Cliente cliente = sistema.getClientes().get(pos);
+        Cliente cliente = sistema.obtenerCliente(idCliente);
         
         textos.add(cliente.getNombre());
         textos.add(""+cliente.getEdad());

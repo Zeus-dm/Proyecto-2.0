@@ -1,7 +1,6 @@
 
 package gui.MenuProductos;
 
-import FunGenerales.FunProducto;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 
@@ -26,7 +25,7 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        List<String> datos = FunProducto.seleccionarProducto(dmp.getFramePrincipal().getSistema(), dmp.barCode);
+        List<String> datos = dmp.controladorProducto.seleccionarProducto(dmp.barCode);
         
         textNombre.setText(datos.get(0));
         ajustarTitulo();
@@ -37,15 +36,15 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         textStockTotal.setText(datos.get(4));
         textDescripcion.setText(datos.get(5));
         
-        //cargarSucursalesStock();
+        cargarSucursalesStock();
     }
-    /*
+    
     private void cargarSucursalesStock(){
         List<String> NombreSucursales = new ArrayList<>();
         List<Integer> StocksSucursales = new ArrayList<>();
         
         try {
-            FunProducto.listarNombresSucursalesStocksProducto(dmp.getFramePrincipal().getSistema(), dmp.barCode, NombreSucursales, StocksSucursales);
+            dmp.controladorProducto.listarSucursalStock(dmp.barCode, NombreSucursales, StocksSucursales);
         } catch (SQLException ex) {
             Logger.getLogger(PanelSeleccionarProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -74,7 +73,7 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
             tableSucursalesStock.getColumnModel().getColumn(1).setResizable(false);
             tableSucursalesStock.getColumnModel().getColumn(1).setPreferredWidth(62);
         }
-    }*/
+    }
     
     private void ajustarTitulo(){
         int tamano = 20;

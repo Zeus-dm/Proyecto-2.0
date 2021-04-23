@@ -1,6 +1,7 @@
 
 package gui.MenuProductos;
 
+import FunGenerales.FunProducto;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import gui.FramePrincipal;
@@ -11,22 +12,24 @@ import javax.swing.JPanel;
 
 public class DialogMenuProducto extends javax.swing.JDialog {
     private FramePrincipal fp = null;
-    public String barCode = null;
+    final FunProducto controladorProducto;
+    String barCode;
     
-    public DialogMenuProducto(java.awt.Frame parent, boolean modal, FramePrincipal fp, String barCode) {
+    public DialogMenuProducto(java.awt.Frame parent, boolean modal, FramePrincipal fp, int pos, String barCode) {
         super(parent, modal);
         this.fp = fp;
+        controladorProducto = new FunProducto(this.fp.getSistema());
         this.barCode = barCode;
         
         initComponents();
         
-        iniciarFrame();
+        iniciarFrame(pos);
     }
     
-    private void iniciarFrame(){
+    private void iniciarFrame(int pos){
         setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
         
-        if(!(barCode.isEmpty())){
+        if(pos == 1){
             PanelSeleccionarProducto psp = new PanelSeleccionarProducto(this);
             cargarPanel(psp);
         }else{

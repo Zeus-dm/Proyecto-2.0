@@ -1,7 +1,6 @@
 
 package gui.MenuClientes;
 
-import FunGenerales.FunCliente;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 
@@ -23,7 +22,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
         iniciarDatos();
     }
     
-    private void iniciarDatos(){
+    private void iniciarDatos() {
         textNombre.setText("");
         textEdad.setText("");
         textDireccion.setText("");
@@ -237,7 +236,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            String ok = FunCliente.agregarCliente(dmc.getFramePrincipal().getSistema(), textNombre.getText(), textEdad.getText(), textDireccion.getText(), textTelefono.getText(), textEmail.getText());
+            String ok = dmc.controladorCliente.agregarCliente(textNombre.getText(), textEdad.getText(), textDireccion.getText(), textTelefono.getText(), textEmail.getText());
             if(ok != null){
                 labelError.setText(ok);
             }else{

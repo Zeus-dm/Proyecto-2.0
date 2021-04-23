@@ -64,6 +64,10 @@ public class Sucursal implements IGenerico{
         return productos;
     }
 
+    public void setIdSucursal(int idSucursal) {
+        this.idSucursal = idSucursal;
+    }
+
     public void setIdRegion(int idRegion) {
         this.idRegion = idRegion;
     }

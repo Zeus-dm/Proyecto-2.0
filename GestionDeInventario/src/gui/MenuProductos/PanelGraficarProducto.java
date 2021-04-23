@@ -36,28 +36,28 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        List<String> datos = FunProducto.seleccionarProducto(dmp.getFramePrincipal().getSistema(), dmp.barCode);
+        List<String> datos = dmp.controladorProducto.seleccionarProducto(dmp.barCode);
         
         textNombre.setText(datos.get(0));
         ajustarTitulo();
         
-        //cargarGrafico();
+        cargarGrafico();
     }
-    /*
+    
     private DefaultPieDataset cargarSucursalesStock(){
-        List<String> NombreSucursales = new ArrayList<>();
-        List<Integer> StocksSucursales = new ArrayList<>();
+        List<String> nombreSucursales = new ArrayList<>();
+        List<Integer> stocksSucursales = new ArrayList<>();
         
         try {
-            FunProducto.listarNombresSucursalesStocksProducto(dmp.getFramePrincipal().getSistema(), dmp.barCode, NombreSucursales, StocksSucursales);
+            dmp.controladorProducto.listarSucursalStock(dmp.barCode, nombreSucursales, stocksSucursales);
         } catch (SQLException ex) {
             Logger.getLogger(PanelGraficarProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         DefaultPieDataset datos = new DefaultPieDataset();
         
-        for (int i = 0; i < NombreSucursales.size(); i++) {
-            datos.setValue(NombreSucursales.get(i), StocksSucursales.get(i));
+        for (int i = 0; i < nombreSucursales.size(); i++) {
+            datos.setValue(nombreSucursales.get(i), stocksSucursales.get(i));
         }
         
         return datos;
@@ -107,7 +107,7 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
         jPanelGrafico.add(graficoPanel, BorderLayout.CENTER);
         
         jPanelGrafico.revalidate();
-    }*/
+    }
     
     private void ajustarTitulo(){
         int tamano = 20;
@@ -206,7 +206,6 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
         PanelSeleccionarProducto psp = new PanelSeleccionarProducto(dmp);
         dmp.cargarPanel(psp);
     }//GEN-LAST:event_buttonAtrasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAtras;

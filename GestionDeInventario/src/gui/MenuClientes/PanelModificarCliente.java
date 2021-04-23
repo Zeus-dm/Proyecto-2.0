@@ -25,7 +25,7 @@ public class PanelModificarCliente extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        List<String> datos = FunCliente.seleccionarCliente(dmc.getFramePrincipal().getSistema(), dmc.posicion);
+        List<String> datos = dmc.controladorCliente.seleccionarCliente(dmc.idCliente);
         
         textNombre.setText(datos.get(0));
         textEdad.setText(datos.get(1));
@@ -240,7 +240,7 @@ public class PanelModificarCliente extends javax.swing.JPanel {
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            String ok = FunCliente.modificarCliente(dmc.getFramePrincipal().getSistema(), dmc.posicion, textNombre.getText(), textEdad.getText(), textDireccion.getText(), textTelefono.getText(), textEmail.getText());
+            String ok = dmc.controladorCliente.modificarCliente(dmc.idCliente, textNombre.getText(), textEdad.getText(), textDireccion.getText(), textTelefono.getText(), textEmail.getText());
             if(ok != null){
                 labelError.setText(ok);
             }else{

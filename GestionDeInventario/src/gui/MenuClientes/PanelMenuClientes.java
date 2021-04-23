@@ -12,9 +12,11 @@ import java.util.List;
 
 public class PanelMenuClientes extends javax.swing.JPanel {
     private FramePrincipal fp = null;
+    private final FunCliente controladorCliente;
     
     public PanelMenuClientes(FramePrincipal fp) {
         this.fp = fp;
+        controladorCliente = new FunCliente(this.fp.getSistema());
         
         initComponents();
         
@@ -22,7 +24,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        cargarClientes(FunCliente.ListarNombresClientes(fp.getSistema()));
+        cargarClientes(controladorCliente.nombresClientes());
         
         switch (fp.imagen) {
             case 0 ->
@@ -215,7 +217,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
         DialogMenuCliente dmc = new DialogMenuCliente(new javax.swing.JFrame(), true, fp, 1, -1);
         dmc.setVisible(true);
         
-        cargarClientes(FunCliente.ListarNombresClientes(fp.getSistema()));
+        cargarClientes(controladorCliente.nombresClientes());
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
@@ -224,19 +226,19 @@ public class PanelMenuClientes extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void tableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableClientesMouseClicked
+        List<Integer> idsClientes = controladorCliente.idsClientes();
         int pos = tableClientes.getSelectedRow();
         
-        DialogMenuCliente dmc = new DialogMenuCliente(new javax.swing.JFrame(), true, fp, 2, pos);
+        DialogMenuCliente dmc = new DialogMenuCliente(new javax.swing.JFrame(), true, fp, 2, idsClientes.get(pos));
         dmc.setVisible(true);
-        
-        cargarClientes(FunCliente.ListarNombresClientes(fp.getSistema()));
+       
+        cargarClientes(controladorCliente.nombresClientes());
     }//GEN-LAST:event_tableClientesMouseClicked
 
     private void labelImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelImagenMouseClicked
         PanelMenuPrincipal pmp = new PanelMenuPrincipal(fp);
         fp.cargarPanel(pmp);
     }//GEN-LAST:event_labelImagenMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAgregar;

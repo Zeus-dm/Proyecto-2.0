@@ -1,6 +1,7 @@
 
 package gui.MenuSucursales;
 
+import FunGenerales.FunSucursal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import gui.FramePrincipal;
@@ -11,12 +12,12 @@ import javax.swing.JPanel;
 
 public class DialogMenuSucursal extends javax.swing.JDialog {
     private FramePrincipal fp = null;
-    public int posRegion = -1;
+    final FunSucursal controladorSucursal;
     
-    public DialogMenuSucursal(java.awt.Frame parent, boolean modal, FramePrincipal fp, int id, int posRegion) {
+    public DialogMenuSucursal(java.awt.Frame parent, boolean modal, FramePrincipal fp, int id, String nombreRegion) {
         super(parent, modal);
         this.fp = fp;
-        this.posRegion = posRegion;
+        controladorSucursal = new FunSucursal(this.fp.getSistema().obtenerRegion(nombreRegion));
         
         initComponents();
         

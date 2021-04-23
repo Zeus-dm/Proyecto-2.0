@@ -13,6 +13,8 @@ public enum Colores {
     TEXTO_BOTON("#FFFFFF","#000000"),
     
     BORDE("#EFB810","#1CBAA4"),
+    
+    GRAFICO_BARRAS("#F44336","#9C27B0"),
         
     ICONO_MODO("/gui/imagenes/iconos/luna_blanca_32.png","/gui/imagenes/iconos/sol_negro_32.png"),
     ICONO_SONIDO("/gui/imagenes/iconos/sonido_blanco_32.png","/gui/imagenes/iconos/sonido_negro_32.png"),

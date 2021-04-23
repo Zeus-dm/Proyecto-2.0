@@ -1,6 +1,7 @@
 
 package gui.MenuClientes;
 
+import FunGenerales.FunCliente;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import gui.FramePrincipal;
@@ -11,22 +12,24 @@ import javax.swing.JPanel;
 
 public class DialogMenuCliente extends javax.swing.JDialog {
     private FramePrincipal fp = null;
-    public int posicion = -1;
+    final FunCliente controladorCliente;
+    int idCliente;
     
-    public DialogMenuCliente(java.awt.Frame parent, boolean modal, FramePrincipal fp, int id, int posicion) {
+    public DialogMenuCliente(java.awt.Frame parent, boolean modal, FramePrincipal fp, int opc, int idCliente) {
         super(parent, modal);
         this.fp = fp;
-        this.posicion = posicion;
+        controladorCliente = new FunCliente(this.fp.getSistema());
+        this.idCliente = idCliente;
         
         initComponents();
         
-        iniciarFrame(id);
+        iniciarFrame(opc);
     }
     
-    private void iniciarFrame(int id){
+    private void iniciarFrame(int opc){
         setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
         
-        if(id == 1){
+        if(opc == 1){
             PanelCrearCliente pcc = new PanelCrearCliente(this);
             cargarPanel(pcc);
         }else{

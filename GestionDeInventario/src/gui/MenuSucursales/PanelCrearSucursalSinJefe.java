@@ -5,12 +5,8 @@ import enumeraciones.Colores;
 import enumeraciones.Texto;
 
 import java.awt.Color;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static javax.swing.JComponent.TOOL_TIP_TEXT_KEY;
 
 public class PanelCrearSucursalSinJefe extends javax.swing.JPanel {
     private DialogMenuSucursal dms = null;

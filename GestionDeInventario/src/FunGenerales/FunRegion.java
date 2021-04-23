@@ -9,6 +9,8 @@ import enumeraciones.TextoErrores;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jdbc.JdbcRegion;
 
 public class FunRegion {
@@ -86,9 +88,15 @@ public class FunRegion {
      */
     public void eliminarRegion(String nombre) throws SQLException {
         Region region = sistema.obtenerRegion(nombre);
-        //Falta el aliminar sucursales de la region en especifico
         
-        //Termina de eliminar Regiones
+        //Eliminar sucursales de la region en especifico
+        FunSucursal controladorSucursal = new FunSucursal(region);
+        List<String> nombresSucursales = region.nombresSucursales();
+        for (int i = 0; i < nombresSucursales.size(); i++) {
+            controladorSucursal.eliminarSucursal(nombresSucursales.get(i));
+        }
+        //Termina de eliminar las Sucursales
+        
         JdbcRegion jr = new JdbcRegion();
         jr.delete(region);
         
@@ -106,6 +114,14 @@ public class FunRegion {
         
         genericos.forEach(generico -> {
             Region region = (Region)generico;
+            //agrega las sucursales de la region
+            try {
+                FunSucursal controladorSucursal = new FunSucursal(region);
+                controladorSucursal.listarSucursales();
+            } catch (SQLException ex) {
+                Logger.getLogger(FunRegion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            //termina de agregar las sucursales
             sistema.agregarRegion(region);
         });
     }

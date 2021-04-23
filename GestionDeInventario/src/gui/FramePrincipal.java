@@ -44,14 +44,12 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void iniciarPrograma() throws SQLException {
         FunRegion controladorRegion = new FunRegion(sistema);
         controladorRegion.listarRegiones();
+
+        FunCliente controladorCliente = new FunCliente(sistema);
+        controladorCliente.listarClientes();
         
-        
-        /*for (int i = 0; i < sistema.getRegiones().size(); i++) {
-            sistema.getRegiones().get(i).setSucursales(FunSucursal.listarSucursales(sistema.getRegiones().get(i).getIdRegion()));
-        }*/
-        
-        sistema.setClientes(FunCliente.listarClientes());
-        sistema.setProductos(FunProducto.listarProductos());
+        FunProducto controladorProducto = new FunProducto(sistema);
+        controladorProducto.listarProductos();
         
         PanelMenuPrincipal pmp = new PanelMenuPrincipal(this);
         cargarPanel(pmp);

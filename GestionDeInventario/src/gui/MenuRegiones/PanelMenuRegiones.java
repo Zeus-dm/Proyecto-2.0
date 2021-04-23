@@ -254,7 +254,11 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void tableRegionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRegionesMouseClicked
-
+        List<String> nombresRegion = controladorRegion.nombresRegiones();
+        int pos = tableRegiones.getSelectedRow();
+        
+        PanelMenuSucursales pms = new PanelMenuSucursales(fp, nombresRegion.get(pos));
+        fp.cargarPanel(pms);
     }//GEN-LAST:event_tableRegionesMouseClicked
 
     private void labelImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelImagenMouseClicked

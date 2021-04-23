@@ -8,15 +8,15 @@ import enumeraciones.Colores;
 import enumeraciones.Texto;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PanelMenuProductos extends javax.swing.JPanel {
     private FramePrincipal fp = null;
-    private final List<String> barCodesFiltrados = new ArrayList<>();
+    private final FunProducto controladorProducto;
     
     public PanelMenuProductos(FramePrincipal fp) {
         this.fp = fp;
+        controladorProducto = new FunProducto(this.fp.getSistema());
         
         initComponents();
         
@@ -24,7 +24,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        cargarProductos(FunProducto.listarNombresTodosProductos(fp.getSistema(), barCodesFiltrados));
+        cargarProductos(controladorProducto.todosProductos());
         labelError.setText("");
         
         switch (fp.imagen) {
@@ -324,37 +324,30 @@ public class PanelMenuProductos extends javax.swing.JPanel {
     }//GEN-LAST:event_labelImagenMouseClicked
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
-        String ok = FunProducto.verificarMinMax(textMin.getText(), textMax.getText());
+        String ok = controladorProducto.verificarMinMax(textMin.getText(), textMax.getText());
         if(ok != null){
             labelError.setText(ok);
         }else{
             labelError.setText("");
             int min = Integer.parseInt(textMin.getText());
             int max = Integer.parseInt(textMax.getText());
-            cargarProductos( FunProducto.listarProductos(fp.getSistema(), min, max, textBuscar.getText(), barCodesFiltrados) ); //para que al seleccionar saber que filtraba en ese momento
+            
+            cargarProductos(controladorProducto.filtrarProductos(min, max, textBuscar.getText()));
         }
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void tableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductosMouseClicked
+        List<String> barCodesProductos = controladorProducto.todosBarCodes();
         int pos = tableProductos.getSelectedRow();
         
-        DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, barCodesFiltrados.get(pos));
+        DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, 1, barCodesProductos.get(pos));
         dmp.setVisible(true);
 
-        String ok = FunProducto.verificarMinMax(textMin.getText(), textMax.getText());
-        if(ok != null){
-            labelError.setText(ok);
-            cargarProductos( FunProducto.listarNombresTodosProductos(fp.getSistema(), barCodesFiltrados) );
-        }else{
-            labelError.setText("");
-            int min = Integer.parseInt(textMin.getText());
-            int max = Integer.parseInt(textMax.getText());
-            cargarProductos( FunProducto.listarProductos(fp.getSistema(), min, max, textBuscar.getText(), barCodesFiltrados) ); //para que al seleccionar saber que filtraba en ese momento
-        }
+        cargarProductos(controladorProducto.productosFiltrados());
     }//GEN-LAST:event_tableProductosMouseClicked
 
     private void buttonGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGraficarActionPerformed
-        DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, "");
+        DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, 2, null);
         dmp.setVisible(true);
     }//GEN-LAST:event_buttonGraficarActionPerformed
 

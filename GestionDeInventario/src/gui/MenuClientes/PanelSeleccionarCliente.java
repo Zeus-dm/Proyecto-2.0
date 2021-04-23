@@ -1,7 +1,6 @@
 
 package gui.MenuClientes;
 
-import FunGenerales.FunCliente;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 
@@ -26,7 +25,7 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        List<String> datos = FunCliente.seleccionarCliente(dmc.getFramePrincipal().getSistema(), dmc.posicion);
+        List<String> datos = dmc.controladorCliente.seleccionarCliente(dmc.idCliente);
         
         textNombre.setText(datos.get(0));
         ajustarTitulo();
@@ -354,7 +353,7 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
 //Botones Confirmacion
     private void buttonAceptarConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarConfirmacionActionPerformed
         try {
-            FunCliente.eliminarCliente(dmc.getFramePrincipal().getSistema(), dmc.posicion);
+            dmc.controladorCliente.eliminarCliente(dmc.idCliente);
             DialogConfirmacion.setVisible(false);
             dmc.setVisible(false);
         } catch (SQLException ex) {

@@ -1,43 +1,26 @@
 
 package domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Sistema {
     private final CollectionRegiones regiones;
-    private List<Cliente> clientes = null;
-    private Map<String,Producto> productos = null;
+    private final CollectionClientes clientes;
+    private final CollectionProductos productos;
     private Usuario usuario = null;
 
     public Sistema() {
         regiones = new CollectionRegiones();
+        clientes = new CollectionClientes();
+        productos = new CollectionProductos();
     }
     
     //GETTERS
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-
-    public Map<String, Producto> getProductos() {
-        return productos;
-    }
-
     public Usuario getUsuario() {
         return usuario;
     }
     
     //SETTERS
-    public void setClientes(List<Cliente> clientes) {
-        this.clientes = clientes;
-    }
-
-    public void setProductos(Map<String, Producto> productos) {
-        this.productos = productos;
-    }
-
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -52,109 +35,82 @@ public class Sistema {
     }
     
     //METODOS CLIENTES
-    public void eliminarCliente(int pos){
-        clientes.remove(pos);
+    public Cliente obtenerCliente(int idCliente){
+        return clientes.obtenerCliente(idCliente);
     }
     
-    public void modificarCliente(int pos, Cliente cliente){
-        Cliente preCliente = clientes.get(pos);
-        
-        preCliente.setNombre(cliente.getNombre());
-        preCliente.setEdad(cliente.getEdad());
-        preCliente.setDireccion(cliente.getDireccion());
-        preCliente.setTelefono(cliente.getTelefono());
-        preCliente.setEmail(cliente.getEmail());
+    public void agregarCliente(Cliente cliente){
+        clientes.agregarCliente(cliente);
+    }
+    
+    public void eliminarCliente(int idCliente){
+        clientes.eliminarCliente(idCliente);
+    }
+    
+    public void modificarCliente(int idCliente, Cliente nuevoCliente){
+        clientes.modificarCliente(idCliente, nuevoCliente);
+    }
+    
+    public List<String> nombresClientes(){
+        return clientes.obtenerNombres();
+    }
+    
+    public List<Integer> idsClientes(){
+        return clientes.obtenerIds();
     }
     
     //METODOS PRODUCTOS
-    public Map<String, Producto> filtrarProductosPrecio(int min, int max){
-        Map<String,Producto> productosFiltrados = new HashMap<>();
-        
-        for(Producto producto : productos.values()) {
-            if( (producto.getPrecio() >= min) && (producto.getPrecio() <= max) ){
-                productosFiltrados.put(producto.getBarCode(), producto);
-            }
-        }
-        return productosFiltrados;
+    public boolean verificarExistenciaProducto(String barCode){
+        return productos.verificarExistencia(barCode);
     }
     
-    public Map<String, Producto> filtrarProductosNombre(String textoBuscar){
-        Map<String,Producto> productosFiltrados = new HashMap<>();
-        
-        for(Producto producto : productos.values()) {
-            if(producto.getNombre().toLowerCase().contains(textoBuscar.toLowerCase())){
-                productosFiltrados.put(producto.getBarCode(), producto);
-            }
-        }
-        return productosFiltrados;
+    public Producto obtenerProducto(String barCode){
+        return productos.obtenerProducto(barCode);
     }
     
-    public Map<String, Producto> filtrarProductosPrecioNombre(int min, int max, String textoBuscar){
-        Map<String,Producto> productosFiltrados = new HashMap<>();
-        
-        for(Producto producto : productos.values()) {
-            if( (producto.getPrecio() >= min) && (producto.getPrecio() <= max) && (producto.getNombre().toLowerCase().contains(textoBuscar.toLowerCase())) ){
-                productosFiltrados.put(producto.getBarCode(), producto);
-            }
+    public void agregarProducto(Producto producto){
+        productos.agregarProducto(producto);
+    }
+    
+    public void eliminarProducto(String barCode){
+        productos.eliminarProducto(barCode);
+    }
+    
+    public void modificarProducto(String preBarCode, Producto nuevoProducto){
+        productos.modificarProducto(preBarCode, nuevoProducto);
+    }
+    
+    public List<String> todosProductos(){
+        return productos.todosProductos();
+    }
+    
+    public List<String> todosBarCodes(){
+        return productos.todosBarCodes();
+    }
+    
+    public List<String> productosFiltrados(){
+        return productos.productosFiltrados();
+    }
+
+    public List<String> filtrarProductos(int min, int max, String textoBuscar){
+        if( (min == 0) && (max == 0) && (textoBuscar.isEmpty()) ){
+            return productos.todosProductos();
+        }else if( (min == 0) && (max == 0) && !(textoBuscar.isEmpty()) ){
+            return productos.filtrarProductos(textoBuscar);
+        }else if( (min >= 0) && (max >= 0) && (textoBuscar.isEmpty()) ){
+            return productos.filtrarProductos(min, max);
+        }else if( (min >= 0) && (max >= 0) && !(textoBuscar.isEmpty()) ){
+            return productos.filtrarProductos(min, max, textoBuscar);
         }
-        return productosFiltrados;
+        return productos.todosProductos();
     }
     
     public List<String> marcasProductos(){
-        List<String> listaMarcas = new ArrayList<>();
-        boolean flag;
-        
-        for (Producto producto : productos.values()) {
-            flag = true;
-            for (String marca : listaMarcas) {
-                if(marca.equals(producto.getMarca())){
-                    flag = false;
-                    break;
-                }
-            }
-            if(flag){
-                listaMarcas.add(producto.getMarca());
-            }
-        }
-        
-        return listaMarcas;
+        return productos.todasMarcas();
     }
     
-    public List<Integer> cantidadProductosMarca(List<String> marcas){
-        List<Integer> cantidadProductos = new ArrayList<>();
-        int cont;
-        
-        for (String marca : marcas) {
-            cont = 0;
-            for (Producto producto : productos.values()) {
-                if(marca.equals(producto.getMarca())){
-                    cont++;
-                }
-            }
-            cantidadProductos.add(cont);
-        }
-        
-        return cantidadProductos;
-    }
-    
-    public boolean verificarExistenciaProducto(String barCode){
-        Producto producto = productos.get(barCode);
-        return producto != null;
-    }
-    
-    public void modificarProducto(String preBarCode, Producto producto){
-        Producto preProducto = productos.get(preBarCode);
-        
-        preProducto.setNombre(producto.getNombre());
-        preProducto.setMarca(producto.getMarca());
-        preProducto.setBarCode(producto.getBarCode());
-        preProducto.setPrecio(producto.getPrecio());
-        preProducto.setDescripcion(producto.getDescripcion());
-        
-        if(!(preBarCode.equals(producto.getBarCode()))){
-            productos.remove(preBarCode);
-            productos.put(preProducto.getBarCode(), preProducto);
-        }
+    public List<Integer> cantidadProductosMarca(){
+        return productos.cantidadProductosMarca();
     }
     
     //METODOS REGIONES
