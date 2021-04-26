@@ -1,7 +1,6 @@
 
 package gui.MenuProductos;
 
-import FunGenerales.FunProducto;
 import enumeraciones.Colores;
 import java.awt.BorderLayout;
 
@@ -28,9 +27,12 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
     public PanelGraficarProducto(DialogMenuProducto dmp) {
         this.dmp = dmp;
         
+        int tamX = dmp.getSize().width - 478;
+        int tamY = dmp.getSize().height - 420;
+        
         initComponents();
-        this.dmp.setSize(492, 458);
-        this.dmp.setLocationRelativeTo(this.dmp.getFramePrincipal());
+        this.dmp.setSize(478, 420);
+        this.dmp.setLocation(dmp.getLocation().x + (tamX/2), dmp.getLocation().y + (tamY/2));
         
         iniciarDatos();
     }
@@ -132,6 +134,8 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
         buttonAtras = new javax.swing.JButton();
         jPanelGrafico = new javax.swing.JPanel();
 
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmp.getFramePrincipal().modo))));
+
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmp.getFramePrincipal().modo)));
 
         textNombre.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
@@ -187,7 +191,7 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
                     .addComponent(buttonAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanelGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

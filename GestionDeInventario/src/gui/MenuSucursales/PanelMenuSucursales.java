@@ -252,7 +252,14 @@ public class PanelMenuSucursales extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void tableSucursalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSucursalesMouseClicked
+        List<String> nombresSucursales = controladorSucursal.nombresSucursales();
+        int pos = tableSucursales.getSelectedRow();
+        
+        DialogMenuSucursal dms = new DialogMenuSucursal(new javax.swing.JFrame(), true, fp, 3, controladorSucursal.nombreRegion(), nombresSucursales.get(pos));
+        dms.setLocationRelativeTo(fp);
+        dms.setVisible(true);
        
+        cargarSucursales(controladorSucursal.nombresSucursales());
     }//GEN-LAST:event_tableSucursalesMouseClicked
 
     private void labelImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelImagenMouseClicked
@@ -261,15 +268,19 @@ public class PanelMenuSucursales extends javax.swing.JPanel {
     }//GEN-LAST:event_labelImagenMouseClicked
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
-        DialogMenuSucursal dms = new DialogMenuSucursal(new javax.swing.JFrame(), true, fp, 1, controladorSucursal.nombreRegion());
+        DialogMenuSucursal dms = new DialogMenuSucursal(new javax.swing.JFrame(), true, fp, 1, controladorSucursal.nombreRegion(), null);
+        dms.setLocationRelativeTo(fp);
         dms.setVisible(true);
         
         cargarSucursales(controladorSucursal.nombresSucursales());
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
-        /*DialogMenuSucursal dms = new DialogMenuSucursal(new javax.swing.JFrame(), true, fp, 2, posRegion);
-        dms.setVisible(true);*/
+        DialogMenuSucursal dms = new DialogMenuSucursal(new javax.swing.JFrame(), true, fp, 2, controladorSucursal.nombreRegion(), null);
+        dms.setLocationRelativeTo(fp);
+        dms.setVisible(true);
+        
+        cargarSucursales(controladorSucursal.nombresSucursales());
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

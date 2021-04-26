@@ -1,4 +1,3 @@
-
 package gui.MenuClientes;
 
 import enumeraciones.Colores;
@@ -9,24 +8,27 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 
 public class PanelSeleccionarCliente extends javax.swing.JPanel {
+
     DialogMenuCliente dmc = null;
-    
+
     public PanelSeleccionarCliente(DialogMenuCliente dmc) {
         this.dmc = dmc;
-        
+
+        int tamX = dmc.getSize().width - 437;
+        int tamY = dmc.getSize().height - 212;
+
         initComponents();
-        this.dmc.setSize(450, 248);
-        this.dmc.setLocationRelativeTo(this.dmc.getFramePrincipal());
-        
+        this.dmc.setSize(437, 212);
+        this.dmc.setLocation(dmc.getLocation().x + (tamX / 2), dmc.getLocation().y + (tamY / 2));
+
         iniciarDatos();
     }
-    
-    private void iniciarDatos(){
+
+    private void iniciarDatos() {
         List<String> datos = dmc.controladorCliente.seleccionarCliente(dmc.idCliente);
-        
+
         textNombre.setText(datos.get(0));
         ajustarTitulo();
 
@@ -35,21 +37,21 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
         textTelefono.setText(datos.get(3));
         textEmail.setText(datos.get(4));
     }
-    
-    private void ajustarTitulo(){
+
+    private void ajustarTitulo() {
         int tamano = 20;
-        
+
         textNombre.setFont(new java.awt.Font("Segoe UI", 3, tamano));
-        while(true){
-            if(textNombre.getPreferredSize().width > 260){
+        while (true) {
+            if (textNombre.getPreferredSize().width > 260) {
                 textNombre.setFont(new java.awt.Font("Segoe UI", 3, tamano));
-            }else{
+            } else {
                 break;
             }
             tamano -= 1;
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,10 +78,12 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
         buttonVolver = new javax.swing.JButton();
 
         DialogConfirmacion.setTitle("Confirmacion");
-        DialogConfirmacion.setMinimumSize(new java.awt.Dimension(325, 175));
+        DialogConfirmacion.setMinimumSize(new java.awt.Dimension(310, 135));
         DialogConfirmacion.setModal(true);
+        DialogConfirmacion.setUndecorated(true);
 
         jPanelConfirmacion.setBackground(Color.decode(Colores.FONDO.getColor(dmc.getFramePrincipal().modo)));
+        jPanelConfirmacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmc.getFramePrincipal().modo))));
         jPanelConfirmacion.setPreferredSize(new java.awt.Dimension(310, 135));
 
         labelTituloConfirmacion.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -121,7 +125,7 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
             .addGroup(jPanelConfirmacionLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(buttonAceptarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(buttonCancelarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -134,7 +138,7 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
                 .addGroup(jPanelConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAceptarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCancelarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout DialogConfirmacionLayout = new javax.swing.GroupLayout(DialogConfirmacion.getContentPane());
@@ -145,13 +149,15 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
         );
         DialogConfirmacionLayout.setVerticalGroup(
             DialogConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmc.getFramePrincipal().modo))));
 
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmc.getFramePrincipal().modo)));
         jPanelFondo.setPreferredSize(new java.awt.Dimension(435, 208));
 
-        textNombre.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        textNombre.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
         textNombre.setForeground(Color.decode(Colores.TITULO.getColor(dmc.getFramePrincipal().modo)));
         textNombre.setText("(Nombre Cliente)");
 
@@ -329,14 +335,11 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
-        DialogConfirmacion.setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
         DialogConfirmacion.setLocationRelativeTo(dmc);
         DialogConfirmacion.setVisible(true);
     }//GEN-LAST:event_buttonEliminarActionPerformed
@@ -365,6 +368,7 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
         DialogConfirmacion.setVisible(false);
     }//GEN-LAST:event_buttonCancelarConfirmacionActionPerformed
 
+    int xx, xy;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog DialogConfirmacion;

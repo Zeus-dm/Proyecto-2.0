@@ -19,13 +19,15 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class PanelMenuPrincipal extends javax.swing.JPanel {
     private FramePrincipal fp = null;
+    private final FunUsuario controladorUsuario;
     
     public PanelMenuPrincipal(FramePrincipal fp) {
         this.fp = fp;
-
+        controladorUsuario = new FunUsuario(this.fp.getSistema());
+        
         initComponents();
         
-        if(!FunUsuario.existenciaUsuario(this.fp.getSistema())){
+        if(controladorUsuario.existenciaUsuario() == false){
             menuSesion();
         }
         
@@ -33,7 +35,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     }
 
     private void iniciarDatos() {
-        labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + FunUsuario.seleccionarNombreUsuario(fp.getSistema()));
+        labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + controladorUsuario.seleccionarNombreUsuario());
         
         if(fp.musica){ //cargar musica solo 1 vez y al iniciar el programa
             try {
@@ -73,7 +75,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         dms.setLocationRelativeTo(this);
         dms.setVisible(true);
         
-        if( !(FunUsuario.existenciaUsuario(fp.getSistema())) ){
+        if(controladorUsuario.existenciaUsuario() == false){
             System.exit(0);
         }
     }
@@ -389,9 +391,9 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_labelImagenMouseClicked
 
     private void buttonCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCerrarSesionActionPerformed
-        FunUsuario.eliminarUsuario(fp.getSistema());
+        controladorUsuario.eliminarUsuario();
         menuSesion();
-        labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + FunUsuario.seleccionarNombreUsuario(fp.getSistema()));
+        labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + controladorUsuario.seleccionarNombreUsuario());
     }//GEN-LAST:event_buttonCerrarSesionActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

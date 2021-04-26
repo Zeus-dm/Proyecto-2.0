@@ -161,7 +161,7 @@ public class PanelIniciarSesion extends javax.swing.JPanel {
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            String ok = FunUsuario.iniciarSesion(dms.getFramePrincipal().getSistema(), textUsuario.getText(), new String(textPassword.getPassword()) );
+            String ok = dms.controladorusuario.iniciarSesion(textUsuario.getText(), new String(textPassword.getPassword()) );
             if(ok != null){
                 labelError.setText(ok);
             }else{

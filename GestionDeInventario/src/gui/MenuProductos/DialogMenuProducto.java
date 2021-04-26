@@ -21,6 +21,7 @@ public class DialogMenuProducto extends javax.swing.JDialog {
         controladorProducto = new FunProducto(this.fp.getSistema());
         this.barCode = barCode;
         
+        setUndecorated(true);
         initComponents();
         
         iniciarFrame(pos);
@@ -60,6 +61,16 @@ public class DialogMenuProducto extends javax.swing.JDialog {
         setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
         setMinimumSize(new java.awt.Dimension(100, 100));
         setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanelPrincipal.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
         jPanelPrincipal.setPreferredSize(new java.awt.Dimension(350, 220));
@@ -78,6 +89,19 @@ public class DialogMenuProducto extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    int xx, xy;
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        setLocation(x-xx, y-xy);
+    }//GEN-LAST:event_formMouseDragged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanelPrincipal;

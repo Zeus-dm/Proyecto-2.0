@@ -268,6 +268,7 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
         DialogMenuRegion dmr = new DialogMenuRegion(new javax.swing.JFrame(), true, fp, 1);
+        dmr.setLocationRelativeTo(fp);
         dmr.setVisible(true);
         
         cargarRegiones(controladorRegion.nombresRegiones());
@@ -275,6 +276,7 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
         DialogMenuRegion dmr = new DialogMenuRegion(new javax.swing.JFrame(), true, fp, 2);
+        dmr.setLocationRelativeTo(fp);
         dmr.setVisible(true);
         
         cargarRegiones(controladorRegion.nombresRegiones());
@@ -282,6 +284,7 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed
         DialogMenuRegion dmr = new DialogMenuRegion(new javax.swing.JFrame(), true, fp, 3);
+        dmr.setLocationRelativeTo(fp);
         dmr.setVisible(true);
         
         cargarRegiones(controladorRegion.nombresRegiones());

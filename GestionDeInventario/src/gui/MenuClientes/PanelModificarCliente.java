@@ -1,7 +1,6 @@
 
 package gui.MenuClientes;
 
-import FunGenerales.FunCliente;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 
@@ -17,9 +16,12 @@ public class PanelModificarCliente extends javax.swing.JPanel {
     public PanelModificarCliente(DialogMenuCliente dmc) {
         this.dmc = dmc;
         
+        int tamX = dmc.getSize().width - 350;
+        int tamY = dmc.getSize().height - 346;
+        
         initComponents();
-        this.dmc.setSize(365, 384);
-        this.dmc.setLocationRelativeTo(this.dmc.getFramePrincipal());
+        this.dmc.setSize(350, 346);
+        this.dmc.setLocation(dmc.getLocation().x + (tamX/2), dmc.getLocation().y + (tamY/2));
         
         iniciarDatos();
     }
@@ -56,10 +58,12 @@ public class PanelModificarCliente extends javax.swing.JPanel {
         buttonAceptar = new javax.swing.JButton();
         buttonCancelar = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmc.getFramePrincipal().modo))));
+
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmc.getFramePrincipal().modo)));
         jPanelFondo.setPreferredSize(new java.awt.Dimension(350, 270));
 
-        labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
         labelTitulo.setForeground(Color.decode(Colores.TITULO.getColor(dmc.getFramePrincipal().modo)));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText(Texto.MODIFICAR_CLIENTE.getTexto());
@@ -223,18 +227,18 @@ public class PanelModificarCliente extends javax.swing.JPanel {
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelFondo, 348, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

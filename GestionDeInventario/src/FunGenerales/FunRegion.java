@@ -60,10 +60,12 @@ public class FunRegion {
      * @throws SQLException 
      */
     public String modificarRegion(String preNombre, String nombre) throws SQLException {
-        if(sistema.verificarExistenciaRegion(nombre)){
-            return TextoErrores.REGION_DUPLICADO.getTexto();
+        if(!(preNombre.equals(nombre))){
+            if(sistema.verificarExistenciaRegion(nombre)){
+                return TextoErrores.REGION_DUPLICADO.getTexto();
+            }
         }
-        
+                
         Region preRegion = sistema.obtenerRegion(preNombre);
         Region region = new Region();
         try {

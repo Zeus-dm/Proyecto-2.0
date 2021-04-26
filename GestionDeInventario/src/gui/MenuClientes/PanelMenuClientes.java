@@ -215,6 +215,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
         DialogMenuCliente dmc = new DialogMenuCliente(new javax.swing.JFrame(), true, fp, 1, -1);
+        dmc.setLocationRelativeTo(fp);
         dmc.setVisible(true);
         
         cargarClientes(controladorCliente.nombresClientes());
@@ -230,6 +231,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
         int pos = tableClientes.getSelectedRow();
         
         DialogMenuCliente dmc = new DialogMenuCliente(new javax.swing.JFrame(), true, fp, 2, idsClientes.get(pos));
+        dmc.setLocationRelativeTo(fp);
         dmc.setVisible(true);
        
         cargarClientes(controladorCliente.nombresClientes());

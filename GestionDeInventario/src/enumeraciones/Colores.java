@@ -9,7 +9,7 @@ public enum Colores {
     FONDO_TABLA("#5C5E5F","#E0E0E0"),
     TEXTO_ERROR("#F44336","#F44336"),
     
-    FONDO_BOTON("#4C5053","#E0E0E0"),
+    FONDO_BOTON("#5C5E5F","#E0E0E0"),
     TEXTO_BOTON("#FFFFFF","#000000"),
     
     BORDE("#EFB810","#1CBAA4"),
@@ -25,7 +25,10 @@ public enum Colores {
     ICONO_GRAFICO_BARRA("/gui/imagenes/iconos/grafico_blanco_32.png","/gui/imagenes/iconos/grafico_negro_32.png"),
     ICONO_ATRAS("/gui/imagenes/iconos/atras_blanco_32.png","/gui/imagenes/iconos/atras_negro_32.png"),
     
-    ICONO_AGREGAR_JEFE_SUCURSAL("/gui/imagenes/iconos/agregar_jefe_blanco_30.png","/gui/imagenes/iconos/agregar_jefe_negro_30.png");
+    ICONO_AGREGAR_JEFE_SUCURSAL("/gui/imagenes/iconos/agregar_jefe_blanco_32.png","/gui/imagenes/iconos/agregar_jefe_negro_32.png"),
+    ICONO_QUITAR_AGREGAR_JEFE_SUCURSAL("/gui/imagenes/iconos/quitar_agregar_jefe_blanco_32.png","/gui/imagenes/iconos/quitar_agregar_jefe_negro_32.png"),
+    ICONO_ELIMINAR_JEFE_SUCURSAL("/gui/imagenes/iconos/eliminar_jefe_blanco_32.png","/gui/imagenes/iconos/eliminar_jefe_negro_32.png"),
+    ICONO_MODIFICAR_JEFE_SUCURSAL("/gui/imagenes/iconos/modificar_jefe_blanco_32.png","/gui/imagenes/iconos/modificar_jefe_negro_32.png");
     
     private final String colorOscuro;
     private final String colorClaro;

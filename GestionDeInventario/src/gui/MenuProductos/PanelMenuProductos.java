@@ -341,6 +341,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         int pos = tableProductos.getSelectedRow();
         
         DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, 1, barCodesProductos.get(pos));
+        dmp.setLocationRelativeTo(fp);
         dmp.setVisible(true);
 
         cargarProductos(controladorProducto.productosFiltrados());
@@ -348,6 +349,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
 
     private void buttonGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGraficarActionPerformed
         DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, 2, null);
+        dmp.setLocationRelativeTo(fp);
         dmp.setVisible(true);
     }//GEN-LAST:event_buttonGraficarActionPerformed
 

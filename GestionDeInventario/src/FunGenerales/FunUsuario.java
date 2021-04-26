@@ -9,16 +9,21 @@ import java.sql.SQLException;
 import jdbc.JdbcUsuario;
 
 public class FunUsuario {
+    private final Sistema sistema;
+
+    public FunUsuario(Sistema sistema) {
+        this.sistema = sistema;
+    }
+    
     /**
      * Esta funcion crea un Usuario y lo inserta en la base de datos
-     * @param sistema Insertamos el usuario al programa
      * @param nombre Nombre de usuario
      * @param password Contraseña del usuario
      * @param verPassword Segunda contraseña para verificar
      * @return Retorna un String de algun error, o null si todo esta correcto
      * @throws SQLException 
      */
-    public static String agregarUsuario(Sistema sistema, String nombre, String password, String verPassword) throws SQLException{
+    public String agregarUsuario(String nombre, String password, String verPassword) throws SQLException{
         JdbcUsuario ju = new JdbcUsuario();
         Usuario usuario = ju.select(nombre);
         
@@ -45,13 +50,12 @@ public class FunUsuario {
     
     /**
      * Esta funcion verifica los datos e inicia sesion
-     * @param sistema Insertamos el usuario al programa
      * @param nombre Nombre de usuario
      * @param password Contraseña del usuario
      * @return Retorna un String de error o null en caso de estar correcto
      * @throws SQLException 
      */
-    public static String iniciarSesion(Sistema sistema, String nombre, String password) throws SQLException{
+    public String iniciarSesion(String nombre, String password) throws SQLException{
         JdbcUsuario ju = new JdbcUsuario();
         Usuario usuario = ju.select(nombre);
         
@@ -68,18 +72,17 @@ public class FunUsuario {
     
     /**
      * Esta funcion obtiene el nombre del usuario del sistema
-     * @param sistema Obtenemos el usuario del sistema
      * @return Retorna el usuario si existe, o de lo contrario retorna null 
      */
-    public static String seleccionarNombreUsuario(Sistema sistema) {
+    public String seleccionarNombreUsuario() {
         return sistema.getUsuario().getNombre();
     }
     
-    public static void eliminarUsuario(Sistema sistema){
+    public void eliminarUsuario(){
         sistema.eliminarUsuario();
     }
     
-    public static boolean existenciaUsuario(Sistema sistema){
+    public boolean existenciaUsuario(){
         return sistema.verificarExistenciaUsuario();
     }
 }

@@ -17,9 +17,12 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
     public PanelSeleccionarProducto(DialogMenuProducto dmp) {
         this.dmp = dmp;
         
+        int tamX = dmp.getSize().width - 478;
+        int tamY = dmp.getSize().height - 368;
+        
         initComponents();
-        this.dmp.setSize(492, 406);
-        this.dmp.setLocationRelativeTo(this.dmp.getFramePrincipal());
+        this.dmp.setSize(478, 368);
+        this.dmp.setLocation(dmp.getLocation().x + (tamX/2), dmp.getLocation().y + (tamY/2));
         
         iniciarDatos();
     }
@@ -111,6 +114,8 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         tableSucursalesStock = new javax.swing.JTable();
         buttonModificar = new javax.swing.JButton();
         buttonVolver = new javax.swing.JButton();
+
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmp.getFramePrincipal().modo))));
 
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmp.getFramePrincipal().modo)));
 
@@ -316,7 +321,7 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

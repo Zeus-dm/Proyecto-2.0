@@ -7,7 +7,6 @@ import enumeraciones.Texto;
 import gui.FramePrincipal;
 
 import java.awt.Color;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class DialogMenuCliente extends javax.swing.JDialog {
@@ -21,14 +20,13 @@ public class DialogMenuCliente extends javax.swing.JDialog {
         controladorCliente = new FunCliente(this.fp.getSistema());
         this.idCliente = idCliente;
         
+        setUndecorated(true);
         initComponents();
         
         iniciarFrame(opc);
     }
     
-    private void iniciarFrame(int opc){
-        setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
-        
+    private void iniciarFrame(int opc){        
         if(opc == 1){
             PanelCrearCliente pcc = new PanelCrearCliente(this);
             cargarPanel(pcc);
@@ -59,8 +57,17 @@ public class DialogMenuCliente extends javax.swing.JDialog {
         setTitle(Texto.TITULO.getTexto());
         setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
         setMinimumSize(new java.awt.Dimension(100, 100));
-        setPreferredSize(new java.awt.Dimension(350, 220));
         setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanelPrincipal.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
         jPanelPrincipal.setPreferredSize(new java.awt.Dimension(350, 220));
@@ -79,6 +86,19 @@ public class DialogMenuCliente extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    int xx, xy;
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        setLocation(x-xx, y-xy);
+    }//GEN-LAST:event_formMouseDragged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanelPrincipal;

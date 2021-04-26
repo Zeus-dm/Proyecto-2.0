@@ -31,7 +31,7 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
         this.dmp = dmp;
         
         initComponents();
-        this.dmp.setSize(485, 458);
+        this.dmp.setSize(472, 420);
         this.dmp.setLocationRelativeTo(this.dmp.getFramePrincipal());
         
         iniciarDatos();
@@ -133,6 +133,8 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
         jScrollPaneGrafico = new javax.swing.JScrollPane();
         jPanelGrafico = new javax.swing.JPanel();
 
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmp.getFramePrincipal().modo))));
+
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmp.getFramePrincipal().modo)));
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
@@ -193,7 +195,7 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
                     .addComponent(buttonAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPaneGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jScrollPaneGrafico.getAccessibleContext().setAccessibleName("");
