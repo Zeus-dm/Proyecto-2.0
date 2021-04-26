@@ -11,7 +11,7 @@ public class Sucursal implements IGenerico{
     private String nombre ;
     private String direccion ;
     private String telefono ;
-    private JefeSucursal jefeSucursal ;
+    private JefeSucursal jefeSucursal = null;
     private Map <String,Producto> productos ;
     
     public Sucursal() {       
@@ -64,6 +64,10 @@ public class Sucursal implements IGenerico{
         return productos;
     }
 
+    public void setIdSucursal(int idSucursal) {
+        this.idSucursal = idSucursal;
+    }
+
     public void setIdRegion(int idRegion) {
         this.idRegion = idRegion;
     }
@@ -109,7 +113,12 @@ public class Sucursal implements IGenerico{
     public void setProductos(Map<String, Producto> productos) {
         this.productos = productos;
     }
-
+    
+    //METODOS
+    public boolean verificarExistenciaJefe(){
+        return jefeSucursal != null;
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

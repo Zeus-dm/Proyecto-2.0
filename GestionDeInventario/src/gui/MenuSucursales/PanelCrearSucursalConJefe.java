@@ -1,7 +1,6 @@
 
 package gui.MenuSucursales;
 
-import FunGenerales.FunSucursal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 
@@ -19,8 +18,7 @@ public class PanelCrearSucursalConJefe extends javax.swing.JPanel {
         this.dms = dms;
         
         initComponents();
-        this.dms.setSize(365, 427);
-        this.dms.setLocationRelativeTo(this.dms.getFramePrincipal());
+        this.dms.setSize(350, 391);
         
         iniciarDatos(datos);
     }
@@ -59,10 +57,12 @@ public class PanelCrearSucursalConJefe extends javax.swing.JPanel {
         labelEdadJefe = new javax.swing.JLabel();
         textEdadJefe = new javax.swing.JTextField();
 
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dms.getFramePrincipal().modo))));
+
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dms.getFramePrincipal().modo)));
         jPanelFondo.setPreferredSize(new java.awt.Dimension(350, 270));
 
-        labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
         labelTitulo.setForeground(Color.decode(Colores.TITULO.getColor(dms.getFramePrincipal().modo)));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText(Texto.AGREGAR_SUCURSAL.getTexto());
@@ -109,18 +109,18 @@ public class PanelCrearSucursalConJefe extends javax.swing.JPanel {
         labelLineaSeparadora.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(dms.getFramePrincipal().modo))));
         labelLineaSeparadora.setPreferredSize(new java.awt.Dimension(290, 1));
 
-        labelJefeSucursal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelJefeSucursal.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         labelJefeSucursal.setForeground(Color.decode(Colores.TEXTO.getColor(dms.getFramePrincipal().modo)));
         labelJefeSucursal.setText(Texto.JEFE_SUCURSAL.getTexto());
-        labelJefeSucursal.setPreferredSize(new java.awt.Dimension(148, 30));
+        labelJefeSucursal.setPreferredSize(new java.awt.Dimension(148, 32));
 
         buttonQuitarAgregarJefe.setBackground(Color.decode(Colores.FONDO.getColor(dms.getFramePrincipal().modo)));
-        buttonQuitarAgregarJefe.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_AGREGAR_JEFE_SUCURSAL.getColor(dms.getFramePrincipal().modo))));
+        buttonQuitarAgregarJefe.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_QUITAR_AGREGAR_JEFE_SUCURSAL.getColor(dms.getFramePrincipal().modo))));
         buttonQuitarAgregarJefe.setToolTipText("Quitar Jefe de Sucursal");
         buttonQuitarAgregarJefe.setBorder(null);
         buttonQuitarAgregarJefe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonQuitarAgregarJefe.setFocusable(false);
-        buttonQuitarAgregarJefe.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonQuitarAgregarJefe.setPreferredSize(new java.awt.Dimension(32, 32));
         buttonQuitarAgregarJefe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonQuitarAgregarJefeActionPerformed(evt);
@@ -207,12 +207,12 @@ public class PanelCrearSucursalConJefe extends javax.swing.JPanel {
                             .addGap(18, 18, 18)
                             .addComponent(textDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanelFondoLayout.createSequentialGroup()
-                            .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanelFondoLayout.createSequentialGroup()
                                     .addComponent(labelTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(labelIdTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(labelJefeSucursal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(labelJefeSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanelFondoLayout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -263,31 +263,31 @@ public class PanelCrearSucursalConJefe extends javax.swing.JPanel {
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelFondo, 348, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            String ok = FunSucursal.agregarSucursal(dms.getFramePrincipal().getSistema(), dms.posRegion, textNombre.getText(), textDireccion.getText(), textTelefono.getText(), textNombreJefe.getText(), textEdadJefe.getText());
+            String ok = dms.controladorSucursal.agregarSucursal(textNombre.getText(), textDireccion.getText(), textTelefono.getText(), textNombreJefe.getText(), textEdadJefe.getText());
             if(ok != null){
                 labelError.setText(ok);
             }else{
                 dms.setVisible(false);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PanelCrearSucursalConJefe.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelCrearSucursalSinJefe.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buttonAceptarActionPerformed
 

@@ -1,7 +1,6 @@
 
 package gui.MenuRegiones;
 
-import FunGenerales.FunRegion;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 
@@ -19,14 +18,14 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
         this.dmr = dmr;
         
         initComponents();
-        this.dmr.setSize(365, 210);
+        this.dmr.setSize(350, 172);
         this.dmr.setLocationRelativeTo(this.dmr.getFramePrincipal());
         
         iniciarDatos();
     }
     
     private void iniciarDatos(){
-        ItemsComboRegiones(FunRegion.ListarNombresRegiones(dmr.getFramePrincipal().getSistema()));
+        ItemsComboRegiones(dmr.controladorRegion.nombresRegiones());
     }
     
     private void ItemsComboRegiones(List<String> regiones){
@@ -59,10 +58,12 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
         comboBoxListaRegiones = new javax.swing.JComboBox<>();
 
         DialogConfirmacion.setTitle("Confirmacion");
-        DialogConfirmacion.setMinimumSize(new java.awt.Dimension(325, 175));
+        DialogConfirmacion.setMinimumSize(new java.awt.Dimension(310, 135));
         DialogConfirmacion.setModal(true);
+        DialogConfirmacion.setUndecorated(true);
 
         jPanelConfirmacion.setBackground(Color.decode(Colores.FONDO.getColor(dmr.getFramePrincipal().modo)));
+        jPanelConfirmacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmr.getFramePrincipal().modo))));
         jPanelConfirmacion.setPreferredSize(new java.awt.Dimension(310, 135));
 
         labelTituloConfirmacion.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -104,7 +105,7 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
             .addGroup(jPanelConfirmacionLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(buttonAceptarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(buttonCancelarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -117,7 +118,7 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
                 .addGroup(jPanelConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAceptarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCancelarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout DialogConfirmacionLayout = new javax.swing.GroupLayout(DialogConfirmacion.getContentPane());
@@ -131,10 +132,12 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
             .addComponent(jPanelConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmr.getFramePrincipal().modo))));
+
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmr.getFramePrincipal().modo)));
         jPanelFondo.setPreferredSize(new java.awt.Dimension(350, 270));
 
-        labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
         labelTitulo.setForeground(Color.decode(Colores.TITULO.getColor(dmr.getFramePrincipal().modo)));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText(Texto.ELIMINAR_REGION.getTexto());
@@ -210,23 +213,22 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelFondo, 348, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
-        DialogConfirmacion.setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
         DialogConfirmacion.setLocationRelativeTo(dmr);
         DialogConfirmacion.setVisible(true);
     }//GEN-LAST:event_buttonAceptarActionPerformed
@@ -237,13 +239,16 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
 
 //Botones Confirmacion
     private void buttonAceptarConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarConfirmacionActionPerformed
-        if(FunRegion.ListarNombresRegiones(dmr.getFramePrincipal().getSistema()).isEmpty()){
+        List<String> nombresRegiones = dmr.controladorRegion.nombresRegiones();
+        if(nombresRegiones.isEmpty()){
             DialogConfirmacion.setVisible(false);
             dmr.setVisible(false);
+            return;
         }
         
         try {
-            FunRegion.eliminarRegion(dmr.getFramePrincipal().getSistema(), comboBoxListaRegiones.getSelectedIndex());
+            String nombre = (String)comboBoxListaRegiones.getSelectedItem();
+            dmr.controladorRegion.eliminarRegion(nombre);
             DialogConfirmacion.setVisible(false);
             dmr.setVisible(false);
         } catch (SQLException ex) {

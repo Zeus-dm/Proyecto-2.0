@@ -58,6 +58,10 @@ public class Cliente extends Persona implements IGenerico{
         return edad;
     }
 
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
     public void setDireccion(String direccion) {
         if(direccion == null || direccion.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.DIRECCION_VACIO.getTexto() );

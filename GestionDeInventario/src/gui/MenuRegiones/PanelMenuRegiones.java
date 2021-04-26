@@ -13,9 +13,11 @@ import java.util.List;
 
 public class PanelMenuRegiones extends javax.swing.JPanel {
     private FramePrincipal fp = null;
+    private final FunRegion controladorRegion;
     
     public PanelMenuRegiones(FramePrincipal fp) {
         this.fp = fp;
+        controladorRegion = new FunRegion(this.fp.getSistema());
         
         initComponents();
         
@@ -23,7 +25,7 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
     }
     
     private void iniciarDatos(){
-        cargarRegiones(FunRegion.ListarNombresRegiones(fp.getSistema()));
+        cargarRegiones(controladorRegion.nombresRegiones());
         
         switch (fp.imagen) {
             case 0 ->
@@ -252,9 +254,10 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void tableRegionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRegionesMouseClicked
+        List<String> nombresRegion = controladorRegion.nombresRegiones();
         int pos = tableRegiones.getSelectedRow();
         
-        PanelMenuSucursales pms = new PanelMenuSucursales(fp, pos);
+        PanelMenuSucursales pms = new PanelMenuSucursales(fp, nombresRegion.get(pos));
         fp.cargarPanel(pms);
     }//GEN-LAST:event_tableRegionesMouseClicked
 
@@ -265,23 +268,26 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
         DialogMenuRegion dmr = new DialogMenuRegion(new javax.swing.JFrame(), true, fp, 1);
+        dmr.setLocationRelativeTo(fp);
         dmr.setVisible(true);
         
-        cargarRegiones(FunRegion.ListarNombresRegiones(fp.getSistema()));
+        cargarRegiones(controladorRegion.nombresRegiones());
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
         DialogMenuRegion dmr = new DialogMenuRegion(new javax.swing.JFrame(), true, fp, 2);
+        dmr.setLocationRelativeTo(fp);
         dmr.setVisible(true);
         
-        cargarRegiones(FunRegion.ListarNombresRegiones(fp.getSistema()));
+        cargarRegiones(controladorRegion.nombresRegiones());
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed
         DialogMenuRegion dmr = new DialogMenuRegion(new javax.swing.JFrame(), true, fp, 3);
+        dmr.setLocationRelativeTo(fp);
         dmr.setVisible(true);
         
-        cargarRegiones(FunRegion.ListarNombresRegiones(fp.getSistema()));
+        cargarRegiones(controladorRegion.nombresRegiones());
     }//GEN-LAST:event_buttonModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,7 +1,6 @@
 
 package gui.MenuProductos;
 
-import FunGenerales.FunProducto;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import java.awt.BorderLayout;
@@ -9,7 +8,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jfree.chart.ChartFactory;
@@ -33,7 +31,7 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
         this.dmp = dmp;
         
         initComponents();
-        this.dmp.setSize(485, 458);
+        this.dmp.setSize(472, 420);
         this.dmp.setLocationRelativeTo(this.dmp.getFramePrincipal());
         
         iniciarDatos();
@@ -44,10 +42,9 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
     }
     
     private DefaultCategoryDataset marcasCantidad(){
-        List<String> marcas = new ArrayList<>();
-        List<Integer> cantidades = new ArrayList<>();
+        List<String> marcas = dmp.controladorProducto.listarMarcas();
+        List<Integer> cantidades = dmp.controladorProducto.cantidadProductosMarca();
         
-        FunProducto.listarMarcasCantidadesProducto(dmp.getFramePrincipal().getSistema(), marcas, cantidades);
         cantidadMarcas = (double)marcas.size();
         
         DefaultCategoryDataset datos = new DefaultCategoryDataset();
@@ -96,7 +93,7 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
         //Barras
         BarRenderer barras = (BarRenderer) plot.getRenderer();
         
-        barras.setSeriesPaint(0, Color.decode(Colores.TEXTO_ERROR.getColor(dmp.getFramePrincipal().modo)));
+        barras.setSeriesPaint(0, Color.decode(Colores.GRAFICO_BARRAS.getColor(dmp.getFramePrincipal().modo)));
         barras.setBarPainter(new StandardBarPainter());
         barras.setDrawBarOutline(false);
         
@@ -135,6 +132,8 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
         buttonAtras = new javax.swing.JButton();
         jScrollPaneGrafico = new javax.swing.JScrollPane();
         jPanelGrafico = new javax.swing.JPanel();
+
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmp.getFramePrincipal().modo))));
 
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmp.getFramePrincipal().modo)));
 
@@ -196,7 +195,7 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
                     .addComponent(buttonAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPaneGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jScrollPaneGrafico.getAccessibleContext().setAccessibleName("");

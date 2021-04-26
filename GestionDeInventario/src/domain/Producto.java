@@ -67,6 +67,10 @@ public class Producto implements IGenerico{
         return descripcion;
     }
 
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+    
     public void setNombre(String nombre) {
         if(nombre == null || nombre.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO.getTexto() );

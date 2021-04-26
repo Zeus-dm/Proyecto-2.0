@@ -15,6 +15,7 @@ public class JdbcRegion implements IGenericoInsert, IGenericoUpdate, IGenericoDe
     private static final String SQL_DELETE = "DELETE FROM gestion_inventario.region WHERE id_region = ?";
     private static final String SQL_SELECT = "SELECT * FROM gestion_inventario.region";
     private static final String SQL_ONE_SELECT = "SELECT * FROM gestion_inventario.region WHERE id_region = ?";
+    private static final String SQL_MAX_ID = "SELECT MAX(id_region) AS id_region FROM gestion_inventario.region";
 
     public JdbcRegion() {
     }
@@ -143,5 +144,31 @@ public class JdbcRegion implements IGenericoInsert, IGenericoUpdate, IGenericoDe
         }
         
         return listaRegiones;
+    }
+    
+    public Integer ultimoId() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        Integer maxId = null;
+        
+        try{
+            conn = this.userConn != null ? this.userConn : Conexion.getConnection();
+            ps = conn.prepareStatement(SQL_MAX_ID);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                maxId = rs.getInt("id_region");
+            }
+        }finally{
+            Conexion.close(rs);
+            Conexion.close(ps);
+            if (this.userConn == null){
+                Conexion.close(conn);
+            }
+        }
+        
+        return maxId;
     }
 }

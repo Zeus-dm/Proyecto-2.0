@@ -1,6 +1,7 @@
 
 package gui.MenuSesion;
 
+import FunGenerales.FunUsuario;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import gui.FramePrincipal;
@@ -11,10 +12,12 @@ import javax.swing.JPanel;
 
 public class DialogMenuSesion extends javax.swing.JDialog {
     private FramePrincipal fp = null;
+    FunUsuario controladorusuario;
     
     public DialogMenuSesion(java.awt.Frame parent, boolean modal, FramePrincipal fp) {
         super(parent, modal);
         this.fp = fp;
+        controladorusuario = new FunUsuario(this.fp.getSistema());
         
         initComponents();
         

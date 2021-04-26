@@ -1,7 +1,6 @@
 
 package gui.MenuProductos;
 
-import FunGenerales.FunProducto;
 import enumeraciones.Colores;
 import java.awt.BorderLayout;
 
@@ -28,15 +27,18 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
     public PanelGraficarProducto(DialogMenuProducto dmp) {
         this.dmp = dmp;
         
+        int tamX = dmp.getSize().width - 478;
+        int tamY = dmp.getSize().height - 420;
+        
         initComponents();
-        this.dmp.setSize(492, 458);
-        this.dmp.setLocationRelativeTo(this.dmp.getFramePrincipal());
+        this.dmp.setSize(478, 420);
+        this.dmp.setLocation(dmp.getLocation().x + (tamX/2), dmp.getLocation().y + (tamY/2));
         
         iniciarDatos();
     }
     
     private void iniciarDatos(){
-        List<String> datos = FunProducto.seleccionarProducto(dmp.getFramePrincipal().getSistema(), dmp.barCode);
+        List<String> datos = dmp.controladorProducto.seleccionarProducto(dmp.barCode);
         
         textNombre.setText(datos.get(0));
         ajustarTitulo();
@@ -45,19 +47,19 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
     }
     
     private DefaultPieDataset cargarSucursalesStock(){
-        List<String> NombreSucursales = new ArrayList<>();
-        List<Integer> StocksSucursales = new ArrayList<>();
+        List<String> nombreSucursales = new ArrayList<>();
+        List<Integer> stocksSucursales = new ArrayList<>();
         
         try {
-            FunProducto.listarNombresSucursalesStocksProducto(dmp.getFramePrincipal().getSistema(), dmp.barCode, NombreSucursales, StocksSucursales);
+            dmp.controladorProducto.listarSucursalStock(dmp.barCode, nombreSucursales, stocksSucursales);
         } catch (SQLException ex) {
             Logger.getLogger(PanelGraficarProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         DefaultPieDataset datos = new DefaultPieDataset();
         
-        for (int i = 0; i < NombreSucursales.size(); i++) {
-            datos.setValue(NombreSucursales.get(i), StocksSucursales.get(i));
+        for (int i = 0; i < nombreSucursales.size(); i++) {
+            datos.setValue(nombreSucursales.get(i), stocksSucursales.get(i));
         }
         
         return datos;
@@ -132,6 +134,8 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
         buttonAtras = new javax.swing.JButton();
         jPanelGrafico = new javax.swing.JPanel();
 
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmp.getFramePrincipal().modo))));
+
         jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmp.getFramePrincipal().modo)));
 
         textNombre.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
@@ -187,7 +191,7 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
                     .addComponent(buttonAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanelGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -206,7 +210,6 @@ public class PanelGraficarProducto extends javax.swing.JPanel {
         PanelSeleccionarProducto psp = new PanelSeleccionarProducto(dmp);
         dmp.cargarPanel(psp);
     }//GEN-LAST:event_buttonAtrasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAtras;

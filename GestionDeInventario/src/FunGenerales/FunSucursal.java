@@ -3,42 +3,33 @@ package FunGenerales;
 
 import domain.IGenerico;
 import domain.JefeSucursal;
+import domain.Producto;
 import domain.Region;
-import domain.Sistema;
 import domain.Sucursal;
+import domain.SucursalProducto;
+import enumeraciones.TextoErrores;
 import excepciones.*;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import jdbc.JdbcJefeSucursal;
 import jdbc.JdbcSucursal;
 
 public class FunSucursal {
-    public static String agregarSucursal(Sistema sistema, int posRegion, String nombre, String direccion, String telefono) throws SQLException {
-        Sucursal sucursal = new Sucursal();
-        try {
-            sucursal.setIdRegion(sistema.getRegiones().get(posRegion).getIdRegion());
-            sucursal.setNombre(nombre);
-            sucursal.setDireccion(direccion);
-            sucursal.setTelefono(telefono);
-        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
-            return e.getMessage();
-        }
-        
-        JdbcSucursal js = new JdbcSucursal();
-        js.insert(sucursal);
-        
-        sistema.getRegiones().get(posRegion).setSucursales( listarSucursales(sistema.getRegiones().get(posRegion).getIdRegion()) );
-        
-        return null;
+    private final Region region;
+
+    public FunSucursal(Region region) {
+        this.region = region;
     }
     
-    public static String agregarSucursal(Sistema sistema, int posRegion, String nombre, String direccion, String telefono, String nombreJefe, String edadJefe) throws SQLException {
+    public String agregarSucursal(String nombre, String direccion, String telefono) throws SQLException {
         Sucursal sucursal = new Sucursal();
         try {
-            sucursal.setIdRegion(sistema.getRegiones().get(posRegion).getIdRegion());
+            sucursal.setIdRegion(region.getIdRegion());
             sucursal.setNombre(nombre);
             sucursal.setDireccion(direccion);
             sucursal.setTelefono(telefono);
@@ -46,6 +37,37 @@ public class FunSucursal {
             return e.getMessage();
         }
         
+        if(region.verificarExistenciaSucursal(nombre)){
+            return TextoErrores.SUCURSAL_DUPLICADO.getTexto();
+        }
+        
+        JdbcSucursal js = new JdbcSucursal() ;
+        js.insert(sucursal);
+        
+        int maxId = js.ultimoId();
+        sucursal.setIdSucursal(maxId);
+        
+        region.agregarSucursal(sucursal);
+        
+        return null ;
+    }
+    
+    public String agregarSucursal(String nombre, String direccion, String telefono, String nombreJefe, String edadJefe) throws SQLException {
+        //Verificar datos de la sucursal
+        Sucursal sucursal = new Sucursal();
+        try {
+            sucursal.setIdRegion(region.getIdRegion());
+            sucursal.setNombre(nombre);
+            sucursal.setDireccion(direccion);
+            sucursal.setTelefono(telefono);
+        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
+            return e.getMessage();
+        }
+        
+        if(region.verificarExistenciaSucursal(nombre)){
+            return TextoErrores.SUCURSAL_DUPLICADO.getTexto();
+        }
+        //Verificar datos del jefe de la sucursal
         JefeSucursal jefe = new JefeSucursal();
         try {
             jefe.setNombre(nombreJefe);
@@ -53,106 +75,176 @@ public class FunSucursal {
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
             return e.getMessage();
         }
-        
-        JdbcSucursal js = new JdbcSucursal();
-        JdbcJefeSucursal jjs = new JdbcJefeSucursal();
-        
+        //Insertar la sucursal en la base de datos
+        JdbcSucursal js = new JdbcSucursal() ;
         js.insert(sucursal);
         
-        List<Sucursal> sucursales = listarSucursales(sistema.getRegiones().get(posRegion).getIdRegion());
-        jefe.setIdSucursal(sucursales.get(sucursales.size()-1).getIdSucursal());
+        int maxId = js.ultimoId();
+        sucursal.setIdSucursal(maxId);
+        //Insertar el Jefe de la sucursal en la base de datos
+        jefe.setIdSucursal(sucursal.getIdSucursal());
         
+        JdbcJefeSucursal jjs = new JdbcJefeSucursal();
         jjs.insert(jefe);
         
-        sistema.getRegiones().get(posRegion).setSucursales( listarSucursales(sistema.getRegiones().get(posRegion).getIdRegion()) );
-
+        //Inserta el jefe en la sucursal y luego inserta la sucursal en la region
+        sucursal.setJefeSucursal(jefe);
+        
+        region.agregarSucursal(sucursal);
+        
         return null;
     }
     
-
-    public static String modificarSucursal(List<Sucursal> sucursales, int pos, int idRegion, String nombre, String direccion, String telefono) throws SQLException {
-        Sucursal sucursal = sucursales.get(pos);
+    public String modificarSucursal(String preNombre, String nombre, String direccion, String telefono)throws SQLException {
+        if(!(preNombre.equals(nombre))){
+            if(region.verificarExistenciaSucursal(nombre)){
+                return TextoErrores.SUCURSAL_DUPLICADO.getTexto();
+            }
+        }       
+        
+        Sucursal preSucursal = region.obtenerSucursal(preNombre);
+        Sucursal sucursal = new Sucursal();
         try {
-            sucursal.setIdRegion(idRegion);
+            sucursal.setIdRegion(region.getIdRegion());
             sucursal.setNombre(nombre);
             sucursal.setDireccion(direccion);
-            sucursal.setTelefono(telefono);            
+            sucursal.setTelefono(telefono);
+            
+            sucursal.setIdSucursal(preSucursal.getIdSucursal());
+            sucursal.setJefeSucursal(preSucursal.getJefeSucursal());
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
             return e.getMessage();
         }
         
-        JdbcSucursal js = new JdbcSucursal();
+        region.modificarSucursal(preNombre, sucursal);
+        
+        JdbcSucursal js = new JdbcSucursal() ;
         js.update(sucursal);
         
-        
-        
-        return null;
+        return null ;
     }
     
-    public static void eliminarSucursal(List<Sucursal> sucursales, int pos) throws SQLException {
-        Sucursal sucursal = sucursales.get(pos);
+    public void eliminarSucursal(String nombre) throws SQLException {
+        Sucursal sucursal = region.obtenerSucursal(nombre);
+        
+        //Eliminar los productos de la sucursal, los sucursalesProducto y el jefe
+        if(sucursal.verificarExistenciaJefe()){
+            eliminarJefe(sucursal.getNombre());
+        }
+        
+        //Termina de eliminar los productos, los sucursalesProducto y el jefe
         
         JdbcSucursal js = new JdbcSucursal();
         js.delete(sucursal);
         
-        sucursales.remove(pos);
+        region.eliminarSucursal(nombre);
     }
     
-    public static List<Sucursal> listarSucursales(int idRegion) throws SQLException {
-        List<Sucursal> sucursales = new ArrayList<>();
-        JdbcSucursal js = new JdbcSucursal();
-        JdbcJefeSucursal jjs = new JdbcJefeSucursal();
+    public void listarSucursales() throws SQLException {
+        JdbcSucursal js = new JdbcSucursal() ;
         
-        List<IGenerico> genericos = js.selectList(idRegion);
+        List<IGenerico> nuevoG = js.selectList(region.getIdRegion());
         
-        genericos.forEach(generico -> {
-            Sucursal sucursal = (Sucursal)generico; 
+        nuevoG.forEach(generico -> {
+            Sucursal sucursal = (Sucursal)generico;
+            //obtenemos el jefe de la sucursal
             try {
-                JefeSucursal jefe = (JefeSucursal) jjs.select(sucursal.getIdSucursal());
-                if(jefe != null){
-                    sucursal.setJefeSucursal(jefe);
-                }
+                sucursal.setJefeSucursal(obtenerJefe(sucursal.getIdSucursal()));
             } catch (SQLException ex) {
                 Logger.getLogger(FunSucursal.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            sucursales.add(sucursal);
+            //termina de obtener al jefe
+            region.agregarSucursal(sucursal);
         });
-        
-        return sucursales;
     }
     
-    public static List<String> seleccionarSucursal(List<Sucursal> sucursales, int pos) {
+    public List<String> nombresSucursales() {
+        return region.nombresSucursales();
+    }
+    
+    public List<String> seleccionarSucursal(String nombre){
         List<String> textos = new ArrayList<>();
         
-        Sucursal sucursal = sucursales.get(pos);
+        Sucursal sucursal = region.obtenerSucursal(nombre);
+        JefeSucursal jefe = sucursal.getJefeSucursal();
         
         textos.add(sucursal.getNombre());
         textos.add(sucursal.getDireccion());
         textos.add(sucursal.getTelefono());
+        if(jefe == null){
+            textos.add("N/a");
+            textos.add("N/a");
+        }else{
+            textos.add(jefe.getNombre());
+            textos.add(""+jefe.getEdad());
+        }
         
         return textos;
     }
     
-    public static Sucursal seleccionarSucursal (int idSucursal) throws SQLException {
-        JdbcSucursal js = new JdbcSucursal() ;
-        
-        Sucursal newS = (Sucursal) js.select(idSucursal) ;
-        
-        return newS ;
+    //----------------------------------------------------  
+    public boolean verificarExistenciaJefe(String nombreSucursal){
+        Sucursal sucursal = region.obtenerSucursal(nombreSucursal);
+        return sucursal.verificarExistenciaJefe();
     }
     
-    public static List<String> ListarNombresSucursales(Sistema sistema, int posRegion){
-        //Region region = sistema.getRegiones().get(posRegion);
-        List<String> nombreSucursales = new ArrayList<>();
+    public String agregarJefe(String nombreSucursal, String nombre, String edad) throws SQLException {
+        Sucursal sucursal = region.obtenerSucursal(nombreSucursal);
+        JefeSucursal jefe = new JefeSucursal();
+        try {
+            jefe.setIdSucursal(sucursal.getIdSucursal());
+            jefe.setNombre(nombre);
+            jefe.setEdad(edad);
+        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
+            return e.getMessage();
+        }
         
-        sistema.getRegiones().get(posRegion).getSucursales().forEach(sucursal -> {
-            nombreSucursales.add(sucursal.getNombre());
-        });
+        JdbcJefeSucursal jjs = new JdbcJefeSucursal() ;
+        jjs.insert(jefe);
         
-        return nombreSucursales;
+        sucursal.setJefeSucursal(jefe);
+        
+        return null ;
     }
     
-    //--------------------------------------------------------------------------------
-    //Funciones para despues
+    private void eliminarJefe(String nombreSucursal) throws SQLException {
+        Sucursal sucursal = region.obtenerSucursal(nombreSucursal);
+        JefeSucursal jefe = sucursal.getJefeSucursal();
+        
+        JdbcJefeSucursal jjs = new JdbcJefeSucursal() ;
+        
+        jjs.delete(jefe);
+    }
+    
+    public static String modificarJefe(int idSucursal, String nombre, String edad) throws SQLException {
+        /*
+        String verificar = verificarDatosJefe(nombre, edad);
+        if(verificar != null){
+            return verificar;
+        }
+        int edadAux = Integer.parseInt(edad);
+        
+        JdbcJefeSucursal jjs = new JdbcJefeSucursal() ;
+        JefeSucursal newJ = (JefeSucursal) jjs.select(idSucursal) ;
+        
+        newJ.setNombre(nombre);
+        newJ.setEdad(edadAux);
+        
+        jjs.update(newJ);*/
+        
+        return null ;
+    }
+
+    private JefeSucursal obtenerJefe(int idSucursal) throws SQLException {
+        JdbcJefeSucursal jjs = new JdbcJefeSucursal() ;
+        
+        JefeSucursal jefe = (JefeSucursal) jjs.select(idSucursal);
+        
+        return jefe;
+    }
+    
+    //-----------------------------------------------------
+    public String nombreRegion(){
+        return region.getNombre();
+    }
 }
