@@ -207,30 +207,32 @@ public class FunSucursal {
         return null ;
     }
     
-    private void eliminarJefe(String nombreSucursal) throws SQLException {
+    public void eliminarJefe(String nombreSucursal) throws SQLException {
         Sucursal sucursal = region.obtenerSucursal(nombreSucursal);
         JefeSucursal jefe = sucursal.getJefeSucursal();
         
         JdbcJefeSucursal jjs = new JdbcJefeSucursal() ;
         
         jjs.delete(jefe);
+        sucursal.setJefeSucursal(null);
     }
     
-    public static String modificarJefe(int idSucursal, String nombre, String edad) throws SQLException {
-        /*
-        String verificar = verificarDatosJefe(nombre, edad);
-        if(verificar != null){
-            return verificar;
+    public String modificarJefe(String nombreSucursal, String nombre, String edad) throws SQLException {
+        Sucursal sucursal = region.obtenerSucursal(nombreSucursal);
+        
+        JefeSucursal jefe = new JefeSucursal();
+        try {
+            jefe.setIdSucursal(sucursal.getIdSucursal());
+            jefe.setNombre(nombre);
+            jefe.setEdad(edad);
+        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
+            return e.getMessage();
         }
-        int edadAux = Integer.parseInt(edad);
         
-        JdbcJefeSucursal jjs = new JdbcJefeSucursal() ;
-        JefeSucursal newJ = (JefeSucursal) jjs.select(idSucursal) ;
+        JdbcJefeSucursal jjs = new JdbcJefeSucursal();
+        jjs.update(jefe);
         
-        newJ.setNombre(nombre);
-        newJ.setEdad(edadAux);
-        
-        jjs.update(newJ);*/
+        sucursal.setJefeSucursal(jefe);
         
         return null ;
     }
@@ -241,6 +243,18 @@ public class FunSucursal {
         JefeSucursal jefe = (JefeSucursal) jjs.select(idSucursal);
         
         return jefe;
+    }
+    
+    public List<String> seleccionarJefe(String nombreSucursal){
+        List<String> textos = new ArrayList<>();
+        
+        Sucursal sucursal = region.obtenerSucursal(nombreSucursal);
+        JefeSucursal jefe = sucursal.getJefeSucursal();
+        
+        textos.add(jefe.getNombre());
+        textos.add(""+jefe.getEdad());
+        
+        return textos;
     }
     
     //-----------------------------------------------------

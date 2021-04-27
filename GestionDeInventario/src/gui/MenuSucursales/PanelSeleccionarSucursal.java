@@ -5,7 +5,10 @@ import enumeraciones.Colores;
 import enumeraciones.Texto;
 
 import java.awt.Color;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 
 public class PanelSeleccionarSucursal extends javax.swing.JPanel {
@@ -73,6 +76,11 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
         jPanelBotonesConJefe = new javax.swing.JPanel();
         buttonModificarJefe = new javax.swing.JButton();
         buttonEliminarJefe = new javax.swing.JButton();
+        DialogConfirmacion = new javax.swing.JDialog();
+        jPanelConfirmacion = new javax.swing.JPanel();
+        labelTituloConfirmacion = new javax.swing.JLabel();
+        buttonAceptarConfirmacion = new javax.swing.JButton();
+        buttonCancelarConfirmacion = new javax.swing.JButton();
         jPanelFondo = new javax.swing.JPanel();
         jPanelBotonesSucursal = new javax.swing.JPanel();
         buttonProductos = new javax.swing.JButton();
@@ -134,6 +142,11 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
         buttonModificarJefe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonModificarJefe.setFocusable(false);
         buttonModificarJefe.setPreferredSize(new java.awt.Dimension(32, 32));
+        buttonModificarJefe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonModificarJefeActionPerformed(evt);
+            }
+        });
 
         buttonEliminarJefe.setBackground(Color.decode(Colores.FONDO.getColor(dms.getFramePrincipal().modo)));
         buttonEliminarJefe.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ELIMINAR_JEFE_SUCURSAL.getColor(dms.getFramePrincipal().modo))));
@@ -142,6 +155,11 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
         buttonEliminarJefe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonEliminarJefe.setFocusable(false);
         buttonEliminarJefe.setPreferredSize(new java.awt.Dimension(32, 32));
+        buttonEliminarJefe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEliminarJefeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelBotonesConJefeLayout = new javax.swing.GroupLayout(jPanelBotonesConJefe);
         jPanelBotonesConJefe.setLayout(jPanelBotonesConJefeLayout);
@@ -161,6 +179,81 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonEliminarJefe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        DialogConfirmacion.setTitle("Confirmacion");
+        DialogConfirmacion.setMinimumSize(new java.awt.Dimension(310, 135));
+        DialogConfirmacion.setModal(true);
+        DialogConfirmacion.setUndecorated(true);
+
+        jPanelConfirmacion.setBackground(Color.decode(Colores.FONDO.getColor(dms.getFramePrincipal().modo)));
+        jPanelConfirmacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dms.getFramePrincipal().modo))));
+        jPanelConfirmacion.setPreferredSize(new java.awt.Dimension(310, 135));
+
+        labelTituloConfirmacion.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        labelTituloConfirmacion.setForeground(Color.decode(Colores.TITULO.getColor(dms.getFramePrincipal().modo)));
+        labelTituloConfirmacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTituloConfirmacion.setText(Texto.CONFIRMACION_ELIMINAR_JEFE.getTexto());
+
+        buttonAceptarConfirmacion.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(dms.getFramePrincipal().modo)));
+        buttonAceptarConfirmacion.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonAceptarConfirmacion.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(dms.getFramePrincipal().modo)));
+        buttonAceptarConfirmacion.setText(Texto.ACEPTAR.getTexto());
+        buttonAceptarConfirmacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dms.getFramePrincipal().modo))));
+        buttonAceptarConfirmacion.setFocusable(false);
+        buttonAceptarConfirmacion.setPreferredSize(new java.awt.Dimension(110, 30));
+        buttonAceptarConfirmacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAceptarConfirmacionActionPerformed(evt);
+            }
+        });
+
+        buttonCancelarConfirmacion.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(dms.getFramePrincipal().modo)));
+        buttonCancelarConfirmacion.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonCancelarConfirmacion.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(dms.getFramePrincipal().modo)));
+        buttonCancelarConfirmacion.setText(Texto.CANCELAR.getTexto());
+        buttonCancelarConfirmacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dms.getFramePrincipal().modo))));
+        buttonCancelarConfirmacion.setFocusable(false);
+        buttonCancelarConfirmacion.setPreferredSize(new java.awt.Dimension(110, 30));
+        buttonCancelarConfirmacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCancelarConfirmacionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelConfirmacionLayout = new javax.swing.GroupLayout(jPanelConfirmacion);
+        jPanelConfirmacion.setLayout(jPanelConfirmacionLayout);
+        jPanelConfirmacionLayout.setHorizontalGroup(
+            jPanelConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labelTituloConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelConfirmacionLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(buttonAceptarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(buttonCancelarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+        jPanelConfirmacionLayout.setVerticalGroup(
+            jPanelConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConfirmacionLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(labelTituloConfirmacion)
+                .addGap(30, 30, 30)
+                .addGroup(jPanelConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAceptarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCancelarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout DialogConfirmacionLayout = new javax.swing.GroupLayout(DialogConfirmacion.getContentPane());
+        DialogConfirmacion.getContentPane().setLayout(DialogConfirmacionLayout);
+        DialogConfirmacionLayout.setHorizontalGroup(
+            DialogConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        DialogConfirmacionLayout.setVerticalGroup(
+            DialogConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelConfirmacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dms.getFramePrincipal().modo))));
@@ -376,7 +469,7 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProductosActionPerformed
-
+        
     }//GEN-LAST:event_buttonProductosActionPerformed
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed
@@ -397,8 +490,41 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
         dms.cargarPanel(pss);
     }//GEN-LAST:event_buttonAgregarJefeActionPerformed
 
+    private void buttonModificarJefeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarJefeActionPerformed
+        DialogMenuSucursal dmss = new DialogMenuSucursal(new javax.swing.JFrame(), true, dms.getFramePrincipal(), 5, dms.controladorSucursal.nombreRegion(), dms.nombreSucursal);
+        dmss.setLocationRelativeTo(dms);
+        dmss.setVisible(true);
+        
+        PanelSeleccionarSucursal pss = new PanelSeleccionarSucursal(dms);
+        dms.cargarPanel(pss);
+    }//GEN-LAST:event_buttonModificarJefeActionPerformed
+
+    private void buttonEliminarJefeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarJefeActionPerformed
+        DialogConfirmacion.setLocationRelativeTo(dms);
+        DialogConfirmacion.setVisible(true);
+    }//GEN-LAST:event_buttonEliminarJefeActionPerformed
+
+    private void buttonAceptarConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarConfirmacionActionPerformed
+        try {
+            dms.controladorSucursal.eliminarJefe(dms.nombreSucursal);
+            DialogConfirmacion.setVisible(false);
+            
+            PanelSeleccionarSucursal pss = new PanelSeleccionarSucursal(dms);
+            dms.cargarPanel(pss);
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelSeleccionarSucursal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_buttonAceptarConfirmacionActionPerformed
+
+    private void buttonCancelarConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarConfirmacionActionPerformed
+        DialogConfirmacion.setVisible(false);
+    }//GEN-LAST:event_buttonCancelarConfirmacionActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog DialogConfirmacion;
+    private javax.swing.JButton buttonAceptarConfirmacion;
     private javax.swing.JButton buttonAgregarJefe;
+    private javax.swing.JButton buttonCancelarConfirmacion;
     private javax.swing.JButton buttonEliminarJefe;
     private javax.swing.JButton buttonModificar;
     private javax.swing.JButton buttonModificarJefe;
@@ -408,6 +534,7 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelBotonesJefe;
     private javax.swing.JPanel jPanelBotonesSinJefe;
     private javax.swing.JPanel jPanelBotonesSucursal;
+    private javax.swing.JPanel jPanelConfirmacion;
     private javax.swing.JPanel jPanelFondo;
     private javax.swing.JLabel labelDireccion;
     private javax.swing.JLabel labelEdadJefe;
@@ -416,6 +543,7 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
     private javax.swing.JLabel labelLineaSeparadora;
     private javax.swing.JLabel labelNombreJefe;
     private javax.swing.JLabel labelTelefono;
+    private javax.swing.JLabel labelTituloConfirmacion;
     private javax.swing.JLabel textDireccion;
     private javax.swing.JLabel textEdadJefe;
     private javax.swing.JLabel textNombre;

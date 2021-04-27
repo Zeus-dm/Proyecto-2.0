@@ -45,7 +45,8 @@ public class DialogMenuSucursal extends javax.swing.JDialog {
                 cargarPanel(pcj);
             }
             case 5 -> {
-                
+                PanelModificarJefe pmj = new PanelModificarJefe(this);
+                cargarPanel(pmj);
             }
         }
     }
