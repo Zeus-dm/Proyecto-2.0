@@ -83,6 +83,7 @@ public enum Texto {
     ELIMINAR("Eliminar"),
     
     CONFIRMACION_ELIMINAR("¿Estas seguro de Eliminar?"),
+    CONFIRMACION_ELIMINAR_JEFE("¿Estas seguro de Eliminar el Jefe?"),
     
     REPORTES("Reportes"),
     SALIR("Salir"),

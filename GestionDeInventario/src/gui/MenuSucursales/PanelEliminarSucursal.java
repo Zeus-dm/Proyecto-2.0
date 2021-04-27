@@ -57,10 +57,12 @@ public class PanelEliminarSucursal extends javax.swing.JPanel {
         comboBoxListaSucursales = new javax.swing.JComboBox<>();
 
         DialogConfirmacion.setTitle("Confirmacion");
-        DialogConfirmacion.setMinimumSize(new java.awt.Dimension(325, 175));
+        DialogConfirmacion.setMinimumSize(new java.awt.Dimension(310, 135));
         DialogConfirmacion.setModal(true);
+        DialogConfirmacion.setUndecorated(true);
 
         jPanelConfirmacion.setBackground(Color.decode(Colores.FONDO.getColor(dms.getFramePrincipal().modo)));
+        jPanelConfirmacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dms.getFramePrincipal().modo))));
         jPanelConfirmacion.setPreferredSize(new java.awt.Dimension(310, 135));
 
         labelTituloConfirmacion.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -102,7 +104,7 @@ public class PanelEliminarSucursal extends javax.swing.JPanel {
             .addGroup(jPanelConfirmacionLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(buttonAceptarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(buttonCancelarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -115,7 +117,7 @@ public class PanelEliminarSucursal extends javax.swing.JPanel {
                 .addGroup(jPanelConfirmacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAceptarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonCancelarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout DialogConfirmacionLayout = new javax.swing.GroupLayout(DialogConfirmacion.getContentPane());
@@ -226,7 +228,6 @@ public class PanelEliminarSucursal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
-        DialogConfirmacion.setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
         DialogConfirmacion.setLocationRelativeTo(dms);
         DialogConfirmacion.setVisible(true);
     }//GEN-LAST:event_buttonAceptarActionPerformed
