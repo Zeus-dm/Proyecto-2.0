@@ -22,7 +22,7 @@ public enum TextoErrores {
     MAXIMO_CARACTERES_NOMBRE_40("* Error: Nombre máximo 40 caracteres"),
     MAXIMO_CARACTERES_EMAIL_40("* Error: E-mail máximo 40 caracteres"),
     
-    REGION_DUPLICADO("* Error: Region ya existe"),
+    REGION_DUPLICADO("* Error: Región ya existe"),
     SUCURSAL_DUPLICADO("* Error: Nombre de la sucursal ya existe"),
     
     EMAIL_VACIO("* Error: Campo E-mail Vacío"),
@@ -38,7 +38,7 @@ public enum TextoErrores {
     
     BARCODE_VACIO("* Error: Campo Código de barras vacío"),
     BARCODE_RANGO("* Error: Código de barras debe tener 9 dígitos"),
-    BARCODE_DUPLICADO("* Error: Codigo de barras ya existe"),
+    BARCODE_DUPLICADO("* Error: Código de barras ya existe"),
     
     PRECIO_VACIO("* Error: Campo Precio vacío"),
     PRECIO_INVALIDO("* Error: Precio debe ser un número"),
@@ -48,9 +48,9 @@ public enum TextoErrores {
     MIN_VACIO("* Error: Min vacío"),
     MAX_VACIO("* Error: Max vacío"),
     MIN_MAYOR_MAX("* Error: Min > Max"),
-    MIN_INVALIDO("* Error: Min Invalido"),
-    MAX_INVALIDO("* Error: Max Invalido"),
-    MIN_MAX_ERROR("* Error: 9 Digitos"),
+    MIN_INVALIDO("* Error: Min Inválido"),
+    MAX_INVALIDO("* Error: Max Inválido"),
+    MIN_MAX_ERROR("* Error: 9 Dígitos"),
     
     STOCK_VACIO("* Error: Campo Stock Vacío"),
     STOCK_CERO("* Error: Stock debe ser mayor a 0"),
