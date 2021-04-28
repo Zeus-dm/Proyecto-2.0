@@ -3,6 +3,7 @@ package gui.MenuSucursales;
 
 import enumeraciones.Colores;
 import enumeraciones.Texto;
+import gui.MenuProductosSucursal.PanelMenuProductosSucursal;
 
 import java.awt.Color;
 import java.sql.SQLException;
@@ -469,7 +470,9 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProductosActionPerformed
-        
+        PanelMenuProductosSucursal pmps = new PanelMenuProductosSucursal(dms.getFramePrincipal(), dms.controladorSucursal.nombreRegion(), dms.nombreSucursal);
+        dms.getFramePrincipal().cargarPanel(pmps);
+        dms.setVisible(false);
     }//GEN-LAST:event_buttonProductosActionPerformed
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed

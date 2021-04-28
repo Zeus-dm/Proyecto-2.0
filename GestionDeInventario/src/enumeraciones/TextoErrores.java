@@ -61,7 +61,10 @@ public enum TextoErrores {
     USUARIO_EXISTENTE("* Error: Usuario ya existe"),
     PASSWORD_DIFERENTES("* Error: Contraseñas no coinciden"),
     USUARIO_VACIO("* Error: Campo Usuario Vacío"),
-    PASSWORD_VACIO("* Error: Campo Contraseña Vacío");
+    PASSWORD_VACIO("* Error: Campo Contraseña Vacío"),
+    
+    CONTIENE_TODO("* Error: Sucursal contiene todos los Productos"),
+    NO_REGION("* Error: No existe Region para Modificar");
     
     private final String texto;
     

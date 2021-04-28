@@ -3,6 +3,7 @@ package domain;
 
 import enumeraciones.TextoErrores;
 import excepciones.*;
+import java.util.List;
 import java.util.Map;
 
 public class Sucursal implements IGenerico{
@@ -12,13 +13,15 @@ public class Sucursal implements IGenerico{
     private String direccion ;
     private String telefono ;
     private JefeSucursal jefeSucursal = null;
-    private Map <String,Producto> productos ;
+    private final CollectionProductos productos;
     
-    public Sucursal() {       
+    public Sucursal() {     
+        productos = new CollectionProductos();
     }
     
     public Sucursal(int idSucursal) {
         this.idSucursal = idSucursal ;
+        productos = new CollectionProductos();
     }
     
     public Sucursal(int idRegion, String nombre, String direccion, String telefono) {
@@ -26,6 +29,7 @@ public class Sucursal implements IGenerico{
         this.nombre = nombre ;
         this.direccion = direccion ;
         this.telefono = telefono ;
+        productos = new CollectionProductos();
     }
     
     public Sucursal(int idSucursal, int idRegion, String nombre, String direccion, String telefono) {
@@ -34,6 +38,7 @@ public class Sucursal implements IGenerico{
         this.nombre = nombre ;
         this.direccion = direccion ;
         this.telefono = telefono ;
+        productos = new CollectionProductos();
     }
 
     public int getIdSucursal() {
@@ -58,10 +63,6 @@ public class Sucursal implements IGenerico{
 
     public JefeSucursal getJefeSucursal() {
         return jefeSucursal;
-    }
-
-    public Map<String, Producto> getProductos() {
-        return productos;
     }
 
     public void setIdSucursal(int idSucursal) {
@@ -110,13 +111,55 @@ public class Sucursal implements IGenerico{
         this.jefeSucursal = jefeSucursal;
     }
     
-    public void setProductos(Map<String, Producto> productos) {
-        this.productos = productos;
-    }
-    
     //METODOS
     public boolean verificarExistenciaJefe(){
         return jefeSucursal != null;
+    }
+    
+    //Productos
+    public boolean verificarExistenciaProducto(String barCode){
+        return productos.verificarExistencia(barCode);
+    }
+    
+    public Producto obtenerProducto(String barCode){
+        return productos.obtenerProducto(barCode);
+    }
+    
+    public void agregarProducto(Producto producto){
+        productos.agregarProducto(producto);
+    }
+    
+    public void eliminarProducto(String barCode){
+        productos.eliminarProducto(barCode);
+    }
+    
+    public void modificarProducto(String preBarCode, Producto nuevoProducto){
+        productos.modificarProducto(preBarCode, nuevoProducto);
+    }
+    
+    public List<String> todosProductos(){
+        return productos.todosProductos();
+    }
+    
+    public List<String> todosBarCodes(){
+        return productos.todosBarCodes();
+    }
+    
+    public List<String> productosFiltrados(){
+        return productos.productosFiltrados();
+    }
+
+    public List<String> filtrarProductos(int min, int max, String textoBuscar){
+        if( (min == 0) && (max == 0) && (textoBuscar.isEmpty()) ){
+            return productos.todosProductos();
+        }else if( (min == 0) && (max == 0) && !(textoBuscar.isEmpty()) ){
+            return productos.filtrarProductos(textoBuscar);
+        }else if( (min >= 0) && (max >= 0) && (textoBuscar.isEmpty()) ){
+            return productos.filtrarProductos(min, max);
+        }else if( (min >= 0) && (max >= 0) && !(textoBuscar.isEmpty()) ){
+            return productos.filtrarProductos(min, max, textoBuscar);
+        }
+        return productos.todosProductos();
     }
     
     @Override

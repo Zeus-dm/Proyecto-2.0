@@ -27,6 +27,15 @@ public class CollectionRegiones {
         return mapaRegiones.get(nombre.toUpperCase());
     }
     
+    public Region obtenerRegion(int idRegion){
+        for (Region region : listaRegiones) {
+            if(region.getIdRegion() == idRegion){
+                return region;
+            }
+        }
+        return null;
+    }
+    
     public void agregarRegion(Region region){
         listaRegiones.add(region);
         nombresRegiones.add(region.getNombre());

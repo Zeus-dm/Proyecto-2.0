@@ -119,7 +119,7 @@ public class FunRegion {
             //agrega las sucursales de la region
             try {
                 FunSucursal controladorSucursal = new FunSucursal(region);
-                controladorSucursal.listarSucursales();
+                controladorSucursal.listarSucursales(sistema);
             } catch (SQLException ex) {
                 Logger.getLogger(FunRegion.class.getName()).log(Level.SEVERE, null, ex);
             }

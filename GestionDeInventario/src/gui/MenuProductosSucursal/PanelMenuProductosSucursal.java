@@ -1,30 +1,32 @@
 
-package gui.MenuProductos;
+package gui.MenuProductosSucursal;
 
-import FunGenerales.FunProducto;
+import FunGenerales.FunProductoSucursal;
 import gui.MenuPrincipal.*;
 import gui.FramePrincipal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
+import gui.MenuSucursales.PanelMenuSucursales;
 
 import java.awt.Color;
 import java.util.List;
 
-public class PanelMenuProductos extends javax.swing.JPanel {
+public class PanelMenuProductosSucursal extends javax.swing.JPanel {
     private FramePrincipal fp = null;
-    private final FunProducto controladorProducto;
+    private final FunProductoSucursal controladorProductoSucursal;
     
-    public PanelMenuProductos(FramePrincipal fp) {
+    public PanelMenuProductosSucursal(FramePrincipal fp, String nombreRegion, String nombreSucursal) {
         this.fp = fp;
-        controladorProducto = new FunProducto(this.fp.getSistema());
+        controladorProductoSucursal = new FunProductoSucursal(fp.getSistema(), fp.getSistema().obtenerRegion(nombreRegion).obtenerSucursal(nombreSucursal));
         
         initComponents();
-        
         iniciarDatos();
     }
     
     private void iniciarDatos(){
-        cargarProductos(controladorProducto.todosProductos());
+        cargarProductos(controladorProductoSucursal.todosProductos());
+        
+        labelTitulo.setText(controladorProductoSucursal.nombreSucursal() + " - " + Texto.PRODUCTOS.getTexto());
         labelError.setText("");
         
         switch (fp.imagen) {
@@ -73,7 +75,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         tableProductos = new javax.swing.JTable();
         jPanelImagen = new javax.swing.JPanel();
         labelImagen = new javax.swing.JLabel();
-        buttonGraficar = new javax.swing.JButton();
+        buttonAgregar = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(400, 450));
         setPreferredSize(new java.awt.Dimension(400, 450));
@@ -212,16 +214,16 @@ public class PanelMenuProductos extends javax.swing.JPanel {
                 .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        buttonGraficar.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
-        buttonGraficar.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_GRAFICO_BARRA.getColor(fp.modo))));
-        buttonGraficar.setToolTipText("Graficar Marcas");
-        buttonGraficar.setBorder(null);
-        buttonGraficar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        buttonGraficar.setFocusable(false);
-        buttonGraficar.setPreferredSize(new java.awt.Dimension(32, 32));
-        buttonGraficar.addActionListener(new java.awt.event.ActionListener() {
+        buttonAgregar.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(fp.modo)));
+        buttonAgregar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonAgregar.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.modo)));
+        buttonAgregar.setText(Texto.AGREGAR.getTexto());
+        buttonAgregar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.modo))));
+        buttonAgregar.setFocusable(false);
+        buttonAgregar.setPreferredSize(new java.awt.Dimension(114, 32));
+        buttonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonGraficarActionPerformed(evt);
+                buttonAgregarActionPerformed(evt);
             }
         });
 
@@ -235,18 +237,19 @@ public class PanelMenuProductos extends javax.swing.JPanel {
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelFondoLayout.createSequentialGroup()
-                                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(labelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(buttonAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(labelError, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonVolver, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFondoLayout.createSequentialGroup()
+                                    .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(textMin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textMax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(labelPrecio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoLayout.createSequentialGroup()
@@ -294,8 +297,8 @@ public class PanelMenuProductos extends javax.swing.JPanel {
                                 .addComponent(textMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labelError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonGraficar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -314,8 +317,8 @@ public class PanelMenuProductos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
-        PanelMenuPrincipal pmp = new PanelMenuPrincipal(fp);
-        fp.cargarPanel(pmp);
+        PanelMenuSucursales pms = new PanelMenuSucursales(fp, controladorProductoSucursal.nombreRegion());
+        fp.cargarPanel(pms);
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     private void labelImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelImagenMouseClicked
@@ -324,7 +327,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
     }//GEN-LAST:event_labelImagenMouseClicked
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
-        String ok = controladorProducto.verificarMinMax(textMin.getText(), textMax.getText());
+        String ok = controladorProductoSucursal.verificarMinMax(textMin.getText(), textMax.getText());
         if(ok != null){
             labelError.setText(ok);
         }else{
@@ -332,30 +335,32 @@ public class PanelMenuProductos extends javax.swing.JPanel {
             int min = Integer.parseInt(textMin.getText());
             int max = Integer.parseInt(textMax.getText());
             
-            cargarProductos(controladorProducto.filtrarProductos(min, max, textBuscar.getText()));
+            cargarProductos(controladorProductoSucursal.filtrarProductos(min, max, textBuscar.getText()));
         }
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void tableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductosMouseClicked
-        List<String> barCodesProductos = controladorProducto.todosBarCodes();
+        /*List<String> barCodesProductos = controladorProducto.todosBarCodes();
         int pos = tableProductos.getSelectedRow();
         
         DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, 1, barCodesProductos.get(pos));
         dmp.setLocationRelativeTo(fp);
         dmp.setVisible(true);
 
-        cargarProductos(controladorProducto.productosFiltrados());
+        cargarProductos(controladorProducto.productosFiltrados());*/
     }//GEN-LAST:event_tableProductosMouseClicked
 
-    private void buttonGraficarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGraficarActionPerformed
-        DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, 2, null);
-        dmp.setLocationRelativeTo(fp);
-        dmp.setVisible(true);
-    }//GEN-LAST:event_buttonGraficarActionPerformed
+    private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
+        DialogMenuProductosSucursal dmps = new DialogMenuProductosSucursal(new javax.swing.JFrame(), true, fp, 1, null, controladorProductoSucursal.nombreRegion(), controladorProductoSucursal.nombreSucursal());
+        dmps.setLocationRelativeTo(fp);
+        dmps.setVisible(true);
+        
+        cargarProductos(controladorProductoSucursal.productosFiltrados());
+    }//GEN-LAST:event_buttonAgregarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAgregar;
     private javax.swing.JButton buttonBuscar;
-    private javax.swing.JButton buttonGraficar;
     private javax.swing.JButton buttonVolver;
     private javax.swing.JPanel jPanelFondo;
     private javax.swing.JPanel jPanelImagen;

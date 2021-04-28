@@ -1,4 +1,4 @@
-package gui.MenuRegiones;
+package gui.MenuProductosSucursal;
 
 import enumeraciones.Colores;
 import enumeraciones.Texto;
@@ -10,37 +10,40 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PanelModificarRegion extends javax.swing.JPanel {
+public class PanelAgregarProductoExistente extends javax.swing.JPanel {
 
-    private DialogMenuRegion dmr = null;
+    private DialogMenuProductosSucursal dmps = null;
 
-    public PanelModificarRegion(DialogMenuRegion dmr) {
-        this.dmr = dmr;
+    public PanelAgregarProductoExistente(DialogMenuProductosSucursal dmps) {
+        this.dmps = dmps;
+
+        int tamX = dmps.getSize().width - 350;
+        int tamY = dmps.getSize().height - 226;
 
         initComponents();
-        this.dmr.setSize(350, 226);
-        this.dmr.setLocationRelativeTo(this.dmr.getFramePrincipal());
+        this.dmps.setSize(350, 226);
+        this.dmps.setLocation(dmps.getLocation().x + (tamX / 2), dmps.getLocation().y + (tamY / 2));
 
         iniciarDatos();
     }
 
-    private void ItemsComboRegiones(List<String> regiones) {
-        comboBoxListaRegiones.removeAllItems();
+    private void ItemsComboProductos(List<String> productos) {
+        comboBoxListaProducto.removeAllItems();
 
-        if (regiones.isEmpty()) {
+        if (productos.isEmpty()) {
             return;
         }
 
-        regiones.forEach(region -> {
-            comboBoxListaRegiones.addItem(region);
+        productos.forEach(producto -> {
+            comboBoxListaProducto.addItem(producto);
         });
-        comboBoxListaRegiones.setSelectedIndex(0);
+        comboBoxListaProducto.setSelectedIndex(0);
     }
 
     private void iniciarDatos() {
-        ItemsComboRegiones(dmr.controladorRegion.nombresRegiones());
+        ItemsComboProductos(dmps.controladorProductoSucursal.nombresNoSucursal());
 
-        textNombre.setText("");
+        textStock.setText("");
         labelError.setText("");
     }
 
@@ -50,50 +53,50 @@ public class PanelModificarRegion extends javax.swing.JPanel {
 
         jPanelFondo = new javax.swing.JPanel();
         labelTitulo = new javax.swing.JLabel();
-        labelRegion = new javax.swing.JLabel();
-        labelNombre = new javax.swing.JLabel();
-        textNombre = new javax.swing.JTextField();
+        labelProducto = new javax.swing.JLabel();
+        labelStock = new javax.swing.JLabel();
+        textStock = new javax.swing.JTextField();
         labelError = new javax.swing.JLabel();
         buttonAceptar = new javax.swing.JButton();
         buttonCancelar = new javax.swing.JButton();
-        comboBoxListaRegiones = new javax.swing.JComboBox<>();
+        comboBoxListaProducto = new javax.swing.JComboBox<>();
 
-        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmr.getFramePrincipal().modo))));
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmps.getFramePrincipal().modo))));
 
-        jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmr.getFramePrincipal().modo)));
+        jPanelFondo.setBackground(Color.decode(Colores.FONDO.getColor(dmps.getFramePrincipal().modo)));
         jPanelFondo.setPreferredSize(new java.awt.Dimension(350, 270));
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 20)); // NOI18N
-        labelTitulo.setForeground(Color.decode(Colores.TITULO.getColor(dmr.getFramePrincipal().modo)));
+        labelTitulo.setForeground(Color.decode(Colores.TITULO.getColor(dmps.getFramePrincipal().modo)));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTitulo.setText(Texto.MODIFICAR_REGION.getTexto());
+        labelTitulo.setText(Texto.AGREGAR_EXISTENTE.getTexto());
         labelTitulo.setPreferredSize(new java.awt.Dimension(350, 30));
 
-        labelRegion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelRegion.setForeground(Color.decode(Colores.TEXTO.getColor(dmr.getFramePrincipal().modo)));
-        labelRegion.setText(Texto.REGION.getTexto());
-        labelRegion.setPreferredSize(new java.awt.Dimension(90, 26));
+        labelProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelProducto.setForeground(Color.decode(Colores.TEXTO.getColor(dmps.getFramePrincipal().modo)));
+        labelProducto.setText(Texto.PRODUCTO.getTexto());
+        labelProducto.setPreferredSize(new java.awt.Dimension(90, 26));
 
-        labelNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelNombre.setForeground(Color.decode(Colores.TEXTO.getColor(dmr.getFramePrincipal().modo)));
-        labelNombre.setText(Texto.NOMBRE.getTexto());
-        labelNombre.setPreferredSize(new java.awt.Dimension(90, 26));
+        labelStock.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelStock.setForeground(Color.decode(Colores.TEXTO.getColor(dmps.getFramePrincipal().modo)));
+        labelStock.setText(Texto.STOCK.getTexto());
+        labelStock.setPreferredSize(new java.awt.Dimension(90, 26));
 
-        textNombre.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(dmr.getFramePrincipal().modo)));
-        textNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        textNombre.setForeground(Color.decode(Colores.TEXTO.getColor(dmr.getFramePrincipal().modo)));
-        textNombre.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmr.getFramePrincipal().modo))), javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 1, Color.decode(Colores.FONDO_TABLA.getColor(dmr.getFramePrincipal().modo)))));
-        textNombre.setPreferredSize(new java.awt.Dimension(182, 26));
+        textStock.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(dmps.getFramePrincipal().modo)));
+        textStock.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textStock.setForeground(Color.decode(Colores.TEXTO.getColor(dmps.getFramePrincipal().modo)));
+        textStock.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmps.getFramePrincipal().modo))), javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 1, Color.decode(Colores.FONDO_TABLA.getColor(dmps.getFramePrincipal().modo)))));
+        textStock.setPreferredSize(new java.awt.Dimension(182, 26));
 
-        labelError.setForeground(Color.decode(Colores.TEXTO_ERROR.getColor(dmr.getFramePrincipal().modo)));
+        labelError.setForeground(Color.decode(Colores.TEXTO_ERROR.getColor(dmps.getFramePrincipal().modo)));
         labelError.setText("* Posible Error");
         labelError.setPreferredSize(new java.awt.Dimension(290, 16));
 
-        buttonAceptar.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(dmr.getFramePrincipal().modo)));
+        buttonAceptar.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(dmps.getFramePrincipal().modo)));
         buttonAceptar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        buttonAceptar.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(dmr.getFramePrincipal().modo)));
+        buttonAceptar.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(dmps.getFramePrincipal().modo)));
         buttonAceptar.setText(Texto.ACEPTAR.getTexto());
-        buttonAceptar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmr.getFramePrincipal().modo))));
+        buttonAceptar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmps.getFramePrincipal().modo))));
         buttonAceptar.setFocusable(false);
         buttonAceptar.setPreferredSize(new java.awt.Dimension(110, 30));
         buttonAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -102,11 +105,11 @@ public class PanelModificarRegion extends javax.swing.JPanel {
             }
         });
 
-        buttonCancelar.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(dmr.getFramePrincipal().modo)));
+        buttonCancelar.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(dmps.getFramePrincipal().modo)));
         buttonCancelar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        buttonCancelar.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(dmr.getFramePrincipal().modo)));
+        buttonCancelar.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(dmps.getFramePrincipal().modo)));
         buttonCancelar.setText(Texto.CANCELAR.getTexto());
-        buttonCancelar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmr.getFramePrincipal().modo))));
+        buttonCancelar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmps.getFramePrincipal().modo))));
         buttonCancelar.setFocusable(false);
         buttonCancelar.setPreferredSize(new java.awt.Dimension(110, 30));
         buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -115,14 +118,14 @@ public class PanelModificarRegion extends javax.swing.JPanel {
             }
         });
 
-        comboBoxListaRegiones.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(dmr.getFramePrincipal().modo)));
-        comboBoxListaRegiones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        comboBoxListaRegiones.setForeground(Color.decode(Colores.TEXTO.getColor(dmr.getFramePrincipal().modo)));
-        comboBoxListaRegiones.setMaximumRowCount(7);
-        comboBoxListaRegiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxListaRegiones.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmr.getFramePrincipal().modo))));
-        comboBoxListaRegiones.setFocusable(false);
-        comboBoxListaRegiones.setPreferredSize(new java.awt.Dimension(182, 26));
+        comboBoxListaProducto.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(dmps.getFramePrincipal().modo)));
+        comboBoxListaProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboBoxListaProducto.setForeground(Color.decode(Colores.TEXTO.getColor(dmps.getFramePrincipal().modo)));
+        comboBoxListaProducto.setMaximumRowCount(7);
+        comboBoxListaProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxListaProducto.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmps.getFramePrincipal().modo))));
+        comboBoxListaProducto.setFocusable(false);
+        comboBoxListaProducto.setPreferredSize(new java.awt.Dimension(182, 26));
 
         javax.swing.GroupLayout jPanelFondoLayout = new javax.swing.GroupLayout(jPanelFondo);
         jPanelFondo.setLayout(jPanelFondoLayout);
@@ -138,12 +141,12 @@ public class PanelModificarRegion extends javax.swing.JPanel {
                     .addComponent(labelError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBoxListaRegiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(textStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboBoxListaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addComponent(labelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanelFondoLayout.setVerticalGroup(
@@ -153,12 +156,12 @@ public class PanelModificarRegion extends javax.swing.JPanel {
                 .addComponent(labelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboBoxListaRegiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxListaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -181,36 +184,38 @@ public class PanelModificarRegion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        dmr.setVisible(false);
+        PanelMenuAgregarProducto pmap = new PanelMenuAgregarProducto(dmps);
+        dmps.cargarPanel(pmap);
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            int pos = comboBoxListaRegiones.getSelectedIndex();
+            List<String> barCodesNoSucursal = dmps.controladorProductoSucursal.barCodesNoSucursal();
+            int pos = comboBoxListaProducto.getSelectedIndex();
             if (pos == -1) {
-                labelError.setText(TextoErrores.NO_REGION.getTexto());
+                labelError.setText(TextoErrores.CONTIENE_TODO.getTexto());
             } else {
-                String ok = dmr.controladorRegion.modificarRegion((String) comboBoxListaRegiones.getSelectedItem(), textNombre.getText());
+                String ok = dmps.controladorProductoSucursal.agregarProducto(barCodesNoSucursal.get(pos), textStock.getText());
                 if (ok != null) {
                     labelError.setText(ok);
                 } else {
-                    dmr.setVisible(false);
+                    dmps.setVisible(false);
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PanelModificarRegion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PanelAgregarProductoExistente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_buttonAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAceptar;
     private javax.swing.JButton buttonCancelar;
-    private javax.swing.JComboBox<String> comboBoxListaRegiones;
+    private javax.swing.JComboBox<String> comboBoxListaProducto;
     private javax.swing.JPanel jPanelFondo;
     private javax.swing.JLabel labelError;
-    private javax.swing.JLabel labelNombre;
-    private javax.swing.JLabel labelRegion;
+    private javax.swing.JLabel labelProducto;
+    private javax.swing.JLabel labelStock;
     private javax.swing.JLabel labelTitulo;
-    private javax.swing.JTextField textNombre;
+    private javax.swing.JTextField textStock;
     // End of variables declaration//GEN-END:variables
 }

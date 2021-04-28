@@ -3,10 +3,9 @@ package FunGenerales;
 
 import domain.IGenerico;
 import domain.JefeSucursal;
-import domain.Producto;
 import domain.Region;
+import domain.Sistema;
 import domain.Sucursal;
-import domain.SucursalProducto;
 import enumeraciones.TextoErrores;
 import excepciones.*;
 
@@ -140,7 +139,7 @@ public class FunSucursal {
         region.eliminarSucursal(nombre);
     }
     
-    public void listarSucursales() throws SQLException {
+    public void listarSucursales(Sistema sistema) throws SQLException {
         JdbcSucursal js = new JdbcSucursal() ;
         
         List<IGenerico> nuevoG = js.selectList(region.getIdRegion());
@@ -150,6 +149,9 @@ public class FunSucursal {
             //obtenemos el jefe de la sucursal
             try {
                 sucursal.setJefeSucursal(obtenerJefe(sucursal.getIdSucursal()));
+                
+                FunProductoSucursal fps = new FunProductoSucursal(sistema, sucursal);
+                fps.listarProductos();
             } catch (SQLException ex) {
                 Logger.getLogger(FunSucursal.class.getName()).log(Level.SEVERE, null, ex);
             }

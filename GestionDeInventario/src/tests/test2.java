@@ -21,6 +21,5 @@ public class test2 {
                 Logger.getLogger(test2.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
     }
 }

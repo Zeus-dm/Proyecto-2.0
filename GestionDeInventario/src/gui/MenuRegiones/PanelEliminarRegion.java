@@ -177,7 +177,7 @@ public class PanelEliminarRegion extends javax.swing.JPanel {
         comboBoxListaRegiones.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(dmr.getFramePrincipal().modo)));
         comboBoxListaRegiones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboBoxListaRegiones.setForeground(Color.decode(Colores.TEXTO.getColor(dmr.getFramePrincipal().modo)));
-        comboBoxListaRegiones.setMaximumRowCount(10);
+        comboBoxListaRegiones.setMaximumRowCount(7);
         comboBoxListaRegiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxListaRegiones.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmr.getFramePrincipal().modo))));
         comboBoxListaRegiones.setFocusable(false);
