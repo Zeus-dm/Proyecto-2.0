@@ -17,7 +17,7 @@ public class DialogMenuSucursal extends javax.swing.JDialog {
     public DialogMenuSucursal(java.awt.Frame parent, boolean modal, FramePrincipal fp, int id, String nombreRegion, String nombreSucursal) {
         super(parent, modal);
         this.fp = fp;
-        controladorSucursal = new FunSucursal(this.fp.getSistema().obtenerRegion(nombreRegion));
+        controladorSucursal = new FunSucursal(this.fp.getSistema().obtenerRegion(nombreRegion), this.fp.getSistema());
         this.nombreSucursal = nombreSucursal;
         
         setUndecorated(true);

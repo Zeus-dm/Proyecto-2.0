@@ -340,14 +340,14 @@ public class PanelMenuProductosSucursal extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void tableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductosMouseClicked
-        /*List<String> barCodesProductos = controladorProducto.todosBarCodes();
+        List<String> barCodesProductos = controladorProductoSucursal.todosBarCodes();
         int pos = tableProductos.getSelectedRow();
         
-        DialogMenuProducto dmp = new DialogMenuProducto(new javax.swing.JFrame(), true, fp, 1, barCodesProductos.get(pos));
-        dmp.setLocationRelativeTo(fp);
-        dmp.setVisible(true);
+        DialogMenuProductosSucursal dmps = new DialogMenuProductosSucursal(new javax.swing.JFrame(), true, fp, 2, barCodesProductos.get(pos), controladorProductoSucursal.nombreRegion(), controladorProductoSucursal.nombreSucursal());
+        dmps.setLocationRelativeTo(fp);
+        dmps.setVisible(true);
 
-        cargarProductos(controladorProducto.productosFiltrados());*/
+        cargarProductos(controladorProductoSucursal.productosFiltrados());
     }//GEN-LAST:event_tableProductosMouseClicked
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed

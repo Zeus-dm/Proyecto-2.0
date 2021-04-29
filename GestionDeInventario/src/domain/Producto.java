@@ -101,7 +101,7 @@ public class Producto implements IGenerico{
     }
 
     public void setStockTotal(long stockTotal) {
-        if(stockTotal <= 0){
+        if(stockTotal < 0){
             throw new NumeroRangoException( TextoErrores.STOCK_CERO.getTexto() );
         }
         this.stockTotal = stockTotal;
@@ -115,7 +115,7 @@ public class Producto implements IGenerico{
         }else{
             try {
                 long stockTotalAux = Long.parseLong(stockTotal);
-                if(stockTotalAux <= 0){
+                if(stockTotalAux < 0){
                     throw new NumeroRangoException( TextoErrores.STOCK_CERO.getTexto() );
                 }
                 this.stockTotal = stockTotalAux;

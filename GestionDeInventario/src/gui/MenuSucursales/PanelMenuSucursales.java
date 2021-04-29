@@ -17,7 +17,7 @@ public class PanelMenuSucursales extends javax.swing.JPanel {
     
     public PanelMenuSucursales(FramePrincipal fp, String nombreRegion) {
         this.fp = fp;
-        controladorSucursal = new FunSucursal(this.fp.getSistema().obtenerRegion(nombreRegion));
+        controladorSucursal = new FunSucursal(this.fp.getSistema().obtenerRegion(nombreRegion), this.fp.getSistema());
         
         initComponents();
         

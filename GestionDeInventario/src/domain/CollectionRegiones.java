@@ -55,9 +55,8 @@ public class CollectionRegiones {
     }
     
     public void modificarRegion(String preNombre, Region nuevaRegion){
-        for (int i = 0; i < listaRegiones.size(); i++) {
-            if(preNombre.equalsIgnoreCase(listaRegiones.get(i).getNombre())){
-                listaRegiones.set(i, nuevaRegion);
+        for (int i = 0; i < nombresRegiones.size(); i++) {
+            if(preNombre.equalsIgnoreCase(nombresRegiones.get(i))){
                 nombresRegiones.set(i, nuevaRegion.getNombre());
                 break;
             }

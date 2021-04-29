@@ -41,6 +41,10 @@ public class FunProductoSucursal {
             return e.getMessage();
         }
         
+        if(producto.getStockTotal() == 0){
+            return TextoErrores.STOCK_MAYOR_CERO.getTexto();
+        }
+        
         JdbcProducto jp = new JdbcProducto();
         jp.insert(producto);
         
@@ -65,6 +69,10 @@ public class FunProductoSucursal {
             return e.getMessage();
         }
         
+        if(nuevoProducto.getStockTotal() == 0){
+            return TextoErrores.STOCK_MAYOR_CERO.getTexto();
+        }
+        
         producto.setStockTotal(producto.getStockTotal() + nuevoProducto.getStockTotal());
         
         JdbcProducto jp = new JdbcProducto();
@@ -76,6 +84,50 @@ public class FunProductoSucursal {
         sucursal.agregarProducto(producto);
         
         return null;
+    }
+    
+    public String modificarStockProducto(String barCode, String nuevoStock) throws SQLException{
+        Producto producto = sucursal.obtenerProducto(barCode);
+        SucursalProducto sp = obtenerProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal());
+        
+        Producto nuevoProducto = new Producto();
+        try {
+            nuevoProducto.setStockTotal(nuevoStock);
+        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
+            return e.getMessage();
+        }
+        
+        if(nuevoProducto.getStockTotal() == 0){
+            eliminarProducto(barCode);
+            return null;
+        }
+        
+        int diferenciaStock = (int) (nuevoProducto.getStockTotal() - sp.getStock());
+        
+        producto.setStockTotal(producto.getStockTotal() + diferenciaStock);
+        JdbcProducto jp = new JdbcProducto();
+        jp.update(producto);
+        
+        sistema.modificarProducto(producto.getBarCode(), producto);
+        
+        sp.setStock((int)nuevoProducto.getStockTotal());
+        modificarProductoSucursal(sp);
+        
+        return null;
+    }
+    
+    public void eliminarProducto(String barCode) throws SQLException{
+        Producto producto = sucursal.obtenerProducto(barCode);
+        SucursalProducto sp = obtenerProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal());
+        
+        producto.setStockTotal(producto.getStockTotal() - sp.getStock());
+        JdbcProducto jp = new JdbcProducto();
+        jp.update(producto);
+        
+        sistema.modificarProducto(producto.getBarCode(), producto);
+        
+        sucursal.eliminarProducto(barCode);
+        eliminarProductoSucursal(sp);
     }
     
     public void listarProductos() throws SQLException {
@@ -100,6 +152,27 @@ public class FunProductoSucursal {
     
     public List<String> productosFiltrados(){
         return sucursal.productosFiltrados();
+    }
+    
+    public List<String> seleccionarProducto(String barCode) throws SQLException{
+        List<String> textos = new ArrayList<>();
+        
+        Producto producto = sucursal.obtenerProducto(barCode);
+        if(producto == null){
+            return null;
+        }
+        
+        textos.add(producto.getNombre());
+        textos.add(producto.getMarca());
+        textos.add(producto.getBarCode());
+        textos.add(""+producto.getPrecio());
+        
+        SucursalProducto sp = obtenerProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal());
+        textos.add(""+sp.getStock());
+        
+        textos.add(producto.getDescripcion());
+        
+        return textos;
     }
     
     public String verificarMinMax(String min, String max){
@@ -169,6 +242,16 @@ public class FunProductoSucursal {
         return sp;
     }
     
+    private void modificarProductoSucursal(SucursalProducto sp) throws SQLException{
+        JdbcSucursalProducto jsp = new JdbcSucursalProducto();
+        jsp.update(sp);
+    }
+    
+    private void eliminarProductoSucursal(SucursalProducto sp) throws SQLException{
+        JdbcSucursalProducto jsp = new JdbcSucursalProducto();
+        jsp.delete(sp);
+    }
+    
     private List<SucursalProducto> listarProductoSucursal (int idSucursal) throws SQLException{
         List<SucursalProducto> listaSP = new ArrayList<>() ;
         JdbcSucursalProducto jsp = new JdbcSucursalProducto() ;
@@ -190,5 +273,16 @@ public class FunProductoSucursal {
     public String nombreRegion(){
         Region region = sistema.obtenerRegion(sucursal.getIdRegion());
         return region.getNombre();
+    }
+    
+    public String nombreProducto(String barCode){
+        Producto producto = sucursal.obtenerProducto(barCode);
+        return producto.getNombre();
+    }
+    
+    public String stockProductoSucursal(String barCode) throws SQLException{
+        Producto producto = sucursal.obtenerProducto(barCode);
+        SucursalProducto sp = obtenerProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal());
+        return "" + sp.getStock();
     }
 }

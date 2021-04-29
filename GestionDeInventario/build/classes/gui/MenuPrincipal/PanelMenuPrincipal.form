@@ -141,6 +141,9 @@
               <Connection code="new java.awt.Dimension(32, 32)" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonReporteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="buttonSonido">
           <Properties>

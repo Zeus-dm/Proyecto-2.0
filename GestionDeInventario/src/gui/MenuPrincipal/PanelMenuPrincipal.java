@@ -1,5 +1,6 @@
 package gui.MenuPrincipal;
 
+import FunGenerales.FunReporte;
 import gui.FramePrincipal;
 import FunGenerales.FunUsuario;
 import enumeraciones.Colores;
@@ -112,6 +113,11 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         buttonReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         buttonReporte.setFocusable(false);
         buttonReporte.setPreferredSize(new java.awt.Dimension(32, 32));
+        buttonReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonReporteActionPerformed(evt);
+            }
+        });
 
         buttonSonido.setBackground(Color.decode(Colores.FONDO.getColor(fp.modo)));
         buttonSonido.setIcon(new javax.swing.ImageIcon(getClass().getResource( Colores.ICONO_SONIDO.getColor(fp.modo) )));
@@ -395,6 +401,10 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         menuSesion();
         labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + controladorUsuario.seleccionarNombreUsuario());
     }//GEN-LAST:event_buttonCerrarSesionActionPerformed
+
+    private void buttonReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReporteActionPerformed
+        FunReporte.generarReporte(fp.getSistema());
+    }//GEN-LAST:event_buttonReporteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCerrarSesion;

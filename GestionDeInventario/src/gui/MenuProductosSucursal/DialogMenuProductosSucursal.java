@@ -29,10 +29,19 @@ public class DialogMenuProductosSucursal extends javax.swing.JDialog {
     }
     
     private void iniciarFrame(int pos){
-        if(pos == 1){
-            PanelMenuAgregarProducto pmap = new PanelMenuAgregarProducto(this);
-            cargarPanel(pmap);
-        }else{
+        switch (pos) {
+            case 1 -> {
+                PanelMenuAgregarProducto pmap = new PanelMenuAgregarProducto(this);
+                cargarPanel(pmap);
+            }
+            case 2 -> {
+                PanelSeleccionarProductoSucursal psps = new PanelSeleccionarProductoSucursal(this);
+                cargarPanel(psps);
+            }
+            case 3 -> {
+                PanelModificarStockProductoSucursal pmsps = new PanelModificarStockProductoSucursal(this);
+                cargarPanel(pmsps);
+            }
         }
     }
     

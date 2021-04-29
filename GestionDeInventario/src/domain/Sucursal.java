@@ -4,7 +4,6 @@ package domain;
 import enumeraciones.TextoErrores;
 import excepciones.*;
 import java.util.List;
-import java.util.Map;
 
 public class Sucursal implements IGenerico{
     private int idSucursal ;
