@@ -68,8 +68,8 @@ public class Region implements IGenerico{
         sucursales.eliminarSucursal(nombre);
     }
     
-    public void modificarSucursal(String preNombre, Sucursal nuevaSucursal){
-        sucursales.modificarSucursal(preNombre, nuevaSucursal);
+    public void modificarSucursal(String preNombre, String newNombre){
+        sucursales.modificarSucursal(preNombre, newNombre);
     }
     
     public List<String> nombresSucursales(){

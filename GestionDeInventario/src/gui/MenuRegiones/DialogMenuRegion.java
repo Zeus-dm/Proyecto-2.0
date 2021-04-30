@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class DialogMenuRegion extends javax.swing.JDialog {
     private FramePrincipal fp = null;
-    FunRegion controladorRegion;
+    final FunRegion controladorRegion;
     
     public DialogMenuRegion(java.awt.Frame parent, boolean modal, FramePrincipal fp, int id) {
         super(parent, modal);

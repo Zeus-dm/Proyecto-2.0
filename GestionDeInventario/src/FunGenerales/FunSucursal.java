@@ -3,10 +3,9 @@ package FunGenerales;
 
 import domain.IGenerico;
 import domain.JefeSucursal;
-import domain.Producto;
 import domain.Region;
+import domain.Sistema;
 import domain.Sucursal;
-import domain.SucursalProducto;
 import enumeraciones.TextoErrores;
 import excepciones.*;
 
@@ -21,9 +20,11 @@ import jdbc.JdbcSucursal;
 
 public class FunSucursal {
     private final Region region;
+    private final Sistema sistema;
 
-    public FunSucursal(Region region) {
+    public FunSucursal(Region region, Sistema sistema) {
         this.region = region;
+        this.sistema = sistema;
     }
     
     public String agregarSucursal(String nombre, String direccion, String telefono) throws SQLException {
@@ -102,22 +103,18 @@ public class FunSucursal {
             }
         }       
         
-        Sucursal preSucursal = region.obtenerSucursal(preNombre);
-        Sucursal sucursal = new Sucursal();
+        Sucursal sucursal = region.obtenerSucursal(preNombre);
         try {
             sucursal.setIdRegion(region.getIdRegion());
             sucursal.setNombre(nombre);
             sucursal.setDireccion(direccion);
             sucursal.setTelefono(telefono);
-            
-            sucursal.setIdSucursal(preSucursal.getIdSucursal());
-            sucursal.setJefeSucursal(preSucursal.getJefeSucursal());
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
             return e.getMessage();
         }
         
-        region.modificarSucursal(preNombre, sucursal);
-        
+        region.modificarSucursal(preNombre, sucursal.getNombre());
+                
         JdbcSucursal js = new JdbcSucursal() ;
         js.update(sucursal);
         
@@ -132,7 +129,12 @@ public class FunSucursal {
             eliminarJefe(sucursal.getNombre());
         }
         
-        //Termina de eliminar los productos, los sucursalesProducto y el jefe
+        FunProductoSucursal controladorProductoSucursal = new FunProductoSucursal(sistema, sucursal);
+        List<String> todosBarCodes = sucursal.todosBarCodes();
+        for (int i = 0; i < todosBarCodes.size(); i++) {
+            controladorProductoSucursal.eliminarProducto(todosBarCodes.get(i));
+        }
+        //Termina de eliminar los productos y el jefe
         
         JdbcSucursal js = new JdbcSucursal();
         js.delete(sucursal);
@@ -140,7 +142,7 @@ public class FunSucursal {
         region.eliminarSucursal(nombre);
     }
     
-    public void listarSucursales() throws SQLException {
+    public void listarSucursales(Sistema sistema) throws SQLException {
         JdbcSucursal js = new JdbcSucursal() ;
         
         List<IGenerico> nuevoG = js.selectList(region.getIdRegion());
@@ -150,6 +152,9 @@ public class FunSucursal {
             //obtenemos el jefe de la sucursal
             try {
                 sucursal.setJefeSucursal(obtenerJefe(sucursal.getIdSucursal()));
+                
+                FunProductoSucursal fps = new FunProductoSucursal(sistema, sucursal);
+                fps.listarProductos();
             } catch (SQLException ex) {
                 Logger.getLogger(FunSucursal.class.getName()).log(Level.SEVERE, null, ex);
             }

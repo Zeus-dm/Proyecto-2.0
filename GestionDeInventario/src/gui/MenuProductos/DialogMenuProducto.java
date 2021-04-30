@@ -7,7 +7,6 @@ import enumeraciones.Texto;
 import gui.FramePrincipal;
 
 import java.awt.Color;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class DialogMenuProducto extends javax.swing.JDialog {
@@ -28,8 +27,6 @@ public class DialogMenuProducto extends javax.swing.JDialog {
     }
     
     private void iniciarFrame(int pos){
-        setIconImage(new ImageIcon("src/gui/imagenes/chefcito_icon_80.png").getImage());
-        
         if(pos == 1){
             PanelSeleccionarProducto psp = new PanelSeleccionarProducto(this);
             cargarPanel(psp);

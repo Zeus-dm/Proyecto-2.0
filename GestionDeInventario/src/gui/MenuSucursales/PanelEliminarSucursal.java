@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 
 public class PanelEliminarSucursal extends javax.swing.JPanel {
     private DialogMenuSucursal dms = null;
@@ -176,7 +175,7 @@ public class PanelEliminarSucursal extends javax.swing.JPanel {
         comboBoxListaSucursales.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(dms.getFramePrincipal().modo)));
         comboBoxListaSucursales.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboBoxListaSucursales.setForeground(Color.decode(Colores.TEXTO.getColor(dms.getFramePrincipal().modo)));
-        comboBoxListaSucursales.setMaximumRowCount(10);
+        comboBoxListaSucursales.setMaximumRowCount(7);
         comboBoxListaSucursales.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxListaSucursales.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dms.getFramePrincipal().modo))));
         comboBoxListaSucursales.setFocusable(false);

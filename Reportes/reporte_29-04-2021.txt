@@ -1,0 +1,62 @@
+-----Regiones-----
+ Valparaiso
+	-----Sucursales-----
+	 Sucursal nm
+		-----Productos-----
+		 Cachantun con Gas 1L
+		 Mistral 1L caja azul
+		 Pisco nobel 750cc
+		 Pisco Mistral
+		 Agua con gas de 1L
+		 Chivas Regal 12 años
+		 Papas Fritas de Tarro
+		 Vodka Negro 750ml
+		 Galleta Triton
+	 Ejemplo 2
+		-----Productos-----
+		 Mistral 1L caja azul
+		 Vodka 750 ml
+	 Ejemplo 3
+		-----Productos-----
+	 MMMMMMMMMMMMMMMMMMMM
+		-----Productos-----
+
+ Metropolitana
+	-----Sucursales-----
+	 Sucursal 100
+		-----Productos-----
+		 Papas Fritas de Tarro
+
+ Arica
+	-----Sucursales-----
+	 Ejemplo 20
+		-----Productos-----
+		 Galleta Triton
+
+ Arequipa
+	-----Sucursales-----
+	 Sucursal Peruana
+		-----Productos-----
+		 Cachantun con Gas 1L
+		 Inka Cola 1L
+
+-----Clientes-----
+ Rafael Carvacho Plaza
+ Maximiliano Beltran
+ Sebastian Muñoz
+ Diego Alejandro Toloza Marin
+ Diego Garces Pino
+
+-----Todos los Productos-----
+ Cachantun con Gas 1L
+ Mistral 1L caja azul
+ Pisco nobel 750cc
+ Inka Cola 1L
+ mASAs
+ Pisco Mistral
+ Vodka 750 ml
+ Agua con gas de 1L
+ Chivas Regal 12 años
+ Papas Fritas de Tarro
+ Vodka Negro 750ml
+ Galleta Triton

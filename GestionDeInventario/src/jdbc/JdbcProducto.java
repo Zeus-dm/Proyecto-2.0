@@ -17,6 +17,7 @@ public class JdbcProducto implements IGenericoInsert, IGenericoUpdate, IGenerico
     private static final String SQL_WHERE_SELECT = "SELECT * FROM gestion_inventario.producto WHERE precio >= ? AND precio <= ? ";
     private static final String SQL_ONE_SELECT = "SELECT * FROM gestion_inventario.producto WHERE id_producto = ?";
     private static final String SQL_ONE_SELECT_BARCODE = "SELECT * FROM gestion_inventario.producto WHERE barcode = ?";
+    private static final String SQL_MAX_ID = "SELECT MAX(id_producto) AS id_producto FROM gestion_inventario.producto";
 
     public JdbcProducto() {
     }
@@ -238,5 +239,31 @@ public class JdbcProducto implements IGenericoInsert, IGenericoUpdate, IGenerico
         }
         
         return mapaProductos;
+    }
+    
+    public Integer ultimoId() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        Integer maxId = null;
+        
+        try{
+            conn = this.userConn != null ? this.userConn : Conexion.getConnection();
+            ps = conn.prepareStatement(SQL_MAX_ID);
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                maxId = rs.getInt("id_producto");
+            }
+        }finally{
+            Conexion.close(rs);
+            Conexion.close(ps);
+            if (this.userConn == null){
+                Conexion.close(conn);
+            }
+        }
+        
+        return maxId;
     }
 }

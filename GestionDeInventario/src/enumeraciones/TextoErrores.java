@@ -53,7 +53,8 @@ public enum TextoErrores {
     MIN_MAX_ERROR("* Error: 9 Dígitos"),
     
     STOCK_VACIO("* Error: Campo Stock Vacío"),
-    STOCK_CERO("* Error: Stock debe ser mayor a 0"),
+    STOCK_CERO("* Error: Stock debe ser mayor o igual a 0"),
+    STOCK_MAYOR_CERO("* Error: Stock debe ser mayor que 0"),
     STOCK_INVALIDO("* Error: Stock debe ser un número"),
     STOCK_RANGO("* Error: Stock Máximo de 5 dígitos"),
     
@@ -61,7 +62,10 @@ public enum TextoErrores {
     USUARIO_EXISTENTE("* Error: Usuario ya existe"),
     PASSWORD_DIFERENTES("* Error: Contraseñas no coinciden"),
     USUARIO_VACIO("* Error: Campo Usuario Vacío"),
-    PASSWORD_VACIO("* Error: Campo Contraseña Vacío");
+    PASSWORD_VACIO("* Error: Campo Contraseña Vacío"),
+    
+    CONTIENE_TODO("* Error: Sucursal contiene todos los Productos"),
+    NO_REGION("* Error: No existe Region para Modificar");
     
     private final String texto;
     

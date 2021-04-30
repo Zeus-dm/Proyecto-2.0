@@ -1,8 +1,8 @@
-
 package gui.MenuRegiones;
 
 import enumeraciones.Colores;
 import enumeraciones.Texto;
+import enumeraciones.TextoErrores;
 
 import java.awt.Color;
 import java.sql.SQLException;
@@ -11,38 +11,39 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PanelModificarRegion extends javax.swing.JPanel {
+
     private DialogMenuRegion dmr = null;
-    
+
     public PanelModificarRegion(DialogMenuRegion dmr) {
         this.dmr = dmr;
-        
+
         initComponents();
         this.dmr.setSize(350, 226);
         this.dmr.setLocationRelativeTo(this.dmr.getFramePrincipal());
-        
+
         iniciarDatos();
     }
-    
-    private void ItemsComboRegiones(List<String> regiones){
+
+    private void ItemsComboRegiones(List<String> regiones) {
         comboBoxListaRegiones.removeAllItems();
-        
-        if(regiones.isEmpty()){
+
+        if (regiones.isEmpty()) {
             return;
         }
-        
+
         regiones.forEach(region -> {
             comboBoxListaRegiones.addItem(region);
         });
         comboBoxListaRegiones.setSelectedIndex(0);
     }
-    
-    private void iniciarDatos(){
+
+    private void iniciarDatos() {
         ItemsComboRegiones(dmr.controladorRegion.nombresRegiones());
-        
+
         textNombre.setText("");
         labelError.setText("");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -117,7 +118,7 @@ public class PanelModificarRegion extends javax.swing.JPanel {
         comboBoxListaRegiones.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(dmr.getFramePrincipal().modo)));
         comboBoxListaRegiones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         comboBoxListaRegiones.setForeground(Color.decode(Colores.TEXTO.getColor(dmr.getFramePrincipal().modo)));
-        comboBoxListaRegiones.setMaximumRowCount(10);
+        comboBoxListaRegiones.setMaximumRowCount(7);
         comboBoxListaRegiones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboBoxListaRegiones.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(dmr.getFramePrincipal().modo))));
         comboBoxListaRegiones.setFocusable(false);
@@ -185,11 +186,16 @@ public class PanelModificarRegion extends javax.swing.JPanel {
 
     private void buttonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAceptarActionPerformed
         try {
-            String ok = dmr.controladorRegion.modificarRegion((String)comboBoxListaRegiones.getSelectedItem(), textNombre.getText());
-            if(ok != null){
-                labelError.setText(ok);
-            }else{
-                dmr.setVisible(false);
+            int pos = comboBoxListaRegiones.getSelectedIndex();
+            if (pos == -1) {
+                labelError.setText(TextoErrores.NO_REGION.getTexto());
+            } else {
+                String ok = dmr.controladorRegion.modificarRegion((String) comboBoxListaRegiones.getSelectedItem(), textNombre.getText());
+                if (ok != null) {
+                    labelError.setText(ok);
+                } else {
+                    dmr.setVisible(false);
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelModificarRegion.class.getName()).log(Level.SEVERE, null, ex);

@@ -27,6 +27,15 @@ public class CollectionRegiones {
         return mapaRegiones.get(nombre.toUpperCase());
     }
     
+    public Region obtenerRegion(int idRegion){
+        for (Region region : listaRegiones) {
+            if(region.getIdRegion() == idRegion){
+                return region;
+            }
+        }
+        return null;
+    }
+    
     public void agregarRegion(Region region){
         listaRegiones.add(region);
         nombresRegiones.add(region.getNombre());
@@ -46,9 +55,8 @@ public class CollectionRegiones {
     }
     
     public void modificarRegion(String preNombre, Region nuevaRegion){
-        for (int i = 0; i < listaRegiones.size(); i++) {
-            if(preNombre.equalsIgnoreCase(listaRegiones.get(i).getNombre())){
-                listaRegiones.set(i, nuevaRegion);
+        for (int i = 0; i < nombresRegiones.size(); i++) {
+            if(preNombre.equalsIgnoreCase(nombresRegiones.get(i))){
                 nombresRegiones.set(i, nuevaRegion.getNombre());
                 break;
             }

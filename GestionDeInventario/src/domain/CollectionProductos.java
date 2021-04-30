@@ -31,6 +31,15 @@ public class CollectionProductos {
         return mapaProductos.get(barCode);
     }
     
+    public Producto obtenerProducto(int idProducto){
+        for (Producto producto : mapaProductos.values()) {
+            if(producto.getIdProducto() == idProducto){
+                return producto;
+            }
+        }
+        return null;
+    }
+    
     public void agregarProducto(Producto producto){
         mapaProductos.put(producto.getBarCode(), producto);
         

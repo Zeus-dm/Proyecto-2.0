@@ -68,6 +68,10 @@ public class Sistema {
         return productos.obtenerProducto(barCode);
     }
     
+    public Producto obtenerProducto(int idProducto){
+        return productos.obtenerProducto(idProducto);
+    }
+    
     public void agregarProducto(Producto producto){
         productos.agregarProducto(producto);
     }
@@ -120,6 +124,10 @@ public class Sistema {
     
     public Region obtenerRegion(String nombre){
         return regiones.obtenerRegion(nombre);
+    }
+    
+    public Region obtenerRegion(int idRegion){
+        return regiones.obtenerRegion(idRegion);
     }
     
     public void agregarRegion(Region region){

@@ -66,15 +66,13 @@ public class FunRegion {
             }
         }
                 
-        Region preRegion = sistema.obtenerRegion(preNombre);
-        Region region = new Region();
+        Region region = sistema.obtenerRegion(preNombre);
         try {
             region.setNombre(nombre);
-            region.setIdRegion(preRegion.getIdRegion());
         } catch(TextoEnBlancoException | TextoTamanoMaximoException e){
             return e.getMessage();
         }
-
+        
         sistema.modificarRegion(preNombre, region);
         
         JdbcRegion jr = new JdbcRegion();
@@ -92,7 +90,7 @@ public class FunRegion {
         Region region = sistema.obtenerRegion(nombre);
         
         //Eliminar sucursales de la region en especifico
-        FunSucursal controladorSucursal = new FunSucursal(region);
+        FunSucursal controladorSucursal = new FunSucursal(region, sistema);
         List<String> nombresSucursales = region.nombresSucursales();
         for (int i = 0; i < nombresSucursales.size(); i++) {
             controladorSucursal.eliminarSucursal(nombresSucursales.get(i));
@@ -118,8 +116,8 @@ public class FunRegion {
             Region region = (Region)generico;
             //agrega las sucursales de la region
             try {
-                FunSucursal controladorSucursal = new FunSucursal(region);
-                controladorSucursal.listarSucursales();
+                FunSucursal controladorSucursal = new FunSucursal(region, sistema);
+                controladorSucursal.listarSucursales(sistema);
             } catch (SQLException ex) {
                 Logger.getLogger(FunRegion.class.getName()).log(Level.SEVERE, null, ex);
             }

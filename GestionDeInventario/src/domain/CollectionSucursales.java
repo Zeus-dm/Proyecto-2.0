@@ -47,11 +47,10 @@ public class CollectionSucursales {
         }
     }
     
-    public void modificarSucursal(String preNombre, Sucursal nuevaSucursal){
-        for (int i = 0; i < listaSucursales.size(); i++) {
-            if(preNombre.equalsIgnoreCase(listaSucursales.get(i).getNombre())){
-                listaSucursales.set(i, nuevaSucursal);
-                nombresSucursales.set(i, nuevaSucursal.getNombre());
+    public void modificarSucursal(String preNombre, String newNombre){
+        for (int i = 0; i < nombresSucursales.size(); i++) {
+            if(preNombre.equalsIgnoreCase(nombresSucursales.get(i))){
+                nombresSucursales.set(i, newNombre);
                 break;
             }
         }
