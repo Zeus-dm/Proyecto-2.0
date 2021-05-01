@@ -3,6 +3,17 @@ package enumeraciones;
 
 public enum TextoErrores {
     
+    //Panel Menu Inicio Sesion
+        //Inicio Sesion
+    USUARIO_PASSWORD_INCORRECTOS("* Error: Usuario y/o contraseña incorrectos"),
+        //Crear Cuenta
+    USUARIO_EXISTENTE("* Error: Usuario ya existe"),
+    USUARIO_VACIO("* Error: Campo Usuario Vacío"),
+    USUARIO_MAXIMO_CARACTERES_20("* Error: Usuario máximo 20 caracteres"),
+    PASSWORD_DIFERENTES("* Error: Contraseñas no coinciden"),
+    PASSWORD_VACIO("* Error: Campo Contraseña Vacío"),
+    
+    //Otros
     NOMBRE_VACIO("* Error: Campo nombre vacío"),
     
     MARCA_VACIO("* Error: Campo Marca vacío"),
@@ -13,7 +24,7 @@ public enum TextoErrores {
     
     MAXIMO_CARACTERES_MARCA_20("* Error: Marca máximo 20 caracteres"),
     MAXIMO_CARACTERES_DIRECCION_20("* Error: Dirección máximo 20 caracteres"),
-    MAXIMO_CARACTERES_USUARIO_20("* Error: Usuario máximo 20 caracteres"),
+    
     MAXIMO_CARACTERES_PASSWORD_20("* Error: Contraseña máximo 20 caracteres"),
     MAXIMO_CARACTERES_NOMBRE_20("* Error: Nombre máximo 20 caracteres"),
     
@@ -58,11 +69,8 @@ public enum TextoErrores {
     STOCK_INVALIDO("* Error: Stock debe ser un número"),
     STOCK_RANGO("* Error: Stock Máximo de 5 dígitos"),
     
-    USUARIO_PASSWORD_INCORRECTOS("* Error: Usuario y/o contraseña incorrectos"),
-    USUARIO_EXISTENTE("* Error: Usuario ya existe"),
-    PASSWORD_DIFERENTES("* Error: Contraseñas no coinciden"),
-    USUARIO_VACIO("* Error: Campo Usuario Vacío"),
-    PASSWORD_VACIO("* Error: Campo Contraseña Vacío"),
+    
+    
     
     CONTIENE_TODO("* Error: Sucursal contiene todos los Productos"),
     NO_REGION("* Error: No existe Region para Modificar");

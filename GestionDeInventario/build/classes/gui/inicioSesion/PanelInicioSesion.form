@@ -36,7 +36,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="labelPregunta" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelPregunta" min="-2" pref="118" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labelRegistro" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -156,7 +156,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt placeHolderUsuario = new TextPrompt(&quot;Usuario&quot;, textUsuario);&#xa;placeHolderUsuario.changeAlpha(0.75f);&#xa;placeHolderUsuario.changeStyle(Font.ITALIC);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt placeHolderUsuario = new TextPrompt(Texto.USUARIO.getTexto(), textUsuario);&#xa;placeHolderUsuario.changeAlpha(0.75f);&#xa;placeHolderUsuario.changeStyle(Font.ITALIC);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JPasswordField" name="textContrase&#xf1;a">
@@ -182,7 +182,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textContrase&#xf1;a.setEchoChar(&apos;\u2022&apos;);&#xa;&#xa;TextPrompt placeHolderPassword = new TextPrompt(&quot;Contrase&#xf1;a&quot;, textContrase&#xf1;a);&#xa;placeHolderPassword.changeAlpha(0.75f);&#xa;placeHolderPassword.changeStyle(Font.ITALIC);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textContrase&#xf1;a.setEchoChar(&apos;\u2022&apos;);&#xa;&#xa;TextPrompt placeHolderPassword = new TextPrompt(Texto.PASSWORD.getTexto(), textContrase&#xf1;a);&#xa;placeHolderPassword.changeAlpha(0.75f);&#xa;placeHolderPassword.changeStyle(Font.ITALIC);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="buttonVista">
@@ -224,7 +224,9 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="Color.decode(Colores.TEXTO_BOTON.getColor(pms.getFramePrincipal().getModo()))" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Iniciar Sesion"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Texto.INICIAR_SESION.getTexto()" type="code"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
             <MatteColorBorder>
@@ -243,7 +245,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonIniciarSesionActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buttonIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        buttonIniciarSesion.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(pms.getFramePrincipal().getModo())));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        buttonIniciarSesion.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));&#xa;    }&#xa;});"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buttonIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        buttonIniciarSesion.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(pms.getFramePrincipal().getModo())));&#xa;        buttonIniciarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        buttonIniciarSesion.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));&#xa;        buttonIniciarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));&#xa;    }&#xa;});"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="labelPregunta">
@@ -254,7 +256,9 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo()))" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xbf;No tienes Cuenta?"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Texto.NO_CUENTA.getTexto()" type="code"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelRegistro">
@@ -265,7 +269,9 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo()))" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Registrate"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Texto.REGISTRATE.getTexto()" type="code"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
             <MatteColorBorder bottom="1" left="0" right="0" top="0">
@@ -286,8 +292,8 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelError">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/gui/imagenes/iconosMultiProposito/error_rojo_28.png"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ERROR.getColor(pms.getFramePrincipal().getModo())))" type="code"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Aqui deberia de ir un Error"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

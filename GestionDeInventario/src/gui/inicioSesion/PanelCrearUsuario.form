@@ -144,7 +144,9 @@
           <Connection code="Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo()))" type="code"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Crea tu cuenta"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Texto.CREA_CUENTA.getTexto()" type="code"/>
+        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[240, 24]"/>
         </Property>
@@ -173,17 +175,20 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt placeHolderUsuario = new TextPrompt(&quot;Usuario&quot;, textUsuario);&#xa;placeHolderUsuario.changeAlpha(0.75f);&#xa;placeHolderUsuario.changeStyle(Font.ITALIC);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="TextPrompt placeHolderUsuario = new TextPrompt(Texto.USUARIO.getTexto(), textUsuario);&#xa;placeHolderUsuario.changeAlpha(0.75f);&#xa;placeHolderUsuario.changeStyle(Font.ITALIC);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="labelErrorUsuario">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/gui/imagenes/iconosMultiProposito/error_rojo_28.png"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ERROR.getColor(pms.getFramePrincipal().getModo())))" type="code"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Aqui deberia de ir un Error"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Default Cursor"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[28, 28]"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -213,7 +218,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textContrase&#xf1;a.setEchoChar(&apos;\u2022&apos;);&#xa;&#xa;TextPrompt placeHolderPassword = new TextPrompt(&quot;Contrase&#xf1;a&quot;, textContrase&#xf1;a);&#xa;placeHolderPassword.changeAlpha(0.75f);&#xa;placeHolderPassword.changeStyle(Font.ITALIC);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textContrase&#xf1;a.setEchoChar(&apos;\u2022&apos;);&#xa;&#xa;TextPrompt placeHolderPassword = new TextPrompt(Texto.PASSWORD.getTexto(), textContrase&#xf1;a);&#xa;placeHolderPassword.changeAlpha(0.75f);&#xa;placeHolderPassword.changeStyle(Font.ITALIC);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JPasswordField" name="textVerContrase&#xf1;a">
@@ -239,7 +244,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textVerContrase&#xf1;a.setEchoChar(&apos;\u2022&apos;);&#xa;&#xa;TextPrompt placeHolderVerPassword = new TextPrompt(&quot;Verificar Contrase&#xf1;a&quot;, textVerContrase&#xf1;a);&#xa;placeHolderVerPassword.changeAlpha(0.75f);&#xa;placeHolderVerPassword.changeStyle(Font.ITALIC);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textVerContrase&#xf1;a.setEchoChar(&apos;\u2022&apos;);&#xa;&#xa;TextPrompt placeHolderVerPassword = new TextPrompt(Texto.VER_PASSWORD.getTexto(), textVerContrase&#xf1;a);&#xa;placeHolderVerPassword.changeAlpha(0.75f);&#xa;placeHolderVerPassword.changeStyle(Font.ITALIC);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="buttonVista">
@@ -272,8 +277,8 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelErrorPaswords">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/gui/imagenes/iconosMultiProposito/error_rojo_28.png"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ERROR.getColor(pms.getFramePrincipal().getModo())))" type="code"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Aqui deberia de ir un Error"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -295,7 +300,9 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="Color.decode(Colores.TEXTO_BOTON.getColor(pms.getFramePrincipal().getModo()))" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Crear Cuenta"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Texto.CREAR_CUENTA.getTexto()" type="code"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
             <MatteColorBorder>
@@ -314,7 +321,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCrearCuentaActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buttonCrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        buttonCrearCuenta.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(pms.getFramePrincipal().getModo())));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        buttonCrearCuenta.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));&#xa;    }&#xa;});"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buttonCrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        buttonCrearCuenta.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(pms.getFramePrincipal().getModo())));&#xa;        buttonCrearCuenta.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        buttonCrearCuenta.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));&#xa;        buttonCrearCuenta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));&#xa;    }&#xa;});"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="buttonVolver">
@@ -328,7 +335,9 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="Color.decode(Colores.TEXTO_BOTON.getColor(pms.getFramePrincipal().getModo()))" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Volver"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Texto.VOLVER.getTexto()" type="code"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
             <MatteColorBorder>
@@ -347,7 +356,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonVolverActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buttonVolver.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        buttonVolver.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(pms.getFramePrincipal().getModo())));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        buttonVolver.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));&#xa;    }&#xa;});"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="buttonVolver.addMouseListener(new java.awt.event.MouseAdapter() {&#xa;    public void mouseEntered(java.awt.event.MouseEvent evt) {&#xa;        buttonVolver.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(pms.getFramePrincipal().getModo())));&#xa;        buttonVolver.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));&#xa;    }&#xa;    public void mouseExited(java.awt.event.MouseEvent evt) {&#xa;        buttonVolver.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));&#xa;        buttonVolver.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));&#xa;    }&#xa;});"/>
       </AuxValues>
     </Component>
   </SubComponents>

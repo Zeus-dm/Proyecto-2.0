@@ -1,8 +1,10 @@
 package gui.inicioSesion;
 
 import enumeraciones.Colores;
+import enumeraciones.Texto;
 import enumeraciones.TextoErrores;
 import gui.TextPrompt;
+import gui.menuPrincipal.PanelMenuPrincipal;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,6 +21,16 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         this.pms = pms;
 
         initComponents();
+    }
+    
+    private void recargarColores(){
+        textUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
+        textContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
+        textVerContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
+        buttonVista.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
+
+        labelErrorUsuario.setVisible(false);
+        labelErrorPaswords.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -52,7 +64,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelTitulo.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelTitulo.setText("Crea tu cuenta");
+        labelTitulo.setText(Texto.CREA_CUENTA.getTexto());
         labelTitulo.setPreferredSize(new java.awt.Dimension(240, 24));
 
         textUsuario.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
@@ -60,13 +72,14 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         textUsuario.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         textUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         textUsuario.setPreferredSize(new java.awt.Dimension(240, 28));
-        TextPrompt placeHolderUsuario = new TextPrompt("Usuario", textUsuario);
+        TextPrompt placeHolderUsuario = new TextPrompt(Texto.USUARIO.getTexto(), textUsuario);
         placeHolderUsuario.changeAlpha(0.75f);
         placeHolderUsuario.changeStyle(Font.ITALIC);
 
-        labelErrorUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/iconosMultiProposito/error_rojo_28.png"))); // NOI18N
+        labelErrorUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
         labelErrorUsuario.setToolTipText("Aqui deberia de ir un Error");
         labelErrorUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelErrorUsuario.setPreferredSize(new java.awt.Dimension(28, 28));
         labelErrorUsuario.setVisible(false);
 
         textContraseña.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
@@ -76,7 +89,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         textContraseña.setPreferredSize(new java.awt.Dimension(212, 28));
         textContraseña.setEchoChar('\u2022');
 
-        TextPrompt placeHolderPassword = new TextPrompt("Contraseña", textContraseña);
+        TextPrompt placeHolderPassword = new TextPrompt(Texto.PASSWORD.getTexto(), textContraseña);
         placeHolderPassword.changeAlpha(0.75f);
         placeHolderPassword.changeStyle(Font.ITALIC);
 
@@ -87,7 +100,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         textVerContraseña.setPreferredSize(new java.awt.Dimension(240, 28));
         textVerContraseña.setEchoChar('\u2022');
 
-        TextPrompt placeHolderVerPassword = new TextPrompt("Verificar Contraseña", textVerContraseña);
+        TextPrompt placeHolderVerPassword = new TextPrompt(Texto.VER_PASSWORD.getTexto(), textVerContraseña);
         placeHolderVerPassword.changeAlpha(0.75f);
         placeHolderVerPassword.changeStyle(Font.ITALIC);
 
@@ -104,7 +117,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
             }
         });
 
-        labelErrorPaswords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/iconosMultiProposito/error_rojo_28.png"))); // NOI18N
+        labelErrorPaswords.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
         labelErrorPaswords.setToolTipText("Aqui deberia de ir un Error");
         labelErrorPaswords.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         labelErrorPaswords.setVisible(false);
@@ -112,7 +125,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         buttonCrearCuenta.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
         buttonCrearCuenta.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         buttonCrearCuenta.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(pms.getFramePrincipal().getModo())));
-        buttonCrearCuenta.setText("Crear Cuenta");
+        buttonCrearCuenta.setText(Texto.CREAR_CUENTA.getTexto());
         buttonCrearCuenta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         buttonCrearCuenta.setFocusPainted(false);
         buttonCrearCuenta.setFocusable(false);
@@ -121,9 +134,11 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         buttonCrearCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buttonCrearCuenta.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(pms.getFramePrincipal().getModo())));
+                buttonCrearCuenta.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 buttonCrearCuenta.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
+                buttonCrearCuenta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
             }
         });
         buttonCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +150,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         buttonVolver.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
         buttonVolver.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         buttonVolver.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(pms.getFramePrincipal().getModo())));
-        buttonVolver.setText("Volver");
+        buttonVolver.setText(Texto.VOLVER.getTexto());
         buttonVolver.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         buttonVolver.setFocusPainted(false);
         buttonVolver.setFocusable(false);
@@ -144,9 +159,11 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         buttonVolver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buttonVolver.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(pms.getFramePrincipal().getModo())));
+                buttonVolver.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 buttonVolver.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
+                buttonVolver.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
             }
         });
         buttonVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +198,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
                     .addComponent(textVerContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelErrorUsuario)
+                    .addComponent(labelErrorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelErrorPaswords))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -203,7 +220,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelErrorUsuario))
+                    .addComponent(labelErrorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,18 +255,12 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonVistaActionPerformed
 
     private void buttonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCrearCuentaActionPerformed
-        textUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
-        textContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
-        textVerContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
-        buttonVista.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
-
-        labelErrorUsuario.setVisible(false);
-        labelErrorPaswords.setVisible(false);
+        recargarColores();
 
         try {
             String error = pms.controlUsuario.agregarUsuario(textUsuario.getText(), new String(textContraseña.getPassword()), new String(textVerContraseña.getPassword()));
             if (error != null) {
-                if ((error.equals(TextoErrores.USUARIO_EXISTENTE.getTexto())) || (error.equals(TextoErrores.USUARIO_VACIO.getTexto()))) {
+                if ((error.equals(TextoErrores.USUARIO_EXISTENTE.getTexto())) || (error.equals(TextoErrores.USUARIO_VACIO.getTexto())) || (error.equals(TextoErrores.USUARIO_MAXIMO_CARACTERES_20.getTexto()))) {
                     labelErrorUsuario.setVisible(true);
                     labelErrorUsuario.setToolTipText(error);
 
@@ -263,7 +274,8 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
                     buttonVista.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
                 }
             } else {
-
+                PanelMenuPrincipal pmp = new PanelMenuPrincipal(pms.getFramePrincipal());
+                pms.getFramePrincipal().cargarPanel(pmp);
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelCrearUsuario.class.getName()).log(Level.SEVERE, null, ex);

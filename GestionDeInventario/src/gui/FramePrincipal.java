@@ -32,6 +32,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void iniciarPrograma() {
         //cargar datos
         
+        
         try {
             iniciarMusica();
         } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {

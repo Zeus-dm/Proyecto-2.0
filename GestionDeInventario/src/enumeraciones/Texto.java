@@ -2,19 +2,28 @@
 package enumeraciones;
 
 public enum Texto {
-    //Panel Menu Sesion
-    BOTON_INICIO_SESION("Iniciar Sesión"),
-    BOTON_NUEVO_USUARIO("Crear Usuario"),
-    NUEVO_USUARIO("Crear Nuevo Usuario"),
+    //Panel Menu Inicio Sesion
+        //Inicio Sesion
     USUARIO("Usuario"),
     PASSWORD("Contraseña"),
-    VER_PASSWORD("Ver. Contraseña"),
+    INICIAR_SESION("Iniciar Sesión"),
+    NO_CUENTA("¿No tienes Cuenta?"),
+    REGISTRATE("Registrate"),
+        //Crear Cuenta
+    CREA_CUENTA("Crea tu cuenta"),
+    VER_PASSWORD("Verificar Contraseña"),
+    CREAR_CUENTA("Crear Cuenta"),
 
     //Panel Menu Principal
     TITULO("El Chefcito"),
     BIENVENIDO("Bienvenido"),
+    CERRAR_SESION("Cerrar Sesión"),
     REGIONES("Regiones"),
+    CLIENTES("Clientes"),
+    PRODUCTOS("Productos"),
+    SALIR("Salir"),
     
+    //Otros
     AGREGAR_REGION("Agregar Nueva Región"),
     NOMBRE("Nombre"),
     ELIMINAR_REGION("Eliminar Región"),
@@ -40,7 +49,7 @@ public enum Texto {
             
     ELIM_JEFE("Elim. jefe S."),
             
-    CLIENTES("Clientes"),
+    
     AGR_CLIENTE("Agr. Cliente"),
     AGREGAR_CLIENTE("Agregar Nuevo Cliente"),
     EDAD("Edad"),
@@ -52,7 +61,7 @@ public enum Texto {
     MOD_CLIENTE("Mod. Cliente"),
     MODIFICAR_CLIENTE("Modificar Cliente"),
             
-    PRODUCTOS("Productos"),
+    
     BUSCAR("Buscar"),
     PRECIO("Precio"),
     MIN("Min"),
@@ -86,8 +95,7 @@ public enum Texto {
     CONFIRMACION_ELIMINAR_JEFE("¿Estas seguro de Eliminar el Jefe?"),
     CONFIRMACION_ELIMINAR_PRODUCTO_SUCURSAL("¿Estas seguro de Eliminar de la Sucursal?"),
     
-    REPORTES("Reportes"),
-    SALIR("Salir"),
+    
     ACEPTAR("Aceptar"),
     CANCELAR("Cancelar"),
     VOLVER("Volver");

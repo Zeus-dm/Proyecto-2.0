@@ -26,11 +26,19 @@ public enum Colores {
     ICONO_VISTA_DRAGGED("/gui/imagenes/iconosInicioSesion/vista_dorado_28.png","/gui/imagenes/iconosInicioSesion/vista_agua_28.png"),
     
     ICONO_ERROR("/gui/imagenes/iconosMultiProposito/error_rojo_28.png","/gui/imagenes/iconosMultiProposito/error_rojo_28.png"),
-        
-    ICONO_MODO("/gui/imagenes/iconos/luna_blanca_32.png","/gui/imagenes/iconos/sol_negro_32.png"),
-    ICONO_SONIDO("/gui/imagenes/iconos/sonido_blanco_32.png","/gui/imagenes/iconos/sonido_negro_32.png"),
-    ICONO_MUTE("/gui/imagenes/iconos/mute_blanco_32.png","/gui/imagenes/iconos/mute_negro_32.png"),
-    ICONO_ARCHIVO("/gui/imagenes/iconos/archivo_blanco_32.png","/gui/imagenes/iconos/archivo_negro_32.png"),
+     
+    ICONO_MODO("/gui/imagenes/iconosMenuPrincipal/luna_blanca_32.png","/gui/imagenes/iconosMenuPrincipal/sol_negro_32.png"),
+    ICONO_MODO_DRAGGED("/gui/imagenes/iconosMenuPrincipal/luna_dorado_32.png","/gui/imagenes/iconosMenuPrincipal/sol_agua_32.png"),
+    
+    ICONO_SONIDO("/gui/imagenes/iconosMenuPrincipal/sonido_blanco_32.png","/gui/imagenes/iconosMenuPrincipal/sonido_negro_32.png"),
+    ICONO_SONIDO_DRAGGED("/gui/imagenes/iconosMenuPrincipal/sonido_dorado_32.png","/gui/imagenes/iconosMenuPrincipal/sonido_agua_32.png"),
+    
+    ICONO_MUTE("/gui/imagenes/iconosMenuPrincipal/mute_blanco_32.png","/gui/imagenes/iconosmenuPrincipal/mute_negro_32.png"),
+    ICONO_MUTE_DRAGGED("/gui/imagenes/iconosMenuPrincipal/mute_dorado_32.png","/gui/imagenes/iconosmenuPrincipal/mute_agua_32.png"),
+    
+    ICONO_ARCHIVO("/gui/imagenes/iconosMenuPrincipal/archivo_blanco_32.png","/gui/imagenes/iconosMenuPrincipal/archivo_negro_32.png"),
+    ICONO_ARCHIVO_DRAGGED("/gui/imagenes/iconosMenuPrincipal/archivo_dorado_32.png","/gui/imagenes/iconosMenuPrincipal/archivo_agua_32.png"),
+    
     ICONO_LUPA("/gui/imagenes/iconos/lupa_blanca_32.png","/gui/imagenes/iconos/lupa_negra_32.png"),
     ICONO_GRAFICO_TORTA("/gui/imagenes/iconos/grafico_torta_blanco_32.png","/gui/imagenes/iconos/grafico_torta_negro_32.png"),
     ICONO_GRAFICO_BARRA("/gui/imagenes/iconos/grafico_blanco_32.png","/gui/imagenes/iconos/grafico_negro_32.png"),
