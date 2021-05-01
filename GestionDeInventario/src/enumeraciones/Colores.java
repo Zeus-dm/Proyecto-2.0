@@ -15,6 +15,17 @@ public enum Colores {
     BORDE("#EFB810","#1CBAA4"),
     
     GRAFICO_BARRAS("#F44336","#9C27B0"),
+    
+    ICONO_CERRAR("/gui/imagenes/iconosInicioSesion/cerrar_blanco_28.png","/gui/imagenes/iconosInicioSesion/cerrar_negro_28.png"),
+    ICONO_CERRAR_DRAGGED("/gui/imagenes/iconosInicioSesion/cerrar_rojo_28.png","/gui/imagenes/iconosInicioSesion/cerrar_rojo_28.png"),
+    
+    ICONO_NO_VISTA("/gui/imagenes/iconosInicioSesion/no_vista_blanco_28.png","/gui/imagenes/iconosInicioSesion/no_vista_negro_28.png"),
+    ICONO_NO_VISTA_DRAGGED("/gui/imagenes/iconosInicioSesion/no_vista_dorado_28.png","/gui/imagenes/iconosInicioSesion/no_vista_agua_28.png"),
+    
+    ICONO_VISTA("/gui/imagenes/iconosInicioSesion/vista_blanco_28.png","/gui/imagenes/iconosInicioSesion/vista_negro_28.png"),
+    ICONO_VISTA_DRAGGED("/gui/imagenes/iconosInicioSesion/vista_dorado_28.png","/gui/imagenes/iconosInicioSesion/vista_agua_28.png"),
+    
+    ICONO_ERROR("/gui/imagenes/iconosMultiProposito/error_rojo_28.png","/gui/imagenes/iconosMultiProposito/error_rojo_28.png"),
         
     ICONO_MODO("/gui/imagenes/iconos/luna_blanca_32.png","/gui/imagenes/iconos/sol_negro_32.png"),
     ICONO_SONIDO("/gui/imagenes/iconos/sonido_blanco_32.png","/gui/imagenes/iconos/sonido_negro_32.png"),

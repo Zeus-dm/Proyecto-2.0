@@ -2,10 +2,9 @@
 package enumeraciones;
 
 public enum Musica {
-    CHAYANNE_TORERO("/gui/musica/chayanne_torero.wav"),
-    CAMILLE_LE_FESTIN("/gui/musica/camille_le_festin.wav"),
+    SWEDEN("/gui/musica/sweden.wav"),
     
-    MUSICA_ACTUAL(CAMILLE_LE_FESTIN.getMusica());
+    MUSICA_ACTUAL(SWEDEN.getMusica());
     
     private String musica;
 

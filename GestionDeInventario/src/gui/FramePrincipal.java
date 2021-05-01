@@ -1,71 +1,97 @@
-
 package gui;
 
-import FunGenerales.FunCliente;
-import FunGenerales.FunProducto;
-import FunGenerales.FunRegion;
 import domain.Sistema;
 import enumeraciones.Musica;
 import enumeraciones.Texto;
-import gui.MenuPrincipal.PanelMenuPrincipal;
-
+import gui.inicioSesion.PanelMenuSesion;
 import java.awt.Image;
 import java.awt.Toolkit;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.*;
 import javax.swing.JPanel;
 
 public class FramePrincipal extends javax.swing.JFrame {
+
     private Sistema sistema = null;
-    public Clip sonido = null;
-    public boolean mute = false;
-    public boolean musica = true;
-    public int imagen = 0;
-    public int modo = 0;
-    
-    public FramePrincipal(Sistema sistema) throws SQLException, LineUnavailableException, IOException, UnsupportedAudioFileException {
+    private Clip sonido = null;
+    private boolean mute = false;
+    private int modo = 0;
+
+    public FramePrincipal(Sistema sistema) {
         this.sistema = sistema;
-        
+
         initComponents();
-        
+
         iniciarPrograma();
     }
-    
-    public final void sonido() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
-        BufferedInputStream bis = new BufferedInputStream(getClass().getResourceAsStream( Musica.MUSICA_ACTUAL.getMusica() ));
+
+    private void iniciarPrograma() {
+        //cargar datos
+        
+        try {
+            iniciarMusica();
+        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
+            Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        PanelMenuSesion pms = new PanelMenuSesion(this);
+        cargarPanel(pms);
+    }
+
+    //Metodos para la musica
+    public boolean isMute() {
+        return mute;
+    }
+
+    public void pausarMusica() {
+        sonido.stop();
+        mute = true;
+    }
+
+    public void continuarMusica() {
+        sonido.start();
+        sonido.loop(-1);
+        mute = false;
+    }
+
+    private void iniciarMusica() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+        BufferedInputStream bis = new BufferedInputStream(getClass().getResourceAsStream(Musica.MUSICA_ACTUAL.getMusica()));
         AudioInputStream ais = AudioSystem.getAudioInputStream(bis);
         sonido = AudioSystem.getClip();
         sonido.open(ais);
         sonido.loop(-1);
     }
-    
-    private void iniciarPrograma() throws SQLException {
-        FunCliente controladorCliente = new FunCliente(sistema);
-        controladorCliente.listarClientes();
-        
-        FunProducto controladorProducto = new FunProducto(sistema);
-        controladorProducto.listarProductos();
-        
-        FunRegion controladorRegion = new FunRegion(sistema);
-        controladorRegion.listarRegiones();
-        
-        PanelMenuPrincipal pmp = new PanelMenuPrincipal(this);
-        cargarPanel(pmp);
+
+    //Metodos para el modo oscuro o claro
+    public int getModo() {
+        return modo;
     }
-    
+
+    public void cambiarModo() {
+        if (modo == 0) {
+            modo = 1;
+        } else {
+            modo = 0;
+        }
+    }
+
+    //Metodos para el sistema
+    public Sistema getSistema() {
+        return sistema;
+    }
+
+    //Metodos para el panel
     public final void cargarPanel(JPanel nuevoPanel) {
         panelPrincipal.removeAll();
         panelPrincipal.add(nuevoPanel);
         panelPrincipal.repaint();
         panelPrincipal.revalidate();
     }
-    
-    public Sistema getSistema() {
-        return sistema;
-    }
-    
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("gui/imagenes/chefcito_icon_80.png"));
@@ -82,28 +108,49 @@ public class FramePrincipal extends javax.swing.JFrame {
         setTitle(Texto.TITULO.getTexto());
         setIconImage(getIconImage());
         setName("framePrincipal"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(415, 490));
+        setUndecorated(true);
         setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
-        panelPrincipal.setMaximumSize(new java.awt.Dimension(400, 450));
-        panelPrincipal.setMinimumSize(new java.awt.Dimension(400, 450));
-        panelPrincipal.setPreferredSize(new java.awt.Dimension(400, 450));
+        panelPrincipal.setPreferredSize(new java.awt.Dimension(800, 500));
         panelPrincipal.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private int xx, xy;
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_formMouseDragged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel panelPrincipal;
