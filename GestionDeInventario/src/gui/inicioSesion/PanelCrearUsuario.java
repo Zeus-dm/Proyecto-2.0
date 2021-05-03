@@ -22,8 +22,8 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
 
         initComponents();
     }
-    
-    private void recargarColores(){
+
+    private void recargarColores() {
         textUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         textContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         textVerContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
@@ -53,7 +53,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
         setPreferredSize(new java.awt.Dimension(340, 500));
 
-        labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/iconosMultiProposito/chefcito_redondo_100.png"))); // NOI18N
+        labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/iconosMultiProposito/chefcito_redondo_100.gif"))); // NOI18N
 
         labelLineaIzquierda.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         labelLineaIzquierda.setPreferredSize(new java.awt.Dimension(120, 2));
@@ -61,20 +61,20 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         labelLineaDerecha.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         labelLineaDerecha.setPreferredSize(new java.awt.Dimension(120, 2));
 
-        labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         labelTitulo.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         labelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelTitulo.setText(Texto.CREA_CUENTA.getTexto());
         labelTitulo.setPreferredSize(new java.awt.Dimension(240, 24));
 
         textUsuario.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
-        textUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        textUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textUsuario.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         textUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         textUsuario.setPreferredSize(new java.awt.Dimension(240, 28));
-        TextPrompt placeHolderUsuario = new TextPrompt(Texto.USUARIO.getTexto(), textUsuario);
-        placeHolderUsuario.changeAlpha(0.75f);
-        placeHolderUsuario.changeStyle(Font.ITALIC);
+        TextPrompt placeHolder = new TextPrompt(Texto.USUARIO.getTexto(), textUsuario);
+        placeHolder.changeAlpha(0.75f);
+        placeHolder.changeStyle(Font.ITALIC);
 
         labelErrorUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
         labelErrorUsuario.setToolTipText("Aqui deberia de ir un Error");
@@ -83,31 +83,32 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         labelErrorUsuario.setVisible(false);
 
         textContraseña.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
-        textContraseña.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        textContraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textContraseña.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         textContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         textContraseña.setPreferredSize(new java.awt.Dimension(212, 28));
         textContraseña.setEchoChar('\u2022');
 
-        TextPrompt placeHolderPassword = new TextPrompt(Texto.PASSWORD.getTexto(), textContraseña);
-        placeHolderPassword.changeAlpha(0.75f);
-        placeHolderPassword.changeStyle(Font.ITALIC);
+        placeHolder = new TextPrompt(Texto.PASSWORD.getTexto(), textContraseña);
+        placeHolder.changeAlpha(0.75f);
+        placeHolder.changeStyle(Font.ITALIC);
 
         textVerContraseña.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
-        textVerContraseña.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        textVerContraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textVerContraseña.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         textVerContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         textVerContraseña.setPreferredSize(new java.awt.Dimension(240, 28));
         textVerContraseña.setEchoChar('\u2022');
 
-        TextPrompt placeHolderVerPassword = new TextPrompt(Texto.VER_PASSWORD.getTexto(), textVerContraseña);
-        placeHolderVerPassword.changeAlpha(0.75f);
-        placeHolderVerPassword.changeStyle(Font.ITALIC);
+        placeHolder = new TextPrompt(Texto.VER_PASSWORD.getTexto(), textVerContraseña);
+        placeHolder.changeAlpha(0.75f);
+        placeHolder.changeStyle(Font.ITALIC);
 
         buttonVista.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_NO_VISTA.getColor(pms.getFramePrincipal().getModo()))));
         buttonVista.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         buttonVista.setContentAreaFilled(false);
         buttonVista.setFocusPainted(false);
+        buttonVista.setFocusable(false);
         buttonVista.setPreferredSize(new java.awt.Dimension(28, 28));
         buttonVista.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_NO_VISTA.getColor(pms.getFramePrincipal().getModo()))));
         buttonVista.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_NO_VISTA_DRAGGED.getColor(pms.getFramePrincipal().getModo()))));
@@ -123,7 +124,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         labelErrorPaswords.setVisible(false);
 
         buttonCrearCuenta.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
-        buttonCrearCuenta.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonCrearCuenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         buttonCrearCuenta.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(pms.getFramePrincipal().getModo())));
         buttonCrearCuenta.setText(Texto.CREAR_CUENTA.getTexto());
         buttonCrearCuenta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
@@ -148,7 +149,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
         });
 
         buttonVolver.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
-        buttonVolver.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonVolver.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         buttonVolver.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(pms.getFramePrincipal().getModo())));
         buttonVolver.setText(Texto.VOLVER.getTexto());
         buttonVolver.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
@@ -259,23 +260,21 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
 
         try {
             String error = pms.controlUsuario.agregarUsuario(textUsuario.getText(), new String(textContraseña.getPassword()), new String(textVerContraseña.getPassword()));
-            if (error != null) {
-                if ((error.equals(TextoErrores.USUARIO_EXISTENTE.getTexto())) || (error.equals(TextoErrores.USUARIO_VACIO.getTexto())) || (error.equals(TextoErrores.USUARIO_MAXIMO_CARACTERES_20.getTexto()))) {
-                    labelErrorUsuario.setVisible(true);
-                    labelErrorUsuario.setToolTipText(error);
-
-                    textUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
-                } else {
-                    labelErrorPaswords.setVisible(true);
-                    labelErrorPaswords.setToolTipText(error);
-
-                    textContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
-                    textVerContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
-                    buttonVista.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
-                }
-            } else {
+            if (error == null) {
                 PanelMenuPrincipal pmp = new PanelMenuPrincipal(pms.getFramePrincipal());
                 pms.getFramePrincipal().cargarPanel(pmp);
+            } else if ((error.equals(TextoErrores.USUARIO_EXISTENTE.getTexto())) || (error.equals(TextoErrores.USUARIO_VACIO.getTexto())) || (error.equals(TextoErrores.USUARIO_MAXIMO_CARACTERES_20.getTexto()))) {
+                labelErrorUsuario.setVisible(true);
+                labelErrorUsuario.setToolTipText(error);
+
+                textUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
+            } else if (error.equals(TextoErrores.PASSWORD_VACIO.getTexto()) || error.equals(TextoErrores.PASSWORD_DIFERENTES.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_PASSWORD_20.getTexto())) {
+                labelErrorPaswords.setVisible(true);
+                labelErrorPaswords.setToolTipText(error);
+
+                textContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
+                textVerContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
+                buttonVista.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelCrearUsuario.class.getName()).log(Level.SEVERE, null, ex);

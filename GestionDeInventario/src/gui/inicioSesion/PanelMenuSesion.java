@@ -1,4 +1,3 @@
-
 package gui.inicioSesion;
 
 import FunGenerales.FunUsuario;
@@ -9,24 +8,24 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 public class PanelMenuSesion extends javax.swing.JPanel {
-    
+
     private FramePrincipal fp = null;
     FunUsuario controlUsuario;
-    
+
     public PanelMenuSesion(FramePrincipal fp) {
         this.fp = fp;
         controlUsuario = new FunUsuario(this.fp.getSistema());
-        
+
         initComponents();
-        
+
         iniciarPanel();
     }
-    
+
     private void iniciarPanel() {
         PanelInicioSesion pis = new PanelInicioSesion(this);
         cargarPanel(pis);
     }
-    
+
     public final void cargarPanel(JPanel nuevoPanel) {
         panelSesion.removeAll();
         panelSesion.add(nuevoPanel);
@@ -52,7 +51,8 @@ public class PanelMenuSesion extends javax.swing.JPanel {
         buttonCerrar.setBorderPainted(false);
         buttonCerrar.setContentAreaFilled(false);
         buttonCerrar.setFocusPainted(false);
-        buttonCerrar.setPreferredSize(new java.awt.Dimension(28, 28));
+        buttonCerrar.setFocusable(false);
+        buttonCerrar.setPreferredSize(new java.awt.Dimension(32, 32));
         buttonCerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_CERRAR.getColor(fp.getModo()))));
         buttonCerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_CERRAR_DRAGGED.getColor(fp.getModo()))));
         buttonCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class PanelMenuSesion extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(230, 230, 230)
                 .addComponent(panelSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
                 .addComponent(buttonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

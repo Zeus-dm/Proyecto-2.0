@@ -21,8 +21,8 @@ public class PanelInicioSesion extends javax.swing.JPanel {
 
         initComponents();
     }
-    
-    private void recargarColores(){
+
+    private void recargarColores() {
         textUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         textContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         buttonVista.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
@@ -46,38 +46,42 @@ public class PanelInicioSesion extends javax.swing.JPanel {
         setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
         setPreferredSize(new java.awt.Dimension(340, 500));
 
-        labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/iconosMultiProposito/chefcito_redondo_100.png"))); // NOI18N
+        labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/iconosMultiProposito/chefcito_redondo_100.gif"))); // NOI18N
+        labelImagen.setFocusable(false);
 
         labelLineaIzquierda.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
+        labelLineaIzquierda.setFocusable(false);
         labelLineaIzquierda.setPreferredSize(new java.awt.Dimension(120, 2));
 
         labelLineaDerecha.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
+        labelLineaDerecha.setFocusable(false);
         labelLineaDerecha.setPreferredSize(new java.awt.Dimension(120, 2));
 
         textUsuario.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
-        textUsuario.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        textUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textUsuario.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         textUsuario.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         textUsuario.setPreferredSize(new java.awt.Dimension(240, 28));
-        TextPrompt placeHolderUsuario = new TextPrompt(Texto.USUARIO.getTexto(), textUsuario);
-        placeHolderUsuario.changeAlpha(0.75f);
-        placeHolderUsuario.changeStyle(Font.ITALIC);
+        TextPrompt placeHolder = new TextPrompt(Texto.USUARIO.getTexto(), textUsuario);
+        placeHolder.changeAlpha(0.75f);
+        placeHolder.changeStyle(Font.ITALIC);
 
         textContraseña.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
-        textContraseña.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        textContraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textContraseña.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         textContraseña.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         textContraseña.setPreferredSize(new java.awt.Dimension(212, 28));
         textContraseña.setEchoChar('\u2022');
 
-        TextPrompt placeHolderPassword = new TextPrompt(Texto.PASSWORD.getTexto(), textContraseña);
-        placeHolderPassword.changeAlpha(0.75f);
-        placeHolderPassword.changeStyle(Font.ITALIC);
+        placeHolder = new TextPrompt(Texto.PASSWORD.getTexto(), textContraseña);
+        placeHolder.changeAlpha(0.75f);
+        placeHolder.changeStyle(Font.ITALIC);
 
         buttonVista.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_NO_VISTA.getColor(pms.getFramePrincipal().getModo()))));
         buttonVista.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
         buttonVista.setContentAreaFilled(false);
         buttonVista.setFocusPainted(false);
+        buttonVista.setFocusable(false);
         buttonVista.setPreferredSize(new java.awt.Dimension(28, 28));
         buttonVista.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_NO_VISTA.getColor(pms.getFramePrincipal().getModo()))));
         buttonVista.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_NO_VISTA_DRAGGED.getColor(pms.getFramePrincipal().getModo()))));
@@ -88,7 +92,7 @@ public class PanelInicioSesion extends javax.swing.JPanel {
         });
 
         buttonIniciarSesion.setBackground(Color.decode(Colores.FONDO.getColor(pms.getFramePrincipal().getModo())));
-        buttonIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         buttonIniciarSesion.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(pms.getFramePrincipal().getModo())));
         buttonIniciarSesion.setText(Texto.INICIAR_SESION.getTexto());
         buttonIniciarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pms.getFramePrincipal().getModo()))));
@@ -115,12 +119,14 @@ public class PanelInicioSesion extends javax.swing.JPanel {
         labelPregunta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelPregunta.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         labelPregunta.setText(Texto.NO_CUENTA.getTexto());
+        labelPregunta.setFocusable(false);
 
         labelRegistro.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         labelRegistro.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
         labelRegistro.setText(Texto.REGISTRATE.getTexto());
         labelRegistro.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo()))));
         labelRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        labelRegistro.setFocusable(false);
         labelRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelRegistroMouseClicked(evt);

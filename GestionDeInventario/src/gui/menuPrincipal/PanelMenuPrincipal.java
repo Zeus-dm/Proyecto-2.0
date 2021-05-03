@@ -5,6 +5,7 @@ import gui.FramePrincipal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import gui.inicioSesion.PanelMenuSesion;
+import gui.menuCliente.PanelMenuCliente;
 
 import java.awt.Color;
 
@@ -22,7 +23,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
 
     private void iniciarPanel() {
         labelBienvenida.setText(Texto.BIENVENIDO.getTexto() + " " + new FunUsuario(fp.getSistema()).seleccionarNombreUsuario());
-        
+
         if (fp.getModo() == 0) {
             buttonModo.setToolTipText("Cambiar a Modo Claro");
         } else {
@@ -68,7 +69,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         buttonClientes = new javax.swing.JButton();
         buttonProductos = new javax.swing.JButton();
         buttonSalir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        labelImagen = new javax.swing.JLabel();
 
         setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));
 
@@ -127,7 +128,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
 
         labelCerrarSesion.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         labelCerrarSesion.setForeground(Color.decode(Colores.TEXTO.getColor(fp.getModo())));
-        labelCerrarSesion.setText("Cerrar Sesión");
+        labelCerrarSesion.setText(Texto.CERRAR_SESION.getTexto());
         labelCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO.getColor(fp.getModo()))));
         labelCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelCerrarSesion.setPreferredSize(new java.awt.Dimension(90, 22));
@@ -148,7 +149,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         });
 
         buttonRegiones.setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));
-        buttonRegiones.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonRegiones.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         buttonRegiones.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.getModo())));
         buttonRegiones.setText(Texto.REGIONES.getTexto());
         buttonRegiones.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.getModo()))));
@@ -173,7 +174,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         });
 
         buttonClientes.setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));
-        buttonClientes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonClientes.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         buttonClientes.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.getModo())));
         buttonClientes.setText(Texto.CLIENTES.getTexto());
         buttonClientes.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.getModo()))));
@@ -198,7 +199,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         });
 
         buttonProductos.setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));
-        buttonProductos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonProductos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         buttonProductos.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.getModo())));
         buttonProductos.setText(Texto.PRODUCTOS.getTexto());
         buttonProductos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.getModo()))));
@@ -223,7 +224,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         });
 
         buttonSalir.setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));
-        buttonSalir.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        buttonSalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         buttonSalir.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.getModo())));
         buttonSalir.setText(Texto.SALIR.getTexto());
         buttonSalir.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.getModo()))));
@@ -247,8 +248,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/iconosMenuPrincipal/chefcito_redondo_195.png"))); // NOI18N
-        jLabel2.setPreferredSize(new java.awt.Dimension(0, 0));
+        labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/imagenes/iconosMenuPrincipal/chefcito_redondo_250.gif"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -278,8 +278,8 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                             .addComponent(buttonRegiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(203, 203, 203))))
+                        .addComponent(labelImagen)
+                        .addGap(175, 175, 175))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,9 +295,9 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                 .addComponent(labelBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(labelCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
                         .addComponent(buttonRegiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
                         .addComponent(buttonClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,8 +305,10 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
                         .addComponent(buttonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
                         .addComponent(buttonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelImagen)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -337,15 +339,16 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_labelCerrarSesionMouseClicked
 
     private void buttonRegionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegionesActionPerformed
-        
+
     }//GEN-LAST:event_buttonRegionesActionPerformed
 
     private void buttonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClientesActionPerformed
-        
+        PanelMenuCliente pmc = new PanelMenuCliente(fp);
+        fp.cargarPanel(pmc);
     }//GEN-LAST:event_buttonClientesActionPerformed
 
     private void buttonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProductosActionPerformed
-        
+
     }//GEN-LAST:event_buttonProductosActionPerformed
 
     private void buttonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalirActionPerformed
@@ -360,9 +363,9 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton buttonReporte;
     private javax.swing.JButton buttonSalir;
     private javax.swing.JButton buttonSonido;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel labelBienvenida;
     private javax.swing.JLabel labelCerrarSesion;
+    private javax.swing.JLabel labelImagen;
     private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
 }

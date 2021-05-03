@@ -32,8 +32,8 @@ public class FunCliente {
         try {
             cliente.setNombre(nombre);
             cliente.setEdad(edad);
-            cliente.setDireccion(direccion);
             cliente.setTelefono(telefono);
+            cliente.setDireccion(direccion);
             cliente.setEmail(email);
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException | TextoEmailException e){
             return e.getMessage();

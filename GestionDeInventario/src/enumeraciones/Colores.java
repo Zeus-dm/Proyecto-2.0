@@ -6,6 +6,8 @@ public enum Colores {
     TITULO("#FFFFFF","#000000"),
     
     TEXTO("#FFFFFF","#000000"),
+    TEXTO_HEADER("#EFB810","#1CBAA4"),
+    
     FONDO_TABLA("#5C5E5F","#E0E0E0"),
     TEXTO_ERROR("#F44336","#F44336"),
     
@@ -16,8 +18,8 @@ public enum Colores {
     
     GRAFICO_BARRAS("#F44336","#9C27B0"),
     
-    ICONO_CERRAR("/gui/imagenes/iconosInicioSesion/cerrar_blanco_28.png","/gui/imagenes/iconosInicioSesion/cerrar_negro_28.png"),
-    ICONO_CERRAR_DRAGGED("/gui/imagenes/iconosInicioSesion/cerrar_rojo_28.png","/gui/imagenes/iconosInicioSesion/cerrar_rojo_28.png"),
+    ICONO_CERRAR("/gui/imagenes/iconosInicioSesion/cerrar_blanco_32.png","/gui/imagenes/iconosInicioSesion/cerrar_negro_32.png"),
+    ICONO_CERRAR_DRAGGED("/gui/imagenes/iconosInicioSesion/cerrar_rojo_32.png","/gui/imagenes/iconosInicioSesion/cerrar_rojo_32.png"),
     
     ICONO_NO_VISTA("/gui/imagenes/iconosInicioSesion/no_vista_blanco_28.png","/gui/imagenes/iconosInicioSesion/no_vista_negro_28.png"),
     ICONO_NO_VISTA_DRAGGED("/gui/imagenes/iconosInicioSesion/no_vista_dorado_28.png","/gui/imagenes/iconosInicioSesion/no_vista_agua_28.png"),
@@ -38,6 +40,18 @@ public enum Colores {
     
     ICONO_ARCHIVO("/gui/imagenes/iconosMenuPrincipal/archivo_blanco_32.png","/gui/imagenes/iconosMenuPrincipal/archivo_negro_32.png"),
     ICONO_ARCHIVO_DRAGGED("/gui/imagenes/iconosMenuPrincipal/archivo_dorado_32.png","/gui/imagenes/iconosMenuPrincipal/archivo_agua_32.png"),
+    
+    ICONO_HOME("/gui/imagenes/iconosMultiProposito/home_blanco_32.png","/gui/imagenes/iconosMultiProposito/home_negro_32.png"),
+    ICONO_HOME_DRAGGED("/gui/imagenes/iconosMultiProposito/home_dorado_32.png","/gui/imagenes/iconosMultiProposito/home_agua_32.png"),
+    
+    ICONO_AGREGAR("/gui/imagenes/iconosMultiProposito/agregar_blanco_32.png","/gui/imagenes/iconosMultiProposito/agregar_negro_32.png"),
+    ICONO_AGREGAR_DRAGGED("/gui/imagenes/iconosMultiProposito/agregar_dorado_32.png","/gui/imagenes/iconosMultiProposito/agregar_agua_32.png"),
+    
+    ICONO_ELIMINAR("/gui/imagenes/iconosMultiProposito/eliminar_blanco_32.png","/gui/imagenes/iconosMultiProposito/eliminar_negro_32.png"),
+    ICONO_ELIMINAR_DRAGGED("/gui/imagenes/iconosMultiProposito/eliminar_dorado_32.png","/gui/imagenes/iconosMultiProposito/eliminar_agua_32.png"),
+    
+    ICONO_MODIFICAR("/gui/imagenes/iconosMultiProposito/modificar_blanco_32.png","/gui/imagenes/iconosMultiProposito/modificar_negro_32.png"),
+    ICONO_MODIFICAR_DRAGGED("/gui/imagenes/iconosMultiProposito/modificar_dorado_32.png","/gui/imagenes/iconosMultiProposito/modificar_agua_32.png"),
     
     ICONO_LUPA("/gui/imagenes/iconos/lupa_blanca_32.png","/gui/imagenes/iconos/lupa_negra_32.png"),
     ICONO_GRAFICO_TORTA("/gui/imagenes/iconos/grafico_torta_blanco_32.png","/gui/imagenes/iconos/grafico_torta_negro_32.png"),

@@ -1,5 +1,6 @@
 package gui;
 
+import FunGenerales.FunCliente;
 import domain.Sistema;
 import enumeraciones.Musica;
 import enumeraciones.Texto;
@@ -9,6 +10,7 @@ import java.awt.Toolkit;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.*;
@@ -30,8 +32,12 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
 
     private void iniciarPrograma() {
-        //cargar datos
-        
+        try {
+            //cargar datos
+            new FunCliente(sistema).listarClientes();
+        } catch (SQLException ex) {
+            Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         try {
             iniciarMusica();
