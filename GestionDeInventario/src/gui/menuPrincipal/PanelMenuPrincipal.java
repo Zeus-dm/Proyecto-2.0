@@ -5,7 +5,8 @@ import gui.FramePrincipal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import gui.inicioSesion.PanelMenuSesion;
-import gui.menuCliente.PanelMenuCliente;
+import gui.menuCliente.PanelMenuClientes;
+import gui.menuProducto.PanelMenuProductos;
 
 import java.awt.Color;
 
@@ -343,12 +344,13 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonRegionesActionPerformed
 
     private void buttonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClientesActionPerformed
-        PanelMenuCliente pmc = new PanelMenuCliente(fp);
+        PanelMenuClientes pmc = new PanelMenuClientes(fp);
         fp.cargarPanel(pmc);
     }//GEN-LAST:event_buttonClientesActionPerformed
 
     private void buttonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProductosActionPerformed
-
+        PanelMenuProductos pmp = new PanelMenuProductos(fp);
+        fp.cargarPanel(pmp);
     }//GEN-LAST:event_buttonProductosActionPerformed
 
     private void buttonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalirActionPerformed

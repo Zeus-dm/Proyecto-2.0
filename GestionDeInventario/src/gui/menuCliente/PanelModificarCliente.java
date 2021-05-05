@@ -14,9 +14,9 @@ import java.util.logging.Logger;
 
 public class PanelModificarCliente extends javax.swing.JPanel {
 
-    PanelMenuCliente pmc = null;
+    PanelMenuClientes pmc = null;
 
-    public PanelModificarCliente(PanelMenuCliente pmc) {
+    public PanelModificarCliente(PanelMenuClientes pmc) {
         this.pmc = pmc;
 
         initComponents();

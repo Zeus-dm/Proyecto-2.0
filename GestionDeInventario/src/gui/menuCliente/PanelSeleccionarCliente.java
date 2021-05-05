@@ -8,9 +8,9 @@ import java.util.List;
 
 public class PanelSeleccionarCliente extends javax.swing.JPanel {
 
-    PanelMenuCliente pmc = null;
+    PanelMenuClientes pmc = null;
 
-    public PanelSeleccionarCliente(PanelMenuCliente pmc) {
+    public PanelSeleccionarCliente(PanelMenuClientes pmc) {
         this.pmc = pmc;
 
         initComponents();

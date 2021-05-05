@@ -53,7 +53,9 @@ public enum Colores {
     ICONO_MODIFICAR("/gui/imagenes/iconosMultiProposito/modificar_blanco_32.png","/gui/imagenes/iconosMultiProposito/modificar_negro_32.png"),
     ICONO_MODIFICAR_DRAGGED("/gui/imagenes/iconosMultiProposito/modificar_dorado_32.png","/gui/imagenes/iconosMultiProposito/modificar_agua_32.png"),
     
-    ICONO_LUPA("/gui/imagenes/iconos/lupa_blanca_32.png","/gui/imagenes/iconos/lupa_negra_32.png"),
+    ICONO_LUPA("/gui/imagenes/iconosMultiProposito/lupa_blanco_28.png","/gui/imagenes/iconosMultiProposito/lupa_negro_28.png"),
+    ICONO_LUPA_DRAGGED("/gui/imagenes/iconosMultiProposito/lupa_dorado_28.png","/gui/imagenes/iconosMultiProposito/lupa_agua_28.png"),
+    
     ICONO_GRAFICO_TORTA("/gui/imagenes/iconos/grafico_torta_blanco_32.png","/gui/imagenes/iconos/grafico_torta_negro_32.png"),
     ICONO_GRAFICO_BARRA("/gui/imagenes/iconos/grafico_blanco_32.png","/gui/imagenes/iconos/grafico_negro_32.png"),
     ICONO_ATRAS("/gui/imagenes/iconos/atras_blanco_32.png","/gui/imagenes/iconos/atras_negro_32.png"),

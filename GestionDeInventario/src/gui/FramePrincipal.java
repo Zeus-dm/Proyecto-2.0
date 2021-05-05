@@ -1,6 +1,7 @@
 package gui;
 
 import FunGenerales.FunCliente;
+import FunGenerales.FunProducto;
 import domain.Sistema;
 import enumeraciones.Musica;
 import enumeraciones.Texto;
@@ -35,6 +36,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         try {
             //cargar datos
             new FunCliente(sistema).listarClientes();
+            new FunProducto(sistema).listarProductos();
         } catch (SQLException ex) {
             Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }

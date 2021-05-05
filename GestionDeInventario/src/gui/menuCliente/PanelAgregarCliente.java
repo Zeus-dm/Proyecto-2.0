@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 
 public class PanelAgregarCliente extends javax.swing.JPanel {
 
-    PanelMenuCliente pmc = null;
+    PanelMenuClientes pmc = null;
 
-    public PanelAgregarCliente(PanelMenuCliente pmc) {
+    public PanelAgregarCliente(PanelMenuClientes pmc) {
         this.pmc = pmc;
 
         initComponents();
@@ -254,7 +254,7 @@ public class PanelAgregarCliente extends javax.swing.JPanel {
         try {
             String error = pmc.controlCliente.agregarCliente(textNombre.getText(), textEdad.getText(), textDireccion.getText(), textTelefono.getText(), textEmail.getText());
             if (error == null) {
-                PanelMenuCliente newPmc = new PanelMenuCliente(pmc.getFramePrincipal());
+                PanelMenuClientes newPmc = new PanelMenuClientes(pmc.getFramePrincipal());
                 pmc.getFramePrincipal().cargarPanel(newPmc);
             } else if (error.equals(TextoErrores.NOMBRE_VACIO.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_NOMBRE_40.getTexto())) {
                 labelErrorNombre.setVisible(true);
@@ -288,7 +288,7 @@ public class PanelAgregarCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonAceptarActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        PanelMenuCliente newPmc = new PanelMenuCliente(pmc.getFramePrincipal());
+        PanelMenuClientes newPmc = new PanelMenuClientes(pmc.getFramePrincipal());
         pmc.getFramePrincipal().cargarPanel(newPmc);
     }//GEN-LAST:event_buttonCancelarActionPerformed
 

@@ -57,7 +57,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="scrollClientes" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="buttonAgregar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="panelCliente" max="-2" attributes="0"/>
@@ -112,6 +112,9 @@
     </Component>
     <Container class="javax.swing.JScrollPane" name="scrollClientes">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Color.decode(Colores.FONDO.getColor(fp.getModo()))" type="code"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
             <MatteColorBorder bottom="0" left="0" right="0" top="0">
@@ -124,7 +127,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="scrollClientes.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));&#xa;scrollClientes.setViewportBorder(null);"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="scrollClientes.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));&#xa;scrollClientes.setViewportBorder(null);&#xa;&#xa;//Scrollbar personalizada&#xa;scrollClientes.setComponentZOrder(scrollClientes.getVerticalScrollBar(),0);&#xa;scrollClientes.setComponentZOrder(scrollClientes.getViewport(),1);&#xa;scrollClientes.getVerticalScrollBar().setOpaque(false);&#xa;&#xa;scrollClientes.setLayout(new ScrollPaneLayout() {&#xa;      @Override&#xa;      public void layoutContainer(Container parent) {&#xa;        JScrollPane scrollClientes = (JScrollPane) parent;&#xa;&#xa;        Rectangle availR = scrollClientes.getBounds();&#xa;        availR.x = availR.y = 0;&#xa;&#xa;        Insets parentInsets = parent.getInsets();&#xa;        availR.x = parentInsets.left;&#xa;        availR.y = parentInsets.top;&#xa;        availR.width -= parentInsets.left + parentInsets.right + 9;&#xa;        availR.height -= parentInsets.top + parentInsets.bottom;&#xa;&#xa;        Rectangle vsbR = new Rectangle();&#xa;        vsbR.width = 9;&#xa;        vsbR.height = availR.height;&#xa;        vsbR.x = availR.x + availR.width - vsbR.width + 9;&#xa;        vsbR.y = availR.y;&#xa;&#xa;        if (viewport != null) {&#xa;          viewport.setBounds(availR);&#xa;        }&#xa;        if (vsb != null) {&#xa;          vsb.setVisible(true);&#xa;          vsb.setBounds(vsbR);&#xa;        }&#xa;      }&#xa;    });&#xa;&#xa;scrollClientes.getVerticalScrollBar().setUI(new MyScrollBarUI(fp.getModo(), 0));"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>

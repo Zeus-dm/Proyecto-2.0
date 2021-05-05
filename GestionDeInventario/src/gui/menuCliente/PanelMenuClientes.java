@@ -4,20 +4,26 @@ import FunGenerales.FunCliente;
 import gui.FramePrincipal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
+import gui.MyScrollBarUI;
 import gui.menuPrincipal.PanelMenuPrincipal;
 
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Insets;
+import java.awt.Rectangle;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneLayout;
 
-public class PanelMenuCliente extends javax.swing.JPanel {
+public class PanelMenuClientes extends javax.swing.JPanel {
 
     private FramePrincipal fp = null;
     FunCliente controlCliente;
     int idCliente = -1;
     int posSeleccion = 0;
 
-    public PanelMenuCliente(FramePrincipal fp) {
+    public PanelMenuClientes(FramePrincipal fp) {
         this.fp = fp;
         this.controlCliente = new FunCliente(this.fp.getSistema());
 
@@ -111,10 +117,48 @@ public class PanelMenuCliente extends javax.swing.JPanel {
         labelTitulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         labelTitulo.setPreferredSize(new java.awt.Dimension(350, 32));
 
+        scrollClientes.setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));
         scrollClientes.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, Color.decode(Colores.FONDO.getColor(fp.getModo()))));
         scrollClientes.setPreferredSize(new java.awt.Dimension(240, 340));
         scrollClientes.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));
         scrollClientes.setViewportBorder(null);
+
+        //Scrollbar personalizada
+        scrollClientes.setComponentZOrder(scrollClientes.getVerticalScrollBar(),0);
+        scrollClientes.setComponentZOrder(scrollClientes.getViewport(),1);
+        scrollClientes.getVerticalScrollBar().setOpaque(false);
+
+        scrollClientes.setLayout(new ScrollPaneLayout() {
+            @Override
+            public void layoutContainer(Container parent) {
+                JScrollPane scrollClientes = (JScrollPane) parent;
+
+                Rectangle availR = scrollClientes.getBounds();
+                availR.x = availR.y = 0;
+
+                Insets parentInsets = parent.getInsets();
+                availR.x = parentInsets.left;
+                availR.y = parentInsets.top;
+                availR.width -= parentInsets.left + parentInsets.right + 9;
+                availR.height -= parentInsets.top + parentInsets.bottom;
+
+                Rectangle vsbR = new Rectangle();
+                vsbR.width = 9;
+                vsbR.height = availR.height;
+                vsbR.x = availR.x + availR.width - vsbR.width + 9;
+                vsbR.y = availR.y;
+
+                if (viewport != null) {
+                    viewport.setBounds(availR);
+                }
+                if (vsb != null) {
+                    vsb.setVisible(true);
+                    vsb.setBounds(vsbR);
+                }
+            }
+        });
+
+        scrollClientes.getVerticalScrollBar().setUI(new MyScrollBarUI(fp.getModo(), 0));
 
         tableClientes.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(fp.getModo())));
         tableClientes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -192,10 +236,10 @@ public class PanelMenuCliente extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(scrollClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(buttonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(panelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(25, 25, 25)
+                        .addComponent(buttonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

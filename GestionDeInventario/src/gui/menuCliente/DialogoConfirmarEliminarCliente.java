@@ -10,9 +10,9 @@ import java.util.logging.Logger;
 
 public class DialogoConfirmarEliminarCliente extends javax.swing.JDialog {
     
-    PanelMenuCliente pmc = null;
+    PanelMenuClientes pmc = null;
     
-    public DialogoConfirmarEliminarCliente(java.awt.Frame parent, boolean modal, PanelMenuCliente pmc) {
+    public DialogoConfirmarEliminarCliente(java.awt.Frame parent, boolean modal, PanelMenuClientes pmc) {
         super(parent, modal);
         this.pmc = pmc;
         
@@ -142,7 +142,7 @@ public class DialogoConfirmarEliminarCliente extends javax.swing.JDialog {
         try {
             pmc.controlCliente.eliminarCliente(pmc.idCliente);
             
-            PanelMenuCliente newPmc = new PanelMenuCliente(pmc.getFramePrincipal());
+            PanelMenuClientes newPmc = new PanelMenuClientes(pmc.getFramePrincipal());
             pmc.getFramePrincipal().cargarPanel(newPmc);
             
             setVisible(false);
