@@ -22,6 +22,34 @@ public class FunProducto {
     public FunProducto(Sistema sistema) {
         this.sistema = sistema;
     }
+    
+    public String agregarProducto(String nombre, String marca, String barCode, String precio, String descripcion) throws SQLException{
+        if(sistema.verificarExistenciaProducto(barCode)){
+            return TextoErrores.BARCODE_DUPLICADO.getTexto();
+        }
+        
+        Producto producto = new Producto();
+        try {
+            producto.setNombre(nombre);
+            producto.setMarca(marca);
+            producto.setBarCode(barCode);
+            producto.setPrecio(precio);
+            producto.setDescripcion(descripcion);
+            producto.setStockTotal(0);
+        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
+            return e.getMessage();
+        }
+        
+        JdbcProducto jp = new JdbcProducto();
+        jp.insert(producto);
+        
+        int idMax = jp.ultimoId();
+        producto.setIdProducto(idMax);
+        
+        sistema.agregarProducto(producto);
+        
+        return null;
+    }
 
     public String modificarProducto(String preBarCode, String nombre, String marca, String barCode, String precio, String descripcion) throws SQLException {
         if(!(preBarCode.equals(barCode))){

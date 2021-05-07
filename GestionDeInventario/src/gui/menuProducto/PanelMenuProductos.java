@@ -35,7 +35,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
 
     private void iniciarPanel() {
         cargarProductos(controlProducto.todosProductos());
-        
+
         PanelGraficarMarcas pgm = new PanelGraficarMarcas(this);
         cargarPanel(pgm);
     }
@@ -68,7 +68,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         panelProducto.repaint();
         panelProducto.revalidate();
     }
-    
+
     private void cargarBarCode(int posSeleccion) {
         List<String> listaBarCodes = controlProducto.todosBarCodes();
         if (!(listaBarCodes.isEmpty())) {
@@ -113,8 +113,22 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         labelTitulo.setForeground(Color.decode(Colores.TITULO.getColor(fp.getModo())));
         labelTitulo.setText(Texto.PRODUCTOS.getTexto());
         labelTitulo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        labelTitulo.setPreferredSize(new java.awt.Dimension(350, 32));
+        labelTitulo.setPreferredSize(new java.awt.Dimension(131, 32));
+        labelTitulo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO.getColor(fp.getModo()))));
+        labelTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         labelTitulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                labelTitulo.setForeground(Color.decode(Colores.BORDE.getColor(fp.getModo())));
+                labelTitulo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(fp.getModo()))));
+            }
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                labelTitulo.setForeground(Color.decode(Colores.TEXTO.getColor(fp.getModo())));
+                labelTitulo.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO.getColor(fp.getModo()))));
+            }
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelTituloMouseClicked(evt);
             }
@@ -287,26 +301,31 @@ public class PanelMenuProductos extends javax.swing.JPanel {
     private void tableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductosMouseClicked
         int pos = tableProductos.getSelectedRow();
         cargarBarCode(pos);
-        
+
         PanelSeleccionarProducto psp = new PanelSeleccionarProducto(this);
         cargarPanel(psp);
     }//GEN-LAST:event_tableProductosMouseClicked
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
-        
+        textBuscar.setText("");
+        cargarProductos(controlProducto.todosProductos());
+
+        PanelAgregarProducto pap = new PanelAgregarProducto(this);
+        cargarPanel(pap);
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
         cargarProductos(controlProducto.filtrarProductos(0, 0, textBuscar.getText()));
     }//GEN-LAST:event_buttonBuscarActionPerformed
-
-    private void labelTituloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelTituloMouseClicked
+    
+    private void labelTituloMouseClicked(java.awt.event.MouseEvent evt) {                                         
         PanelGraficarMarcas pgm = new PanelGraficarMarcas(this);
         cargarPanel(pgm);
         
-        cargarProductos(controlProducto.filtrarProductos(0, 0, textBuscar.getText()));
-    }//GEN-LAST:event_labelTituloMouseClicked
-
+        textBuscar.setText("");
+        cargarProductos(controlProducto.todosProductos());
+    } 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAgregar;
     private javax.swing.JButton buttonBuscar;

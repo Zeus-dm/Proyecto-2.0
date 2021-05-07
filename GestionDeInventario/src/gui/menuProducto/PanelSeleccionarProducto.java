@@ -1,7 +1,9 @@
 package gui.menuProducto;
 
+import FunGenerales.FunGraficoSucursales;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
+import java.awt.BorderLayout;
 
 import java.awt.Color;
 import java.sql.SQLException;
@@ -9,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JPanel;
-
-
 
 public class PanelSeleccionarProducto extends javax.swing.JPanel {
 
@@ -31,12 +30,13 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
             
             textNombre.setText(datos.get(0));
             textMarca.setText(datos.get(1));
-            textBarCode.setText(datos.get(2));
-            textPrecio.setText(datos.get(3));
+            textBarCode.setText("#" + datos.get(2));
+            textPrecio.setText("$" + datos.get(3));
             textStockTotal.setText(datos.get(4));
             textDescripcion.setText(datos.get(5));
             
             cargarSucursalesStock();
+            cargarGrafico();
         }else{
             buttonEliminar.setVisible(false);
             buttonModificar.setVisible(false);
@@ -79,13 +79,15 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         }
     }
     
-    public final void cargarPanel(JPanel nuevoPanel) {
-        panelGrafico.removeAll();
-        panelGrafico.add(nuevoPanel);
-        panelGrafico.repaint();
-        panelGrafico.revalidate();
+    private void cargarGrafico(){
+        FunGraficoSucursales fgs = new FunGraficoSucursales(pmp.barCode, pmp.controlProducto, pmp.getFramePrincipal().getModo(), 0);
+        
+        panelGraficoSucursales.setLayout(new BorderLayout());
+        panelGraficoSucursales.add(fgs.cargarGrafico(), BorderLayout.CENTER);
+        
+        panelGraficoSucursales.revalidate();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -96,8 +98,6 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         textMarca = new javax.swing.JLabel();
         labelBarCode = new javax.swing.JLabel();
         textBarCode = new javax.swing.JLabel();
-        scrollSucursales = new javax.swing.JScrollPane();
-        tableSucursales = new javax.swing.JTable();
         labelPrecio = new javax.swing.JLabel();
         textPrecio = new javax.swing.JLabel();
         labelStockTotal = new javax.swing.JLabel();
@@ -105,11 +105,16 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         labelDescripcion = new javax.swing.JLabel();
         scrollDescripcion = new javax.swing.JScrollPane();
         textDescripcion = new javax.swing.JTextPane();
-        panelGrafico = new javax.swing.JPanel();
+        scrollSucursales = new javax.swing.JScrollPane();
+        tableSucursales = new javax.swing.JTable();
         buttonModificar = new javax.swing.JButton();
         buttonEliminar = new javax.swing.JButton();
+        panelGrafico = new javax.swing.JPanel();
+        panelGraficoSucursales = new javax.swing.JPanel();
+        buttonMaximizar = new javax.swing.JButton();
 
         setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
+        setPreferredSize(new java.awt.Dimension(548, 430));
 
         labelNombre.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
         labelNombre.setForeground(Color.decode(Colores.TEXTO_HEADER.getColor(pmp.getFramePrincipal().getModo())));
@@ -141,36 +146,6 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         textBarCode.setText("(BarCode Producto)");
         textBarCode.setMinimumSize(new java.awt.Dimension(142, 25));
         textBarCode.setPreferredSize(new java.awt.Dimension(142, 28));
-
-        scrollSucursales.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
-        scrollSucursales.setPreferredSize(new java.awt.Dimension(200, 218));
-        scrollSucursales.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
-
-        tableSucursales.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(pmp.getFramePrincipal().getModo())));
-        tableSucursales.setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
-        tableSucursales.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Sucursal", "Stock"
-            }
-        ));
-        tableSucursales.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tableSucursales.setFocusable(false);
-        tableSucursales.setGridColor(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
-        tableSucursales.setRowHeight(25);
-        tableSucursales.setRowSelectionAllowed(false);
-        tableSucursales.getTableHeader().setReorderingAllowed(false);
-        tableSucursales.getTableHeader().setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
-
-        tableSucursales.getTableHeader().setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
-
-        tableSucursales.getTableHeader().setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
-        scrollSucursales.setViewportView(tableSucursales);
 
         labelPrecio.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
         labelPrecio.setForeground(Color.decode(Colores.TEXTO_HEADER.getColor(pmp.getFramePrincipal().getModo())));
@@ -211,7 +186,35 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         textDescripcion.setPreferredSize(new java.awt.Dimension(300, 132));
         scrollDescripcion.setViewportView(textDescripcion);
 
-        panelGrafico.setLayout(new java.awt.CardLayout());
+        scrollSucursales.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
+        scrollSucursales.setPreferredSize(new java.awt.Dimension(200, 218));
+        scrollSucursales.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
+
+        tableSucursales.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(pmp.getFramePrincipal().getModo())));
+        tableSucursales.setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
+        tableSucursales.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Sucursal", "Stock"
+            }
+        ));
+        tableSucursales.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tableSucursales.setFocusable(false);
+        tableSucursales.setGridColor(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
+        tableSucursales.setRowHeight(25);
+        tableSucursales.setRowSelectionAllowed(false);
+        tableSucursales.getTableHeader().setReorderingAllowed(false);
+        tableSucursales.getTableHeader().setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
+
+        tableSucursales.getTableHeader().setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
+
+        tableSucursales.getTableHeader().setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
+        scrollSucursales.setViewportView(tableSucursales);
 
         buttonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MODIFICAR.getColor(pmp.getFramePrincipal().getModo()))));
         buttonModificar.setBorder(null);
@@ -240,6 +243,56 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
                 buttonEliminarActionPerformed(evt);
             }
         });
+
+        panelGrafico.setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
+        panelGrafico.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
+        panelGrafico.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        panelGraficoSucursales.setPreferredSize(new java.awt.Dimension(198, 138));
+
+        javax.swing.GroupLayout panelGraficoSucursalesLayout = new javax.swing.GroupLayout(panelGraficoSucursales);
+        panelGraficoSucursales.setLayout(panelGraficoSucursalesLayout);
+        panelGraficoSucursalesLayout.setHorizontalGroup(
+            panelGraficoSucursalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 198, Short.MAX_VALUE)
+        );
+        panelGraficoSucursalesLayout.setVerticalGroup(
+            panelGraficoSucursalesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 138, Short.MAX_VALUE)
+        );
+
+        buttonMaximizar.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_EXPANDIR.getColor(pmp.getFramePrincipal().getModo()))));
+        buttonMaximizar.setBorder(null);
+        buttonMaximizar.setBorderPainted(false);
+        buttonMaximizar.setContentAreaFilled(false);
+        buttonMaximizar.setFocusPainted(false);
+        buttonMaximizar.setPreferredSize(new java.awt.Dimension(24, 24));
+        buttonMaximizar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_EXPANDIR.getColor(pmp.getFramePrincipal().getModo()))));
+        buttonMaximizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_EXPANDIR_DRAGGED.getColor(pmp.getFramePrincipal().getModo()))));
+        buttonMaximizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMaximizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelGraficoLayout = new javax.swing.GroupLayout(panelGrafico);
+        panelGrafico.setLayout(panelGraficoLayout);
+        panelGraficoLayout.setHorizontalGroup(
+            panelGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGraficoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(buttonMaximizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3))
+            .addComponent(panelGraficoSucursales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        panelGraficoLayout.setVerticalGroup(
+            panelGraficoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGraficoLayout.createSequentialGroup()
+                .addComponent(panelGraficoSucursales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonMaximizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -275,20 +328,20 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
                         .addComponent(buttonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(78, 78, 78)
                         .addComponent(buttonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scrollSucursales, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(scrollSucursales, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelGrafico, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -315,9 +368,8 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buttonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 27, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(buttonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -329,8 +381,14 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
+    private void buttonMaximizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMaximizarActionPerformed
+        PanelGraficarSucursales pgs = new PanelGraficarSucursales(pmp);
+        pmp.cargarPanel(pgs);
+    }//GEN-LAST:event_buttonMaximizarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEliminar;
+    private javax.swing.JButton buttonMaximizar;
     private javax.swing.JButton buttonModificar;
     private javax.swing.JLabel labelBarCode;
     private javax.swing.JLabel labelDescripcion;
@@ -339,6 +397,7 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
     private javax.swing.JLabel labelPrecio;
     private javax.swing.JLabel labelStockTotal;
     private javax.swing.JPanel panelGrafico;
+    private javax.swing.JPanel panelGraficoSucursales;
     private javax.swing.JScrollPane scrollDescripcion;
     private javax.swing.JScrollPane scrollSucursales;
     private javax.swing.JTable tableSucursales;
