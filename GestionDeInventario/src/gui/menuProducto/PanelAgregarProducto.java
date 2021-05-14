@@ -25,12 +25,16 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         textNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
         textMarca.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
         textBarCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
+        labelSignoBarCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
         textPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
+        labelSignoPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
+        scrollDescripcion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
 
         labelErrorNombre.setVisible(false);
         labelErrorMarca.setVisible(false);
         labelErrorBarCode.setVisible(false);
         labelErrorPrecio.setVisible(false);
+        labelErrorDescripcion.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -45,18 +49,24 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         textMarca = new javax.swing.JTextField();
         labelErrorMarca = new javax.swing.JLabel();
         labelBarCode = new javax.swing.JLabel();
+        labelSignoBarCode = new javax.swing.JLabel();
         textBarCode = new javax.swing.JTextField();
         labelErrorBarCode = new javax.swing.JLabel();
         labelPrecio = new javax.swing.JLabel();
+        labelSignoPrecio = new javax.swing.JLabel();
         textPrecio = new javax.swing.JTextField();
         labelErrorPrecio = new javax.swing.JLabel();
+        labelStock = new javax.swing.JLabel();
+        textStock = new javax.swing.JLabel();
         labelDescripcion = new javax.swing.JLabel();
         scrollDescripcion = new javax.swing.JScrollPane();
         textDescripcion = new javax.swing.JTextPane();
+        labelErrorDescripcion = new javax.swing.JLabel();
         buttonAceptar = new javax.swing.JButton();
         buttonCancelar = new javax.swing.JButton();
 
         setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
+        setPreferredSize(new java.awt.Dimension(547, 430));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
@@ -119,6 +129,13 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         labelBarCode.setPreferredSize(new java.awt.Dimension(171, 16));
         add(labelBarCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 112, -1, -1));
 
+        labelSignoBarCode.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelSignoBarCode.setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
+        labelSignoBarCode.setText("#");
+        labelSignoBarCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
+        labelSignoBarCode.setPreferredSize(new java.awt.Dimension(14, 28));
+        add(labelSignoBarCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 128, -1, -1));
+
         textBarCode.setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
         textBarCode.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textBarCode.setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
@@ -127,7 +144,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         placeHolder = new TextPrompt(Texto.BARCODE.getTexto(), textBarCode);
         placeHolder.changeAlpha(0.75f);
         placeHolder.changeStyle(Font.ITALIC);
-        add(textBarCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 128, -1, -1));
+        add(textBarCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 128, 160, -1));
 
         labelErrorBarCode.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ERROR.getColor(pmp.getFramePrincipal().getModo()))));
         labelErrorBarCode.setToolTipText("Aqui deberia de ir un Error");
@@ -142,6 +159,13 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         labelPrecio.setPreferredSize(new java.awt.Dimension(171, 16));
         add(labelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 175, -1, -1));
 
+        labelSignoPrecio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelSignoPrecio.setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
+        labelSignoPrecio.setText("$");
+        labelSignoPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
+        labelSignoPrecio.setPreferredSize(new java.awt.Dimension(14, 29));
+        add(labelSignoPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+
         textPrecio.setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
         textPrecio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textPrecio.setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
@@ -150,7 +174,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         placeHolder = new TextPrompt(Texto.PRECIO.getTexto(), textPrecio);
         placeHolder.changeAlpha(0.75f);
         placeHolder.changeStyle(Font.ITALIC);
-        add(textPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 191, -1, -1));
+        add(textPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 191, 160, -1));
 
         labelErrorPrecio.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ERROR.getColor(pmp.getFramePrincipal().getModo()))));
         labelErrorPrecio.setToolTipText("Aqui deberia de ir un Error");
@@ -159,20 +183,33 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         labelErrorPrecio.setVisible(false);
         add(labelErrorPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 191, -1, -1));
 
+        labelStock.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
+        labelStock.setForeground(Color.decode(Colores.TEXTO_HEADER.getColor(pmp.getFramePrincipal().getModo())));
+        labelStock.setText(Texto.STOCK.getTexto());
+        labelStock.setPreferredSize(new java.awt.Dimension(171, 16));
+        add(labelStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 175, -1, -1));
+
+        textStock.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textStock.setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
+        textStock.setText("0");
+        textStock.setPreferredSize(new java.awt.Dimension(171, 28));
+        add(textStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 191, -1, -1));
+
         labelDescripcion.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
         labelDescripcion.setForeground(Color.decode(Colores.TEXTO_HEADER.getColor(pmp.getFramePrincipal().getModo())));
         labelDescripcion.setText(Texto.DESCRIPCION.getTexto());
         labelDescripcion.setPreferredSize(new java.awt.Dimension(388, 16));
         add(labelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 237, -1, -1));
 
+        scrollDescripcion.setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
         scrollDescripcion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(pmp.getFramePrincipal().getModo()))));
         scrollDescripcion.setPreferredSize(new java.awt.Dimension(388, 88));
+        pmp.getFramePrincipal().cargarScrollBar(scrollDescripcion, 0);
 
         textDescripcion.setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
         textDescripcion.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createMatteBorder(0, 5, 0, 1, Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())))));
         textDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textDescripcion.setForeground(Color.decode(Colores.TEXTO.getColor(pmp.getFramePrincipal().getModo())));
-        textDescripcion.setCaretPosition(0);
         textDescripcion.setPreferredSize(new java.awt.Dimension(388, 85));
         placeHolder = new TextPrompt(Texto.DESCRIPCION.getTexto(), textDescripcion);
         placeHolder.changeAlpha(0.75f);
@@ -180,6 +217,13 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         scrollDescripcion.setViewportView(textDescripcion);
 
         add(scrollDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 253, 388, 87));
+
+        labelErrorDescripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_ERROR.getColor(pmp.getFramePrincipal().getModo()))));
+        labelErrorDescripcion.setToolTipText("Aqui deberia de ir un Error");
+        labelErrorDescripcion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        labelErrorDescripcion.setPreferredSize(new java.awt.Dimension(28, 28));
+        labelErrorDescripcion.setVisible(false);
+        add(labelErrorDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
 
         buttonAceptar.setBackground(Color.decode(Colores.FONDO.getColor(pmp.getFramePrincipal().getModo())));
         buttonAceptar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -242,7 +286,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             if (error == null) {
                 PanelMenuProductos newPmp = new PanelMenuProductos(pmp.getFramePrincipal());
                 pmp.getFramePrincipal().cargarPanel(newPmp);
-            } else if (error.equals(TextoErrores.NOMBRE_VACIO.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_NOMBRE_40.getTexto())) {
+            } else if (error.equals(TextoErrores.NOMBRE_VACIO.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_NOMBRE_30.getTexto())) {
                 labelErrorNombre.setVisible(true);
                 labelErrorNombre.setToolTipText(error);
 
@@ -257,11 +301,18 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                 labelErrorBarCode.setToolTipText(error);
 
                 textBarCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pmp.getFramePrincipal().getModo()))));
+                labelSignoBarCode.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pmp.getFramePrincipal().getModo()))));
             } else if (error.equals(TextoErrores.PRECIO_VACIO.getTexto()) || error.equals(TextoErrores.PRECIO_RANGO.getTexto()) || error.equals(TextoErrores.PRECIO_CERO.getTexto()) || error.equals(TextoErrores.PRECIO_INVALIDO.getTexto())) {
                 labelErrorPrecio.setVisible(true);
                 labelErrorPrecio.setToolTipText(error);
 
                 textPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pmp.getFramePrincipal().getModo()))));
+                labelSignoPrecio.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pmp.getFramePrincipal().getModo()))));
+            } else if (error.equals(TextoErrores.DESCRIPCION_RANGO.getTexto())){
+                labelErrorDescripcion.setVisible(true);
+                labelErrorDescripcion.setToolTipText(error);
+                
+                scrollDescripcion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.TEXTO_ERROR.getColor(pmp.getFramePrincipal().getModo()))));
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelAgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
@@ -279,12 +330,16 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
     private javax.swing.JLabel labelBarCode;
     private javax.swing.JLabel labelDescripcion;
     private javax.swing.JLabel labelErrorBarCode;
+    private javax.swing.JLabel labelErrorDescripcion;
     private javax.swing.JLabel labelErrorMarca;
     private javax.swing.JLabel labelErrorNombre;
     private javax.swing.JLabel labelErrorPrecio;
     private javax.swing.JLabel labelMarca;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelPrecio;
+    private javax.swing.JLabel labelSignoBarCode;
+    private javax.swing.JLabel labelSignoPrecio;
+    private javax.swing.JLabel labelStock;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JScrollPane scrollDescripcion;
     private javax.swing.JTextField textBarCode;
@@ -292,5 +347,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
     private javax.swing.JTextField textMarca;
     private javax.swing.JTextField textNombre;
     private javax.swing.JTextField textPrecio;
+    private javax.swing.JLabel textStock;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,10 +23,14 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
             List<String> datos = pmc.controlCliente.seleccionarCliente(pmc.idCliente);
 
             textNombre.setText(datos.get(0));
+            pmc.getFramePrincipal().reCargarTexto(textNombre, 18, 350);
+            
             textEdad.setText(datos.get(1));
             textDireccion.setText(datos.get(2));
             textTelefono.setText(datos.get(3));
+            
             textEmail.setText(datos.get(4));
+            pmc.getFramePrincipal().reCargarTexto(textEmail, 18, 350);
         }else{
             buttonModificar.setVisible(false);
             buttonEliminar.setVisible(false);
@@ -64,7 +68,6 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
         textNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textNombre.setForeground(Color.decode(Colores.TEXTO.getColor(pmc.getFramePrincipal().getModo())));
         textNombre.setText("(Nombre Cliente)");
-        textNombre.setPreferredSize(new java.awt.Dimension(350, 28));
 
         labelEdad.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
         labelEdad.setForeground(Color.decode(Colores.TEXTO_HEADER.getColor(pmc.getFramePrincipal().getModo())));
@@ -99,6 +102,8 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
         textDireccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textDireccion.setForeground(Color.decode(Colores.TEXTO.getColor(pmc.getFramePrincipal().getModo())));
         textDireccion.setText("(Direccion Cliente)");
+        textDireccion.setMaximumSize(new java.awt.Dimension(350, 28));
+        textDireccion.setMinimumSize(new java.awt.Dimension(350, 28));
         textDireccion.setPreferredSize(new java.awt.Dimension(350, 28));
 
         labelEmail.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
@@ -109,7 +114,6 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
         textEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         textEmail.setForeground(Color.decode(Colores.TEXTO.getColor(pmc.getFramePrincipal().getModo())));
         textEmail.setText("(Email Cliente)");
-        textEmail.setPreferredSize(new java.awt.Dimension(350, 28));
 
         buttonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MODIFICAR.getColor(pmc.getFramePrincipal().getModo()))));
         buttonModificar.setBorder(null);
@@ -148,10 +152,9 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
                 .addComponent(labelImagen)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(labelEdad, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
@@ -163,8 +166,9 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
                                 .addGap(0, 0, 0)
                                 .addComponent(textTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(labelTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(textEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -181,7 +185,7 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,19 +203,19 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(buttonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
-        DialogoConfirmarEliminarCliente dece = new DialogoConfirmarEliminarCliente(new javax.swing.JFrame(), true, pmc);
-        dece.setLocationRelativeTo(this);
-        dece.setVisible(true);
+        DialogoConfirmarEliminarCliente dcec = new DialogoConfirmarEliminarCliente(new javax.swing.JFrame(), true, pmc);
+        dcec.setLocationRelativeTo(this);
+        dcec.setVisible(true);
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed

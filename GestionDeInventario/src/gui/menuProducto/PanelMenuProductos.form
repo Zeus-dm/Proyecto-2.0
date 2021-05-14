@@ -44,7 +44,7 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="panelProducto" max="32767" attributes="0"/>
+                      <Component id="panelProducto" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -69,10 +69,10 @@
                       <Component id="scrollProductos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="buttonAgregar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="panelProducto" max="32767" attributes="0"/>
+                  <Component id="panelProducto" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -199,7 +199,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="scrollProductos.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));&#xa;scrollProductos.setViewportBorder(null);&#xa;&#xa;//Scrollbar personalizada&#xa;scrollProductos.setComponentZOrder(scrollProductos.getVerticalScrollBar(),0);&#xa;scrollProductos.setComponentZOrder(scrollProductos.getViewport(),1);&#xa;scrollProductos.getVerticalScrollBar().setOpaque(false);&#xa;&#xa;scrollProductos.setLayout(new ScrollPaneLayout() {&#xa;      @Override&#xa;      public void layoutContainer(Container parent) {&#xa;        JScrollPane scrollProducto = (JScrollPane) parent;&#xa;&#xa;        Rectangle availR = scrollProducto.getBounds();&#xa;        availR.x = availR.y = 0;&#xa;&#xa;        Insets parentInsets = parent.getInsets();&#xa;        availR.x = parentInsets.left;&#xa;        availR.y = parentInsets.top;&#xa;        availR.width -= parentInsets.left + parentInsets.right + 9;&#xa;        availR.height -= parentInsets.top + parentInsets.bottom;&#xa;&#xa;        Rectangle vsbR = new Rectangle();&#xa;        vsbR.width = 9;&#xa;        vsbR.height = availR.height;&#xa;        vsbR.x = availR.x + availR.width - vsbR.width + 9;&#xa;        vsbR.y = availR.y;&#xa;&#xa;        if (viewport != null) {&#xa;          viewport.setBounds(availR);&#xa;        }&#xa;        if (vsb != null) {&#xa;          vsb.setVisible(true);&#xa;          vsb.setBounds(vsbR);&#xa;        }&#xa;      }&#xa;    });&#xa;&#xa;scrollProductos.getVerticalScrollBar().setUI(new MyScrollBarUI(fp.getModo(), 0));"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="scrollProductos.getViewport().setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));&#xa;scrollProductos.setViewportBorder(null);&#xa;&#xa;//Scrollbar personalizada&#xa;fp.cargarScrollBar(scrollProductos, 0);"/>
       </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>

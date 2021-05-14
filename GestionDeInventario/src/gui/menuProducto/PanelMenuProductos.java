@@ -4,25 +4,20 @@ import FunGenerales.FunProducto;
 import gui.FramePrincipal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
-import gui.MyScrollBarUI;
 import gui.TextPrompt;
 import gui.menuPrincipal.PanelMenuPrincipal;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Font;
-import java.awt.Insets;
-import java.awt.Rectangle;
 import java.util.List;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneLayout;
 
 public class PanelMenuProductos extends javax.swing.JPanel {
 
     private FramePrincipal fp = null;
     FunProducto controlProducto;
     String barCode = null;
+    int posSeleccion = -1;
 
     public PanelMenuProductos(FramePrincipal fp) {
         this.fp = fp;
@@ -59,8 +54,26 @@ public class PanelMenuProductos extends javax.swing.JPanel {
             }
         }
         );
+        
+        generarPosSeleccion();
+        if (posSeleccion >= 0) {
+            tableProductos.getSelectionModel().setSelectionInterval(posSeleccion, posSeleccion);
+        }
     }
-
+    
+    public void generarPosSeleccion(){
+        if(barCode != null){
+            List<String> barcodes = controlProducto.todosBarCodes();
+            for (int i = 0; i < barcodes.size(); i++) {
+                if(barCode.equals(barcodes.get(i))){
+                    posSeleccion = i;
+                    return;
+                }
+            }
+        }
+        posSeleccion = -1;
+    }
+    
     //Metodos para el panel
     public final void cargarPanel(JPanel nuevoPanel) {
         panelProducto.removeAll();
@@ -69,10 +82,10 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         panelProducto.revalidate();
     }
 
-    private void cargarBarCode(int posSeleccion) {
+    private void cargarBarCode(int pos) {
         List<String> listaBarCodes = controlProducto.todosBarCodes();
         if (!(listaBarCodes.isEmpty())) {
-            barCode = listaBarCodes.get(posSeleccion);
+            barCode = listaBarCodes.get(pos);
         }
     }
 
@@ -166,41 +179,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         scrollProductos.setViewportBorder(null);
 
         //Scrollbar personalizada
-        scrollProductos.setComponentZOrder(scrollProductos.getVerticalScrollBar(),0);
-        scrollProductos.setComponentZOrder(scrollProductos.getViewport(),1);
-        scrollProductos.getVerticalScrollBar().setOpaque(false);
-
-        scrollProductos.setLayout(new ScrollPaneLayout() {
-            @Override
-            public void layoutContainer(Container parent) {
-                JScrollPane scrollProducto = (JScrollPane) parent;
-
-                Rectangle availR = scrollProducto.getBounds();
-                availR.x = availR.y = 0;
-
-                Insets parentInsets = parent.getInsets();
-                availR.x = parentInsets.left;
-                availR.y = parentInsets.top;
-                availR.width -= parentInsets.left + parentInsets.right + 9;
-                availR.height -= parentInsets.top + parentInsets.bottom;
-
-                Rectangle vsbR = new Rectangle();
-                vsbR.width = 9;
-                vsbR.height = availR.height;
-                vsbR.x = availR.x + availR.width - vsbR.width + 9;
-                vsbR.y = availR.y;
-
-                if (viewport != null) {
-                    viewport.setBounds(availR);
-                }
-                if (vsb != null) {
-                    vsb.setVisible(true);
-                    vsb.setBounds(vsbR);
-                }
-            }
-        });
-
-        scrollProductos.getVerticalScrollBar().setUI(new MyScrollBarUI(fp.getModo(), 0));
+        fp.cargarScrollBar(scrollProductos, 0);
 
         tableProductos.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(fp.getModo())));
         tableProductos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -269,7 +248,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
                                 .addGap(0, 0, 0)
                                 .addComponent(buttonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(panelProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +268,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
                         .addGap(25, 25, 25)
                         .addComponent(buttonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(panelProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(panelProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -308,6 +287,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
         textBuscar.setText("");
+        barCode = null;
         cargarProductos(controlProducto.todosProductos());
 
         PanelAgregarProducto pap = new PanelAgregarProducto(this);
@@ -323,6 +303,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         cargarPanel(pgm);
         
         textBuscar.setText("");
+        barCode = null;
         cargarProductos(controlProducto.todosProductos());
     } 
     

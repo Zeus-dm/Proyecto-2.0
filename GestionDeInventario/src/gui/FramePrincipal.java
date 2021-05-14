@@ -2,11 +2,15 @@ package gui;
 
 import FunGenerales.FunCliente;
 import FunGenerales.FunProducto;
+import FunGenerales.FunRegion;
 import domain.Sistema;
 import enumeraciones.Musica;
 import enumeraciones.Texto;
 import gui.inicioSesion.PanelMenuSesion;
+import java.awt.Container;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 
 import java.io.BufferedInputStream;
@@ -15,7 +19,10 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.*;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneLayout;
 
 public class FramePrincipal extends javax.swing.JFrame {
 
@@ -37,16 +44,17 @@ public class FramePrincipal extends javax.swing.JFrame {
             //cargar datos
             new FunCliente(sistema).listarClientes();
             new FunProducto(sistema).listarProductos();
+            new FunRegion(sistema).listarRegiones();
         } catch (SQLException ex) {
             Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         try {
             iniciarMusica();
         } catch (LineUnavailableException | IOException | UnsupportedAudioFileException ex) {
             Logger.getLogger(FramePrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         PanelMenuSesion pms = new PanelMenuSesion(this);
         cargarPanel(pms);
     }
@@ -72,7 +80,13 @@ public class FramePrincipal extends javax.swing.JFrame {
         AudioInputStream ais = AudioSystem.getAudioInputStream(bis);
         sonido = AudioSystem.getClip();
         sonido.open(ais);
+        volumen();
         sonido.loop(-1);
+    }
+    
+    private void volumen(){
+        FloatControl volume = (FloatControl) sonido.getControl(FloatControl.Type.MASTER_GAIN);
+        volume.setValue(-35);
     }
 
     //Metodos para el modo oscuro o claro
@@ -107,6 +121,86 @@ public class FramePrincipal extends javax.swing.JFrame {
         return retValue;
     }
 
+    public void cargarScrollBar(JScrollPane scrollPane, int direccion) {
+        //Scrollbar personalizada
+        if (direccion == 0) {
+            scrollPane.setComponentZOrder(scrollPane.getVerticalScrollBar(), 0);
+            scrollPane.setComponentZOrder(scrollPane.getViewport(), 1);
+            scrollPane.getVerticalScrollBar().setOpaque(false);
+        } else {
+            scrollPane.setComponentZOrder(scrollPane.getHorizontalScrollBar(), 0);
+            scrollPane.setComponentZOrder(scrollPane.getViewport(), 1);
+            scrollPane.getHorizontalScrollBar().setOpaque(false);
+        }
+
+        scrollPane.setLayout(new ScrollPaneLayout() {
+            @Override
+            public void layoutContainer(Container parent) {
+                JScrollPane scrollPane = (JScrollPane) parent;
+
+                Rectangle availR = scrollPane.getBounds();
+                availR.x = availR.y = 0;
+
+                Insets parentInsets = parent.getInsets();
+                availR.x = parentInsets.left;
+                availR.y = parentInsets.top;
+                if (direccion == 0) {
+                    availR.width -= parentInsets.left + parentInsets.right + 9;
+                    availR.height -= parentInsets.top + parentInsets.bottom;
+                } else {
+                    availR.width -= parentInsets.left + parentInsets.right;
+                    availR.height -= parentInsets.top + parentInsets.bottom + 9;
+                }
+
+                Rectangle vsbR = new Rectangle();
+                if (direccion == 0) {
+                    vsbR.width = 9;
+                    vsbR.height = availR.height;
+                    vsbR.x = availR.x + availR.width - vsbR.width + 9;
+                    vsbR.y = availR.y;
+                } else {
+                    vsbR.width = availR.width;
+                    vsbR.height = 9;
+                    vsbR.x = availR.x;
+                    vsbR.y = availR.y + availR.height - vsbR.height + 9;
+                }
+
+                if (viewport != null) {
+                    viewport.setBounds(availR);
+                }
+                if (direccion == 0) {
+                    if (vsb != null) {
+                        vsb.setVisible(true);
+                        vsb.setBounds(vsbR);
+                    }
+                } else {
+                    if (hsb != null) {
+                        hsb.setVisible(true);
+                        hsb.setBounds(vsbR);
+                    }
+                }
+            }
+        });
+        
+        if(direccion == 0){
+            scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI(modo, direccion));
+        }else{
+            scrollPane.getHorizontalScrollBar().setUI(new MyScrollBarUI(modo, direccion));
+        }
+    }
+    
+    public void reCargarTexto(JLabel texto, int tamano, int ancho){
+        texto.setFont(new java.awt.Font("Segoe UI", 0, tamano));
+        while (true) {
+            if (texto.getPreferredSize().width > ancho) {
+                texto.setFont(new java.awt.Font("Segoe UI", 0, tamano));
+            } else {
+                break;
+            }
+            tamano -= 1;
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

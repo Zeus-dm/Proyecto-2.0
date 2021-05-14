@@ -24,41 +24,6 @@ public class FunProductoSucursal {
         this.sucursal = sucursal;
     }
     
-    public String agregarProducto(String nombre, String marca, String barCode, String stock, String precio, String descripcion) throws SQLException{
-        if(sistema.verificarExistenciaProducto(barCode)){
-            return TextoErrores.BARCODE_DUPLICADO.getTexto();
-        }
-        
-        Producto producto = new Producto();
-        try {
-            producto.setNombre(nombre);
-            producto.setMarca(marca);
-            producto.setBarCode(barCode);
-            producto.setPrecio(precio);
-            producto.setDescripcion(descripcion);
-            producto.setStockTotal(stock);
-        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
-            return e.getMessage();
-        }
-        
-        if(producto.getStockTotal() == 0){
-            return TextoErrores.STOCK_MAYOR_CERO.getTexto();
-        }
-        
-        JdbcProducto jp = new JdbcProducto();
-        jp.insert(producto);
-        
-        int idMax = jp.ultimoId();
-        producto.setIdProducto(idMax);
-        
-        agregarProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal(), (int)producto.getStockTotal());
-        
-        sistema.agregarProducto(producto);
-        sucursal.agregarProducto(producto);
-        
-        return null;
-    }
-    
     public String agregarProducto(String barCode, String stock) throws SQLException{
         Producto producto = sistema.obtenerProducto(barCode);
         

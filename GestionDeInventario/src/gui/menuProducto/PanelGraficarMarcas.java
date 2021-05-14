@@ -115,8 +115,8 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
         
         //Cambia el tamaño del grafico dependiedo de cuantas marcas hay en el programa
         int tamano = 498;
-        if(cantidadMarcas > 10){
-            tamano = (int) (tamano * (cantidadMarcas/10.0)); //obtiene el tamaño justo para la cantidad de datos
+        if(cantidadMarcas > 15){
+            tamano = (int) (tamano * (cantidadMarcas/15.0)); //obtiene el tamaño justo para la cantidad de datos
         }
         graficoPanel.setPreferredSize(new Dimension(tamano,380));
         
@@ -143,42 +143,7 @@ public class PanelGraficarMarcas extends javax.swing.JPanel {
         scrollGrafico.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         scrollGrafico.setPreferredSize(new java.awt.Dimension(500, 400));
         //Scrollbar personalizada
-
-        scrollGrafico.setComponentZOrder(scrollGrafico.getHorizontalScrollBar(),0);
-        scrollGrafico.setComponentZOrder(scrollGrafico.getViewport(),1);
-        scrollGrafico.getHorizontalScrollBar().setOpaque(false);
-
-        scrollGrafico.setLayout(new ScrollPaneLayout() {
-            @Override
-            public void layoutContainer(Container parent) {
-                JScrollPane scrollGrafico = (JScrollPane) parent;
-
-                Rectangle availR = scrollGrafico.getBounds();
-                availR.x = availR.y = 0;
-
-                Insets parentInsets = parent.getInsets();
-                availR.x = parentInsets.left;
-                availR.y = parentInsets.top;
-                availR.width -= parentInsets.left + parentInsets.right;
-                availR.height -= parentInsets.top + parentInsets.bottom + 9;
-
-                Rectangle vsbR = new Rectangle();
-                vsbR.width = availR.width;
-                vsbR.height = 9;
-                vsbR.x = availR.x;
-                vsbR.y = availR.y + availR.height - vsbR.height + 9;
-
-                if (viewport != null) {
-                    viewport.setBounds(availR);
-                }
-                if (hsb != null) {
-                    hsb.setVisible(true);
-                    hsb.setBounds(vsbR);
-                }
-            }
-        });
-
-        scrollGrafico.getHorizontalScrollBar().setUI(new MyScrollBarUI(pmp.getFramePrincipal().getModo(), 1));
+        pmp.getFramePrincipal().cargarScrollBar(scrollGrafico, 1);
 
         panelGrafico.setPreferredSize(new java.awt.Dimension(498, 398));
 

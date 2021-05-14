@@ -124,41 +124,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
         scrollClientes.setViewportBorder(null);
 
         //Scrollbar personalizada
-        scrollClientes.setComponentZOrder(scrollClientes.getVerticalScrollBar(),0);
-        scrollClientes.setComponentZOrder(scrollClientes.getViewport(),1);
-        scrollClientes.getVerticalScrollBar().setOpaque(false);
-
-        scrollClientes.setLayout(new ScrollPaneLayout() {
-            @Override
-            public void layoutContainer(Container parent) {
-                JScrollPane scrollClientes = (JScrollPane) parent;
-
-                Rectangle availR = scrollClientes.getBounds();
-                availR.x = availR.y = 0;
-
-                Insets parentInsets = parent.getInsets();
-                availR.x = parentInsets.left;
-                availR.y = parentInsets.top;
-                availR.width -= parentInsets.left + parentInsets.right + 9;
-                availR.height -= parentInsets.top + parentInsets.bottom;
-
-                Rectangle vsbR = new Rectangle();
-                vsbR.width = 9;
-                vsbR.height = availR.height;
-                vsbR.x = availR.x + availR.width - vsbR.width + 9;
-                vsbR.y = availR.y;
-
-                if (viewport != null) {
-                    viewport.setBounds(availR);
-                }
-                if (vsb != null) {
-                    vsb.setVisible(true);
-                    vsb.setBounds(vsbR);
-                }
-            }
-        });
-
-        scrollClientes.getVerticalScrollBar().setUI(new MyScrollBarUI(fp.getModo(), 0));
+        fp.cargarScrollBar(scrollClientes, 0);
 
         tableClientes.setBackground(Color.decode(Colores.FONDO_TABLA.getColor(fp.getModo())));
         tableClientes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
