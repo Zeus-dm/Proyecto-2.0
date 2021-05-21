@@ -24,6 +24,7 @@ public class PanelAgregarCliente extends javax.swing.JPanel {
     private void recargarColores() {
         textNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmc.getFramePrincipal().getModo()))));
         textEdad.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmc.getFramePrincipal().getModo()))));
+        labelIdTelefono.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmc.getFramePrincipal().getModo()))));
         textTelefono.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmc.getFramePrincipal().getModo()))));
         textDireccion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmc.getFramePrincipal().getModo()))));
         textEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmc.getFramePrincipal().getModo()))));
@@ -129,7 +130,8 @@ public class PanelAgregarCliente extends javax.swing.JPanel {
         labelIdTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         labelIdTelefono.setForeground(Color.decode(Colores.TEXTO.getColor(pmc.getFramePrincipal().getModo())));
         labelIdTelefono.setText(Texto.ID_TELEFONO.getTexto());
-        labelIdTelefono.setPreferredSize(new java.awt.Dimension(54, 28));
+        labelIdTelefono.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(pmc.getFramePrincipal().getModo()))));
+        labelIdTelefono.setPreferredSize(new java.awt.Dimension(54, 29));
         add(labelIdTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 128, -1, -1));
 
         textTelefono.setBackground(Color.decode(Colores.FONDO.getColor(pmc.getFramePrincipal().getModo())));
@@ -270,6 +272,7 @@ public class PanelAgregarCliente extends javax.swing.JPanel {
                 labelErrorTelefono.setVisible(true);
                 labelErrorTelefono.setToolTipText(error);
 
+                labelIdTelefono.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pmc.getFramePrincipal().getModo()))));
                 textTelefono.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pmc.getFramePrincipal().getModo()))));
             } else if (error.equals(TextoErrores.DIRECCION_VACIO.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_DIRECCION_20.getTexto())) {
                 labelErrorDireccion.setVisible(true);

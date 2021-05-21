@@ -74,12 +74,11 @@ public enum Texto {
     MODIFICAR_PRODUCTO("Modificar Producto"),
         
     AGR_PRODUCTO("Agr. Producto"),
-    AGREGAR_PRODUCTO("Agregar Producto"),
+    AGREGAR_PRODUCTO("Agregar Nuevo Producto"),
     NUEVO("Nuevo"),
-    AGREGAR_NUEVO_PRODUCTO("Agregar Nuevo Producto"),
     STOCK("Stock"),
     EXISTENTE("Existente"),
-    AGREGAR_EXISTENTE("Agregar Producto Existente"),
+    AGREGAR_EXISTENTE("Agregar Producto"),
     PRODUCTO("Producto"),
                 
     ELIM_PRODUCTO("Elim. Producto"),

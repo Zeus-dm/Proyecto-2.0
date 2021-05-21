@@ -7,6 +7,7 @@ import enumeraciones.Texto;
 import gui.inicioSesion.PanelMenuSesion;
 import gui.menuCliente.PanelMenuClientes;
 import gui.menuProducto.PanelMenuProductos;
+import gui.menuRegion.PanelMenuRegiones;
 
 import java.awt.Color;
 
@@ -340,7 +341,8 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_labelCerrarSesionMouseClicked
 
     private void buttonRegionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegionesActionPerformed
-
+        PanelMenuRegiones pmr = new PanelMenuRegiones(fp, null);
+        fp.cargarPanel(pmr);
     }//GEN-LAST:event_buttonRegionesActionPerformed
 
     private void buttonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClientesActionPerformed

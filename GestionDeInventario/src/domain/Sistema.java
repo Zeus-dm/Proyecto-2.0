@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Sistema {
     private final CollectionRegiones regiones;
-    private final CollectionClientes clientes;
+    private final CollectionPersonas clientes;
     private final CollectionProductos productos;
     private Usuario usuario = null;
 
     public Sistema() {
         regiones = new CollectionRegiones();
-        clientes = new CollectionClientes();
+        clientes = new CollectionPersonas();
         productos = new CollectionProductos();
     }
     
@@ -36,19 +36,19 @@ public class Sistema {
     
     //METODOS CLIENTES
     public Cliente obtenerCliente(int idCliente){
-        return clientes.obtenerCliente(idCliente);
+        return (Cliente)clientes.obtenerPersona(idCliente);
     }
     
     public void agregarCliente(Cliente cliente){
-        clientes.agregarCliente(cliente);
+        clientes.agregarPersona(cliente);
     }
     
     public void eliminarCliente(int idCliente){
-        clientes.eliminarCliente(idCliente);
+        clientes.eliminarPersona(idCliente);
     }
     
     public void modificarCliente(int idCliente, Cliente nuevoCliente){
-        clientes.modificarCliente(idCliente, nuevoCliente);
+        clientes.modificarPersona(idCliente, nuevoCliente);
     }
     
     public List<String> nombresClientes(){
