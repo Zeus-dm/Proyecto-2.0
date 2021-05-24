@@ -212,7 +212,7 @@ public class PanelInicioSesion extends javax.swing.JPanel {
 
     private void labelRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelRegistroMouseClicked
         PanelCrearUsuario pcu = new PanelCrearUsuario(pms);
-        pms.cargarPanel(pcu);
+        pms.getFramePrincipal().cargarPanel(pms.getPanelSesion(), pcu);
     }//GEN-LAST:event_labelRegistroMouseClicked
 
     private void buttonVistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVistaActionPerformed
@@ -245,7 +245,7 @@ public class PanelInicioSesion extends javax.swing.JPanel {
                 buttonVista.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(pms.getFramePrincipal().getModo()))));
             } else {
                 PanelMenuPrincipal pmp = new PanelMenuPrincipal(pms.getFramePrincipal());
-                pms.getFramePrincipal().cargarPanel(pmp);
+                pms.getFramePrincipal().cargarPanel(pms.getFramePrincipal().getPanelPrincipal(), pmp);
             }
         } catch (SQLException ex) {
             Logger.getLogger(PanelInicioSesion.class.getName()).log(Level.SEVERE, null, ex);

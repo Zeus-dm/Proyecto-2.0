@@ -155,7 +155,7 @@ public class DialogoConfirmarEliminarProducto extends javax.swing.JDialog {
             pmp.controlProducto.eliminarProducto(pmp.barCode);
             
             PanelMenuProductos newPmp = new PanelMenuProductos(pmp.getFramePrincipal());
-            pmp.getFramePrincipal().cargarPanel(newPmp);
+            pmp.getFramePrincipal().cargarPanel(pmp.getFramePrincipal().getPanelPrincipal(), newPmp);
             
             setVisible(false);
         } catch (SQLException ex) {

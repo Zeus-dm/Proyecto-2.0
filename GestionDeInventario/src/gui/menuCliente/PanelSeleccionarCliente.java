@@ -220,7 +220,7 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed
         PanelModificarCliente pmdc = new PanelModificarCliente(pmc);
-        pmc.cargarPanel(pmdc);
+        pmc.getFramePrincipal().cargarPanel(pmc.getPanelCliente(), pmdc);
     }//GEN-LAST:event_buttonModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

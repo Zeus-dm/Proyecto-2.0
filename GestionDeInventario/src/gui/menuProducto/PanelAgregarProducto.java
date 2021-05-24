@@ -285,7 +285,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             String error = pmp.controlProducto.agregarProducto(textNombre.getText(), textMarca.getText(), textBarCode.getText(), textPrecio.getText(), textDescripcion.getText());
             if (error == null) {
                 PanelMenuProductos newPmp = new PanelMenuProductos(pmp.getFramePrincipal());
-                pmp.getFramePrincipal().cargarPanel(newPmp);
+                pmp.getFramePrincipal().cargarPanel(pmp.getFramePrincipal().getPanelPrincipal(), newPmp);
             } else if (error.equals(TextoErrores.NOMBRE_VACIO.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_NOMBRE_30.getTexto())) {
                 labelErrorNombre.setVisible(true);
                 labelErrorNombre.setToolTipText(error);
@@ -321,7 +321,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         PanelMenuProductos newPmp = new PanelMenuProductos(pmp.getFramePrincipal());
-        pmp.getFramePrincipal().cargarPanel(newPmp);
+        pmp.getFramePrincipal().cargarPanel(pmp.getFramePrincipal().getPanelPrincipal(), newPmp);
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -110,7 +110,7 @@ public class PanelGraficarSucursales extends javax.swing.JPanel {
 
     private void buttonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCerrarActionPerformed
         PanelSeleccionarProducto psp = new PanelSeleccionarProducto(pmp);
-        pmp.cargarPanel(psp);
+        pmp.getFramePrincipal().cargarPanel(pmp.getPanelProducto(), psp);
     }//GEN-LAST:event_buttonCerrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

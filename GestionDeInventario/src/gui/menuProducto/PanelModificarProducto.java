@@ -305,7 +305,7 @@ public class PanelModificarProducto extends javax.swing.JPanel {
                 pmp.cargarProductos(pmp.controlProducto.productosFiltrados());
                 
                 PanelSeleccionarProducto psp = new PanelSeleccionarProducto(pmp);
-                pmp.cargarPanel(psp);
+                pmp.getFramePrincipal().cargarPanel(pmp.getPanelProducto(), psp);
             } else if (error.equals(TextoErrores.NOMBRE_VACIO.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_NOMBRE_30.getTexto())) {
                 labelErrorNombre.setVisible(true);
                 labelErrorNombre.setToolTipText(error);
@@ -343,7 +343,7 @@ public class PanelModificarProducto extends javax.swing.JPanel {
         pmp.cargarProductos(pmp.controlProducto.productosFiltrados());
         
         PanelSeleccionarProducto psp = new PanelSeleccionarProducto(pmp);
-        pmp.cargarPanel(psp);
+        pmp.getFramePrincipal().cargarPanel(pmp.getPanelProducto(), psp);
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

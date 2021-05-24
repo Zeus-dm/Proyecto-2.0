@@ -31,7 +31,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
         cargarId();
 
         PanelSeleccionarCliente psc = new PanelSeleccionarCliente(this);
-        cargarPanel(psc);
+        fp.cargarPanel(panelCliente, psc);
     }
 
     private void cargarId() {
@@ -66,16 +66,12 @@ public class PanelMenuClientes extends javax.swing.JPanel {
         }
     }
 
-    //Metodos para el panel
-    public final void cargarPanel(JPanel nuevoPanel) {
-        panelCliente.removeAll();
-        panelCliente.add(nuevoPanel);
-        panelCliente.repaint();
-        panelCliente.revalidate();
-    }
-
     public FramePrincipal getFramePrincipal() {
         return fp;
+    }
+    
+    public JPanel getPanelCliente(){
+        return panelCliente;
     }
 
     @SuppressWarnings("unchecked")
@@ -205,7 +201,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         PanelMenuPrincipal pmp = new PanelMenuPrincipal(fp);
-        fp.cargarPanel(pmp);
+        fp.cargarPanel(fp.getPanelPrincipal(), pmp);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void tableClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableClientesMouseClicked
@@ -213,7 +209,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
         cargarId();
 
         PanelSeleccionarCliente psc = new PanelSeleccionarCliente(this);
-        cargarPanel(psc);
+        fp.cargarPanel(panelCliente, psc);
     }//GEN-LAST:event_tableClientesMouseClicked
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
@@ -221,7 +217,7 @@ public class PanelMenuClientes extends javax.swing.JPanel {
         cargarClientes(controlCliente.nombresClientes());
 
         PanelAgregarCliente pac = new PanelAgregarCliente(this);
-        cargarPanel(pac);
+        fp.cargarPanel(panelCliente, pac);
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -257,7 +257,7 @@ public class PanelAgregarCliente extends javax.swing.JPanel {
             String error = pmc.controlCliente.agregarCliente(textNombre.getText(), textEdad.getText(), textDireccion.getText(), textTelefono.getText(), textEmail.getText());
             if (error == null) {
                 PanelMenuClientes newPmc = new PanelMenuClientes(pmc.getFramePrincipal());
-                pmc.getFramePrincipal().cargarPanel(newPmc);
+                pmc.getFramePrincipal().cargarPanel(pmc.getFramePrincipal().getPanelPrincipal(), newPmc);
             } else if (error.equals(TextoErrores.NOMBRE_VACIO.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_NOMBRE_40.getTexto())) {
                 labelErrorNombre.setVisible(true);
                 labelErrorNombre.setToolTipText(error);
@@ -292,7 +292,7 @@ public class PanelAgregarCliente extends javax.swing.JPanel {
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         PanelMenuClientes newPmc = new PanelMenuClientes(pmc.getFramePrincipal());
-        pmc.getFramePrincipal().cargarPanel(newPmc);
+        pmc.getFramePrincipal().cargarPanel(pmc.getFramePrincipal().getPanelPrincipal(), newPmc);
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -32,7 +32,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         cargarProductos(controlProducto.todosProductos());
 
         PanelGraficarMarcas pgm = new PanelGraficarMarcas(this);
-        cargarPanel(pgm);
+        fp.cargarPanel(panelProducto, pgm);
     }
 
     public void cargarProductos(List<String> productos) {
@@ -73,14 +73,6 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         }
         posSeleccion = -1;
     }
-    
-    //Metodos para el panel
-    public final void cargarPanel(JPanel nuevoPanel) {
-        panelProducto.removeAll();
-        panelProducto.add(nuevoPanel);
-        panelProducto.repaint();
-        panelProducto.revalidate();
-    }
 
     private void cargarBarCode(int pos) {
         List<String> listaBarCodes = controlProducto.todosBarCodes();
@@ -91,6 +83,10 @@ public class PanelMenuProductos extends javax.swing.JPanel {
 
     public FramePrincipal getFramePrincipal() {
         return fp;
+    }
+    
+    public JPanel getPanelProducto(){
+        return panelProducto;
     }
 
     @SuppressWarnings("unchecked")
@@ -275,7 +271,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         PanelMenuPrincipal pmp = new PanelMenuPrincipal(fp);
-        fp.cargarPanel(pmp);
+        fp.cargarPanel(fp.getPanelPrincipal(), pmp);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void tableProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProductosMouseClicked
@@ -283,7 +279,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         cargarBarCode(pos);
 
         PanelSeleccionarProducto psp = new PanelSeleccionarProducto(this);
-        cargarPanel(psp);
+        fp.cargarPanel(panelProducto, psp);
     }//GEN-LAST:event_tableProductosMouseClicked
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
@@ -292,7 +288,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
         cargarProductos(controlProducto.todosProductos());
 
         PanelAgregarProducto pap = new PanelAgregarProducto(this);
-        cargarPanel(pap);
+        fp.cargarPanel(panelProducto, pap);
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
@@ -301,7 +297,7 @@ public class PanelMenuProductos extends javax.swing.JPanel {
     
     private void labelTituloMouseClicked(java.awt.event.MouseEvent evt) {                                         
         PanelGraficarMarcas pgm = new PanelGraficarMarcas(this);
-        cargarPanel(pgm);
+        fp.cargarPanel(panelProducto, pgm);
         
         textBuscar.setText("");
         barCode = null;

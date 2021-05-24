@@ -32,7 +32,7 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
         cargarRegiones(controlRegion.nombresRegiones());
 
         PanelSeleccionarRegion psr = new PanelSeleccionarRegion(this);
-        cargarPanel(psr);
+        fp.cargarPanel(panelRegion, psr);
     }
 
     private void cargarNombre() {
@@ -76,16 +76,12 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
         }
     }
 
-    //Metodos para el panel
-    public final void cargarPanel(JPanel nuevoPanel) {
-        panelRegion.removeAll();
-        panelRegion.add(nuevoPanel);
-        panelRegion.repaint();
-        panelRegion.revalidate();
-    }
-
     public FramePrincipal getFramePrincipal() {
         return fp;
+    }
+    
+    public JPanel getPanelRegion(){
+        return panelRegion;
     }
 
     @SuppressWarnings("unchecked")
@@ -215,7 +211,7 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
 
     private void buttonHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHomeActionPerformed
         PanelMenuPrincipal pmp = new PanelMenuPrincipal(fp);
-        fp.cargarPanel(pmp);
+        fp.cargarPanel(fp.getPanelPrincipal(), pmp);
     }//GEN-LAST:event_buttonHomeActionPerformed
 
     private void tableRegionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRegionesMouseClicked
@@ -224,7 +220,7 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
         cargarNombre();
 
         PanelSeleccionarRegion psr = new PanelSeleccionarRegion(this);
-        cargarPanel(psr);
+        fp.cargarPanel(panelRegion, psr);
     }//GEN-LAST:event_tableRegionesMouseClicked
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
@@ -232,7 +228,7 @@ public class PanelMenuRegiones extends javax.swing.JPanel {
         cargarRegiones(controlRegion.nombresRegiones());
         
         PanelAgregarRegion par = new PanelAgregarRegion(this);
-        cargarPanel(par);
+        fp.cargarPanel(panelRegion, par);
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -143,7 +143,7 @@ public class DialogoConfirmarEliminarRegion extends javax.swing.JDialog {
             pmr.controlRegion.eliminarRegion(pmr.nombreRegion);
             
             PanelMenuRegiones newPmr = new PanelMenuRegiones(pmr.getFramePrincipal(), null);
-            pmr.getFramePrincipal().cargarPanel(newPmr);
+            pmr.getFramePrincipal().cargarPanel(pmr.getFramePrincipal().getPanelPrincipal(), newPmr);
             
             setVisible(false);
         } catch (SQLException ex) {

@@ -23,18 +23,15 @@ public class PanelMenuSesion extends javax.swing.JPanel {
 
     private void iniciarPanel() {
         PanelInicioSesion pis = new PanelInicioSesion(this);
-        cargarPanel(pis);
-    }
-
-    public final void cargarPanel(JPanel nuevoPanel) {
-        panelSesion.removeAll();
-        panelSesion.add(nuevoPanel);
-        panelSesion.repaint();
-        panelSesion.revalidate();
+        fp.cargarPanel(panelSesion, pis);
     }
 
     public FramePrincipal getFramePrincipal() {
         return fp;
+    }
+    
+    public JPanel getPanelSesion(){
+        return panelSesion;
     }
 
     @SuppressWarnings("unchecked")

@@ -56,7 +56,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         }
 
         PanelMenuSesion pms = new PanelMenuSesion(this);
-        cargarPanel(pms);
+        cargarPanel(panelPrincipal, pms);
     }
 
     //Metodos para la musica
@@ -108,11 +108,15 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
 
     //Metodos para el panel
-    public final void cargarPanel(JPanel nuevoPanel) {
-        panelPrincipal.removeAll();
-        panelPrincipal.add(nuevoPanel);
-        panelPrincipal.repaint();
-        panelPrincipal.revalidate();
+    public final void cargarPanel(JPanel prePanel ,JPanel nuevoPanel) {
+        prePanel.removeAll();
+        prePanel.add(nuevoPanel);
+        prePanel.repaint();
+        prePanel.revalidate();
+    }
+    
+    public JPanel getPanelPrincipal(){
+        return panelPrincipal;
     }
 
     @Override

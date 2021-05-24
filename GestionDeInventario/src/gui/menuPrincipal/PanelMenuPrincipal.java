@@ -317,7 +317,7 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     private void buttonModoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModoActionPerformed
         fp.cambiarModo();
         PanelMenuPrincipal pmp = new PanelMenuPrincipal(fp);
-        fp.cargarPanel(pmp);
+        fp.cargarPanel(fp.getPanelPrincipal(), pmp);
     }//GEN-LAST:event_buttonModoActionPerformed
 
     private void buttonSonidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSonidoActionPerformed
@@ -337,22 +337,22 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     private void labelCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCerrarSesionMouseClicked
         new FunUsuario(fp.getSistema()).eliminarUsuario();
         PanelMenuSesion pms = new PanelMenuSesion(fp);
-        fp.cargarPanel(pms);
+        fp.cargarPanel(fp.getPanelPrincipal(), pms);
     }//GEN-LAST:event_labelCerrarSesionMouseClicked
 
     private void buttonRegionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegionesActionPerformed
         PanelMenuRegiones pmr = new PanelMenuRegiones(fp, null);
-        fp.cargarPanel(pmr);
+        fp.cargarPanel(fp.getPanelPrincipal(), pmr);
     }//GEN-LAST:event_buttonRegionesActionPerformed
 
     private void buttonClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClientesActionPerformed
         PanelMenuClientes pmc = new PanelMenuClientes(fp);
-        fp.cargarPanel(pmc);
+        fp.cargarPanel(fp.getPanelPrincipal(), pmc);
     }//GEN-LAST:event_buttonClientesActionPerformed
 
     private void buttonProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProductosActionPerformed
         PanelMenuProductos pmp = new PanelMenuProductos(fp);
-        fp.cargarPanel(pmp);
+        fp.cargarPanel(fp.getPanelPrincipal(), pmp);
     }//GEN-LAST:event_buttonProductosActionPerformed
 
     private void buttonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalirActionPerformed

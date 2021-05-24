@@ -272,7 +272,7 @@ public class PanelModificarCliente extends javax.swing.JPanel {
                 pmc.cargarClientes(pmc.controlCliente.nombresClientes());
 
                 PanelSeleccionarCliente psc = new PanelSeleccionarCliente(pmc);
-                pmc.cargarPanel(psc);
+                pmc.getFramePrincipal().cargarPanel(pmc.getPanelCliente(), psc);
             } else if (error.equals(TextoErrores.NOMBRE_VACIO.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_NOMBRE_40.getTexto())) {
                 labelErrorNombre.setVisible(true);
                 labelErrorNombre.setToolTipText(error);
@@ -307,7 +307,7 @@ public class PanelModificarCliente extends javax.swing.JPanel {
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         PanelSeleccionarCliente psc = new PanelSeleccionarCliente(pmc);
-        pmc.cargarPanel(psc);
+        pmc.getFramePrincipal().cargarPanel(pmc.getPanelCliente(), psc);
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

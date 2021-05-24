@@ -143,7 +143,7 @@ public class DialogoConfirmarEliminarCliente extends javax.swing.JDialog {
             pmc.controlCliente.eliminarCliente(pmc.idCliente);
             
             PanelMenuClientes newPmc = new PanelMenuClientes(pmc.getFramePrincipal());
-            pmc.getFramePrincipal().cargarPanel(newPmc);
+            pmc.getFramePrincipal().cargarPanel(pmc.getFramePrincipal().getPanelPrincipal(), newPmc);
             
             setVisible(false);
         } catch (SQLException ex) {

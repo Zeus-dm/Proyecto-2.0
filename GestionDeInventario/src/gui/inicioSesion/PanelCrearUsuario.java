@@ -262,7 +262,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
             String error = pms.controlUsuario.agregarUsuario(textUsuario.getText(), new String(textContraseña.getPassword()), new String(textVerContraseña.getPassword()));
             if (error == null) {
                 PanelMenuPrincipal pmp = new PanelMenuPrincipal(pms.getFramePrincipal());
-                pms.getFramePrincipal().cargarPanel(pmp);
+                pms.getFramePrincipal().cargarPanel(pms.getFramePrincipal().getPanelPrincipal(), pmp);
             } else if ((error.equals(TextoErrores.USUARIO_EXISTENTE.getTexto())) || (error.equals(TextoErrores.USUARIO_VACIO.getTexto())) || (error.equals(TextoErrores.USUARIO_MAXIMO_CARACTERES_20.getTexto()))) {
                 labelErrorUsuario.setVisible(true);
                 labelErrorUsuario.setToolTipText(error);
@@ -283,7 +283,7 @@ public class PanelCrearUsuario extends javax.swing.JPanel {
 
     private void buttonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVolverActionPerformed
         PanelInicioSesion pis = new PanelInicioSesion(pms);
-        pms.cargarPanel(pis);
+        pms.getFramePrincipal().cargarPanel(pms.getPanelSesion(), pis);
     }//GEN-LAST:event_buttonVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

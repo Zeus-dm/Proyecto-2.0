@@ -139,7 +139,7 @@ public class PanelModificarRegion extends javax.swing.JPanel {
             String error = pmr.controlRegion.modificarRegion(pmr.nombreRegion, textNombre.getText());
             if (error == null) {
                 PanelMenuRegiones newPmr = new PanelMenuRegiones(pmr.getFramePrincipal(), textNombre.getText());
-                pmr.getFramePrincipal().cargarPanel(newPmr);
+                pmr.getFramePrincipal().cargarPanel(pmr.getFramePrincipal().getPanelPrincipal(), newPmr);
             } else if (error.equals(TextoErrores.NOMBRE_VACIO.getTexto()) || error.equals(TextoErrores.MAXIMO_CARACTERES_NOMBRE_20.getTexto()) || error.equals(TextoErrores.REGION_DUPLICADO.getTexto())) {
                 labelErrorNombre.setVisible(true);
                 labelErrorNombre.setToolTipText(error);
@@ -153,7 +153,7 @@ public class PanelModificarRegion extends javax.swing.JPanel {
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         PanelMenuRegiones newPmr = new PanelMenuRegiones(pmr.getFramePrincipal(), pmr.nombreRegion);
-        pmr.getFramePrincipal().cargarPanel(newPmr);
+        pmr.getFramePrincipal().cargarPanel(pmr.getFramePrincipal().getPanelPrincipal(), newPmr);
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

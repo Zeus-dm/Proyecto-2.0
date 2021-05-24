@@ -3,20 +3,14 @@ package gui.menuProducto;
 import FunGenerales.FunGraficoSucursales;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
-import gui.MyScrollBarUI;
 import java.awt.BorderLayout;
 
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.Insets;
-import java.awt.Rectangle;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneLayout;
 
 public class PanelSeleccionarProducto extends javax.swing.JPanel {
 
@@ -388,7 +382,7 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed
         PanelModificarProducto pmod = new PanelModificarProducto(pmp);
-        pmp.cargarPanel(pmod);
+        pmp.getFramePrincipal().cargarPanel(pmp.getPanelProducto(), pmod);
     }//GEN-LAST:event_buttonModificarActionPerformed
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
@@ -399,7 +393,7 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
 
     private void buttonMaximizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMaximizarActionPerformed
         PanelGraficarSucursales pgs = new PanelGraficarSucursales(pmp);
-        pmp.cargarPanel(pgs);
+        pmp.getFramePrincipal().cargarPanel(pmp.getPanelProducto(), pgs);
     }//GEN-LAST:event_buttonMaximizarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

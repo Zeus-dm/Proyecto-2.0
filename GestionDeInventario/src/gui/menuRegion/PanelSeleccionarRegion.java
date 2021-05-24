@@ -246,7 +246,8 @@ public class PanelSeleccionarRegion extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonAgregarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarSucursalActionPerformed
-        
+        PanelAgregarSucursal pas = new PanelAgregarSucursal(pmr);
+        pmr.getFramePrincipal().cargarPanel(pmr.getPanelRegion(), pas);
     }//GEN-LAST:event_buttonAgregarSucursalActionPerformed
 
     private void tableSucursalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSucursalesMouseClicked
@@ -255,7 +256,7 @@ public class PanelSeleccionarRegion extends javax.swing.JPanel {
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed
         PanelModificarRegion pmod = new PanelModificarRegion(pmr);
-        pmr.cargarPanel(pmod);
+        pmr.getFramePrincipal().cargarPanel(pmr.getPanelRegion(), pmod);
     }//GEN-LAST:event_buttonModificarActionPerformed
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
