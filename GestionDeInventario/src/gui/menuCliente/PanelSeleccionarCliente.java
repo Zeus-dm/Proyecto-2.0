@@ -23,14 +23,14 @@ public class PanelSeleccionarCliente extends javax.swing.JPanel {
             List<String> datos = pmc.controlCliente.seleccionarCliente(pmc.idCliente);
 
             textNombre.setText(datos.get(0));
-            pmc.getFramePrincipal().reCargarTexto(textNombre, 18, 350);
+            pmc.getFramePrincipal().reCargarTexto(textNombre, 18, 350, 0);
             
             textEdad.setText(datos.get(1));
             textDireccion.setText(datos.get(2));
             textTelefono.setText(datos.get(3));
             
             textEmail.setText(datos.get(4));
-            pmc.getFramePrincipal().reCargarTexto(textEmail, 18, 350);
+            pmc.getFramePrincipal().reCargarTexto(textEmail, 18, 350, 0);
         }else{
             buttonModificar.setVisible(false);
             buttonEliminar.setVisible(false);

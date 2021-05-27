@@ -49,7 +49,7 @@ public class JefeSucursal extends Persona {
     @Override
     public void setNombre(String nombre) {
         if(nombre == null || nombre.isEmpty()){
-            throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO.getTexto() );
+            throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO_JEFE.getTexto() );
         }else if(nombre.length() > 40){
             throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_NOMBRE_40.getTexto() );
         }

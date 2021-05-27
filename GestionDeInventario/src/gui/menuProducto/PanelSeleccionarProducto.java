@@ -29,13 +29,13 @@ public class PanelSeleccionarProducto extends javax.swing.JPanel {
             List<String> datos = pmp.controlProducto.seleccionarProducto(pmp.barCode);
             
             textNombre.setText(datos.get(0));
-            pmp.getFramePrincipal().reCargarTexto(textNombre, 18, 300);
+            pmp.getFramePrincipal().reCargarTexto(textNombre, 18, 300, 0);
             
             textMarca.setText(datos.get(1));
-            pmp.getFramePrincipal().reCargarTexto(textMarca, 18, 140);
+            pmp.getFramePrincipal().reCargarTexto(textMarca, 18, 140, 0);
             
             textBarCode.setText("#" + datos.get(2));
-            pmp.getFramePrincipal().reCargarTexto(textBarCode, 18, 142);
+            pmp.getFramePrincipal().reCargarTexto(textBarCode, 18, 142, 0);
             
             textPrecio.setText("$" + datos.get(3));
             textStockTotal.setText(datos.get(4));

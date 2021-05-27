@@ -193,11 +193,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         }
     }
     
-    public void reCargarTexto(JLabel texto, int tamano, int ancho){
-        texto.setFont(new java.awt.Font("Segoe UI", 0, tamano));
+    public void reCargarTexto(JLabel texto, int tamano, int ancho, int format){
+        texto.setFont(new java.awt.Font("Segoe UI", format, tamano));
         while (true) {
             if (texto.getPreferredSize().width > ancho) {
-                texto.setFont(new java.awt.Font("Segoe UI", 0, tamano));
+                texto.setFont(new java.awt.Font("Segoe UI", format, tamano));
             } else {
                 break;
             }

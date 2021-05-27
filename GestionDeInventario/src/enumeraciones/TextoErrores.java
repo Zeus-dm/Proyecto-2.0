@@ -15,6 +15,7 @@ public enum TextoErrores {
     
     //Otros
     NOMBRE_VACIO("* Error: Campo nombre vacío"),
+    NOMBRE_VACIO_JEFE("* Error: Campo nombre jefe vacío"),
     
     MARCA_VACIO("* Error: Campo Marca vacío"),
     
