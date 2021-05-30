@@ -65,8 +65,8 @@ public enum Colores {
     ICONO_QUITAR_AGREGAR_JEFE_SUCURSAL("/gui/imagenes/iconosJefeSucursal/arriba_blanco_32.png","/gui/imagenes/iconosJefeSucursal/arriba_negro_32.png"),
     ICONO_QUITAR_AGREGAR_JEFE_SUCURSAL_DRAGGED("/gui/imagenes/iconosJefeSucursal/arriba_dorado_32.png","/gui/imagenes/iconosJefeSucursal/arriba_agua_32.png"),
 
-    
-    ICONO_ATRAS("/gui/imagenes/iconos/atras_blanco_32.png","/gui/imagenes/iconos/atras_negro_32.png"),
+    ICONO_ATRAS("/gui/imagenes/iconosMultiProposito/atras_blanco_32.png","/gui/imagenes/iconosMultiProposito/atras_negro_32.png"),
+    ICONO_ATRAS_DRAGGED("/gui/imagenes/iconosMultiProposito/atras_dorado_32.png","/gui/imagenes/iconosMultiProposito/atras_agua_32.png"),
     
     
     ICONO_ELIMINAR_JEFE_SUCURSAL("/gui/imagenes/iconos/eliminar_jefe_blanco_32.png","/gui/imagenes/iconos/eliminar_jefe_negro_32.png"),

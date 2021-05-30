@@ -3,6 +3,7 @@ package gui.menuRegion;
 import FunGenerales.FunSucursal;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
+import gui.menuSucursal.PanelMenuSucursal;
 
 import java.awt.Color;
 import java.util.List;
@@ -14,7 +15,8 @@ public class PanelSeleccionarRegion extends javax.swing.JPanel {
 
     public PanelSeleccionarRegion(PanelMenuRegiones pmr) {
         this.pmr = pmr;
-
+        controlSucursal = new FunSucursal(this.pmr.getFramePrincipal().getSistema().obtenerRegion(this.pmr.nombreRegion), this.pmr.getFramePrincipal().getSistema());
+        
         initComponents();
 
         iniciarPanel();
@@ -23,7 +25,6 @@ public class PanelSeleccionarRegion extends javax.swing.JPanel {
     private void iniciarPanel() {
         if (pmr.nombreRegion != null) {
             textNombre.setText(pmr.nombreRegion);
-            controlSucursal = new FunSucursal(pmr.getFramePrincipal().getSistema().obtenerRegion(pmr.nombreRegion), pmr.getFramePrincipal().getSistema());
             cargarSucursales(controlSucursal.nombresSucursales());
         }else{
             buttonAgregarSucursal.setVisible(false);
@@ -251,7 +252,10 @@ public class PanelSeleccionarRegion extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonAgregarSucursalActionPerformed
 
     private void tableSucursalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSucursalesMouseClicked
+        int posSeleccion = tableSucursales.getSelectedRow();
         
+        PanelMenuSucursal pms = new PanelMenuSucursal(pmr.getFramePrincipal(), controlSucursal.nombresSucursales().get(posSeleccion), controlSucursal.nombreRegion());
+        pmr.getFramePrincipal().cargarPanel(pmr.getFramePrincipal().getPanelPrincipal(), pms);
     }//GEN-LAST:event_tableSucursalesMouseClicked
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed

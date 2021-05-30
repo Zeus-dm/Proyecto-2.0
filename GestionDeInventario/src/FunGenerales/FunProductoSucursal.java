@@ -12,6 +12,8 @@ import excepciones.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jdbc.JdbcProducto;
 import jdbc.JdbcSucursalProducto;
 
@@ -119,7 +121,7 @@ public class FunProductoSucursal {
         return sucursal.productosFiltrados();
     }
     
-    public List<String> seleccionarProducto(String barCode) throws SQLException{
+    public List<String> seleccionarProducto(String barCode) {
         List<String> textos = new ArrayList<>();
         
         Producto producto = sucursal.obtenerProducto(barCode);
@@ -131,9 +133,14 @@ public class FunProductoSucursal {
         textos.add(producto.getMarca());
         textos.add(producto.getBarCode());
         textos.add(""+producto.getPrecio());
-        
-        SucursalProducto sp = obtenerProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal());
-        textos.add(""+sp.getStock());
+
+        try {
+            SucursalProducto sp;
+            sp = obtenerProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal());
+            textos.add(""+sp.getStock());
+        } catch (SQLException ex) {
+            Logger.getLogger(FunProductoSucursal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         textos.add(producto.getDescripcion());
         
