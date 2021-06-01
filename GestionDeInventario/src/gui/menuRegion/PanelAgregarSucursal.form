@@ -41,7 +41,7 @@
         <Component class="javax.swing.JButton" name="buttonAgregarJefe">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_AGREGAR_JEFE_SUCURSAL.getColor(pmr.getFramePrincipal().getModo())))" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MOSTRAR_AGREGAR_JEFE_SUCURSAL.getColor(pmr.getFramePrincipal().getModo())))" type="code"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -53,10 +53,10 @@
               <Dimension value="[32, 32]"/>
             </Property>
             <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_AGREGAR_JEFE_SUCURSAL.getColor(pmr.getFramePrincipal().getModo())))" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MOSTRAR_AGREGAR_JEFE_SUCURSAL.getColor(pmr.getFramePrincipal().getModo())))" type="code"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_AGREGAR_JEFE_SUCURSAL_DRAGGED.getColor(pmr.getFramePrincipal().getModo())))" type="code"/>
+              <Connection code="new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MOSTRAR_AGREGAR_JEFE_SUCURSAL_DRAGGED.getColor(pmr.getFramePrincipal().getModo())))" type="code"/>
             </Property>
           </Properties>
           <Events>

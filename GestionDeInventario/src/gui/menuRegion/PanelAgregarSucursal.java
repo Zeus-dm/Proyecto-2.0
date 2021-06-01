@@ -93,14 +93,14 @@ public class PanelAgregarSucursal extends javax.swing.JPanel {
         labelJefeSucursal.setPreferredSize(new java.awt.Dimension(300, 32));
         subPanelSinJefe.add(labelJefeSucursal, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 12, -1, -1));
 
-        buttonAgregarJefe.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_AGREGAR_JEFE_SUCURSAL.getColor(pmr.getFramePrincipal().getModo()))));
+        buttonAgregarJefe.setIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MOSTRAR_AGREGAR_JEFE_SUCURSAL.getColor(pmr.getFramePrincipal().getModo()))));
         buttonAgregarJefe.setBorder(null);
         buttonAgregarJefe.setBorderPainted(false);
         buttonAgregarJefe.setContentAreaFilled(false);
         buttonAgregarJefe.setFocusPainted(false);
         buttonAgregarJefe.setPreferredSize(new java.awt.Dimension(32, 32));
-        buttonAgregarJefe.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_AGREGAR_JEFE_SUCURSAL.getColor(pmr.getFramePrincipal().getModo()))));
-        buttonAgregarJefe.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_AGREGAR_JEFE_SUCURSAL_DRAGGED.getColor(pmr.getFramePrincipal().getModo()))));
+        buttonAgregarJefe.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MOSTRAR_AGREGAR_JEFE_SUCURSAL.getColor(pmr.getFramePrincipal().getModo()))));
+        buttonAgregarJefe.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource(Colores.ICONO_MOSTRAR_AGREGAR_JEFE_SUCURSAL_DRAGGED.getColor(pmr.getFramePrincipal().getModo()))));
         buttonAgregarJefe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonAgregarJefeActionPerformed(evt);

@@ -59,8 +59,8 @@ public enum Colores {
     ICONO_EXPANDIR("/gui/imagenes/iconosMultiProposito/expandir_blanco_24.png","/gui/imagenes/iconosMultiProposito/expandir_negro_24.png"),
     ICONO_EXPANDIR_DRAGGED("/gui/imagenes/iconosMultiProposito/expandir_dorado_24.png","/gui/imagenes/iconosMultiProposito/expandir_agua_24.png"),
        
-    ICONO_AGREGAR_JEFE_SUCURSAL("/gui/imagenes/iconosJefeSucursal/abajo_blanco_32.png","/gui/imagenes/iconosJefeSucursal/abajo_negro_32.png"),
-    ICONO_AGREGAR_JEFE_SUCURSAL_DRAGGED("/gui/imagenes/iconosJefeSucursal/abajo_dorado_32.png","/gui/imagenes/iconosJefeSucursal/abajo_agua_32.png"),
+    ICONO_MOSTRAR_AGREGAR_JEFE_SUCURSAL("/gui/imagenes/iconosJefeSucursal/abajo_blanco_32.png","/gui/imagenes/iconosJefeSucursal/abajo_negro_32.png"),
+    ICONO_MOSTRAR_AGREGAR_JEFE_SUCURSAL_DRAGGED("/gui/imagenes/iconosJefeSucursal/abajo_dorado_32.png","/gui/imagenes/iconosJefeSucursal/abajo_agua_32.png"),
     
     ICONO_QUITAR_AGREGAR_JEFE_SUCURSAL("/gui/imagenes/iconosJefeSucursal/arriba_blanco_32.png","/gui/imagenes/iconosJefeSucursal/arriba_negro_32.png"),
     ICONO_QUITAR_AGREGAR_JEFE_SUCURSAL_DRAGGED("/gui/imagenes/iconosJefeSucursal/arriba_dorado_32.png","/gui/imagenes/iconosJefeSucursal/arriba_agua_32.png"),
@@ -68,9 +68,14 @@ public enum Colores {
     ICONO_ATRAS("/gui/imagenes/iconosMultiProposito/atras_blanco_32.png","/gui/imagenes/iconosMultiProposito/atras_negro_32.png"),
     ICONO_ATRAS_DRAGGED("/gui/imagenes/iconosMultiProposito/atras_dorado_32.png","/gui/imagenes/iconosMultiProposito/atras_agua_32.png"),
     
+    ICONO_AGREGAR_JEFE_SUCURSAL("/gui/imagenes/iconosJefeSucursal/agregar_jefe_blanco_32.png","/gui/imagenes/iconosJefeSucursal/agregar_jefe_negro_32.png"),
+    ICONO_AGREGAR_JEFE_SUCURSAL_DRAGGED("/gui/imagenes/iconosJefeSucursal/agregar_jefe_dorado_32.png","/gui/imagenes/iconosJefeSucursal/agregar_jefe_agua_32.png"),
     
-    ICONO_ELIMINAR_JEFE_SUCURSAL("/gui/imagenes/iconos/eliminar_jefe_blanco_32.png","/gui/imagenes/iconos/eliminar_jefe_negro_32.png"),
-    ICONO_MODIFICAR_JEFE_SUCURSAL("/gui/imagenes/iconos/modificar_jefe_blanco_32.png","/gui/imagenes/iconos/modificar_jefe_negro_32.png");
+    ICONO_ELIMINAR_JEFE_SUCURSAL("/gui/imagenes/iconosJefeSucursal/eliminar_jefe_blanco_32.png","/gui/imagenes/iconosJefeSucursal/eliminar_jefe_negro_32.png"),
+    ICONO_ELIMINAR_JEFE_SUCURSAL_DRAGGED("/gui/imagenes/iconosJefeSucursal/eliminar_jefe_dorado_32.png","/gui/imagenes/iconosJefeSucursal/eliminar_jefe_agua_32.png"),
+    
+    ICONO_MODIFICAR_JEFE_SUCURSAL("/gui/imagenes/iconosJefeSucursal/modificar_jefe_blanco_32.png","/gui/imagenes/iconosJefeSucursal/modificar_jefe_negro_32.png"),
+    ICONO_MODIFICAR_JEFE_SUCURSAL_DRAGGED("/gui/imagenes/iconosJefeSucursal/modificar_jefe_dorado_32.png","/gui/imagenes/iconosJefeSucursal/modificar_jefe_agua_32.png");
     
     private final String colorOscuro;
     private final String colorClaro;

@@ -1,17 +1,10 @@
 package gui.menuSucursal;
 
-import gui.menuProducto.*;
-import FunGenerales.FunGraficoSucursales;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
-import java.awt.BorderLayout;
 
 import java.awt.Color;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PanelSeleccionarProductoSucursal extends javax.swing.JPanel {
 

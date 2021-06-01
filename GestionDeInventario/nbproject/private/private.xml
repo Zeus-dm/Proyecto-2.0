@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rafae/Desktop/Proyecto%20Universidad%203.0/Proyecto-2.0/GestionDeInventario/src/gui/FramePrincipal.java</file>
-            <file>file:/C:/Users/rafae/Desktop/Proyecto%20Universidad%203.0/Proyecto-2.0/GestionDeInventario/src/gui/menuRegion/PanelAgregarSucursal.java</file>
-            <file>file:/C:/Users/rafae/Desktop/Proyecto%20Universidad%203.0/Proyecto-2.0/GestionDeInventario/src/gui/menuRegion/PanelMenuRegiones.java</file>
+            <file>file:/C:/Users/rafae/Desktop/Proyecto%20Universidad%203.0/Proyecto-2.0/GestionDeInventario/src/gui/menuSucursal/PanelSeleccionarSucursal.java</file>
+            <file>file:/C:/Users/rafae/Desktop/Proyecto%20Universidad%203.0/Proyecto-2.0/GestionDeInventario/src/gui/menuSucursal/PanelMenuSucursal.java</file>
+            <file>file:/C:/Users/rafae/Desktop/Proyecto%20Universidad%203.0/Proyecto-2.0/GestionDeInventario/src/gui/menuSucursal/PanelSeleccionarProductoSucursal.java</file>
             <file>file:/C:/Users/rafae/Desktop/Proyecto%20Universidad%203.0/Proyecto-2.0/GestionDeInventario/src/FunGenerales/FunSucursal.java</file>
-            <file>file:/C:/Users/rafae/Desktop/Proyecto%20Universidad%203.0/Proyecto-2.0/GestionDeInventario/src/enumeraciones/Colores.java</file>
         </group>
     </open-files>
 </project-private>

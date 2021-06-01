@@ -41,6 +41,8 @@ public class PanelMenuSucursal extends javax.swing.JPanel {
         fp.reCargarTexto(labelTitulo, 28, 680, 3);
         
         //iniciar panel con los datos de la sucursal
+        PanelSeleccionarSucursal pss = new PanelSeleccionarSucursal(this);
+        fp.cargarPanel(panelProducto, pss);
     }
 
     public void cargarProductos(List<String> productos) {
@@ -326,12 +328,12 @@ public class PanelMenuSucursal extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonAtrasActionPerformed
     
     private void labelTituloMouseClicked(java.awt.event.MouseEvent evt) {                                         
-        /*PanelGraficarMarcas pgm = new PanelGraficarMarcas(this);
-        fp.cargarPanel(panelProducto, pgm);
+        PanelSeleccionarSucursal pss = new PanelSeleccionarSucursal(this);
+        fp.cargarPanel(panelProducto, pss);
         
         textBuscar.setText("");
         barCode = null;
-        cargarProductos(controlProducto.todosProductos());*/
+        cargarProductos(controlProducto.todosProductos());
     } 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
