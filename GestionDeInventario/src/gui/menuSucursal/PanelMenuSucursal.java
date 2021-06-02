@@ -1,5 +1,7 @@
 package gui.menuSucursal;
 
+import gui.menuProducto.*;
+import FunGenerales.FunProducto;
 import FunGenerales.FunProductoSucursal;
 import FunGenerales.FunSucursal;
 import gui.FramePrincipal;
@@ -69,6 +71,12 @@ public class PanelMenuSucursal extends javax.swing.JPanel {
         if (posSeleccion >= 0) {
             tableProductos.getSelectionModel().setSelectionInterval(posSeleccion, posSeleccion);
         }
+    }
+    
+    public void reiniciarProductos(){
+        textBuscar.setText("");
+        barCode = null;
+        cargarProductos(controlProducto.todosProductos());
     }
     
     public void generarPosSeleccion(){
@@ -334,7 +342,7 @@ public class PanelMenuSucursal extends javax.swing.JPanel {
         textBuscar.setText("");
         barCode = null;
         cargarProductos(controlProducto.todosProductos());
-    } 
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAgregar;

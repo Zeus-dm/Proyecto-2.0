@@ -269,8 +269,8 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed
-        /*PanelModificarCliente pmdc = new PanelModificarCliente(pms);
-        pms.getFramePrincipal().cargarPanel(pms.getPanelCliente(), pmdc);*/
+        PanelModificarSucursal pmod = new PanelModificarSucursal(pms);
+        pms.getFramePrincipal().cargarPanel(pms.getPanelProducto(), pmod);
     }//GEN-LAST:event_buttonModificarActionPerformed
 
     private void buttonAgregarJefeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarJefeActionPerformed
