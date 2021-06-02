@@ -1,6 +1,5 @@
 package gui.menuSucursal;
 
-import gui.menuCliente.*;
 import enumeraciones.Colores;
 import enumeraciones.Texto;
 import enumeraciones.TextoErrores;

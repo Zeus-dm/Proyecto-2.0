@@ -263,9 +263,9 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
-        /*DialogoConfirmarEliminarCliente dcec = new DialogoConfirmarEliminarCliente(new javax.swing.JFrame(), true, pms);
-        dcec.setLocationRelativeTo(this);
-        dcec.setVisible(true);*/
+        DialogoConfirmarEliminarSucursal dces = new DialogoConfirmarEliminarSucursal(new javax.swing.JFrame(), true, pms);
+        dces.setLocationRelativeTo(this);
+        dces.setVisible(true);
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed

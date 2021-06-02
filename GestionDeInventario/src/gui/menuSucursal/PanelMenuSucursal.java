@@ -1,7 +1,5 @@
 package gui.menuSucursal;
 
-import gui.menuProducto.*;
-import FunGenerales.FunProducto;
 import FunGenerales.FunProductoSucursal;
 import FunGenerales.FunSucursal;
 import gui.FramePrincipal;
