@@ -274,15 +274,19 @@ public class PanelSeleccionarSucursal extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonModificarActionPerformed
 
     private void buttonAgregarJefeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarJefeActionPerformed
-        // TODO add your handling code here:
+        PanelAgregarJefe paj = new PanelAgregarJefe(pms);
+        pms.getFramePrincipal().cargarPanel(pms.getPanelProducto(), paj);
     }//GEN-LAST:event_buttonAgregarJefeActionPerformed
 
     private void buttonModificarJefeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarJefeActionPerformed
-        // TODO add your handling code here:
+        PanelModificarJefe pmj = new PanelModificarJefe(pms);
+        pms.getFramePrincipal().cargarPanel(pms.getPanelProducto(), pmj);
     }//GEN-LAST:event_buttonModificarJefeActionPerformed
 
     private void buttonEliminarJefeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarJefeActionPerformed
-        // TODO add your handling code here:
+        DialogoConfirmarEliminarJefe dcej = new DialogoConfirmarEliminarJefe(new javax.swing.JFrame(), true, pms);
+        dcej.setLocationRelativeTo(this);
+        dcej.setVisible(true);
     }//GEN-LAST:event_buttonEliminarJefeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

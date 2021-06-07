@@ -237,10 +237,12 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         buttonSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buttonSalir.setBackground(Color.decode(Colores.FONDO_BOTON.getColor(fp.getModo())));
+                buttonSalir.setForeground(Color.decode(Colores.TEXTO_ERROR.getColor(fp.getModo())));
                 buttonSalir.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, Color.decode(Colores.BORDE.getColor(fp.getModo()))));
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 buttonSalir.setBackground(Color.decode(Colores.FONDO.getColor(fp.getModo())));
+                buttonSalir.setForeground(Color.decode(Colores.TEXTO_BOTON.getColor(fp.getModo())));
                 buttonSalir.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, Color.decode(Colores.BORDE.getColor(fp.getModo()))));
             }
         });
