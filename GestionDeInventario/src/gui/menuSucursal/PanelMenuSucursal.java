@@ -316,12 +316,12 @@ public class PanelMenuSucursal extends javax.swing.JPanel {
     }//GEN-LAST:event_tableProductosMouseClicked
 
     private void buttonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarActionPerformed
-        /*textBuscar.setText("");
+        PanelAgregarProductoSucursal paps = new PanelAgregarProductoSucursal(this);
+        fp.cargarPanel(panelProducto, paps);
+        
+        textBuscar.setText("");
         barCode = null;
         cargarProductos(controlProducto.todosProductos());
-
-        PanelAgregarProducto pap = new PanelAgregarProducto(this);
-        fp.cargarPanel(panelProducto, pap);*/
     }//GEN-LAST:event_buttonAgregarActionPerformed
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed

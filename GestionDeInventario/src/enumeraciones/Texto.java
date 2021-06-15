@@ -95,6 +95,7 @@ public enum Texto {
     CONFIRMACION_ELIMINAR_JEFE("¿Estas seguro de Eliminar el Jefe?"),
     CONFIRMACION_ELIMINAR_PRODUCTO_SUCURSAL("¿Estas seguro de Eliminar este producto de la Sucursal?"),
     
+    PREVISUALIZACION("Previsualización"),
     
     ACEPTAR("Aceptar"),
     CANCELAR("Cancelar"),
