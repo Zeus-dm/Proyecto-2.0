@@ -1,5 +1,6 @@
 package gui.menuPrincipal;
 
+import FunGenerales.FunReporte;
 import FunGenerales.FunUsuario;
 import gui.FramePrincipal;
 import enumeraciones.Colores;
@@ -141,8 +142,8 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
         });
         labelCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                labelCerrarSesion.setForeground(Color.decode(Colores.BORDE.getColor(fp.getModo())));
-                labelCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.BORDE.getColor(fp.getModo()))));
+                labelCerrarSesion.setForeground(Color.decode(Colores.TEXTO_ERROR.getColor(fp.getModo())));
+                labelCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, Color.decode(Colores.TEXTO_ERROR.getColor(fp.getModo()))));
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 labelCerrarSesion.setForeground(Color.decode(Colores.TEXTO.getColor(fp.getModo())));
@@ -333,7 +334,11 @@ public class PanelMenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonSonidoActionPerformed
 
     private void buttonReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReporteActionPerformed
-        // TODO add your handling code here:
+        FunReporte.generarReporte(fp.getSistema());
+        
+        DialogoConfirmarReporte dcr = new DialogoConfirmarReporte(new javax.swing.JFrame(), true, this);
+        dcr.setLocationRelativeTo(this);
+        dcr.setVisible(true);
     }//GEN-LAST:event_buttonReporteActionPerformed
 
     private void labelCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelCerrarSesionMouseClicked

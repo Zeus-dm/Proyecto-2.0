@@ -35,6 +35,10 @@ public class Usuario implements IGenerico{
         return password;
     }
 
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     public void setNombre(String nombre) {
         if(nombre == null || nombre.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.USUARIO_VACIO.getTexto() );

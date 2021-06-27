@@ -57,8 +57,8 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelStockTotal" max="32767" attributes="0"/>
-                                  <Component id="textStockTotal" max="32767" attributes="0"/>
+                                  <Component id="labelStockTienda" max="32767" attributes="0"/>
+                                  <Component id="textStockTienda" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -87,11 +87,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelStockTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelStockTienda" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="textPrecio" min="-2" max="-2" attributes="0"/>
-                  <Component id="textStockTotal" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="textStockTienda" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="labelDescripcion" min="-2" max="-2" attributes="0"/>
@@ -219,7 +219,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelStockTotal">
+    <Component class="javax.swing.JLabel" name="labelStockTienda">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="13" style="3"/>
@@ -235,7 +235,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="textStockTotal">
+    <Component class="javax.swing.JLabel" name="textStockTienda">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="0"/>
@@ -243,7 +243,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo()))" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="(Stock Total Producto)"/>
+        <Property name="text" type="java.lang.String" value="(Stock Tienda Producto)"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[142, 25]"/>
         </Property>

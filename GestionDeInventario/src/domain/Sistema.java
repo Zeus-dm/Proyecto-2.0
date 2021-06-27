@@ -97,16 +97,7 @@ public class Sistema {
     }
 
     public List<String> filtrarProductos(int min, int max, String textoBuscar){
-        if( (min == 0) && (max == 0) && (textoBuscar.isEmpty()) ){
-            return productos.todosProductos();
-        }else if( (min == 0) && (max == 0) && !(textoBuscar.isEmpty()) ){
-            return productos.filtrarProductos(textoBuscar);
-        }else if( (min >= 0) && (max >= 0) && (textoBuscar.isEmpty()) ){
-            return productos.filtrarProductos(min, max);
-        }else if( (min >= 0) && (max >= 0) && !(textoBuscar.isEmpty()) ){
-            return productos.filtrarProductos(min, max, textoBuscar);
-        }
-        return productos.todosProductos();
+        return productos.menuFiltrado(min, max, textoBuscar);
     }
     
     public List<String> marcasProductos(){

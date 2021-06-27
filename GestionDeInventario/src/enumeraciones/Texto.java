@@ -97,6 +97,9 @@ public enum Texto {
     
     PREVISUALIZACION("Previsualización"),
     
+    CONFIRMACION_REPORTE("Reporte creado Exitosamente"),
+    OK("OK"),
+    
     ACEPTAR("Aceptar"),
     CANCELAR("Cancelar"),
     VOLVER("Volver");

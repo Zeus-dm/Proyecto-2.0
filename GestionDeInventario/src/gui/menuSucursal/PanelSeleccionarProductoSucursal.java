@@ -32,7 +32,7 @@ public class PanelSeleccionarProductoSucursal extends javax.swing.JPanel {
             pms.getFramePrincipal().reCargarTexto(textBarCode, 18, 185, 0);
             
             textPrecio.setText("$" + datos.get(3));
-            textStockTotal.setText(datos.get(4));
+            textStockTienda.setText(datos.get(4));
             textDescripcion.setText(datos.get(5));
         }else{
             buttonEliminar.setVisible(false);
@@ -52,8 +52,8 @@ public class PanelSeleccionarProductoSucursal extends javax.swing.JPanel {
         textBarCode = new javax.swing.JLabel();
         labelPrecio = new javax.swing.JLabel();
         textPrecio = new javax.swing.JLabel();
-        labelStockTotal = new javax.swing.JLabel();
-        textStockTotal = new javax.swing.JLabel();
+        labelStockTienda = new javax.swing.JLabel();
+        textStockTienda = new javax.swing.JLabel();
         labelDescripcion = new javax.swing.JLabel();
         scrollDescripcion = new javax.swing.JScrollPane();
         textDescripcion = new javax.swing.JTextPane();
@@ -100,16 +100,16 @@ public class PanelSeleccionarProductoSucursal extends javax.swing.JPanel {
         textPrecio.setText("(Precio Producto)");
         textPrecio.setPreferredSize(new java.awt.Dimension(140, 28));
 
-        labelStockTotal.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
-        labelStockTotal.setForeground(Color.decode(Colores.TEXTO_HEADER.getColor(pms.getFramePrincipal().getModo())));
-        labelStockTotal.setText(Texto.STOCK.getTexto());
-        labelStockTotal.setPreferredSize(new java.awt.Dimension(142, 16));
+        labelStockTienda.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
+        labelStockTienda.setForeground(Color.decode(Colores.TEXTO_HEADER.getColor(pms.getFramePrincipal().getModo())));
+        labelStockTienda.setText(Texto.STOCK.getTexto());
+        labelStockTienda.setPreferredSize(new java.awt.Dimension(142, 16));
 
-        textStockTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        textStockTotal.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
-        textStockTotal.setText("(Stock Total Producto)");
-        textStockTotal.setMinimumSize(new java.awt.Dimension(142, 25));
-        textStockTotal.setPreferredSize(new java.awt.Dimension(142, 28));
+        textStockTienda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        textStockTienda.setForeground(Color.decode(Colores.TEXTO.getColor(pms.getFramePrincipal().getModo())));
+        textStockTienda.setText("(Stock Tienda Producto)");
+        textStockTienda.setMinimumSize(new java.awt.Dimension(142, 25));
+        textStockTienda.setPreferredSize(new java.awt.Dimension(142, 28));
 
         labelDescripcion.setFont(new java.awt.Font("Segoe UI", 3, 13)); // NOI18N
         labelDescripcion.setForeground(Color.decode(Colores.TEXTO_HEADER.getColor(pms.getFramePrincipal().getModo())));
@@ -192,8 +192,8 @@ public class PanelSeleccionarProductoSucursal extends javax.swing.JPanel {
                                     .addComponent(labelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelStockTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(textStockTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(labelStockTienda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textStockTienda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -213,10 +213,10 @@ public class PanelSeleccionarProductoSucursal extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelStockTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelStockTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(textPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textStockTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textStockTienda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(labelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -230,14 +230,14 @@ public class PanelSeleccionarProductoSucursal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModificarActionPerformed
-        /*PanelModificarProducto pmod = new PanelModificarProducto(pms);
-        pms.getFramePrincipal().cargarPanel(pms.getPanelProducto(), pmod);*/
+        PanelModificarStockProducto pmsp = new PanelModificarStockProducto(pms);
+        pms.getFramePrincipal().cargarPanel(pms.getPanelProducto(), pmsp);
     }//GEN-LAST:event_buttonModificarActionPerformed
 
     private void buttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarActionPerformed
-        /*DialogoConfirmarEliminarProducto  dcep = new DialogoConfirmarEliminarProducto(new javax.swing.JFrame(), true, pms);
+        DialogoConfirmarEliminarProducto dcep = new DialogoConfirmarEliminarProducto(new javax.swing.JFrame(), true, pms);
         dcep.setLocationRelativeTo(this);
-        dcep.setVisible(true);*/
+        dcep.setVisible(true);
     }//GEN-LAST:event_buttonEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -248,13 +248,13 @@ public class PanelSeleccionarProductoSucursal extends javax.swing.JPanel {
     private javax.swing.JLabel labelMarca;
     private javax.swing.JLabel labelNombre;
     private javax.swing.JLabel labelPrecio;
-    private javax.swing.JLabel labelStockTotal;
+    private javax.swing.JLabel labelStockTienda;
     private javax.swing.JScrollPane scrollDescripcion;
     private javax.swing.JLabel textBarCode;
     private javax.swing.JTextPane textDescripcion;
     private javax.swing.JLabel textMarca;
     private javax.swing.JLabel textNombre;
     private javax.swing.JLabel textPrecio;
-    private javax.swing.JLabel textStockTotal;
+    private javax.swing.JLabel textStockTienda;
     // End of variables declaration//GEN-END:variables
 }

@@ -61,12 +61,15 @@ public class FunProductoSucursal {
         try {
             nuevoProducto.setStockTotal(nuevoStock);
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
-            return e.getMessage();
+            if(e.getMessage().equals(TextoErrores.STOCK_CERO.getTexto())){
+                return TextoErrores.STOCK_MAYOR_CERO.getTexto();
+            }else{
+                return e.getMessage();
+            }
         }
         
         if(nuevoProducto.getStockTotal() == 0){
-            eliminarProducto(barCode);
-            return null;
+            return TextoErrores.STOCK_MAYOR_CERO.getTexto();
         }
         
         int diferenciaStock = (int) (nuevoProducto.getStockTotal() - sp.getStock());
