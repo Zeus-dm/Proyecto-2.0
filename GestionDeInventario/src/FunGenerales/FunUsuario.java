@@ -59,7 +59,7 @@ public class FunUsuario {
         JdbcUsuario ju = new JdbcUsuario();
         Usuario usuario = ju.select(nombre);
         
-        if(usuario == null){
+        if(usuario == null || !(usuario.getNombre().equals(nombre))){
             return TextoErrores.USUARIO_PASSWORD_INCORRECTOS.getTexto();
         }else if( !(password.equals(usuario.getPassword())) ){
             return TextoErrores.USUARIO_PASSWORD_INCORRECTOS.getTexto();

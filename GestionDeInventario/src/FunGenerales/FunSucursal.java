@@ -32,8 +32,8 @@ public class FunSucursal {
         try {
             sucursal.setIdRegion(region.getIdRegion());
             sucursal.setNombre(nombre);
-            sucursal.setDireccion(direccion);
             sucursal.setTelefono(telefono);
+            sucursal.setDireccion(direccion);
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
             return e.getMessage();
         }
@@ -59,8 +59,8 @@ public class FunSucursal {
         try {
             sucursal.setIdRegion(region.getIdRegion());
             sucursal.setNombre(nombre);
-            sucursal.setDireccion(direccion);
             sucursal.setTelefono(telefono);
+            sucursal.setDireccion(direccion);
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
             return e.getMessage();
         }

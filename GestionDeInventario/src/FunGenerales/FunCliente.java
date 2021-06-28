@@ -32,8 +32,8 @@ public class FunCliente {
         try {
             cliente.setNombre(nombre);
             cliente.setEdad(edad);
-            cliente.setDireccion(direccion);
             cliente.setTelefono(telefono);
+            cliente.setDireccion(direccion);
             cliente.setEmail(email);
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException | TextoEmailException e){
             return e.getMessage();
@@ -43,7 +43,7 @@ public class FunCliente {
         jc.insert(cliente);
         
         int maxId = jc.ultimoId();
-        cliente.setIdCliente(maxId);
+        cliente.setId(maxId);
         
         sistema.agregarCliente(cliente);
         
@@ -69,7 +69,7 @@ public class FunCliente {
             cliente.setDireccion(direccion);
             cliente.setTelefono(telefono);
             cliente.setEmail(email);
-            cliente.setIdCliente(idCliente);
+            cliente.setId(idCliente);
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException | TextoEmailException e){
             return e.getMessage();
         }

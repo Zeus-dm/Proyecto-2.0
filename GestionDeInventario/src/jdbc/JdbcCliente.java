@@ -64,7 +64,7 @@ public class JdbcCliente implements IGenericoInsert, IGenericoUpdate, IGenericoD
             ps.setString(3, cliente.getDireccion());
             ps.setString(4, cliente.getTelefono());
             ps.setString(5, cliente.getEmail());
-            ps.setInt(6, cliente.getIdCliente());
+            ps.setInt(6, cliente.getId());
             ps.executeUpdate();
         }finally{
             Conexion.close(ps);
@@ -84,7 +84,7 @@ public class JdbcCliente implements IGenericoInsert, IGenericoUpdate, IGenericoD
         try{
             conn = this.userConn != null ? this.userConn : Conexion.getConnection();
             ps = conn.prepareStatement(SQL_DELETE);
-            ps.setInt(1, cliente.getIdCliente());
+            ps.setInt(1, cliente.getId());
             ps.executeUpdate();
         }finally{
             Conexion.close(ps);

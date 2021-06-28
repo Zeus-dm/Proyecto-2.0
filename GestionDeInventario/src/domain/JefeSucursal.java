@@ -1,11 +1,9 @@
-
 package domain;
 
 import enumeraciones.TextoErrores;
 import excepciones.*;
 
-public class JefeSucursal extends Persona implements IGenerico{
-    private int idJefe ;
+public class JefeSucursal extends Persona {
     private int idSucursal ;
     
     public JefeSucursal() {   
@@ -21,13 +19,8 @@ public class JefeSucursal extends Persona implements IGenerico{
     }
     
     public JefeSucursal(int idJefe, String nombre, int edad, int idSucursal) {
-        super(nombre, edad);
-        this.idJefe = idJefe ;
+        super(idJefe, nombre, edad);
         this.idSucursal = idSucursal ;
-    }
-
-    public int getIdJefe() {
-        return idJefe;
     }
 
     public int getIdSucursal() {
@@ -43,6 +36,11 @@ public class JefeSucursal extends Persona implements IGenerico{
     public int getEdad() {
         return edad;
     }
+    
+    @Override
+    public int getId() {
+        return id;
+    }
 
     public void setIdSucursal(int idSucursal) {
         this.idSucursal = idSucursal;
@@ -51,7 +49,7 @@ public class JefeSucursal extends Persona implements IGenerico{
     @Override
     public void setNombre(String nombre) {
         if(nombre == null || nombre.isEmpty()){
-            throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO.getTexto() );
+            throw new TextoEnBlancoException( TextoErrores.NOMBRE_VACIO_JEFE.getTexto() );
         }else if(nombre.length() > 40){
             throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_NOMBRE_40.getTexto() );
         }
@@ -81,11 +79,16 @@ public class JefeSucursal extends Persona implements IGenerico{
             }
         }
     }
-
+    
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("JefeSucursal{idJefe=").append(idJefe);
+        sb.append("JefeSucursal{");
         sb.append(", idSucursal=").append(idSucursal);
         sb.append(", nombre=").append(this.getNombre());
         sb.append(", edad=").append(this.getEdad());

@@ -90,6 +90,19 @@ public class CollectionProductos {
         return nombresProductos;
     }
     
+    public List<String> menuFiltrado(int min, int max, String textoBuscar){
+        if( (min == 0) && (max == 0) && (textoBuscar.isEmpty()) ){
+            return todosProductos();
+        }else if( (min == 0) && (max == 0) && !(textoBuscar.isEmpty()) ){
+            return filtrarProductos(textoBuscar);
+        }else if( (min >= 0) && (max >= 0) && (textoBuscar.isEmpty()) ){
+            return filtrarProductos(min, max);
+        }else if( (min >= 0) && (max >= 0) && !(textoBuscar.isEmpty()) ){
+            return filtrarProductos(min, max, textoBuscar);
+        }
+        return todosProductos();
+    }
+    
     public List<String> filtrarProductos(String textoBuscar){
         nombresProductos.removeAll(nombresProductos);
         barCodesProductos.removeAll(barCodesProductos);

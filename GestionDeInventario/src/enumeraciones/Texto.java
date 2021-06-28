@@ -2,19 +2,28 @@
 package enumeraciones;
 
 public enum Texto {
-    //Panel Menu Sesion
-    BOTON_INICIO_SESION("Iniciar Sesión"),
-    BOTON_NUEVO_USUARIO("Crear Usuario"),
-    NUEVO_USUARIO("Crear Nuevo Usuario"),
+    //Panel Menu Inicio Sesion
+        //Inicio Sesion
     USUARIO("Usuario"),
     PASSWORD("Contraseña"),
-    VER_PASSWORD("Ver. Contraseña"),
+    INICIAR_SESION("Iniciar Sesión"),
+    NO_CUENTA("¿No tienes Cuenta?"),
+    REGISTRATE("Registrate"),
+        //Crear Cuenta
+    CREA_CUENTA("Crea tu cuenta"),
+    VER_PASSWORD("Verificar Contraseña"),
+    CREAR_CUENTA("Crear Cuenta"),
 
     //Panel Menu Principal
     TITULO("El Chefcito"),
     BIENVENIDO("Bienvenido"),
+    CERRAR_SESION("Cerrar Sesión"),
     REGIONES("Regiones"),
+    CLIENTES("Clientes"),
+    PRODUCTOS("Productos"),
+    SALIR("Salir"),
     
+    //Otros
     AGREGAR_REGION("Agregar Nueva Región"),
     NOMBRE("Nombre"),
     ELIMINAR_REGION("Eliminar Región"),
@@ -40,7 +49,7 @@ public enum Texto {
             
     ELIM_JEFE("Elim. jefe S."),
             
-    CLIENTES("Clientes"),
+    
     AGR_CLIENTE("Agr. Cliente"),
     AGREGAR_CLIENTE("Agregar Nuevo Cliente"),
     EDAD("Edad"),
@@ -52,7 +61,7 @@ public enum Texto {
     MOD_CLIENTE("Mod. Cliente"),
     MODIFICAR_CLIENTE("Modificar Cliente"),
             
-    PRODUCTOS("Productos"),
+    
     BUSCAR("Buscar"),
     PRECIO("Precio"),
     MIN("Min"),
@@ -65,12 +74,11 @@ public enum Texto {
     MODIFICAR_PRODUCTO("Modificar Producto"),
         
     AGR_PRODUCTO("Agr. Producto"),
-    AGREGAR_PRODUCTO("Agregar Producto"),
+    AGREGAR_PRODUCTO("Agregar Nuevo Producto"),
     NUEVO("Nuevo"),
-    AGREGAR_NUEVO_PRODUCTO("Agregar Nuevo Producto"),
     STOCK("Stock"),
     EXISTENTE("Existente"),
-    AGREGAR_EXISTENTE("Agregar Producto Existente"),
+    AGREGAR_EXISTENTE("Agregar Producto"),
     PRODUCTO("Producto"),
                 
     ELIM_PRODUCTO("Elim. Producto"),
@@ -83,11 +91,15 @@ public enum Texto {
     ELIMINAR("Eliminar"),
     
     CONFIRMACION_ELIMINAR("¿Estas seguro de Eliminar?"),
+    CONFIRMACION_ELIMINAR_PRODUCTO("*Esto eliminara el producto en todas las sucursales que lo contengan."),
     CONFIRMACION_ELIMINAR_JEFE("¿Estas seguro de Eliminar el Jefe?"),
-    CONFIRMACION_ELIMINAR_PRODUCTO_SUCURSAL("¿Estas seguro de Eliminar de la Sucursal?"),
+    CONFIRMACION_ELIMINAR_PRODUCTO_SUCURSAL("¿Estas seguro de Eliminar este producto de la Sucursal?"),
     
-    REPORTES("Reportes"),
-    SALIR("Salir"),
+    PREVISUALIZACION("Previsualización"),
+    
+    CONFIRMACION_REPORTE("Reporte creado Exitosamente"),
+    OK("OK"),
+    
     ACEPTAR("Aceptar"),
     CANCELAR("Cancelar"),
     VOLVER("Volver");

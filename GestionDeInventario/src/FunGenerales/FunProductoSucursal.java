@@ -12,6 +12,8 @@ import excepciones.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jdbc.JdbcProducto;
 import jdbc.JdbcSucursalProducto;
 
@@ -22,41 +24,6 @@ public class FunProductoSucursal {
     public FunProductoSucursal(Sistema sistema, Sucursal sucursal) {
         this.sistema = sistema;
         this.sucursal = sucursal;
-    }
-    
-    public String agregarProducto(String nombre, String marca, String barCode, String stock, String precio, String descripcion) throws SQLException{
-        if(sistema.verificarExistenciaProducto(barCode)){
-            return TextoErrores.BARCODE_DUPLICADO.getTexto();
-        }
-        
-        Producto producto = new Producto();
-        try {
-            producto.setNombre(nombre);
-            producto.setMarca(marca);
-            producto.setBarCode(barCode);
-            producto.setPrecio(precio);
-            producto.setDescripcion(descripcion);
-            producto.setStockTotal(stock);
-        } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
-            return e.getMessage();
-        }
-        
-        if(producto.getStockTotal() == 0){
-            return TextoErrores.STOCK_MAYOR_CERO.getTexto();
-        }
-        
-        JdbcProducto jp = new JdbcProducto();
-        jp.insert(producto);
-        
-        int idMax = jp.ultimoId();
-        producto.setIdProducto(idMax);
-        
-        agregarProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal(), (int)producto.getStockTotal());
-        
-        sistema.agregarProducto(producto);
-        sucursal.agregarProducto(producto);
-        
-        return null;
     }
     
     public String agregarProducto(String barCode, String stock) throws SQLException{
@@ -94,12 +61,15 @@ public class FunProductoSucursal {
         try {
             nuevoProducto.setStockTotal(nuevoStock);
         } catch(TextoEnBlancoException | NumeroFormatException | NumeroRangoException | TextoTamanoMaximoException e){
-            return e.getMessage();
+            if(e.getMessage().equals(TextoErrores.STOCK_CERO.getTexto())){
+                return TextoErrores.STOCK_MAYOR_CERO.getTexto();
+            }else{
+                return e.getMessage();
+            }
         }
         
         if(nuevoProducto.getStockTotal() == 0){
-            eliminarProducto(barCode);
-            return null;
+            return TextoErrores.STOCK_MAYOR_CERO.getTexto();
         }
         
         int diferenciaStock = (int) (nuevoProducto.getStockTotal() - sp.getStock());
@@ -154,7 +124,7 @@ public class FunProductoSucursal {
         return sucursal.productosFiltrados();
     }
     
-    public List<String> seleccionarProducto(String barCode) throws SQLException{
+    public List<String> seleccionarProducto(String barCode) {
         List<String> textos = new ArrayList<>();
         
         Producto producto = sucursal.obtenerProducto(barCode);
@@ -166,9 +136,14 @@ public class FunProductoSucursal {
         textos.add(producto.getMarca());
         textos.add(producto.getBarCode());
         textos.add(""+producto.getPrecio());
-        
-        SucursalProducto sp = obtenerProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal());
-        textos.add(""+sp.getStock());
+
+        try {
+            SucursalProducto sp;
+            sp = obtenerProductoSucursal(producto.getIdProducto(), sucursal.getIdSucursal());
+            textos.add(""+sp.getStock());
+        } catch (SQLException ex) {
+            Logger.getLogger(FunProductoSucursal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         textos.add(producto.getDescripcion());
         

@@ -1,0 +1,80 @@
+-----Regiones-----
+ Valparaiso
+	-----Sucursales-----
+	 Sucursal nm
+		-----Productos-----
+		 Cachantun con Gas 1L
+		 Mistral 1L caja azul
+		 Pisco nobel 750cc
+		 Pisco Mistral
+		 Agua con gas de 1L
+		 Aifon Galaxy Mate 4
+		 Chivas Regal 12 años
+		 Papas Fritas de Tarro
+		 Vodka Negro 750ml
+		 Galleta Triton
+	 Ejemplo 5000
+		-----Productos-----
+		 Mistral 1L caja azul
+		 Pisco Mistral
+		 Vodka 750 ml
+	 Ejemplo 3
+		-----Productos-----
+	 MMMMMMMMMMMMMMMMMMMM
+		-----Productos-----
+		 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+
+ Metropolitana
+	-----Sucursales-----
+	 Sucursal 100
+		-----Productos-----
+		 Papas Fritas de Tarro
+
+ Arica
+	-----Sucursales-----
+	 Ejemplo 20
+		-----Productos-----
+		 Galleta Triton
+	 nose xdd
+		-----Productos-----
+		 Pisco Mistral
+
+ Arequipa
+	-----Sucursales-----
+	 Sucursal Peruana
+		-----Productos-----
+		 Inka Cola 1L
+		 Pisco Mistral
+
+ MMMMMMMMMMMMMMMMMMMM
+	-----Sucursales-----
+	 Sucursal Nueva 01
+		-----Productos-----
+	 MMMMMMMMMMMMMMMMMMMM
+		-----Productos-----
+
+-----Clientes-----
+ Rafael Carvacho Plaza
+ Maximiliano Beltran
+ Sebastian Perez
+ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+ qwereqwr
+ zxcxzc
+
+-----Todos los Productos-----
+ Cachantun con Gas 1L
+ Mistral 1L caja azul
+ texto de ejemplo texto de ejem
+ Inka Cola 1L
+ Pisco Mistral
+ Vodka 750 ml
+ Chivas Regal 12 años
+ Papas Fritas de Tarro
+ Vodka Negro 750ml
+ Galleta Triton
+ Pisco nobel 750cc
+ Agua con gas de 1L
+ Aifon Galaxy Mate 4
+ Hervidor 1L
+ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+ Ryzen 5 5600X

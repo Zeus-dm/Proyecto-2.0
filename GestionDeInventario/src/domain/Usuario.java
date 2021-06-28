@@ -35,11 +35,15 @@ public class Usuario implements IGenerico{
         return password;
     }
 
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     public void setNombre(String nombre) {
         if(nombre == null || nombre.isEmpty()){
             throw new TextoEnBlancoException( TextoErrores.USUARIO_VACIO.getTexto() );
         }else if(nombre.length() > 20){
-            throw new TextoTamanoMaximoException( TextoErrores.MAXIMO_CARACTERES_USUARIO_20.getTexto() );
+            throw new TextoTamanoMaximoException( TextoErrores.USUARIO_MAXIMO_CARACTERES_20.getTexto() );
         }
         this.nombre = nombre;
     }
