@@ -12,6 +12,11 @@ import java.util.List;
 
 public class FunReporte {
     public static void generarReporte(Sistema sistema){
+        File archivo = new File("Reportes");
+        if(!archivo.exists()){
+            archivo.mkdirs();
+        }
+        
         Calendar cal = Calendar.getInstance();
         
         String dia = "" + cal.get(Calendar.DATE);
@@ -25,7 +30,7 @@ public class FunReporte {
             mes = "0" + mes;
         }
         
-        File archivo = new File("../Reportes/reporte_" + dia + "-" + mes + "-" + ano + ".txt");
+        archivo = new File("../Reportes/reporte_" + dia + "-" + mes + "-" + ano + ".txt");
         try {
             PrintWriter escritura = new PrintWriter(archivo);
             
